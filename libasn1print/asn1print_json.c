@@ -477,11 +477,62 @@ is_positional(const asn1p_expr_t *e) {
     return e->Identifier == NULL || e->expr_type == A1TC_EXTENSIBLE;
 }
 
+/*
+ * Identifiers of specialization clones. The fixer names a clone after its
+ * actual parameter, so the identifier comes from the parameterized type:
+ * "<Module>.<Type>@<n>", as printed under "specializations".
+ */
+static struct {
+    const asn1p_expr_t **expr;
+    char **id;
+    size_t count;
+    size_t size;
+} clones;
+
+static void
+clones_add(const asn1p_expr_t *e, char *id) {
+    if(clones.count == clones.size) {
+        clones.size = clones.size ? 2 * clones.size : 64;
+        clones.expr = realloc(clones.expr, clones.size * sizeof(clones.expr[0]));
+        clones.id = realloc(clones.id, clones.size * sizeof(clones.id[0]));
+        assert(clones.expr && clones.id);
+    }
+    clones.expr[clones.count] = e;
+    clones.id[clones.count] = id;
+    clones.count++;
+}
+
+static void
+clones_collect(asn1p_t *asn) {
+    asn1p_module_t *mod;
+    asn1p_expr_t *tc;
+    TQ_FOR(mod, &(asn->modules), mod_next) {
+        if(mod->_tags & MT_STANDARD_MODULE) break;
+        TQ_FOR(tc, &(mod->members), next) {
+            for(int i = 0; tc->Identifier && i < tc->specializations.pspecs_count; i++) {
+                if(tc->specializations.pspec[i].my_clone)
+                    clones_add(tc->specializations.pspec[i].my_clone,
+                               str_printf("%s.%s@%d", mod->ModuleName, tc->Identifier, i));
+            }
+        }
+    }
+}
+
+static void
+clones_free(void) {
+    for(size_t i = 0; i < clones.count; i++) free(clones.id[i]);
+    free(clones.expr);
+    free(clones.id);
+    memset(&clones, 0, sizeof(clones));
+}
+
 /* Path of an expression, from its parent chain. NULL if unknown. */
 static char *
 expr_path(const asn1p_expr_t *e, int depth) {
     if(e == NULL || depth > 64) return NULL;
     if(e->parent_expr == NULL) {
+        for(size_t i = 0; i < clones.count; i++)
+            if(clones.expr[i] == e) return strdup(clones.id[i]);
         if(!e->module || !e->Identifier) return NULL;
         if(e->spec_index >= 0)
             return str_printf("%s.%s@%d", e->module->ModuleName,
@@ -1026,6 +1077,7 @@ asn1print_json(asn1p_t *asn, enum asn1print_flags flags) {
     memset(&jw, 0, sizeof(jw));
     memset(&stack, 0, sizeof(stack));
     jw.pretty = !(flags & APF_NOINDENT);
+    clones_collect(asn);
 
     j_obj_begin();
     jk_str("format", JSON_FORMAT_NAME);
@@ -1044,6 +1096,7 @@ asn1print_json(asn1p_t *asn, enum asn1print_flags flags) {
     j_arr_end();
     j_obj_end();
     j_write("\n", 1);
+    clones_free();
 
     if(fflush(stdout) != 0) jw.failed = 1;
     if(jw.failed) {

@@ -356,7 +356,7 @@
                 ],
                 "line": 26,
                 "module": "ModuleInformationObjectParameterization",
-                "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension@0"
+                "resolvedId": "ModuleInformationObjectParameterization.SpecializedContent@0"
               },
               "rhsPspecs": [
                 {
