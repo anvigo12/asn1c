@@ -39,6 +39,7 @@
 #define JSON_FORMAT_NAME "asn1c.ast.json"
 #define JSON_FORMAT_VERSION 1
 #define JSON_MAX_DEPTH 512
+#define JSON_MAX_DEPTH_TEXT "512"
 
 /*
  * Minimal streaming JSON writer.
@@ -49,11 +50,23 @@ static struct {
     int after_key;             /* Next value follows a key */
     int pretty;
     int failed;                /* Output error or depth overflow */
+    const char *ctx_id;        /* Expression being printed, for messages */
+    int ctx_line;
 } jw;
+
+/* Report the first failure as a FATAL diagnostic. asn1c then exits 70. */
+static void
+j_fail(const char *why) {
+    if(!jw.failed) {
+        fprintf(stderr, "FATAL: -print-json: %s in %s at line %d\n", why,
+                jw.ctx_id ? jw.ctx_id : "(document)", jw.ctx_line);
+    }
+    jw.failed = 1;
+}
 
 static void
 j_write(const char *s, size_t len) {
-    if(len && fwrite(s, 1, len, stdout) != len) jw.failed = 1;
+    if(len && fwrite(s, 1, len, stdout) != len) j_fail("cannot write output");
 }
 
 static void
@@ -82,30 +95,48 @@ j_value_prefix(void) {
     }
 }
 
-static void
+/*
+ * Length of the well-formed UTF-8 sequence at s (RFC 3629: no overlong
+ * forms, no surrogates, nothing above U+10FFFF), or 0 if there is none.
+ */
+static size_t
+utf8_sequence_length(const unsigned char *s, size_t len) {
+    unsigned char c = s[0];
+    unsigned char lo = 0x80, hi = 0xbf; /* Range of the second byte */
+    size_t n;
+
+    if(c < 0x80) return 1;
+    if(c >= 0xc2 && c <= 0xdf) {
+        n = 2;
+    } else if(c >= 0xe0 && c <= 0xef) {
+        n = 3;
+        if(c == 0xe0) lo = 0xa0;
+        if(c == 0xed) hi = 0x9f;
+    } else if(c >= 0xf0 && c <= 0xf4) {
+        n = 4;
+        if(c == 0xf0) lo = 0x90;
+        if(c == 0xf4) hi = 0x8f;
+    } else {
+        return 0;
+    }
+    if(n > len || s[1] < lo || s[1] > hi) return 0;
+    for(size_t k = 2; k < n; k++)
+        if((s[k] & 0xc0) != 0x80) return 0;
+    return n;
+}
+
+/*
+ * Write a JSON string. Return the number of bytes that are not UTF-8.
+ * Such a byte is written as the code point of equal value (U+0080..U+00FF).
+ */
+static size_t
 j_string_body(const unsigned char *s, size_t len) {
     static const char hex[] = "0123456789abcdef";
+    size_t mapped = 0;
     j_write("\"", 1);
     for(size_t i = 0; i < len;) {
         unsigned char c = s[i];
-        size_t n = 0; /* Length of a valid UTF-8 sequence at s[i] */
-        if(c < 0x80) {
-            n = 1;
-        } else if(c >= 0xc2 && c <= 0xdf) {
-            n = 2;
-        } else if(c >= 0xe0 && c <= 0xef) {
-            n = 3;
-        } else if(c >= 0xf0 && c <= 0xf4) {
-            n = 4;
-        }
-        if(n > 1) {
-            if(i + n > len) {
-                n = 0;
-            } else {
-                for(size_t k = 1; k < n; k++)
-                    if((s[i + k] & 0xc0) != 0x80) n = 0;
-            }
-        }
+        size_t n = utf8_sequence_length(&s[i], len - i);
         if(n == 1) {
             switch(c) {
             case '"': j_puts("\\\""); break;
@@ -129,10 +160,20 @@ j_string_body(const unsigned char *s, size_t len) {
             /* Not UTF-8: map the byte to the code point of equal value. */
             char buf[7] = {'\\', 'u', '0', '0', hex[c >> 4], hex[c & 15], 0};
             j_puts(buf);
+            mapped++;
             i++;
         }
     }
     j_write("\"", 1);
+    return mapped;
+}
+
+static void
+j_warn_not_utf8(const char *what) {
+    fprintf(stderr,
+            "WARNING: -print-json: %s in %s at line %d is not valid UTF-8; "
+            "bytes are shown as U+0080..U+00FF\n",
+            what, jw.ctx_id ? jw.ctx_id : "(document)", jw.ctx_line);
 }
 
 static void
@@ -140,7 +181,7 @@ j_begin(char open) {
     j_value_prefix();
     j_write(&open, 1);
     if(jw.depth + 1 >= JSON_MAX_DEPTH) {
-        jw.failed = 1;
+        j_fail("nesting depth limit (" JSON_MAX_DEPTH_TEXT ") exceeded");
         return;
     }
     jw.depth++;
@@ -172,13 +213,34 @@ j_key(const char *key) {
 static void
 j_str(const char *s) {
     j_value_prefix();
-    j_string_body((const unsigned char *)s, strlen(s));
+    if(j_string_body((const unsigned char *)s, strlen(s)))
+        j_warn_not_utf8("text");
 }
 
-static void
+/* Returns the number of bytes that are not UTF-8. */
+static size_t
 j_strn(const unsigned char *s, size_t len) {
     j_value_prefix();
-    j_string_body(s, len);
+    return j_string_body(s, len);
+}
+
+/* JSON string with the standard base64 form of the bytes (proto3 "bytes"). */
+static void
+j_base64(const unsigned char *s, size_t len) {
+    static const char b64[] =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    j_value_prefix();
+    j_write("\"", 1);
+    for(size_t i = 0; i < len; i += 3) {
+        unsigned v = (unsigned)s[i] << 16;
+        if(i + 1 < len) v |= (unsigned)s[i + 1] << 8;
+        if(i + 2 < len) v |= s[i + 2];
+        char out[4] = {b64[(v >> 18) & 63], b64[(v >> 12) & 63],
+                       i + 1 < len ? b64[(v >> 6) & 63] : '=',
+                       i + 2 < len ? b64[v & 63] : '='};
+        j_write(out, 4);
+    }
+    j_write("\"", 1);
 }
 
 static void
@@ -667,7 +729,12 @@ j_value(const asn1p_value_t *v) {
     case ATV_UNPARSED:
         if(v->value.string.buf) {
             j_key("string");
-            j_strn(v->value.string.buf, v->value.string.size);
+            if(j_strn(v->value.string.buf, v->value.string.size)) {
+                /* Keep the exact bytes. The "string" key is lossy here. */
+                j_key("stringBytes");
+                j_base64(v->value.string.buf, v->value.string.size);
+                j_warn_not_utf8("string value");
+            }
         }
         break;
     case ATV_BITVECTOR: {
@@ -850,7 +917,7 @@ j_expr(const asn1p_expr_t *e, const char *id) {
         }
     }
     if(stack.depth >= JSON_MAX_DEPTH) {
-        jw.failed = 1;
+        j_fail("expression nesting limit (" JSON_MAX_DEPTH_TEXT ") exceeded");
         j_obj_end();
         return;
     }
@@ -858,6 +925,8 @@ j_expr(const asn1p_expr_t *e, const char *id) {
     stack.id[stack.depth] = id;
     stack.embedded[stack.depth] = 0;
     stack.depth++;
+    jw.ctx_id = id;
+    jw.ctx_line = e->_lineno;
 
     jk_str("identifier", e->Identifier);
     jk_int("line", e->_lineno);
@@ -961,6 +1030,8 @@ j_expr(const asn1p_expr_t *e, const char *id) {
     if(TQ_FIRST(&(e->members))) j_members_array("members", e, id, 0);
 
     stack.depth--;
+    jw.ctx_id = stack.depth ? stack.id[stack.depth - 1] : NULL;
+    jw.ctx_line = stack.depth ? stack.expr[stack.depth - 1]->_lineno : 0;
     j_obj_end();
 }
 
@@ -1098,7 +1169,7 @@ asn1print_json(asn1p_t *asn, enum asn1print_flags flags) {
     j_write("\n", 1);
     clones_free();
 
-    if(fflush(stdout) != 0) jw.failed = 1;
+    if(fflush(stdout) != 0) j_fail("cannot write output");
     if(jw.failed) {
         errno = EIO;
         return -1;
