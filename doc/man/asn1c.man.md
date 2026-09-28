@@ -232,6 +232,12 @@ CBOR and other encoding rules.
 -print-lines
 :   Generate "`-- #line`" comments in **-E** output.
 
+-print-json
+:   With **-E**, print the parsed tree as a JSON document instead of
+    ASN.1 text. With **-E -F**, print the tree after semantic processing.
+    The document mirrors the libasn1parser structures, including IMPORTS
+    and EXPORTS, source line numbers, and stable expression identifiers.
+
 # TRANSFER SYNTAXES
 
 The ASN.1 family of standards define a number of ways to encode data,

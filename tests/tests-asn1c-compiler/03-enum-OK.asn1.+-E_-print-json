@@ -1,0 +1,324 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 1,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "DECLARED",
+  "modules": [
+    {
+      "name": "ModuleTestEnum1",
+      "sourceFile": "03-enum-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "3"
+          }
+        ]
+      },
+      "assignments": [
+        {
+          "id": "ModuleTestEnum1.Enum1",
+          "identifier": "Enum1",
+          "line": 15,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_ENUMERATED",
+          "members": [
+            {
+              "id": "ModuleTestEnum1.Enum1/red",
+              "identifier": "red",
+              "line": 15,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum1/green",
+              "identifier": "green",
+              "line": 16,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum1/blue",
+              "identifier": "blue",
+              "line": 17,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "4"
+              }
+            },
+            {
+              "id": "ModuleTestEnum1.Enum1/alpha",
+              "identifier": "alpha",
+              "line": 18,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum1/#4",
+              "identifier": "...",
+              "line": 19,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_EXTENSIBLE"
+            }
+          ]
+        },
+        {
+          "id": "ModuleTestEnum1.Enum2",
+          "identifier": "Enum2",
+          "line": 23,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_ENUMERATED",
+          "members": [
+            {
+              "id": "ModuleTestEnum1.Enum2/red",
+              "identifier": "red",
+              "line": 23,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum2/green",
+              "identifier": "green",
+              "line": 24,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum2/blue",
+              "identifier": "blue",
+              "line": 25,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "45"
+              }
+            },
+            {
+              "id": "ModuleTestEnum1.Enum2/orange",
+              "identifier": "orange",
+              "line": 26,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "23"
+              }
+            },
+            {
+              "id": "ModuleTestEnum1.Enum2/alpha",
+              "identifier": "alpha",
+              "line": 27,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum2/#5",
+              "identifier": "...",
+              "line": 28,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum2/beta",
+              "identifier": "beta",
+              "line": 29,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "12"
+              }
+            },
+            {
+              "id": "ModuleTestEnum1.Enum2/gamma",
+              "identifier": "gamma",
+              "line": 30,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "103"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleTestEnum1.Enum3",
+          "identifier": "Enum3",
+          "line": 33,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_ENUMERATED",
+          "members": [
+            {
+              "id": "ModuleTestEnum1.Enum3/a",
+              "identifier": "a",
+              "line": 33,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum3/b",
+              "identifier": "b",
+              "line": 33,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "3"
+              }
+            },
+            {
+              "id": "ModuleTestEnum1.Enum3/#2",
+              "identifier": "...",
+              "line": 33,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum3/c",
+              "identifier": "c",
+              "line": 33,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleTestEnum1.Enum4",
+          "identifier": "Enum4",
+          "line": 34,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_ENUMERATED",
+          "members": [
+            {
+              "id": "ModuleTestEnum1.Enum4/a",
+              "identifier": "a",
+              "line": 34,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum4/b",
+              "identifier": "b",
+              "line": 34,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum4/#2",
+              "identifier": "...",
+              "line": 34,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum4/c",
+              "identifier": "c",
+              "line": 34,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "3"
+              }
+            },
+            {
+              "id": "ModuleTestEnum1.Enum4/d",
+              "identifier": "d",
+              "line": 34,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            }
+          ]
+        },
+        {
+          "id": "ModuleTestEnum1.Enum5",
+          "identifier": "Enum5",
+          "line": 35,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_ENUMERATED",
+          "members": [
+            {
+              "id": "ModuleTestEnum1.Enum5/a",
+              "identifier": "a",
+              "line": 35,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum5/z",
+              "identifier": "z",
+              "line": 35,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "25"
+              }
+            },
+            {
+              "id": "ModuleTestEnum1.Enum5/#2",
+              "identifier": "...",
+              "line": 35,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleTestEnum1.Enum5/d",
+              "identifier": "d",
+              "line": 35,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
