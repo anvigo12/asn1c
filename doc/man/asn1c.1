@@ -259,6 +259,13 @@ compiler to explain its internal understanding of subtype constraints.
 .TP
 \-print\-lines
 Generate \(lq\f[CR]\-\- #line\f[R]\(rq comments in \f[B]\-E\f[R] output.
+.TP
+\-print\-json
+With \f[B]\-E\f[R], print the parsed tree as a JSON document instead of
+ASN.1 text.
+With \f[B]\-E \-F\f[R], print the tree after semantic processing.
+The document mirrors the libasn1parser structures, including IMPORTS and
+EXPORTS, source line numbers, and stable expression identifiers.
 .SH TRANSFER SYNTAXES
 The ASN.1 family of standards define a number of ways to encode data,
 including byte\-oriented (e.g., BER), bit\-oriented (e.g., PER), and

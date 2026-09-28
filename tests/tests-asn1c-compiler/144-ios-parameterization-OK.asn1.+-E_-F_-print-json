@@ -1,0 +1,937 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 1,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "RESOLVED",
+  "modules": [
+    {
+      "name": "ModuleInformationObjectParameterization",
+      "sourceFile": "144-ios-parameterization-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "144"
+          }
+        ]
+      },
+      "assignments": [
+        {
+          "id": "ModuleInformationObjectParameterization.MYID",
+          "identifier": "MYID",
+          "line": 15,
+          "metaType": "AMT_OBJECTCLASS",
+          "exprType": "A1TC_CLASSDEF",
+          "withSyntax": {
+            "chunks": [
+              {
+                "kind": "WC_FIELD",
+                "token": "&Type"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_LITERAL",
+                "token": "IDENTIFIED"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_LITERAL",
+                "token": "BY"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_FIELD",
+                "token": "&id"
+              }
+            ]
+          },
+          "iocTable": {
+            "rows": [
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleInformationObjectParameterization.MYID!0.0",
+                      "identifier": "1",
+                      "line": 19,
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "1"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Type",
+                    "value": {
+                      "id": "ModuleInformationObjectParameterization.MYID!0.1",
+                      "identifier": "INTEGER",
+                      "line": 19,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    "newRef": true
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleInformationObjectParameterization.MYID!1.0",
+                      "identifier": "2",
+                      "line": 19,
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "2"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Type",
+                    "value": {
+                      "id": "ModuleInformationObjectParameterization.MYID!1.1",
+                      "identifier": "BOOLEAN",
+                      "line": 19,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    },
+                    "newRef": true
+                  }
+                ]
+              }
+            ]
+          },
+          "members": [
+            {
+              "id": "ModuleInformationObjectParameterization.MYID/&id",
+              "identifier": "&id",
+              "line": 15,
+              "metaType": "AMT_OBJECTFIELD",
+              "exprType": "A1TC_CLASSFIELD_FTVFS",
+              "unique": true,
+              "members": [
+                {
+                  "id": "ModuleInformationObjectParameterization.MYID/&id/#0",
+                  "line": 15,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ]
+            },
+            {
+              "id": "ModuleInformationObjectParameterization.MYID/&Type",
+              "identifier": "&Type",
+              "line": 17,
+              "metaType": "AMT_OBJECTFIELD",
+              "exprType": "A1TC_CLASSFIELD_TFS",
+              "members": [
+                {
+                  "id": "ModuleInformationObjectParameterization.MYID/&Type/#0",
+                  "line": 17,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_TYPE_ANY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleInformationObjectParameterization.RegionalExtension",
+          "identifier": "RegionalExtension",
+          "line": 19,
+          "metaType": "AMT_VALUESET",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_CAPITALS",
+                "name": "MYID"
+              }
+            ],
+            "line": 19,
+            "module": "ModuleInformationObjectParameterization",
+            "resolvedId": "ModuleInformationObjectParameterization.MYID"
+          },
+          "constraints": {
+            "kind": "ACT_CA_CSV",
+            "line": 23,
+            "elements": [
+              {
+                "kind": "ACT_CA_UNI",
+                "line": 21,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_VALUE",
+                    "line": 20,
+                    "value": {
+                      "kind": "ATV_UNPARSED",
+                      "string": "{INTEGER IDENTIFIED BY 1}"
+                    }
+                  },
+                  {
+                    "kind": "ACT_EL_VALUE",
+                    "line": 21,
+                    "value": {
+                      "kind": "ATV_UNPARSED",
+                      "string": "{BOOLEAN IDENTIFIED BY 2}"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "ACT_EL_EXT",
+                "line": 23
+              }
+            ]
+          },
+          "combinedConstraints": {
+            "kind": "ACT_CA_CSV",
+            "line": 23,
+            "elements": [
+              {
+                "kind": "ACT_CA_UNI",
+                "line": 21,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_VALUE",
+                    "line": 20,
+                    "value": {
+                      "kind": "ATV_UNPARSED",
+                      "string": "{INTEGER IDENTIFIED BY 1}"
+                    }
+                  },
+                  {
+                    "kind": "ACT_EL_VALUE",
+                    "line": 21,
+                    "value": {
+                      "kind": "ATV_UNPARSED",
+                      "string": "{BOOLEAN IDENTIFIED BY 2}"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "iocTable": {
+            "extensible": true,
+            "rows": [
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleInformationObjectParameterization.RegionalExtension!0.0",
+                      "identifier": "1",
+                      "line": 19,
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "1"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Type",
+                    "value": {
+                      "id": "ModuleInformationObjectParameterization.RegionalExtension!0.1",
+                      "identifier": "INTEGER",
+                      "line": 19,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    "newRef": true
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleInformationObjectParameterization.RegionalExtension!1.0",
+                      "identifier": "2",
+                      "line": 19,
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "2"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Type",
+                    "value": {
+                      "id": "ModuleInformationObjectParameterization.RegionalExtension!1.1",
+                      "identifier": "BOOLEAN",
+                      "line": 19,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    },
+                    "newRef": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleInformationObjectParameterization.Message",
+          "identifier": "Message",
+          "line": 27,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleInformationObjectParameterization.Message/content",
+              "identifier": "content",
+              "line": 26,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "SpecializedContent"
+                  }
+                ],
+                "line": 26,
+                "module": "ModuleInformationObjectParameterization",
+                "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension@0"
+              },
+              "rhsPspecs": [
+                {
+                  "id": "ModuleInformationObjectParameterization.Message/content{0}",
+                  "line": 26,
+                  "metaType": "AMT_VALUESET",
+                  "exprType": "A1TC_VALUESET",
+                  "constraints": {
+                    "kind": "ACT_EL_TYPE",
+                    "line": 26,
+                    "containedSubtype": {
+                      "kind": "ATV_TYPE",
+                      "type": {
+                        "id": "ModuleInformationObjectParameterization.Message/content{0}$0",
+                        "line": 26,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "RegionalExtension"
+                            }
+                          ],
+                          "line": 26,
+                          "module": "ModuleInformationObjectParameterization"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleInformationObjectParameterization.SpecializedContent",
+          "identifier": "SpecializedContent",
+          "line": 30,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "governor": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "MYID"
+                  }
+                ],
+                "line": 29,
+                "module": "ModuleInformationObjectParameterization"
+              },
+              "argument": "Set"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleInformationObjectParameterization.SpecializedContent^0{0}",
+                  "line": 26,
+                  "metaType": "AMT_VALUESET",
+                  "exprType": "A1TC_VALUESET",
+                  "constraints": {
+                    "kind": "ACT_EL_TYPE",
+                    "line": 26,
+                    "containedSubtype": {
+                      "kind": "ATV_TYPE",
+                      "type": {
+                        "id": "ModuleInformationObjectParameterization.SpecializedContent^0{0}$0",
+                        "line": 26,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "RegionalExtension"
+                            }
+                          ],
+                          "line": 26,
+                          "module": "ModuleInformationObjectParameterization"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleInformationObjectParameterization.SpecializedContent@0",
+                "identifier": "RegionalExtension",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "governor": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "MYID"
+                        }
+                      ],
+                      "line": 29,
+                      "module": "ModuleInformationObjectParameterization"
+                    },
+                    "argument": "Set"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleInformationObjectParameterization.SpecializedContent@0{0}",
+                    "line": 26,
+                    "metaType": "AMT_VALUESET",
+                    "exprType": "A1TC_VALUESET",
+                    "constraints": {
+                      "kind": "ACT_EL_TYPE",
+                      "line": 26,
+                      "containedSubtype": {
+                        "kind": "ATV_TYPE",
+                        "type": {
+                          "id": "ModuleInformationObjectParameterization.SpecializedContent@0{0}$0",
+                          "line": 26,
+                          "metaType": "AMT_TYPEREF",
+                          "exprType": "A1TC_REFERENCE",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "RegionalExtension"
+                              }
+                            ],
+                            "line": 26,
+                            "module": "ModuleInformationObjectParameterization"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id",
+                    "identifier": "id",
+                    "line": 30,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "MYID"
+                        },
+                        {
+                          "lexType": "RLT_Amplowercase",
+                          "name": "&id"
+                        }
+                      ],
+                      "line": 30,
+                      "module": "ModuleInformationObjectParameterization",
+                      "resolvedId": "ModuleInformationObjectParameterization.MYID/&id/#0"
+                    },
+                    "constraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 30,
+                      "elements": [
+                        {
+                          "kind": "ACT_CA_CRC",
+                          "line": 30,
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 30,
+                              "value": {
+                                "kind": "ATV_VALUESET",
+                                "constraint": {
+                                  "kind": "ACT_EL_TYPE",
+                                  "line": 26,
+                                  "containedSubtype": {
+                                    "kind": "ATV_TYPE",
+                                    "type": {
+                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id$0",
+                                      "line": 26,
+                                      "metaType": "AMT_TYPEREF",
+                                      "exprType": "A1TC_REFERENCE",
+                                      "reference": {
+                                        "components": [
+                                          {
+                                            "lexType": "RLT_Uppercase",
+                                            "name": "RegionalExtension"
+                                          }
+                                        ],
+                                        "line": 26,
+                                        "module": "ModuleInformationObjectParameterization"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "combinedConstraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 30,
+                      "elements": [
+                        {
+                          "kind": "ACT_CA_CRC",
+                          "line": 30,
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 30,
+                              "value": {
+                                "kind": "ATV_VALUESET",
+                                "constraint": {
+                                  "kind": "ACT_EL_TYPE",
+                                  "line": 26,
+                                  "containedSubtype": {
+                                    "kind": "ATV_TYPE",
+                                    "type": {
+                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id$1",
+                                      "line": 26,
+                                      "metaType": "AMT_TYPEREF",
+                                      "exprType": "A1TC_REFERENCE",
+                                      "reference": {
+                                        "components": [
+                                          {
+                                            "lexType": "RLT_Uppercase",
+                                            "name": "RegionalExtension"
+                                          }
+                                        ],
+                                        "line": 26,
+                                        "module": "ModuleInformationObjectParameterization"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id{0}",
+                        "line": 26,
+                        "metaType": "AMT_VALUESET",
+                        "exprType": "A1TC_VALUESET",
+                        "constraints": {
+                          "kind": "ACT_EL_TYPE",
+                          "line": 26,
+                          "containedSubtype": {
+                            "kind": "ATV_TYPE",
+                            "type": {
+                              "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id{0}$0",
+                              "line": 26,
+                              "metaType": "AMT_TYPEREF",
+                              "exprType": "A1TC_REFERENCE",
+                              "reference": {
+                                "components": [
+                                  {
+                                    "lexType": "RLT_Uppercase",
+                                    "name": "RegionalExtension"
+                                  }
+                                ],
+                                "line": 26,
+                                "module": "ModuleInformationObjectParameterization"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value",
+                    "identifier": "value",
+                    "line": 31,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "MYID"
+                        },
+                        {
+                          "lexType": "RLT_AmpUppercase",
+                          "name": "&Type"
+                        }
+                      ],
+                      "line": 31,
+                      "module": "ModuleInformationObjectParameterization",
+                      "resolvedId": "ModuleInformationObjectParameterization.MYID/&Type/#0"
+                    },
+                    "constraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 31,
+                      "elements": [
+                        {
+                          "kind": "ACT_CA_CRC",
+                          "line": 31,
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 31,
+                              "value": {
+                                "kind": "ATV_VALUESET",
+                                "constraint": {
+                                  "kind": "ACT_EL_TYPE",
+                                  "line": 26,
+                                  "containedSubtype": {
+                                    "kind": "ATV_TYPE",
+                                    "type": {
+                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value$0",
+                                      "line": 26,
+                                      "metaType": "AMT_TYPEREF",
+                                      "exprType": "A1TC_REFERENCE",
+                                      "reference": {
+                                        "components": [
+                                          {
+                                            "lexType": "RLT_Uppercase",
+                                            "name": "RegionalExtension"
+                                          }
+                                        ],
+                                        "line": 26,
+                                        "module": "ModuleInformationObjectParameterization"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 31,
+                              "value": {
+                                "kind": "ATV_REFERENCED",
+                                "reference": {
+                                  "components": [
+                                    {
+                                      "lexType": "RLT_Atlowercase",
+                                      "name": "@id"
+                                    }
+                                  ],
+                                  "line": 31,
+                                  "module": "ModuleInformationObjectParameterization"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "combinedConstraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 31,
+                      "elements": [
+                        {
+                          "kind": "ACT_CA_CRC",
+                          "line": 31,
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 31,
+                              "value": {
+                                "kind": "ATV_VALUESET",
+                                "constraint": {
+                                  "kind": "ACT_EL_TYPE",
+                                  "line": 26,
+                                  "containedSubtype": {
+                                    "kind": "ATV_TYPE",
+                                    "type": {
+                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value$1",
+                                      "line": 26,
+                                      "metaType": "AMT_TYPEREF",
+                                      "exprType": "A1TC_REFERENCE",
+                                      "reference": {
+                                        "components": [
+                                          {
+                                            "lexType": "RLT_Uppercase",
+                                            "name": "RegionalExtension"
+                                          }
+                                        ],
+                                        "line": 26,
+                                        "module": "ModuleInformationObjectParameterization"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 31,
+                              "value": {
+                                "kind": "ATV_REFERENCED",
+                                "reference": {
+                                  "components": [
+                                    {
+                                      "lexType": "RLT_Atlowercase",
+                                      "name": "@id"
+                                    }
+                                  ],
+                                  "line": 31,
+                                  "module": "ModuleInformationObjectParameterization"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value{0}",
+                        "line": 26,
+                        "metaType": "AMT_VALUESET",
+                        "exprType": "A1TC_VALUESET",
+                        "constraints": {
+                          "kind": "ACT_EL_TYPE",
+                          "line": 26,
+                          "containedSubtype": {
+                            "kind": "ATV_TYPE",
+                            "type": {
+                              "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value{0}$0",
+                              "line": 26,
+                              "metaType": "AMT_TYPEREF",
+                              "exprType": "A1TC_REFERENCE",
+                              "reference": {
+                                "components": [
+                                  {
+                                    "lexType": "RLT_Uppercase",
+                                    "name": "RegionalExtension"
+                                  }
+                                ],
+                                "line": 26,
+                                "module": "ModuleInformationObjectParameterization"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleInformationObjectParameterization.SpecializedContent/id",
+              "identifier": "id",
+              "line": 30,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "MYID"
+                  },
+                  {
+                    "lexType": "RLT_Amplowercase",
+                    "name": "&id"
+                  }
+                ],
+                "line": 30,
+                "module": "ModuleInformationObjectParameterization"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 30,
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 30,
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 30,
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Set"
+                              }
+                            ],
+                            "line": 30,
+                            "module": "ModuleInformationObjectParameterization"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ModuleInformationObjectParameterization.SpecializedContent/value",
+              "identifier": "value",
+              "line": 31,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "MYID"
+                  },
+                  {
+                    "lexType": "RLT_AmpUppercase",
+                    "name": "&Type"
+                  }
+                ],
+                "line": 31,
+                "module": "ModuleInformationObjectParameterization"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 31,
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 31,
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 31,
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Set"
+                              }
+                            ],
+                            "line": 31,
+                            "module": "ModuleInformationObjectParameterization"
+                          }
+                        }
+                      },
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 31,
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Atlowercase",
+                                "name": "@id"
+                              }
+                            ],
+                            "line": 31,
+                            "module": "ModuleInformationObjectParameterization"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

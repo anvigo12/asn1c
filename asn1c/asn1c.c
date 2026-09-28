@@ -337,6 +337,8 @@ main(int ac, char **av) {
                 asn1_printer_flags |= APF_PRINT_CONSTRAINTS;
             } else if(strcmp(optarg, "rint-lines") == 0) {
                 asn1_printer_flags |= APF_LINE_COMMENTS;
+            } else if(strcmp(optarg, "rint-json") == 0) {
+                asn1_printer_flags |= APF_PRINT_JSON;
             } else {
                 fprintf(stderr, "-p%s: Invalid argument\n", optarg);
                 exit(EX_USAGE);
@@ -386,6 +388,8 @@ main(int ac, char **av) {
      * Validate the options combination.
      */
     if(print_arg__print_out) {
+        if(print_arg__fix_n_print)
+            asn1_printer_flags |= APF_FIXED_TREE;
         if((asn1_printer_flags & APF_PRINT_CONSTRAINTS)
            && !print_arg__fix_n_print) {
             fprintf(stderr,
@@ -778,6 +782,7 @@ usage(const char *av0) {
 "  -print-class-matrix   Print out the collected object class matrix (debug)\n"
 "  -print-constraints    Explain subtype constraints (debug)\n"
 "  -print-lines          Generate \"-- #line\" comments in -E output\n"
+"  -print-json           Print the -E (or -E -F) tree as a JSON document\n"
 "\n"
 "Exit status: 0 success; 64 usage error; 65 ASN.1 input error;\n"
 "  66 input file cannot be opened; 70 printing or code generation failed\n"
