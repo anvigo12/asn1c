@@ -90,6 +90,10 @@ NAMEFORM="$T/exit-status/imports-nameform-oids.asn1"
 EXPORTS_OK="$T/16-constraint-OK.asn1"     # own non-exported symbol in a constraint
 CLASH="$T/72-same-names-OK.asn1"          # C name clash without -fcompound-names
 PARAM="$T/165-param-class-governed-objectset-OK.asn1"
+REFS_UNDEFINED="$T/exit-status/refs-undefined-in-generic.asn1"
+REFS_UNLISTED="$T/exit-status/refs-unlisted-in-generic.asn1"
+REFS_COMPONENT="$T/exit-status/refs-unknown-component.asn1"
+REFS_OK="$T/187-resolved-references-OK.asn1"
 
 expect_status ok-parse            0  --no-fatal -E "$OK"
 expect_status ok-fix              0  --no-fatal -E -F "$OK"
@@ -109,6 +113,12 @@ expect_status unexported-own-sym  0  --no-fatal -E -F "$EXPORTS_OK"
 expect_status param-fix           0  --no-fatal -E -F "$PARAM"
 expect_status param-compile       0  --no-fatal -no-gen-example "$PARAM"
 expect_status clash-print-fatal   70 --fatal -P "$CLASH"
+# -E -F -print-json resolves every reference (the reference pass).
+expect_status refs-ok             0  --no-fatal -E -F -print-json "$REFS_OK"
+expect_status refs-undefined      65 --fatal-with "Cannot resolve reference \"Undefined\"" -E -F -print-json "$REFS_UNDEFINED"
+expect_status refs-unlisted       65 --fatal-with "Cannot resolve reference \"Y\"" -E -F -fprefer-import-source -print-json "$REFS_UNLISTED"
+expect_status refs-unknown-component 65 --fatal-with "component in WITH COMPONENTS \"c\"" -E -F -print-json "$REFS_COMPONENT"
+expect_status refs-unknown-relation 65 --fatal-with "component relation \"@.nosuch\"" -E -F -print-json "$REFS_COMPONENT"
 
 if [ "$failures" -ne 0 ]; then
     echo "$failures exit status check(s) failed"

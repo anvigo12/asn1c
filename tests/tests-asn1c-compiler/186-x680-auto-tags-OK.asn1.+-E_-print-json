@@ -1,0 +1,283 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "DECLARED",
+  "modules": [
+    {
+      "name": "ModuleX680AutoTags",
+      "sourceFile": "186-x680-auto-tags-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "186"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "assignments": [
+        {
+          "id": "ModuleX680AutoTags.Situation",
+          "identifier": "Situation",
+          "line": 21,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleX680AutoTags.Situation/a",
+              "identifier": "a",
+              "line": 21,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleX680AutoTags.Situation/b",
+              "identifier": "b",
+              "line": 22,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              }
+            },
+            {
+              "id": "ModuleX680AutoTags.Situation/#2",
+              "identifier": "...",
+              "line": 23,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleX680AutoTags.Situation/#3",
+              "line": 24,
+              "extensionGroup": 1,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              },
+              "members": [
+                {
+                  "id": "ModuleX680AutoTags.Situation/#3/c",
+                  "identifier": "c",
+                  "line": 24,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER",
+                  "marker": {
+                    "optional": true,
+                    "indirect": true,
+                    "omitable": true
+                  }
+                },
+                {
+                  "id": "ModuleX680AutoTags.Situation/#3/d",
+                  "identifier": "d",
+                  "line": 25,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN",
+                  "marker": {
+                    "optional": true,
+                    "indirect": true,
+                    "omitable": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ModuleX680AutoTags.Situation/#4",
+              "line": 26,
+              "extensionGroup": 2,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              },
+              "members": [
+                {
+                  "id": "ModuleX680AutoTags.Situation/#4/e",
+                  "identifier": "e",
+                  "line": 26,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_OCTET_STRING",
+                  "marker": {
+                    "optional": true,
+                    "indirect": true,
+                    "omitable": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ModuleX680AutoTags.Situation/f",
+              "identifier": "f",
+              "line": 27,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_NULL",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680AutoTags.Choice",
+          "identifier": "Choice",
+          "line": 31,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_CHOICE",
+          "members": [
+            {
+              "id": "ModuleX680AutoTags.Choice/x",
+              "identifier": "x",
+              "line": 31,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleX680AutoTags.Choice/#1",
+              "identifier": "...",
+              "line": 32,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleX680AutoTags.Choice/y",
+              "identifier": "y",
+              "line": 33,
+              "extensionGroup": 1,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            },
+            {
+              "id": "ModuleX680AutoTags.Choice/z",
+              "identifier": "z",
+              "line": 34,
+              "extensionGroup": 1,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_NULL"
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680AutoTags.Pair",
+          "identifier": "Pair",
+          "line": 38,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleX680AutoTags.Pair%0",
+              "argument": "Type"
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleX680AutoTags.Pair/first",
+              "identifier": "first",
+              "line": 38,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Type"
+                  }
+                ],
+                "line": 38,
+                "module": "ModuleX680AutoTags"
+              }
+            },
+            {
+              "id": "ModuleX680AutoTags.Pair/second",
+              "identifier": "second",
+              "line": 39,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680AutoTags.IntPair",
+          "identifier": "IntPair",
+          "line": 42,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Pair"
+              }
+            ],
+            "line": 42,
+            "module": "ModuleX680AutoTags"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleX680AutoTags.IntPair{0}",
+              "line": 42,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "format": "asn1c.ast.json",
-  "formatVersion": 1,
+  "formatVersion": 2,
   "producer": "asn1c",
   "producerVersion": "",
   "view": "DECLARED",

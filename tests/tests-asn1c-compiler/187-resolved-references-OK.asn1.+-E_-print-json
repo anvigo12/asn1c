@@ -1,0 +1,962 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "DECLARED",
+  "modules": [
+    {
+      "name": "ModuleResolvedReferences",
+      "sourceFile": "187-resolved-references-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "187"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "assignments": [
+        {
+          "id": "ModuleResolvedReferences.Common",
+          "identifier": "Common",
+          "line": 21,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleResolvedReferences.Common/stationId",
+              "identifier": "stationId",
+              "line": 21,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleResolvedReferences.Common/kind",
+              "identifier": "kind",
+              "line": 23,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Kind"
+                  }
+                ],
+                "line": 23,
+                "module": "ModuleResolvedReferences"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleResolvedReferences.Kind",
+          "identifier": "Kind",
+          "line": 25,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_INTEGER",
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 25,
+            "elements": [
+              {
+                "kind": "ACT_EL_RANGE",
+                "line": 25,
+                "rangeStart": {
+                  "kind": "ATV_INTEGER",
+                  "integer": "0"
+                },
+                "rangeStop": {
+                  "kind": "ATV_INTEGER",
+                  "integer": "255"
+                }
+              }
+            ]
+          },
+          "members": [
+            {
+              "id": "ModuleResolvedReferences.Kind/car",
+              "identifier": "car",
+              "line": 25,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "1"
+              }
+            },
+            {
+              "id": "ModuleResolvedReferences.Kind/bus",
+              "identifier": "bus",
+              "line": 25,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleResolvedReferences.Vehicle",
+          "identifier": "Vehicle",
+          "line": 28,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleResolvedReferences.Vehicle/#0",
+              "line": 28,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_COMPONENTS_OF",
+              "members": [
+                {
+                  "id": "ModuleResolvedReferences.Vehicle/#0/#0",
+                  "line": 28,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Common"
+                      }
+                    ],
+                    "line": 28,
+                    "module": "ModuleResolvedReferences"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ModuleResolvedReferences.Vehicle/speed",
+              "identifier": "speed",
+              "line": 29,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleResolvedReferences.Vehicle/#2",
+              "identifier": "...",
+              "line": 31,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            }
+          ]
+        },
+        {
+          "id": "ModuleResolvedReferences.Base",
+          "identifier": "Base",
+          "line": 34,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleResolvedReferences.Base/type",
+              "identifier": "type",
+              "line": 34,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Kind"
+                  }
+                ],
+                "line": 34,
+                "module": "ModuleResolvedReferences"
+              }
+            },
+            {
+              "id": "ModuleResolvedReferences.Base/plate",
+              "identifier": "plate",
+              "line": 35,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_STRING_IA5String",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              }
+            },
+            {
+              "id": "ModuleResolvedReferences.Base/extra",
+              "identifier": "extra",
+              "line": 36,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_NULL",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleResolvedReferences.Car",
+          "identifier": "Car",
+          "line": 39,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Base"
+              }
+            ],
+            "line": 39,
+            "module": "ModuleResolvedReferences"
+          },
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 39,
+            "elements": [
+              {
+                "kind": "ACT_CT_WCOMPS",
+                "line": 39,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_EXT",
+                    "line": 39
+                  },
+                  {
+                    "kind": "ACT_EL_VALUE",
+                    "line": 39,
+                    "value": {
+                      "kind": "ATV_REFERENCED",
+                      "reference": {
+                        "components": [
+                          {
+                            "lexType": "RLT_lowercase",
+                            "name": "type"
+                          }
+                        ],
+                        "line": 39,
+                        "module": "ModuleResolvedReferences"
+                      }
+                    },
+                    "elements": [
+                      {
+                        "kind": "ACT_CA_SET",
+                        "line": 39,
+                        "elements": [
+                          {
+                            "kind": "ACT_EL_VALUE",
+                            "line": 39,
+                            "value": {
+                              "kind": "ATV_REFERENCED",
+                              "reference": {
+                                "components": [
+                                  {
+                                    "lexType": "RLT_lowercase",
+                                    "name": "car"
+                                  }
+                                ],
+                                "line": 39,
+                                "module": "ModuleResolvedReferences"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ACT_EL_VALUE",
+                    "presence": "ACPRES_PRESENT",
+                    "line": 39,
+                    "value": {
+                      "kind": "ATV_REFERENCED",
+                      "reference": {
+                        "components": [
+                          {
+                            "lexType": "RLT_lowercase",
+                            "name": "plate"
+                          }
+                        ],
+                        "line": 39,
+                        "module": "ModuleResolvedReferences"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleResolvedReferences.Bus",
+          "identifier": "Bus",
+          "line": 40,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Base"
+              }
+            ],
+            "line": 40,
+            "module": "ModuleResolvedReferences"
+          },
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 40,
+            "elements": [
+              {
+                "kind": "ACT_CT_WCOMPS",
+                "line": 40,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_EXT",
+                    "line": 40
+                  },
+                  {
+                    "kind": "ACT_EL_VALUE",
+                    "line": 40,
+                    "value": {
+                      "kind": "ATV_REFERENCED",
+                      "reference": {
+                        "components": [
+                          {
+                            "lexType": "RLT_lowercase",
+                            "name": "type"
+                          }
+                        ],
+                        "line": 40,
+                        "module": "ModuleResolvedReferences"
+                      }
+                    },
+                    "elements": [
+                      {
+                        "kind": "ACT_CA_SET",
+                        "line": 40,
+                        "elements": [
+                          {
+                            "kind": "ACT_EL_VALUE",
+                            "line": 40,
+                            "value": {
+                              "kind": "ATV_REFERENCED",
+                              "reference": {
+                                "components": [
+                                  {
+                                    "lexType": "RLT_lowercase",
+                                    "name": "bus"
+                                  }
+                                ],
+                                "line": 40,
+                                "module": "ModuleResolvedReferences"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ACT_EL_VALUE",
+                    "presence": "ACPRES_ABSENT",
+                    "line": 40,
+                    "value": {
+                      "kind": "ATV_REFERENCED",
+                      "reference": {
+                        "components": [
+                          {
+                            "lexType": "RLT_lowercase",
+                            "name": "extra"
+                          }
+                        ],
+                        "line": 40,
+                        "module": "ModuleResolvedReferences"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleResolvedReferences.Road",
+          "identifier": "Road",
+          "line": 41,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Base"
+              }
+            ],
+            "line": 41,
+            "module": "ModuleResolvedReferences"
+          },
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 41,
+            "elements": [
+              {
+                "kind": "ACT_CA_UNI",
+                "line": 41,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_TYPE",
+                    "line": 41,
+                    "containedSubtype": {
+                      "kind": "ATV_TYPE",
+                      "type": {
+                        "id": "ModuleResolvedReferences.Road$c.0.0.s",
+                        "line": 41,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "Car"
+                            }
+                          ],
+                          "line": 41,
+                          "module": "ModuleResolvedReferences"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "kind": "ACT_EL_TYPE",
+                    "line": 41,
+                    "containedSubtype": {
+                      "kind": "ATV_TYPE",
+                      "type": {
+                        "id": "ModuleResolvedReferences.Road$c.0.1.s",
+                        "line": 41,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "Bus"
+                            }
+                          ],
+                          "line": 41,
+                          "module": "ModuleResolvedReferences"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleResolvedReferences.Wrapped",
+          "identifier": "Wrapped",
+          "line": 45,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleResolvedReferences.Wrapped%0",
+              "argument": "Content"
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleResolvedReferences.Wrapped/data",
+              "identifier": "data",
+              "line": 44,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_OCTET_STRING",
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 44,
+                "elements": [
+                  {
+                    "kind": "ACT_CT_CTNG",
+                    "line": 44,
+                    "value": {
+                      "kind": "ATV_TYPE",
+                      "type": {
+                        "id": "ModuleResolvedReferences.Wrapped/data$c.0.v",
+                        "line": 44,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "Content"
+                            }
+                          ],
+                          "line": 44,
+                          "module": "ModuleResolvedReferences"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleResolvedReferences.WrappedCar",
+          "identifier": "WrappedCar",
+          "line": 47,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Wrapped"
+              }
+            ],
+            "line": 47,
+            "module": "ModuleResolvedReferences"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleResolvedReferences.WrappedCar{0}",
+              "line": 47,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Car"
+                  }
+                ],
+                "line": 47,
+                "module": "ModuleResolvedReferences"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleResolvedReferences.CONTAINER",
+          "identifier": "CONTAINER",
+          "line": 50,
+          "metaType": "AMT_OBJECTCLASS",
+          "exprType": "A1TC_CLASSDEF",
+          "withSyntax": {
+            "chunks": [
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_FIELD",
+                "token": "&Type"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_LITERAL",
+                "token": "IDENTIFIED"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_LITERAL",
+                "token": "BY"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_FIELD",
+                "token": "&id"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              }
+            ]
+          },
+          "members": [
+            {
+              "id": "ModuleResolvedReferences.CONTAINER/&id",
+              "identifier": "&id",
+              "line": 50,
+              "metaType": "AMT_OBJECTFIELD",
+              "exprType": "A1TC_CLASSFIELD_FTVFS",
+              "unique": true,
+              "members": [
+                {
+                  "id": "ModuleResolvedReferences.CONTAINER/&id/#0",
+                  "line": 50,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Kind"
+                      }
+                    ],
+                    "line": 50,
+                    "module": "ModuleResolvedReferences"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ModuleResolvedReferences.CONTAINER/&Type",
+              "identifier": "&Type",
+              "line": 52,
+              "metaType": "AMT_OBJECTFIELD",
+              "exprType": "A1TC_CLASSFIELD_TFS"
+            }
+          ]
+        },
+        {
+          "id": "ModuleResolvedReferences.carId",
+          "identifier": "carId",
+          "line": 54,
+          "metaType": "AMT_VALUE",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Kind"
+              }
+            ],
+            "line": 54,
+            "module": "ModuleResolvedReferences"
+          },
+          "value": {
+            "kind": "ATV_INTEGER",
+            "integer": "1"
+          }
+        },
+        {
+          "id": "ModuleResolvedReferences.busId",
+          "identifier": "busId",
+          "line": 55,
+          "metaType": "AMT_VALUE",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Kind"
+              }
+            ],
+            "line": 55,
+            "module": "ModuleResolvedReferences"
+          },
+          "value": {
+            "kind": "ATV_INTEGER",
+            "integer": "2"
+          }
+        },
+        {
+          "id": "ModuleResolvedReferences.Containers",
+          "identifier": "Containers",
+          "line": 57,
+          "metaType": "AMT_VALUESET",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_CAPITALS",
+                "name": "CONTAINER"
+              }
+            ],
+            "line": 57,
+            "module": "ModuleResolvedReferences"
+          },
+          "constraints": {
+            "kind": "ACT_CA_UNI",
+            "line": 57,
+            "elements": [
+              {
+                "kind": "ACT_EL_VALUE",
+                "line": 57,
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{Car IDENTIFIED BY carId}"
+                }
+              },
+              {
+                "kind": "ACT_EL_VALUE",
+                "line": 57,
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{Bus IDENTIFIED BY busId}"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleResolvedReferences.Message",
+          "identifier": "Message",
+          "line": 60,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleResolvedReferences.Message/id",
+              "identifier": "id",
+              "line": 60,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "CONTAINER"
+                  },
+                  {
+                    "lexType": "RLT_Amplowercase",
+                    "name": "&id"
+                  }
+                ],
+                "line": 60,
+                "module": "ModuleResolvedReferences"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 60,
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 60,
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 60,
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Containers"
+                              }
+                            ],
+                            "line": 60,
+                            "module": "ModuleResolvedReferences"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ModuleResolvedReferences.Message/body",
+              "identifier": "body",
+              "line": 62,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_CHOICE",
+              "members": [
+                {
+                  "id": "ModuleResolvedReferences.Message/body/value",
+                  "identifier": "value",
+                  "line": 62,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_CAPITALS",
+                        "name": "CONTAINER"
+                      },
+                      {
+                        "lexType": "RLT_AmpUppercase",
+                        "name": "&Type"
+                      }
+                    ],
+                    "line": 62,
+                    "module": "ModuleResolvedReferences"
+                  },
+                  "constraints": {
+                    "kind": "ACT_CA_SET",
+                    "line": 62,
+                    "elements": [
+                      {
+                        "kind": "ACT_CA_CRC",
+                        "line": 62,
+                        "elements": [
+                          {
+                            "kind": "ACT_EL_VALUE",
+                            "line": 62,
+                            "value": {
+                              "kind": "ATV_REFERENCED",
+                              "reference": {
+                                "components": [
+                                  {
+                                    "lexType": "RLT_Uppercase",
+                                    "name": "Containers"
+                                  }
+                                ],
+                                "line": 62,
+                                "module": "ModuleResolvedReferences"
+                              }
+                            }
+                          },
+                          {
+                            "kind": "ACT_EL_VALUE",
+                            "line": 62,
+                            "value": {
+                              "kind": "ATV_REFERENCED",
+                              "reference": {
+                                "components": [
+                                  {
+                                    "lexType": "RLT_AtDotlowercase",
+                                    "name": "@.id"
+                                  }
+                                ],
+                                "line": 62,
+                                "module": "ModuleResolvedReferences"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "ModuleResolvedReferences.Message/body/none",
+                  "identifier": "none",
+                  "line": 63,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_NULL"
+                }
+              ]
+            },
+            {
+              "id": "ModuleResolvedReferences.Message/copy",
+              "identifier": "copy",
+              "line": 65,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "CONTAINER"
+                  },
+                  {
+                    "lexType": "RLT_AmpUppercase",
+                    "name": "&Type"
+                  }
+                ],
+                "line": 65,
+                "module": "ModuleResolvedReferences"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 65,
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 65,
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 65,
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Containers"
+                              }
+                            ],
+                            "line": 65,
+                            "module": "ModuleResolvedReferences"
+                          }
+                        }
+                      },
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 65,
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Atlowercase",
+                                "name": "@id"
+                              }
+                            ],
+                            "line": 65,
+                            "module": "ModuleResolvedReferences"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

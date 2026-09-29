@@ -1,6 +1,6 @@
 {
   "format": "asn1c.ast.json",
-  "formatVersion": 1,
+  "formatVersion": 2,
   "producer": "asn1c",
   "producerVersion": "",
   "view": "RESOLVED",
@@ -170,6 +170,10 @@
               "id": "ModuleTestComponentsOf.SecondType/one-1",
               "identifier": "one-1",
               "line": 15,
+              "origin": {
+                "componentsOf": "ModuleTestComponentsOf.SecondType/#1",
+                "sourceId": "ModuleTestComponentsOf.OneType/one-1"
+              },
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER",
               "tag": {
@@ -182,6 +186,10 @@
               "id": "ModuleTestComponentsOf.SecondType/one-2",
               "identifier": "one-2",
               "line": 16,
+              "origin": {
+                "componentsOf": "ModuleTestComponentsOf.SecondType/#1",
+                "sourceId": "ModuleTestComponentsOf.OneType/one-2"
+              },
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_BOOLEAN",
               "tag": {
@@ -194,6 +202,10 @@
               "id": "ModuleTestComponentsOf.SecondType/one-3",
               "identifier": "one-3",
               "line": 18,
+              "origin": {
+                "componentsOf": "ModuleTestComponentsOf.SecondType/#1",
+                "sourceId": "ModuleTestComponentsOf.OneType/one-3"
+              },
               "metaType": "AMT_TYPE",
               "exprType": "ASN_CONSTR_SEQUENCE",
               "tag": {
