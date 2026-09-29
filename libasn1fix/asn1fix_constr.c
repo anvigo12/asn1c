@@ -3,6 +3,15 @@
 static int _asn1f_check_if_tag_must_be_explicit(arg_t *arg, asn1p_expr_t *v);
 static int _asn1f_compare_tags(arg_t *arg, asn1p_expr_t *a, asn1p_expr_t *b);
 static int _asn1f_fix_type_tag(arg_t *arg, asn1p_expr_t *expr);
+static int _asn1f_check_flat_tags_distinct(arg_t *arg, asn1p_expr_t *expr);
+
+/* An extension addition group ("[[ ... ]]") of a SEQUENCE or SET. */
+static int
+_asn1f_is_ext_group(const asn1p_expr_t *parent, const asn1p_expr_t *m) {
+	return (parent->expr_type == ASN_CONSTR_SEQUENCE
+	        || parent->expr_type == ASN_CONSTR_SET)
+	    && m->ext_group > 0 && m->expr_type == ASN_CONSTR_SEQUENCE;
+}
 
 int
 asn1f_pull_components_of(arg_t *arg) {
@@ -233,6 +242,20 @@ asn1f_fix_constr_tag(arg_t *arg, int fix_top_level) {
 			continue;
 		}
 
+		if((arg->flags & A1F_X680_AUTO_TAGS)
+		&& _asn1f_is_ext_group(expr, v)) {
+			/*
+			 * X.680 25.3: a tag on a component inside the group
+			 * also prevents automatic tagging.
+			 */
+			asn1p_expr_t *gm;
+			TQ_FOR(gm, &(v->members), next) {
+				if(gm->tag.tag_class != TC_NOCLASS)
+					ext_tagged = 1;
+			}
+			continue;
+		}
+
 		if(v->tag.tag_class == TC_NOCLASS) {
 			continue;
 		}
@@ -332,6 +355,28 @@ asn1f_fix_constr_autotag(arg_t *arg) {
 			assert(v->tag.tag_class == TC_NOCLASS);
 		}
 
+		if((arg->flags & A1F_X680_AUTO_TAGS)
+		&& _asn1f_is_ext_group(expr, v)) {
+			/*
+			 * X.680 25.8, 25.10 d): the components of an extension
+			 * addition group get the next tag numbers of this type.
+			 * The group is not a component and gets no tag.
+			 */
+			asn1p_expr_t *gm;
+			TQ_FOR(gm, &(v->members), next) {
+				if(gm->expr_type == A1TC_EXTENSIBLE) continue;
+				must_explicit = _asn1f_check_if_tag_must_be_explicit(arg, gm);
+				gm->tag.tag_class = TC_CONTEXT_SPECIFIC;
+				gm->tag.tag_mode = must_explicit ? TM_EXPLICIT : TM_IMPLICIT;
+				gm->tag.tag_value = tag_value++;
+			}
+			v->tag.tag_class = TC_NOCLASS;
+			v->tag.tag_mode = TM_DEFAULT;
+			v->tag.tag_value = 0;
+			v->auto_tags_OK = 0;	/* Do not number the group again */
+			continue;
+		}
+
 		must_explicit = _asn1f_check_if_tag_must_be_explicit(arg, v);
 
 		v->tag.tag_class = TC_CONTEXT_SPECIFIC;
@@ -360,6 +405,9 @@ asn1f_check_constr_tags_distinct(arg_t *arg) {
 		return 0;
 	}
 
+	if(arg->flags & A1F_X680_AUTO_TAGS)
+		return _asn1f_check_flat_tags_distinct(arg, expr);
+
 	TQ_FOR(v, &(expr->members), next) {
 		/*
 		 * In every series of non-mandatory components,
@@ -384,12 +432,61 @@ asn1f_check_constr_tags_distinct(arg_t *arg) {
 	return r_value;
 }
 
+/*
+ * A1F_X680_AUTO_TAGS: the same check on the series of components in
+ * textual order, "ignoring all version brackets" (X.680 25.6.3): the
+ * components of an extension addition group take the place of the group.
+ */
+static int
+_asn1f_check_flat_tags_distinct(arg_t *arg, asn1p_expr_t *expr) {
+	asn1p_expr_t **flat = NULL;
+	size_t count = 0, size = 0;
+	asn1p_expr_t *v;
+	int r_value = 0;
+
+	TQ_FOR(v, &(expr->members), next) {
+		asn1p_expr_t *gm;
+		int group = _asn1f_is_ext_group(expr, v);
+		for(gm = group ? TQ_FIRST(&(v->members)) : v; gm;
+		    gm = group ? TQ_NEXT(gm, next) : NULL) {
+			if(count == size) {
+				size = size ? 2 * size : 16;
+				flat = realloc(flat, size * sizeof(flat[0]));
+				assert(flat);
+			}
+			flat[count++] = gm;
+		}
+	}
+
+	for(size_t i = 0; i < count; i++) {
+		if(expr->expr_type != ASN_CONSTR_SEQUENCE || flat[i]->marker.flags) {
+			for(size_t j = i + 1; j < count; j++) {
+				if(_asn1f_compare_tags(arg, flat[i], flat[j]))
+					r_value = -1;
+				if(expr->expr_type == ASN_CONSTR_SEQUENCE
+				&& !flat[j]->marker.flags) break;
+			}
+		}
+	}
+
+	free(flat);
+	return r_value;
+}
+
 static int
 _asn1f_check_if_tag_must_be_explicit(arg_t *arg, asn1p_expr_t *v) {
 	struct asn1p_type_tag_s tag;
 	struct asn1p_type_tag_s save_tag;
 	asn1p_expr_t *reft;
 	int ret;
+
+	/*
+	 * X.680 31.2.7 c): the tagged type is an untagged DummyReference in
+	 * the parameterized definition, so the tagging is explicit in every
+	 * specialization, whatever the actual parameter is.
+	 */
+	if((arg->flags & A1F_X680_AUTO_TAGS) && v->substituted)
+		return 1;
 
 	/*
 	 * Fetch the _next_ tag for this type.
