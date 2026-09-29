@@ -14,6 +14,20 @@ _asn1f_is_ext_group(const asn1p_expr_t *parent, const asn1p_expr_t *m) {
 	    && m->ext_group > 0 && m->expr_type == ASN_CONSTR_SEQUENCE;
 }
 
+/*
+ * The module whose tagging environment applies to the tags of expr.
+ * A1F_X680_AUTO_TAGS: the module where expr is written. For a type that
+ * an actual parameter supplies to an instance, this is the module of the
+ * actual parameter (X.683 (02/2021) 9.8), not the module of the
+ * parameterized definition.
+ */
+static asn1p_module_t *
+_asn1f_tag_env(arg_t *arg, const asn1p_expr_t *expr) {
+	if((arg->flags & A1F_X680_AUTO_TAGS) && expr->module)
+		return expr->module;
+	return arg->mod;
+}
+
 int
 asn1f_pull_components_of(arg_t *arg) {
 	TQ_HEAD(asn1p_expr_t) list;
@@ -287,7 +301,7 @@ asn1f_fix_constr_tag(arg_t *arg, int fix_top_level) {
 
 	}
 
-	if((arg->mod->module_flags & MSF_AUTOMATIC_TAGS)
+	if((_asn1f_tag_env(arg, expr)->module_flags & MSF_AUTOMATIC_TAGS)
 	&& !root_tagged) {
 		if(ext_tagged) {
 			/* X.690: 28.4 */
@@ -308,7 +322,7 @@ asn1f_fix_constr_tag(arg_t *arg, int fix_top_level) {
 static int
 _asn1f_fix_type_tag(arg_t *arg, asn1p_expr_t *expr) {
 	int must_explicit = _asn1f_check_if_tag_must_be_explicit(arg, expr);
-	int module_impl_tags = (arg->mod->module_flags
+	int module_impl_tags = (_asn1f_tag_env(arg, expr)->module_flags
 				& (MSF_IMPLICIT_TAGS | MSF_AUTOMATIC_TAGS));
 	int r_value = 0;
 
