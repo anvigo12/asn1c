@@ -1284,7 +1284,7 @@ ParameterArgumentName:
 		int ret;
 		$$.governor = asn1p_ref_new(yylineno, currentModule);
 		ret = asn1p_ref_add_component($$.governor,
-			ASN_EXPR_TYPE2STR($1), 1);
+			ASN_EXPR_TYPE2STR($1), RLT_UNKNOWN);
 		checkmem(ret == 0);
 		$$.argument = $3;
 	}
@@ -1292,7 +1292,7 @@ ParameterArgumentName:
 		int ret;
 		$$.governor = asn1p_ref_new(yylineno, currentModule);
 		ret = asn1p_ref_add_component($$.governor,
-			ASN_EXPR_TYPE2STR($1), 1);
+			ASN_EXPR_TYPE2STR($1), RLT_UNKNOWN);
 		checkmem(ret == 0);
 		$$.argument = $3;
 	}
