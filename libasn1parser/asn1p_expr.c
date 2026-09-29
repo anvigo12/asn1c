@@ -220,6 +220,7 @@ asn1p_expr_clone_impl(asn1p_expr_t *expr, int skip_extensions, asn1p_expr_t *(*r
 	CLCOPY(copied_from);
 	CLCOPY(components_of_index);
 	CLCOPY(substituted);
+	CLCOPY(actual_params);
 
 	clone->data = 0;	/* Do not clone this */
 	clone->data_free = 0;	/* Do not clone this */

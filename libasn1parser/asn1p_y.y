@@ -1189,6 +1189,7 @@ DefinedType:
 		checkmem($$);
 		$$->reference = $1;
 		$$->rhs_pspecs = $3;
+		$$->actual_params = 1;
 		$$->expr_type = A1TC_REFERENCE;
 		$$->meta_type = AMT_TYPEREF;
 	}

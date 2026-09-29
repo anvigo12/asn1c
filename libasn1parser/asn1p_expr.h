@@ -182,6 +182,9 @@ typedef struct asn1p_expr_s {
 	int components_of_index;	/* COMPONENTS OF: decl_index of the COMPONENTS OF node, or -1 */
 	int substituted;	/* 1: a specialization put this expression in the place
 				 * of a DummyReference (X.683 (02/2021) 9.7) */
+	int actual_params;	/* 1: the notation has an ActualParameterList
+				 * (X.683 (02/2021) 9.2). A clone keeps this flag,
+				 * but asn1p_expr_clone() does not copy rhs_pspecs */
 
 	/*
 	 * The actual value (DefinedValue or inlined value).
