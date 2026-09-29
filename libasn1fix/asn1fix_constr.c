@@ -8,7 +8,8 @@ static int _asn1f_check_flat_tags_distinct(arg_t *arg, asn1p_expr_t *expr);
 /* An extension addition group ("[[ ... ]]") of a SEQUENCE or SET. */
 static int
 _asn1f_is_ext_group(const asn1p_expr_t *parent, const asn1p_expr_t *m) {
-	return (parent->expr_type == ASN_CONSTR_SEQUENCE
+	return parent
+	    && (parent->expr_type == ASN_CONSTR_SEQUENCE
 	        || parent->expr_type == ASN_CONSTR_SET)
 	    && m->ext_group > 0 && m->expr_type == ASN_CONSTR_SEQUENCE;
 }
@@ -235,6 +236,17 @@ asn1f_fix_constr_tag(arg_t *arg, int fix_top_level) {
 		return 0;
 	}
 
+	if((arg->flags & A1F_X680_AUTO_TAGS)
+	&& _asn1f_is_ext_group(expr->parent_expr, expr)) {
+		/*
+		 * X.680 25.3: the decision is made once for the entire
+		 * ComponentTypeLists of the enclosing type, extension
+		 * addition groups included. The enclosing type decides and
+		 * fixes the tags of the group components.
+		 */
+		return 0;
+	}
+
 	TQ_FOR(v, &(expr->members), next) {
 
 		if(v->expr_type == A1TC_EXTENSIBLE) {
@@ -245,13 +257,16 @@ asn1f_fix_constr_tag(arg_t *arg, int fix_top_level) {
 		if((arg->flags & A1F_X680_AUTO_TAGS)
 		&& _asn1f_is_ext_group(expr, v)) {
 			/*
-			 * X.680 25.3: a tag on a component inside the group
-			 * also prevents automatic tagging.
+			 * X.680 25.3, 25.9: a tag on a component inside the
+			 * group is a tag in the extension additions.
 			 */
 			asn1p_expr_t *gm;
 			TQ_FOR(gm, &(v->members), next) {
-				if(gm->tag.tag_class != TC_NOCLASS)
-					ext_tagged = 1;
+				if(gm->tag.tag_class == TC_NOCLASS)
+					continue;
+				ext_tagged = 1;
+				if(_asn1f_fix_type_tag(arg, gm))
+					r_value = -1;
 			}
 			continue;
 		}
@@ -405,8 +420,12 @@ asn1f_check_constr_tags_distinct(arg_t *arg) {
 		return 0;
 	}
 
-	if(arg->flags & A1F_X680_AUTO_TAGS)
+	if(arg->flags & A1F_X680_AUTO_TAGS) {
+		/* The enclosing type checks the components of a group */
+		if(_asn1f_is_ext_group(expr->parent_expr, expr))
+			return 0;
 		return _asn1f_check_flat_tags_distinct(arg, expr);
+	}
 
 	TQ_FOR(v, &(expr->members), next) {
 		/*
