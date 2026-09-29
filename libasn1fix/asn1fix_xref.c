@@ -14,18 +14,26 @@
  *   module of the reference, with the IMPORTS rules of the fixer);
  *   DummyReferences (formal parameters of the enclosing parameterized
  *   assignment);
+ *   parameter governors (X.683 (02/2021) 8.3): a DummyGovernor names the
+ *   formal parameter in the generic form and what the actual parameter
+ *   denotes in a specialization (9.7); a built-in type is not a reference
+ *   and has no target;
  *   identifiers in WITH COMPONENT(S) (components of the constrained type,
- *   X.680 51.8.6);
+ *   X.680 51.8.6), also components that an unexpanded COMPONENTS OF gives;
  *   identifiers of named numbers, enumerations and named bits in values
- *   (members of the governing type);
+ *   (members of the governing type; a DummyReference does not hide them,
+ *   X.683 8.4 NOTE);
  *   component relation references "@a.b", "@.a" (components of the
  *   enclosing types).
- * A reference that the pass cannot resolve is a FATAL diagnostic.
+ * A reference that the pass cannot resolve is a FATAL diagnostic. So is a
+ * reference to a parameterized assignment without actual parameters
+ * (X.683 9.2). Each diagnostic text is reported once.
  */
 #include "asn1fix_internal.h"
 #include "asn1fix_xref.h"
 
 #define XREF_MAX_DEPTH 512
+#define XREF_MAX_CHAIN 32  /* Type reference chains, nested COMPONENTS OF */
 
 typedef struct xref_s {
     arg_t *arg;            /* Diagnostics (arg->eh) */
@@ -39,9 +47,13 @@ typedef struct xref_s {
     const asn1p_expr_t *visiting[XREF_MAX_DEPTH];
     int depth;
     int failed;
+    char **reported;       /* Texts of the diagnostics reported by this pass */
+    size_t nreported;
+    size_t creported;
 } xref_t;
 
 static void xr_expr(xref_t *x, asn1p_expr_t *e);
+static void xr_expr_actuals(xref_t *x, asn1p_expr_t *e, asn1p_expr_t *actuals);
 static void xr_constraint(xref_t *x, asn1p_constraint_t *ct, asn1p_expr_t *type);
 static void xr_value(xref_t *x, asn1p_value_t *v, asn1p_expr_t *type);
 
@@ -50,17 +62,99 @@ xr_resolved(const asn1p_ref_t *ref) {
     return ref->ref_expr != NULL || ref->ref_param_owner != NULL;
 }
 
+/*
+ * A FATAL diagnostic. A text is reported once: the fixer copies
+ * constraints into combinedConstraints, so the pass can meet one
+ * reference twice.
+ */
 static void
-xr_unresolved(xref_t *x, const asn1p_ref_t *ref, const char *what) {
+xr_fatal(xref_t *x, const asn1p_ref_t *ref, const char *fmt, ...)
+    __attribute__((format(printf, 3, 4)));
+static void
+xr_fatal(xref_t *x, const asn1p_ref_t *ref, const char *fmt, ...) {
     arg_t *arg = x->arg;
     asn1p_module_t *saved = arg->mod;
-    if(ref->module) arg->mod = ref->module;
-    FATAL("Cannot resolve %s \"%s\" at line %d (in %s%s%s) (-print-json)",
-          what, asn1f_printable_reference(ref), ref->_lineno,
-          x->top && x->top->module ? x->top->module->ModuleName : "?",
-          x->top ? "." : "", x->top && x->top->Identifier ? x->top->Identifier : "");
-    arg->mod = saved;
+    va_list ap;
+    char *text;
+    int len;
+
     x->failed = 1;
+    va_start(ap, fmt);
+    len = vsnprintf(NULL, 0, fmt, ap);
+    va_end(ap);
+    if(len < 0 || !(text = malloc((size_t)len + 1))) {
+        if(ref && ref->module) arg->mod = ref->module;
+        FATAL("Cannot report a diagnostic of the reference pass (-print-json)");
+        arg->mod = saved;
+        return;
+    }
+    va_start(ap, fmt);
+    vsnprintf(text, (size_t)len + 1, fmt, ap);
+    va_end(ap);
+
+    for(size_t i = 0; i < x->nreported; i++) {
+        if(strcmp(x->reported[i], text) == 0) {
+            free(text);
+            return;
+        }
+    }
+    if(x->nreported == x->creported) {
+        size_t n = x->creported ? 2 * x->creported : 16;
+        char **p = realloc(x->reported, n * sizeof(p[0]));
+        if(p) {
+            x->reported = p;
+            x->creported = n;
+        }
+    }
+
+    if(ref && ref->module) arg->mod = ref->module;
+    FATAL("%s", text);
+    arg->mod = saved;
+
+    if(x->nreported < x->creported)
+        x->reported[x->nreported++] = text;
+    else
+        free(text);
+}
+
+static const char *
+xr_where_module(const xref_t *x) {
+    return x->top && x->top->module ? x->top->module->ModuleName : "?";
+}
+
+static const char *
+xr_where_name(const xref_t *x) {
+    return x->top && x->top->Identifier ? x->top->Identifier : "";
+}
+
+static void
+xr_unresolved(xref_t *x, const asn1p_ref_t *ref, const char *what) {
+    xr_fatal(x, ref, "Cannot resolve %s \"%s\" at line %d (in %s%s%s) (-print-json)",
+             what, asn1f_printable_reference(ref), ref->_lineno,
+             xr_where_module(x), x->top ? "." : "", xr_where_name(x));
+}
+
+/* The generic form of a parameterized assignment. */
+static int
+xr_is_generic(const asn1p_expr_t *e) {
+    return e && e->lhs_params && e->spec_index == -1;
+}
+
+/*
+ * X.683 (02/2021) 9.2: other than in EXPORTS and IMPORTS, a parameterized
+ * assignment is referenced with an ActualParameterList. "given": the
+ * notation of the reference has one (asn1p_expr_t.actual_params).
+ */
+static void
+xr_check_actual_params(xref_t *x, const asn1p_ref_t *ref, int given) {
+    if(!ref || given || ref->ref_param_owner || !xr_is_generic(ref->ref_expr))
+        return;
+    xr_fatal(x, ref,
+             "Reference \"%s\" at line %d names the parameterized assignment "
+             "%s without actual parameters (X.683 9.2) (in %s%s%s) (-print-json)",
+             asn1f_printable_reference(ref), ref->_lineno,
+             ref->ref_expr->Identifier ? ref->ref_expr->Identifier : "?",
+             xr_where_module(x), x->top ? "." : "", xr_where_name(x));
 }
 
 /*
@@ -116,20 +210,24 @@ xr_dummy(xref_t *x, asn1p_ref_t *ref) {
 
 /*
  * A type, value, class, object, or object set reference. rhs_pspecs:
- * the actual parameters that follow the reference, or NULL.
+ * the actual parameters that follow the reference, or NULL. given: the
+ * notation of the reference has an ActualParameterList (X.683 9.2).
  */
 static void
-xr_ref_args(xref_t *x, asn1p_ref_t *ref, asn1p_expr_t *rhs_pspecs,
+xr_ref_args(xref_t *x, asn1p_ref_t *ref, asn1p_expr_t *rhs_pspecs, int given,
             const char *what) {
-    if(!ref || xr_resolved(ref)) return;
-    if(xr_dummy(x, ref)) return;
-    if(xr_lookup(x, ref, rhs_pspecs)) return; /* The lookup sets ref->ref_expr */
-    xr_unresolved(x, ref, what);
+    if(!ref) return;
+    if(!xr_resolved(ref) && !xr_dummy(x, ref)
+       && !xr_lookup(x, ref, rhs_pspecs)) { /* The lookup sets ref->ref_expr */
+        xr_unresolved(x, ref, what);
+        return;
+    }
+    xr_check_actual_params(x, ref, given);
 }
 
 static void
 xr_ref(xref_t *x, asn1p_ref_t *ref, const char *what) {
-    xr_ref_args(x, ref, NULL, what);
+    xr_ref_args(x, ref, NULL, 0, what);
 }
 
 /*
@@ -139,7 +237,7 @@ xr_ref(xref_t *x, asn1p_ref_t *ref, const char *what) {
  */
 static asn1p_expr_t *
 xr_terminal(xref_t *x, asn1p_expr_t *type) {
-    for(int n = 0; type && n < 32; n++) {
+    for(int n = 0; type && n < XREF_MAX_CHAIN; n++) {
         asn1p_ref_t *ref = type->reference;
         if(type->expr_type != A1TC_REFERENCE || !ref) return type;
         if(!xr_resolved(ref)) xr_ref(x, ref, "type reference");
@@ -149,62 +247,96 @@ xr_terminal(xref_t *x, asn1p_expr_t *type) {
     return NULL;
 }
 
-/* Member with the given identifier, also inside extension addition groups. */
+/*
+ * The first reference of a chain of type references that names a
+ * DummyReference, or NULL.
+ */
+static asn1p_ref_t *
+xr_dummy_type_ref(asn1p_expr_t *type) {
+    for(int n = 0; type && n < XREF_MAX_CHAIN; n++) {
+        asn1p_ref_t *ref = type->reference;
+        if(type->expr_type != A1TC_REFERENCE || !ref) return NULL;
+        if(ref->ref_param_owner) return ref;
+        type = ref->ref_expr;
+    }
+    return NULL;
+}
+
+/*
+ * Member with the given identifier, also inside extension addition groups
+ * and inside the referenced type of a COMPONENTS OF that the fixer did not
+ * expand (a generic form). COMPONENTS OF gives the root components of the
+ * referenced type only (X.680 (02/2021) 25.5): roots_only skips the
+ * extension markers and the extension additions between them.
+ * *dummy (can be NULL): when no member matches, the reference of the first
+ * COMPONENTS OF whose type is a DummyReference; its components are known
+ * only for each specialization.
+ */
 static asn1p_expr_t *
-xr_member(asn1p_expr_t *type, const char *name) {
+xr_member_ex(xref_t *x, asn1p_expr_t *type, const char *name, int roots_only,
+             asn1p_ref_t **dummy, int level) {
     asn1p_expr_t *m;
-    if(!type || !name) return NULL;
+    int markers = 0;
+    if(!type || !name || level > XREF_MAX_CHAIN) return NULL;
     TQ_FOR(m, &(type->members), next) {
+        if(m->expr_type == A1TC_EXTENSIBLE) {
+            markers++;
+            continue;
+        }
+        if(roots_only && markers == 1) continue; /* Extension additions */
         if(m->Identifier && strcmp(m->Identifier, name) == 0) return m;
         if(!m->Identifier && m->ext_group > 0) {
-            asn1p_expr_t *gm = xr_member(m, name);
+            asn1p_expr_t *gm = xr_member_ex(x, m, name, 0, dummy, level + 1);
             if(gm) return gm;
+        } else if(m->expr_type == A1TC_COMPONENTS_OF) {
+            asn1p_expr_t *coft = TQ_FIRST(&(m->members));
+            asn1p_expr_t *term = xr_terminal(x, coft);
+            asn1p_expr_t *cm;
+            if(!term) {
+                asn1p_ref_t *dref = xr_dummy_type_ref(coft);
+                if(dummy && !*dummy && dref) *dummy = dref;
+                continue;
+            }
+            cm = xr_member_ex(x, term, name, 1, dummy, level + 1);
+            if(cm) return cm;
         }
     }
     return NULL;
 }
 
-/* True if the type is, or is a reference chain to, a DummyReference. */
-static int
-xr_is_dummy_type(xref_t *x, asn1p_expr_t *type) {
-    for(int n = 0; type && n < 32; n++) {
-        asn1p_ref_t *ref = type->reference;
-        if(type->expr_type != A1TC_REFERENCE || !ref) return 0;
-        if(ref->ref_param_owner) return 1;
-        if(!ref->ref_expr) return 0;
-        type = ref->ref_expr;
-    }
-    (void)x;
-    return 0;
+static asn1p_expr_t *
+xr_member(xref_t *x, asn1p_expr_t *type, const char *name) {
+    return xr_member_ex(x, type, name, 0, NULL, 0);
+}
+
+/* Refer to the formal parameter that a DummyReference names. */
+static void
+xr_set_param(asn1p_ref_t *ref, const asn1p_ref_t *dref) {
+    ref->ref_param_owner = dref->ref_param_owner;
+    ref->ref_param_index = dref->ref_param_index;
 }
 
 /*
  * An identifier that names a component of a type. For a type that a
- * DummyReference gives, the component is known only for each
- * specialization: the identifier then refers to the formal parameter.
+ * DummyReference gives (also through COMPONENTS OF), the component is
+ * known only for each specialization: the identifier then refers to the
+ * formal parameter.
  */
 static asn1p_expr_t *
 xr_component_ref(xref_t *x, asn1p_ref_t *ref, asn1p_expr_t *type,
                  const char *name, const char *what) {
     asn1p_expr_t *comp;
+    asn1p_ref_t *dref = NULL;
     if(xr_resolved(ref)) return ref->ref_expr;
-    comp = xr_member(xr_terminal(x, type), name);
+    comp = xr_member_ex(x, xr_terminal(x, type), name, 0, &dref, 0);
     if(comp) {
         ref->ref_expr = comp;
         return comp;
     }
-    if(type && xr_is_dummy_type(x, type)) {
-        asn1p_ref_t *dref = NULL;
-        asn1p_expr_t *t = type;
-        for(int n = 0; t && t->reference && n < 32; n++, t = t->reference->ref_expr) {
-            dref = t->reference;
-            if(dref->ref_param_owner) break;
-        }
-        if(dref && dref->ref_param_owner) {
-            ref->ref_param_owner = dref->ref_param_owner;
-            ref->ref_param_index = dref->ref_param_index;
-            return NULL;
-        }
+    if(!dref && type) dref = xr_dummy_type_ref(type);
+    if(dref) {
+        xr_set_param(ref, dref);
+        return NULL;
     }
     xr_unresolved(x, ref, what);
     return NULL;
@@ -244,6 +376,7 @@ xr_at_ref(xref_t *x, asn1p_ref_t *ref) {
     const char *name;
     asn1p_expr_t *base;
     asn1p_expr_t *comp;
+    asn1p_ref_t *dref = NULL;
     int dots = 0;
 
     if(xr_resolved(ref) || ref->comp_count < 1) return;
@@ -254,13 +387,15 @@ xr_at_ref(xref_t *x, asn1p_ref_t *ref) {
         name++;
     }
     base = xr_at_parent(x, dots);
-    comp = xr_member(base, name);
+    comp = xr_member_ex(x, base, name, 0, &dref, 0);
     for(size_t i = 1; comp && i < ref->comp_count; i++)
-        comp = xr_member(xr_terminal(x, comp), ref->components[i].name);
+        comp = xr_member(x, xr_terminal(x, comp), ref->components[i].name);
+    if(!comp && !dref && base) dref = xr_dummy_type_ref(base);
     if(comp) {
         ref->ref_expr = comp;
-    } else if(base && x->generic && xr_is_dummy_type(x, base)) {
-        xr_dummy(x, ref);
+    } else if(dref && x->generic) {
+        /* A component that a DummyReference gives (COMPONENTS OF T) */
+        xr_set_param(ref, dref);
     } else {
         xr_unresolved(x, ref, "component relation");
     }
@@ -335,9 +470,14 @@ xr_value(xref_t *x, asn1p_value_t *v, asn1p_expr_t *type) {
             xr_at_ref(x, ref);
             return;
         case RLT_lowercase:
-            if(ref->comp_count == 1 && !xr_dummy(x, ref)) {
-                /* A named number, enumeration, or named bit of the type */
-                asn1p_expr_t *m = xr_member(xr_terminal(x, type),
+            if(ref->comp_count == 1) {
+                /*
+                 * A named number, enumeration, or named bit of the type.
+                 * Such an identifier is not a Reference: a DummyReference
+                 * does not hide it (X.683 (02/2021) 8.4 NOTE; X.680 19.12,
+                 * 20.11).
+                 */
+                asn1p_expr_t *m = xr_member(x, xr_terminal(x, type),
                                             ref->components[0].name);
                 if(m && m->expr_type == A1TC_UNIVERVAL) {
                     ref->ref_expr = m;
@@ -358,13 +498,111 @@ xr_value(xref_t *x, asn1p_value_t *v, asn1p_expr_t *type) {
         xr_constraint(x, v->value.constraint, type);
         return;
     case ATV_CHOICE_IDENTIFIER: {
-        asn1p_expr_t *alt = xr_member(xr_terminal(x, type),
+        asn1p_expr_t *alt = xr_member(x, xr_terminal(x, type),
                                       v->value.choice_identifier.identifier);
         xr_value(x, v->value.choice_identifier.value, alt);
         return;
     }
     default:
         return;
+    }
+}
+
+/* The formal parameter that a one-component reference names in a list, or -1. */
+static int
+xr_param_index(const asn1p_paramlist_t *pl, const asn1p_ref_t *ref) {
+    if(!pl || !ref || ref->comp_count != 1) return -1;
+    for(int i = 0; i < pl->params_count; i++)
+        if(pl->params[i].argument
+           && strcmp(pl->params[i].argument, ref->components[0].name) == 0)
+            return i;
+    return -1;
+}
+
+/*
+ * A governor that is a built-in type (Governor ::= Type, X.683 (02/2021)
+ * 8.3). The parser stores the type name as a reference. These names are
+ * reserved words (X.680 (02/2021) 12.38): no assignment can have them.
+ */
+static int
+xr_builtin_governor(const asn1p_ref_t *ref) {
+    const size_t n = sizeof(asn1p_expr_type2str) / sizeof(asn1p_expr_type2str[0]);
+    if(!ref || ref->comp_count != 1) return 0;
+    for(size_t t = 0; t < n; t++) {
+        if(!(t & (ASN_BASIC_MASK | ASN_STRING_MASK)) || !asn1p_expr_type2str[t])
+            continue;
+        if(strcmp(asn1p_expr_type2str[t], ref->components[0].name) == 0)
+            return 1;
+    }
+    return 0;
+}
+
+/*
+ * What a DummyGovernor denotes in a specialization (X.683 (02/2021) 9.7):
+ * the type that its actual parameter references, or else the actual
+ * parameter itself (for example a built-in type). The actual parameters
+ * of the specialization record are resolved before the specialization.
+ */
+static asn1p_expr_t *
+xr_actual_target(asn1p_expr_t *a) {
+    asn1p_ref_t *ref = a ? a->reference : NULL;
+    if(a && a->expr_type == A1TC_REFERENCE && ref && ref->ref_expr
+       && !ref->ref_param_owner && !xr_is_generic(ref->ref_expr))
+        return ref->ref_expr;
+    return a;
+}
+
+/* Member k of a list of actual parameters, or NULL. */
+static asn1p_expr_t *
+xr_actual(asn1p_expr_t *actuals, int k) {
+    asn1p_expr_t *m;
+    if(!actuals) return NULL;
+    TQ_FOR(m, &(actuals->members), next)
+        if(k-- == 0) return m;
+    return NULL;
+}
+
+/*
+ * Parameter governors (X.683 (02/2021) 8.3):
+ * ParamGovernor ::= Governor | DummyGovernor, Governor ::= Type |
+ * DefinedObjectClass.
+ * - A built-in type is not a reference: it has no target.
+ * - A DummyGovernor is a DummyReference of the same list that has no
+ *   governor. In the generic form it names that formal parameter. In a
+ *   specialization the actual parameter takes the place of the
+ *   DummyReference, also in the ParameterList (8.4, 9.7): it names what
+ *   the actual parameter denotes (actuals: rhs_pspecs of the
+ *   specialization record; see xr_actual_target()).
+ * - Other governors are type or class references.
+ */
+static void
+xr_governors(xref_t *x, asn1p_expr_t *e, asn1p_expr_t *actuals) {
+    asn1p_paramlist_t *pl = e->lhs_params;
+    for(int i = 0; pl && i < pl->params_count; i++) {
+        asn1p_ref_t *gov = pl->params[i].governor;
+        int k;
+        if(!gov || xr_builtin_governor(gov)) continue;
+        k = xr_param_index(pl, gov);
+        if(k >= 0 && pl->params[k].governor) {
+            /* X.683 8.3 (last sentence of the clause), 8.9 */
+            xr_fatal(x, gov,
+                     "Parameter governor \"%s\" at line %d names a DummyReference "
+                     "that has a governor (X.683 8.3) (in %s%s%s) (-print-json)",
+                     asn1f_printable_reference(gov), gov->_lineno,
+                     xr_where_module(x), x->top ? "." : "", xr_where_name(x));
+            continue;
+        }
+        if(xr_resolved(gov)) continue;
+        if(k >= 0 && xr_is_generic(e)) {
+            gov->ref_param_owner = e;
+            gov->ref_param_index = k;
+            continue;
+        }
+        if(k >= 0 && e->spec_index >= 0) {
+            gov->ref_expr = xr_actual_target(xr_actual(actuals, k));
+            if(gov->ref_expr) continue;
+        }
+        xr_ref(x, gov, "parameter governor");
     }
 }
 
@@ -388,6 +626,12 @@ xr_members(xref_t *x, asn1p_expr_t *e) {
 
 static void
 xr_expr(xref_t *x, asn1p_expr_t *e) {
+    xr_expr_actuals(x, e, NULL);
+}
+
+/* actuals: for a specialization, the actual parameters of its record. */
+static void
+xr_expr_actuals(xref_t *x, asn1p_expr_t *e, asn1p_expr_t *actuals) {
     asn1p_expr_t *saved_generic = x->generic;
     int saved_obase = x->obase;
 
@@ -397,20 +641,15 @@ xr_expr(xref_t *x, asn1p_expr_t *e) {
     if(x->depth >= XREF_MAX_DEPTH) return;
     x->visiting[x->depth++] = e;
 
-    if(e->lhs_params && e->spec_index == -1) {
+    if(xr_is_generic(e)) {
         x->generic = e; /* Generic form: DummyReferences are in scope */
     } else if(e->spec_index >= 0) {
         x->generic = NULL;     /* Specialization: dummies are substituted */
         x->obase = x->nouter;  /* A specialization is an outermost type */
     }
-    if(e->lhs_params) {
-        for(int i = 0; i < e->lhs_params->params_count; i++) {
-            asn1p_ref_t *gov = e->lhs_params->params[i].governor;
-            if(gov) xr_ref(x, gov, "parameter governor");
-        }
-    }
+    xr_governors(x, e, actuals);
 
-    xr_ref_args(x, e->reference, e->rhs_pspecs, "reference");
+    xr_ref_args(x, e->reference, e->rhs_pspecs, e->actual_params, "reference");
     if(e->rhs_pspecs) {
         asn1p_expr_t *m;
         TQ_FOR(m, &(e->rhs_pspecs->members), next) xr_expr(x, m);
@@ -425,9 +664,9 @@ xr_expr(xref_t *x, asn1p_expr_t *e) {
             asn1p_expr_t *m;
             x->generic = NULL; /* Actual parameters of the referencing place */
             TQ_FOR(m, &(ps->rhs_pspecs->members), next) xr_expr(x, m);
-            x->generic = (e->lhs_params && e->spec_index == -1) ? e : saved_generic;
+            x->generic = xr_is_generic(e) ? e : saved_generic;
         }
-        xr_expr(x, ps->my_clone);
+        xr_expr_actuals(x, ps->my_clone, ps->rhs_pspecs);
     }
     if(e->ioc_table) {
         for(size_t r = 0; r < e->ioc_table->rows; r++)
@@ -458,6 +697,9 @@ asn1f_resolve_all_references(arg_t *arg) {
         x.top = expr;
         xr_expr(&x, expr);
     }
+
+    for(size_t i = 0; i < x.nreported; i++) free(x.reported[i]);
+    free(x.reported);
 
     return x.failed ? -1 : 0;
 }

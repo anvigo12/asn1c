@@ -33,7 +33,11 @@
  * Formal parameters of a parameterized assignment have the id
  * "<assignment>%<k>" (lhsParams). With -F, references have a
  * "resolvedId" (an expression id or a formal parameter id) when the
- * fixer resolved them.
+ * fixer resolved them. A parameter governor that is a built-in type
+ * (for example "INTEGER" in {INTEGER:n}) is not a reference: it has no
+ * "resolvedId". In a specialization, a DummyGovernor names the type that
+ * its actual parameter references, or else the actual parameter
+ * "<parent>^<n>{<k>}" (for example a built-in type).
  */
 #include <stdio.h>
 #include <stdarg.h>
@@ -555,7 +559,9 @@ is_positional(const asn1p_expr_t *e) {
 /*
  * Identifiers of specialization clones. The fixer names a clone after its
  * actual parameter, so the identifier comes from the parameterized type:
- * "<Module>.<Type>@<n>", as printed under "specializations".
+ * "<Module>.<Type>@<n>", as printed under "specializations". Also the
+ * actual parameters of each specialization record, "<Module>.<Type>^<n>{<k>}"
+ * (their parent is an unnamed list).
  */
 static struct {
     const asn1p_expr_t **expr;
@@ -585,9 +591,17 @@ clones_collect(asn1p_t *asn) {
         if(mod->_tags & MT_STANDARD_MODULE) break;
         TQ_FOR(tc, &(mod->members), next) {
             for(int i = 0; tc->Identifier && i < tc->specializations.pspecs_count; i++) {
-                if(tc->specializations.pspec[i].my_clone)
-                    clones_add(tc->specializations.pspec[i].my_clone,
+                const struct asn1p_pspec_s *ps = &tc->specializations.pspec[i];
+                if(ps->my_clone)
+                    clones_add(ps->my_clone,
                                str_printf("%s.%s@%d", mod->ModuleName, tc->Identifier, i));
+                if(ps->rhs_pspecs) {
+                    const asn1p_expr_t *m;
+                    int k = 0;
+                    TQ_FOR(m, &(ps->rhs_pspecs->members), next)
+                        clones_add(m, str_printf("%s.%s^%d{%d}", mod->ModuleName,
+                                                 tc->Identifier, i, k++));
+                }
             }
         }
     }
@@ -617,9 +631,9 @@ positional_key(const char *parent, const asn1p_expr_t *m, int pos) {
 static char *
 expr_path(const asn1p_expr_t *e, int depth) {
     if(e == NULL || depth > 64) return NULL;
+    for(size_t i = 0; i < clones.count; i++)
+        if(clones.expr[i] == e) return strdup(clones.id[i]);
     if(e->parent_expr == NULL) {
-        for(size_t i = 0; i < clones.count; i++)
-            if(clones.expr[i] == e) return strdup(clones.id[i]);
         if(!e->module || !e->Identifier) return NULL;
         if(e->spec_index >= 0)
             return str_printf("%s.%s@%d", e->module->ModuleName,
