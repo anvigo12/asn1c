@@ -1,0 +1,74 @@
+ModuleX680TagsDecision { iso org(3) dod(6) internet(1) private(4)
+	enterprise(1) spelio(9363) software(1) asn1c(5) test(1) 188 1 }
+DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+TaggedRoot ::= SEQUENCE {
+    a	 [0] IMPLICIT INTEGER,
+    b	 BOOLEAN,
+    ...,
+ SEQUENCE {
+        c	 INTEGER,    
+        d	 IA5String
+    } OPTIONAL
+}
+
+TaggedRootSet ::= SET {
+    a	 [0] IMPLICIT INTEGER,
+    b	 BOOLEAN,
+    ...,
+ SEQUENCE {
+        c	 NULL,    
+        d	 IA5String
+    } OPTIONAL
+}
+
+AdditionGroup{Type} ::= SEQUENCE {
+    ...,
+ SEQUENCE {
+        a	 Type
+    } OPTIONAL
+}
+
+Additions{Type} ::= SEQUENCE {
+    ...,
+    b	 Type
+}
+
+GroupInstance ::= AdditionGroup{ INTEGER}
+
+AdditionsInstance ::= Additions{ BOOLEAN}
+
+Base ::= SEQUENCE {
+    x	 [0] IMPLICIT INTEGER,
+    y	 [1] IMPLICIT BOOLEAN
+}
+
+WithBase{Type} ::= SEQUENCE {
+    COMPONENTS OF Base,
+    t	 Type
+}
+
+TwoMarkers{Type} ::= CHOICE {
+    a	 Type,
+    ...,
+    b	 BOOLEAN,
+    ...
+}
+
+END
+
+ModuleX680TagsLater { iso org(3) dod(6) internet(1) private(4) enterprise(1)
+	spelio(9363) software(1) asn1c(5) test(1) 188 2 }
+DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+LaterGroupInstance ::= AdditionGroup{ OCTET STRING}
+
+LaterAdditionsInstance ::= Additions{ IA5String}
+
+LaterWithBase ::= WithBase{ IA5String}
+
+LaterTwoMarkers ::= TwoMarkers{ INTEGER}
+
+END

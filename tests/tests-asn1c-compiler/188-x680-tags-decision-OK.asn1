@@ -1,0 +1,89 @@
+-- OK: Everything is fine
+
+-- iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+-- .spelio.software.asn1c.test (9363.1.5.1)
+-- .188
+
+-- The automatic tagging decision (asn1c -fx680-auto-tags), X.680 (02/2021):
+-- 25.3 and 27.4: one decision for the entire ComponentTypeLists. A textual
+-- tag in the root stops automatic tagging also for the components of an
+-- extension addition group. 25.1 (fifth alternative) and 25.10 d): a type
+-- with extension additions only. Each instance of a parameterized type is
+-- tagged once, also an instance that only a later module creates, with its
+-- COMPONENTS OF (25.4, 25.5) and a second extension marker (29.1).
+
+ModuleX680TagsDecision
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 188 1 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	EXPORTS AdditionGroup, Additions, Base, WithBase, TwoMarkers;
+
+	-- The tag of "a" stops automatic tagging of b, c, and d.
+	TaggedRoot ::= SEQUENCE {
+		a	[0] INTEGER,
+		b	BOOLEAN,
+		...,
+		[[ c	INTEGER,
+		   d	IA5String ]]
+	}
+
+	-- The group components are in canonical tag order (27.3).
+	TaggedRootSet ::= SET {
+		a	[0] INTEGER,
+		b	BOOLEAN,
+		...,
+		[[ c	NULL,
+		   d	IA5String ]]
+	}
+
+	-- Extension additions only.
+	AdditionGroup {Type} ::= SEQUENCE {
+		...,
+		[[ a	Type ]]
+	}
+
+	Additions {Type} ::= SEQUENCE {
+		...,
+		b	Type
+	}
+
+	GroupInstance ::= AdditionGroup {INTEGER}
+	AdditionsInstance ::= Additions {BOOLEAN}
+
+	Base ::= SEQUENCE {
+		x	INTEGER,
+		y	BOOLEAN
+	}
+
+	WithBase {Type} ::= SEQUENCE {
+		COMPONENTS OF Base,
+		t	Type
+	}
+
+	TwoMarkers {Type} ::= CHOICE {
+		a	Type,
+		...,
+		b	BOOLEAN,
+		...
+	}
+
+END
+
+ModuleX680TagsLater
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 188 2 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	IMPORTS AdditionGroup, Additions, WithBase, TwoMarkers
+		FROM ModuleX680TagsDecision;
+
+	-- Only this module creates these instances.
+	LaterGroupInstance ::= AdditionGroup {OCTET STRING}
+	LaterAdditionsInstance ::= Additions {IA5String}
+	LaterWithBase ::= WithBase {IA5String}
+	LaterTwoMarkers ::= TwoMarkers {INTEGER}
+
+END

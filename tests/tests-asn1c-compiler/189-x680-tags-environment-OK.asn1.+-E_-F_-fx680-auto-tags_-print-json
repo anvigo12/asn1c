@@ -1,0 +1,1946 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "RESOLVED",
+  "modules": [
+    {
+      "name": "ModuleEnvSet",
+      "sourceFile": "189-x680-tags-environment-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "189"
+          },
+          {
+            "number": "1"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "exports": {
+        "symbols": [
+          {
+            "name": "SetOfTwo",
+            "line": 20
+          }
+        ]
+      },
+      "assignments": [
+        {
+          "id": "ModuleEnvSet.SetOfTwo",
+          "identifier": "SetOfTwo",
+          "line": 23,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SET",
+          "members": [
+            {
+              "id": "ModuleEnvSet.SetOfTwo/f1",
+              "identifier": "f1",
+              "line": 23,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "0"
+              }
+            },
+            {
+              "id": "ModuleEnvSet.SetOfTwo/f2",
+              "identifier": "f2",
+              "line": 24,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ModuleEnvExplicit",
+      "sourceFile": "189-x680-tags-environment-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "189"
+          },
+          {
+            "number": "2"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_EXPLICIT_TAGS"
+      ],
+      "exports": {
+        "symbols": [
+          {
+            "name": "ExplicitPair",
+            "line": 35
+          },
+          {
+            "name": "Nested",
+            "line": 35
+          }
+        ]
+      },
+      "imports": [
+        {
+          "fromModule": "ModuleEnvSet",
+          "symbols": [
+            {
+              "name": "SetOfTwo",
+              "line": 36
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "ModuleEnvExplicit.ExplicitInstance",
+          "identifier": "ExplicitInstance",
+          "line": 38,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "ExplicitPair"
+              }
+            ],
+            "line": 38,
+            "module": "ModuleEnvExplicit",
+            "resolvedId": "ModuleEnvExplicit.ExplicitPair@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleEnvExplicit.ExplicitInstance{0}",
+              "line": 38,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "SetOfTwo"
+                  }
+                ],
+                "line": 38,
+                "module": "ModuleEnvExplicit",
+                "resolvedId": "ModuleEnvSet.SetOfTwo"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleEnvExplicit.ExplicitPair",
+          "identifier": "ExplicitPair",
+          "line": 41,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleEnvExplicit.ExplicitPair%0",
+              "argument": "X"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleEnvExplicit.ExplicitPair^0{0}",
+                  "line": 38,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "SetOfTwo"
+                      }
+                    ],
+                    "line": 38,
+                    "module": "ModuleEnvExplicit",
+                    "resolvedId": "ModuleEnvSet.SetOfTwo"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleEnvExplicit.ExplicitPair@0",
+                "identifier": "ExplicitPair_SetOfTwo",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@0%0",
+                    "argument": "X"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@0{0}",
+                    "line": 38,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "SetOfTwo"
+                        }
+                      ],
+                      "line": 38,
+                      "module": "ModuleEnvExplicit",
+                      "resolvedId": "ModuleEnvSet.SetOfTwo"
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@0/a",
+                    "identifier": "a",
+                    "line": 41,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@0/a{0}",
+                        "line": 38,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "SetOfTwo"
+                            }
+                          ],
+                          "line": 38,
+                          "module": "ModuleEnvExplicit",
+                          "resolvedId": "ModuleEnvSet.SetOfTwo"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@0/b",
+                    "identifier": "b",
+                    "line": 38,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "SetOfTwo"
+                        }
+                      ],
+                      "line": 38,
+                      "module": "ModuleEnvExplicit",
+                      "resolvedId": "ModuleEnvSet.SetOfTwo"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@0/b{0}",
+                        "line": 38,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "SetOfTwo"
+                            }
+                          ],
+                          "line": 38,
+                          "module": "ModuleEnvExplicit",
+                          "resolvedId": "ModuleEnvSet.SetOfTwo"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleEnvExplicit.ExplicitPair^1{0}",
+                  "line": 82,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_CONSTR_SEQUENCE",
+                  "members": [
+                    {
+                      "id": "ModuleEnvExplicit.ExplicitPair^1{0}/g",
+                      "identifier": "g",
+                      "line": 82,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    {
+                      "id": "ModuleEnvExplicit.ExplicitPair^1{0}/h",
+                      "identifier": "h",
+                      "line": 82,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleEnvExplicit.ExplicitPair@1",
+                "identifier": "ExplicitPair",
+                "line": 41,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@1%0",
+                    "argument": "X"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@1{0}",
+                    "line": 82,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "members": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@1{0}/g",
+                        "identifier": "g",
+                        "line": 82,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      },
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@1{0}/h",
+                        "identifier": "h",
+                        "line": 82,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 1,
+                "members": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@1/a",
+                    "identifier": "a",
+                    "line": 41,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@1/a{0}",
+                        "line": 82,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@1/a{0}/g",
+                            "identifier": "g",
+                            "line": 82,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER"
+                          },
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@1/a{0}/h",
+                            "identifier": "h",
+                            "line": 82,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_BOOLEAN"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@1/b",
+                    "identifier": "b",
+                    "line": 82,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@1/b{0}",
+                        "line": 82,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@1/b{0}/g",
+                            "identifier": "g",
+                            "line": 82,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER"
+                          },
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@1/b{0}/h",
+                            "identifier": "h",
+                            "line": 82,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_BOOLEAN"
+                          }
+                        ]
+                      }
+                    ],
+                    "members": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@1/b/g",
+                        "identifier": "g",
+                        "line": 82,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "tagMode": "TM_IMPLICIT",
+                          "value": "0"
+                        }
+                      },
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@1/b/h",
+                        "identifier": "h",
+                        "line": 82,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "tagMode": "TM_IMPLICIT",
+                          "value": "1"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleEnvExplicit.ExplicitPair^2{0}",
+                  "line": 119,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_CONSTR_SEQUENCE",
+                  "members": [
+                    {
+                      "id": "ModuleEnvExplicit.ExplicitPair^2{0}/g",
+                      "identifier": "g",
+                      "line": 119,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "tag": {
+                        "tagClass": "TC_CONTEXT_SPECIFIC",
+                        "value": "0"
+                      }
+                    },
+                    {
+                      "id": "ModuleEnvExplicit.ExplicitPair^2{0}/h",
+                      "identifier": "h",
+                      "line": 119,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_CONSTR_CHOICE",
+                      "tag": {
+                        "tagClass": "TC_CONTEXT_SPECIFIC",
+                        "value": "1"
+                      },
+                      "members": [
+                        {
+                          "id": "ModuleEnvExplicit.ExplicitPair^2{0}/h/p",
+                          "identifier": "p",
+                          "line": 119,
+                          "metaType": "AMT_TYPE",
+                          "exprType": "ASN_BASIC_INTEGER"
+                        },
+                        {
+                          "id": "ModuleEnvExplicit.ExplicitPair^2{0}/h/q",
+                          "identifier": "q",
+                          "line": 119,
+                          "metaType": "AMT_TYPE",
+                          "exprType": "ASN_BASIC_BOOLEAN"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleEnvExplicit.ExplicitPair@2",
+                "identifier": "ExplicitPair",
+                "line": 41,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@2%0",
+                    "argument": "X"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@2{0}",
+                    "line": 119,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "members": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@2{0}/g",
+                        "identifier": "g",
+                        "line": 119,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "value": "0"
+                        }
+                      },
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@2{0}/h",
+                        "identifier": "h",
+                        "line": 119,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_CHOICE",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "value": "1"
+                        },
+                        "members": [
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@2{0}/h/p",
+                            "identifier": "p",
+                            "line": 119,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER"
+                          },
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@2{0}/h/q",
+                            "identifier": "q",
+                            "line": 119,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_BOOLEAN"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 2,
+                "members": [
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@2/a",
+                    "identifier": "a",
+                    "line": 41,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@2/a{0}",
+                        "line": 119,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@2/a{0}/g",
+                            "identifier": "g",
+                            "line": 119,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER",
+                            "tag": {
+                              "tagClass": "TC_CONTEXT_SPECIFIC",
+                              "value": "0"
+                            }
+                          },
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@2/a{0}/h",
+                            "identifier": "h",
+                            "line": 119,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_CONSTR_CHOICE",
+                            "tag": {
+                              "tagClass": "TC_CONTEXT_SPECIFIC",
+                              "value": "1"
+                            },
+                            "members": [
+                              {
+                                "id": "ModuleEnvExplicit.ExplicitPair@2/a{0}/h/p",
+                                "identifier": "p",
+                                "line": 119,
+                                "metaType": "AMT_TYPE",
+                                "exprType": "ASN_BASIC_INTEGER"
+                              },
+                              {
+                                "id": "ModuleEnvExplicit.ExplicitPair@2/a{0}/h/q",
+                                "identifier": "q",
+                                "line": 119,
+                                "metaType": "AMT_TYPE",
+                                "exprType": "ASN_BASIC_BOOLEAN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleEnvExplicit.ExplicitPair@2/b",
+                    "identifier": "b",
+                    "line": 119,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@2/b{0}",
+                        "line": 119,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@2/b{0}/g",
+                            "identifier": "g",
+                            "line": 119,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER",
+                            "tag": {
+                              "tagClass": "TC_CONTEXT_SPECIFIC",
+                              "value": "0"
+                            }
+                          },
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@2/b{0}/h",
+                            "identifier": "h",
+                            "line": 119,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_CONSTR_CHOICE",
+                            "tag": {
+                              "tagClass": "TC_CONTEXT_SPECIFIC",
+                              "value": "1"
+                            },
+                            "members": [
+                              {
+                                "id": "ModuleEnvExplicit.ExplicitPair@2/b{0}/h/p",
+                                "identifier": "p",
+                                "line": 119,
+                                "metaType": "AMT_TYPE",
+                                "exprType": "ASN_BASIC_INTEGER"
+                              },
+                              {
+                                "id": "ModuleEnvExplicit.ExplicitPair@2/b{0}/h/q",
+                                "identifier": "q",
+                                "line": 119,
+                                "metaType": "AMT_TYPE",
+                                "exprType": "ASN_BASIC_BOOLEAN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "members": [
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@2/b/g",
+                        "identifier": "g",
+                        "line": 119,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "tagMode": "TM_IMPLICIT",
+                          "value": "0"
+                        }
+                      },
+                      {
+                        "id": "ModuleEnvExplicit.ExplicitPair@2/b/h",
+                        "identifier": "h",
+                        "line": 119,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_CHOICE",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "tagMode": "TM_EXPLICIT",
+                          "value": "1"
+                        },
+                        "members": [
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@2/b/h/p",
+                            "identifier": "p",
+                            "line": 119,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER"
+                          },
+                          {
+                            "id": "ModuleEnvExplicit.ExplicitPair@2/b/h/q",
+                            "identifier": "q",
+                            "line": 119,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_BOOLEAN"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleEnvExplicit.ExplicitPair/a",
+              "identifier": "a",
+              "line": 41,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleEnvExplicit.ExplicitPair/b",
+              "identifier": "b",
+              "line": 43,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "X"
+                  }
+                ],
+                "line": 43,
+                "module": "ModuleEnvExplicit",
+                "resolvedId": "ModuleEnvExplicit.ExplicitPair%0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleEnvExplicit.Nested",
+          "identifier": "Nested",
+          "line": 46,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleEnvExplicit.Nested/n1",
+              "identifier": "n1",
+              "line": 46,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleEnvExplicit.Nested/n2",
+              "identifier": "n2",
+              "line": 48,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "members": [
+                {
+                  "id": "ModuleEnvExplicit.Nested/n2/m1",
+                  "identifier": "m1",
+                  "line": 48,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                },
+                {
+                  "id": "ModuleEnvExplicit.Nested/n2/m2",
+                  "identifier": "m2",
+                  "line": 49,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ModuleEnvAutomatic",
+      "sourceFile": "189-x680-tags-environment-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "189"
+          },
+          {
+            "number": "3"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "exports": {
+        "symbols": [
+          {
+            "name": "AutomaticPair",
+            "line": 61
+          }
+        ]
+      },
+      "imports": [
+        {
+          "fromModule": "ModuleEnvSet",
+          "symbols": [
+            {
+              "name": "SetOfTwo",
+              "line": 62
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "ModuleEnvAutomatic.AutomaticInstance",
+          "identifier": "AutomaticInstance",
+          "line": 64,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "AutomaticPair"
+              }
+            ],
+            "line": 64,
+            "module": "ModuleEnvAutomatic",
+            "resolvedId": "ModuleEnvAutomatic.AutomaticPair@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleEnvAutomatic.AutomaticInstance{0}",
+              "line": 64,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "SetOfTwo"
+                  }
+                ],
+                "line": 64,
+                "module": "ModuleEnvAutomatic",
+                "resolvedId": "ModuleEnvSet.SetOfTwo"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleEnvAutomatic.AutomaticPair",
+          "identifier": "AutomaticPair",
+          "line": 67,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleEnvAutomatic.AutomaticPair%0",
+              "argument": "Y"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleEnvAutomatic.AutomaticPair^0{0}",
+                  "line": 64,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "SetOfTwo"
+                      }
+                    ],
+                    "line": 64,
+                    "module": "ModuleEnvAutomatic",
+                    "resolvedId": "ModuleEnvSet.SetOfTwo"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleEnvAutomatic.AutomaticPair@0",
+                "identifier": "AutomaticPair_SetOfTwo",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@0%0",
+                    "argument": "Y"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@0{0}",
+                    "line": 64,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "SetOfTwo"
+                        }
+                      ],
+                      "line": 64,
+                      "module": "ModuleEnvAutomatic",
+                      "resolvedId": "ModuleEnvSet.SetOfTwo"
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@0/a",
+                    "identifier": "a",
+                    "line": 67,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@0/a{0}",
+                        "line": 64,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "SetOfTwo"
+                            }
+                          ],
+                          "line": 64,
+                          "module": "ModuleEnvAutomatic",
+                          "resolvedId": "ModuleEnvSet.SetOfTwo"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@0/b",
+                    "identifier": "b",
+                    "line": 64,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "SetOfTwo"
+                        }
+                      ],
+                      "line": 64,
+                      "module": "ModuleEnvAutomatic",
+                      "resolvedId": "ModuleEnvSet.SetOfTwo"
+                    },
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_EXPLICIT",
+                      "value": "1"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@0/b{0}",
+                        "line": 64,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "SetOfTwo"
+                            }
+                          ],
+                          "line": 64,
+                          "module": "ModuleEnvAutomatic",
+                          "resolvedId": "ModuleEnvSet.SetOfTwo"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleEnvAutomatic.AutomaticPair^1{0}",
+                  "line": 102,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_CONSTR_SEQUENCE",
+                  "members": [
+                    {
+                      "id": "ModuleEnvAutomatic.AutomaticPair^1{0}/g",
+                      "identifier": "g",
+                      "line": 102,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    {
+                      "id": "ModuleEnvAutomatic.AutomaticPair^1{0}/h",
+                      "identifier": "h",
+                      "line": 102,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleEnvAutomatic.AutomaticPair@1",
+                "identifier": "AutomaticPair",
+                "line": 67,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@1%0",
+                    "argument": "Y"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@1{0}",
+                    "line": 102,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "members": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@1{0}/g",
+                        "identifier": "g",
+                        "line": 102,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      },
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@1{0}/h",
+                        "identifier": "h",
+                        "line": 102,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 1,
+                "members": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@1/a",
+                    "identifier": "a",
+                    "line": 67,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@1/a{0}",
+                        "line": 102,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleEnvAutomatic.AutomaticPair@1/a{0}/g",
+                            "identifier": "g",
+                            "line": 102,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER"
+                          },
+                          {
+                            "id": "ModuleEnvAutomatic.AutomaticPair@1/a{0}/h",
+                            "identifier": "h",
+                            "line": 102,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_BOOLEAN"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@1/b",
+                    "identifier": "b",
+                    "line": 102,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_EXPLICIT",
+                      "value": "1"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@1/b{0}",
+                        "line": 102,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleEnvAutomatic.AutomaticPair@1/b{0}/g",
+                            "identifier": "g",
+                            "line": 102,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER"
+                          },
+                          {
+                            "id": "ModuleEnvAutomatic.AutomaticPair@1/b{0}/h",
+                            "identifier": "h",
+                            "line": 102,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_BOOLEAN"
+                          }
+                        ]
+                      }
+                    ],
+                    "members": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@1/b/g",
+                        "identifier": "g",
+                        "line": 102,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      },
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@1/b/h",
+                        "identifier": "h",
+                        "line": 102,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleEnvAutomatic.AutomaticPair^2{0}",
+                  "line": 105,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_CONSTR_SEQUENCE",
+                  "members": [
+                    {
+                      "id": "ModuleEnvAutomatic.AutomaticPair^2{0}/g",
+                      "identifier": "g",
+                      "line": 105,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "tag": {
+                        "tagClass": "TC_CONTEXT_SPECIFIC",
+                        "value": "0"
+                      }
+                    },
+                    {
+                      "id": "ModuleEnvAutomatic.AutomaticPair^2{0}/h",
+                      "identifier": "h",
+                      "line": 105,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleEnvAutomatic.AutomaticPair@2",
+                "identifier": "AutomaticPair",
+                "line": 67,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@2%0",
+                    "argument": "Y"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@2{0}",
+                    "line": 105,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "members": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@2{0}/g",
+                        "identifier": "g",
+                        "line": 105,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "value": "0"
+                        }
+                      },
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@2{0}/h",
+                        "identifier": "h",
+                        "line": 105,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 2,
+                "members": [
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@2/a",
+                    "identifier": "a",
+                    "line": 67,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@2/a{0}",
+                        "line": 105,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleEnvAutomatic.AutomaticPair@2/a{0}/g",
+                            "identifier": "g",
+                            "line": 105,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER",
+                            "tag": {
+                              "tagClass": "TC_CONTEXT_SPECIFIC",
+                              "value": "0"
+                            }
+                          },
+                          {
+                            "id": "ModuleEnvAutomatic.AutomaticPair@2/a{0}/h",
+                            "identifier": "h",
+                            "line": 105,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_BOOLEAN"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleEnvAutomatic.AutomaticPair@2/b",
+                    "identifier": "b",
+                    "line": 105,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_EXPLICIT",
+                      "value": "1"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@2/b{0}",
+                        "line": 105,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleEnvAutomatic.AutomaticPair@2/b{0}/g",
+                            "identifier": "g",
+                            "line": 105,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER",
+                            "tag": {
+                              "tagClass": "TC_CONTEXT_SPECIFIC",
+                              "value": "0"
+                            }
+                          },
+                          {
+                            "id": "ModuleEnvAutomatic.AutomaticPair@2/b{0}/h",
+                            "identifier": "h",
+                            "line": 105,
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_BOOLEAN"
+                          }
+                        ]
+                      }
+                    ],
+                    "members": [
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@2/b/g",
+                        "identifier": "g",
+                        "line": 105,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "tagMode": "TM_EXPLICIT",
+                          "value": "0"
+                        }
+                      },
+                      {
+                        "id": "ModuleEnvAutomatic.AutomaticPair@2/b/h",
+                        "identifier": "h",
+                        "line": 105,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleEnvAutomatic.AutomaticPair/a",
+              "identifier": "a",
+              "line": 67,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleEnvAutomatic.AutomaticPair/b",
+              "identifier": "b",
+              "line": 69,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "Y"
+                  }
+                ],
+                "line": 69,
+                "module": "ModuleEnvAutomatic",
+                "resolvedId": "ModuleEnvAutomatic.AutomaticPair%0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ModuleEnvUseAutomatic",
+      "sourceFile": "189-x680-tags-environment-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "189"
+          },
+          {
+            "number": "4"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "imports": [
+        {
+          "fromModule": "ModuleEnvExplicit",
+          "symbols": [
+            {
+              "name": "ExplicitPair",
+              "line": 79
+            },
+            {
+              "name": "Nested",
+              "line": 79
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "ModuleEnvUseAutomatic.InlineAutomatic",
+          "identifier": "InlineAutomatic",
+          "line": 82,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "ExplicitPair"
+              }
+            ],
+            "line": 82,
+            "module": "ModuleEnvUseAutomatic",
+            "resolvedId": "ModuleEnvExplicit.ExplicitPair@1"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleEnvUseAutomatic.InlineAutomatic{0}",
+              "line": 82,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "members": [
+                {
+                  "id": "ModuleEnvUseAutomatic.InlineAutomatic{0}/g",
+                  "identifier": "g",
+                  "line": 82,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                },
+                {
+                  "id": "ModuleEnvUseAutomatic.InlineAutomatic{0}/h",
+                  "identifier": "h",
+                  "line": 82,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleEnvUseAutomatic.WithNested",
+          "identifier": "WithNested",
+          "line": 86,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleEnvUseAutomatic.WithNested/x",
+              "identifier": "x",
+              "line": 86,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "0"
+              }
+            },
+            {
+              "id": "ModuleEnvUseAutomatic.WithNested/n1",
+              "identifier": "n1",
+              "line": 46,
+              "origin": {
+                "componentsOf": "ModuleEnvUseAutomatic.WithNested/#1",
+                "sourceId": "ModuleEnvExplicit.Nested/n1"
+              },
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "1"
+              }
+            },
+            {
+              "id": "ModuleEnvUseAutomatic.WithNested/n2",
+              "identifier": "n2",
+              "line": 48,
+              "origin": {
+                "componentsOf": "ModuleEnvUseAutomatic.WithNested/#1",
+                "sourceId": "ModuleEnvExplicit.Nested/n2"
+              },
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "2"
+              },
+              "members": [
+                {
+                  "id": "ModuleEnvUseAutomatic.WithNested/n2/m1",
+                  "identifier": "m1",
+                  "line": 48,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                },
+                {
+                  "id": "ModuleEnvUseAutomatic.WithNested/n2/m2",
+                  "identifier": "m2",
+                  "line": 49,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ]
+            },
+            {
+              "id": "ModuleEnvUseAutomatic.WithNested/y",
+              "identifier": "y",
+              "line": 88,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_NULL",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "3"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ModuleEnvUseExplicit",
+      "sourceFile": "189-x680-tags-environment-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "189"
+          },
+          {
+            "number": "5"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_EXPLICIT_TAGS"
+      ],
+      "imports": [
+        {
+          "fromModule": "ModuleEnvAutomatic",
+          "symbols": [
+            {
+              "name": "AutomaticPair",
+              "line": 99
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "ModuleEnvUseExplicit.InlineExplicit",
+          "identifier": "InlineExplicit",
+          "line": 102,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "AutomaticPair"
+              }
+            ],
+            "line": 102,
+            "module": "ModuleEnvUseExplicit",
+            "resolvedId": "ModuleEnvAutomatic.AutomaticPair@1"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleEnvUseExplicit.InlineExplicit{0}",
+              "line": 102,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "members": [
+                {
+                  "id": "ModuleEnvUseExplicit.InlineExplicit{0}/g",
+                  "identifier": "g",
+                  "line": 102,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                },
+                {
+                  "id": "ModuleEnvUseExplicit.InlineExplicit{0}/h",
+                  "identifier": "h",
+                  "line": 102,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleEnvUseExplicit.InlineTagged",
+          "identifier": "InlineTagged",
+          "line": 105,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "AutomaticPair"
+              }
+            ],
+            "line": 105,
+            "module": "ModuleEnvUseExplicit",
+            "resolvedId": "ModuleEnvAutomatic.AutomaticPair@2"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleEnvUseExplicit.InlineTagged{0}",
+              "line": 105,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "members": [
+                {
+                  "id": "ModuleEnvUseExplicit.InlineTagged{0}/g",
+                  "identifier": "g",
+                  "line": 105,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER",
+                  "tag": {
+                    "tagClass": "TC_CONTEXT_SPECIFIC",
+                    "value": "0"
+                  }
+                },
+                {
+                  "id": "ModuleEnvUseExplicit.InlineTagged{0}/h",
+                  "identifier": "h",
+                  "line": 105,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ModuleEnvUseImplicit",
+      "sourceFile": "189-x680-tags-environment-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "189"
+          },
+          {
+            "number": "6"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_IMPLICIT_TAGS"
+      ],
+      "imports": [
+        {
+          "fromModule": "ModuleEnvExplicit",
+          "symbols": [
+            {
+              "name": "ExplicitPair",
+              "line": 115
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "ModuleEnvUseImplicit.InlineImplicit",
+          "identifier": "InlineImplicit",
+          "line": 119,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "ExplicitPair"
+              }
+            ],
+            "line": 118,
+            "module": "ModuleEnvUseImplicit",
+            "resolvedId": "ModuleEnvExplicit.ExplicitPair@2"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleEnvUseImplicit.InlineImplicit{0}",
+              "line": 119,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "members": [
+                {
+                  "id": "ModuleEnvUseImplicit.InlineImplicit{0}/g",
+                  "identifier": "g",
+                  "line": 119,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER",
+                  "tag": {
+                    "tagClass": "TC_CONTEXT_SPECIFIC",
+                    "value": "0"
+                  }
+                },
+                {
+                  "id": "ModuleEnvUseImplicit.InlineImplicit{0}/h",
+                  "identifier": "h",
+                  "line": 119,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_CONSTR_CHOICE",
+                  "tag": {
+                    "tagClass": "TC_CONTEXT_SPECIFIC",
+                    "value": "1"
+                  },
+                  "members": [
+                    {
+                      "id": "ModuleEnvUseImplicit.InlineImplicit{0}/h/p",
+                      "identifier": "p",
+                      "line": 119,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    {
+                      "id": "ModuleEnvUseImplicit.InlineImplicit{0}/h/q",
+                      "identifier": "q",
+                      "line": 119,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

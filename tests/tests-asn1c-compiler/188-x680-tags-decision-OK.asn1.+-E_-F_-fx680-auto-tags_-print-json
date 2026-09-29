@@ -1,0 +1,1180 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "RESOLVED",
+  "modules": [
+    {
+      "name": "ModuleX680TagsDecision",
+      "sourceFile": "188-x680-tags-decision-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "188"
+          },
+          {
+            "number": "1"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "exports": {
+        "symbols": [
+          {
+            "name": "AdditionGroup",
+            "line": 21
+          },
+          {
+            "name": "Additions",
+            "line": 21
+          },
+          {
+            "name": "Base",
+            "line": 21
+          },
+          {
+            "name": "WithBase",
+            "line": 21
+          },
+          {
+            "name": "TwoMarkers",
+            "line": 21
+          }
+        ]
+      },
+      "assignments": [
+        {
+          "id": "ModuleX680TagsDecision.TaggedRoot",
+          "identifier": "TaggedRoot",
+          "line": 25,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleX680TagsDecision.TaggedRoot/a",
+              "identifier": "a",
+              "line": 25,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "0"
+              }
+            },
+            {
+              "id": "ModuleX680TagsDecision.TaggedRoot/b",
+              "identifier": "b",
+              "line": 26,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            },
+            {
+              "id": "ModuleX680TagsDecision.TaggedRoot/#2",
+              "identifier": "...",
+              "line": 27,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleX680TagsDecision.TaggedRoot/#3",
+              "line": 28,
+              "extensionGroup": 1,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              },
+              "members": [
+                {
+                  "id": "ModuleX680TagsDecision.TaggedRoot/#3/c",
+                  "identifier": "c",
+                  "line": 28,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                },
+                {
+                  "id": "ModuleX680TagsDecision.TaggedRoot/#3/d",
+                  "identifier": "d",
+                  "line": 29,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_STRING_IA5String"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsDecision.TaggedRootSet",
+          "identifier": "TaggedRootSet",
+          "line": 34,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SET",
+          "members": [
+            {
+              "id": "ModuleX680TagsDecision.TaggedRootSet/a",
+              "identifier": "a",
+              "line": 34,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "0"
+              }
+            },
+            {
+              "id": "ModuleX680TagsDecision.TaggedRootSet/b",
+              "identifier": "b",
+              "line": 35,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            },
+            {
+              "id": "ModuleX680TagsDecision.TaggedRootSet/#2",
+              "identifier": "...",
+              "line": 36,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleX680TagsDecision.TaggedRootSet/#3",
+              "line": 37,
+              "extensionGroup": 1,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              },
+              "members": [
+                {
+                  "id": "ModuleX680TagsDecision.TaggedRootSet/#3/c",
+                  "identifier": "c",
+                  "line": 37,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_NULL"
+                },
+                {
+                  "id": "ModuleX680TagsDecision.TaggedRootSet/#3/d",
+                  "identifier": "d",
+                  "line": 38,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_STRING_IA5String"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsDecision.AdditionGroup",
+          "identifier": "AdditionGroup",
+          "line": 43,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleX680TagsDecision.AdditionGroup%0",
+              "argument": "Type"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleX680TagsDecision.AdditionGroup^0{0}",
+                  "line": 52,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ],
+              "clone": {
+                "id": "ModuleX680TagsDecision.AdditionGroup@0",
+                "identifier": "AdditionGroup",
+                "line": 43,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleX680TagsDecision.AdditionGroup@0%0",
+                    "argument": "Type"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleX680TagsDecision.AdditionGroup@0{0}",
+                    "line": 52,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleX680TagsDecision.AdditionGroup@0/#0",
+                    "identifier": "...",
+                    "line": 43,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "A1TC_EXTENSIBLE",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.AdditionGroup@0/#0{0}",
+                        "line": 52,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleX680TagsDecision.AdditionGroup@0/#1",
+                    "line": 44,
+                    "extensionGroup": 1,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "marker": {
+                      "optional": true,
+                      "indirect": true,
+                      "omitable": true
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.AdditionGroup@0/#1{0}",
+                        "line": 52,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ],
+                    "members": [
+                      {
+                        "id": "ModuleX680TagsDecision.AdditionGroup@0/#1/a",
+                        "identifier": "a",
+                        "line": 52,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "tagMode": "TM_EXPLICIT",
+                          "value": "0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleX680TagsDecision.AdditionGroup^1{0}",
+                  "line": 84,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_OCTET_STRING"
+                }
+              ],
+              "clone": {
+                "id": "ModuleX680TagsDecision.AdditionGroup@1",
+                "identifier": "AdditionGroup",
+                "line": 43,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleX680TagsDecision.AdditionGroup@1%0",
+                    "argument": "Type"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleX680TagsDecision.AdditionGroup@1{0}",
+                    "line": 84,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_OCTET_STRING"
+                  }
+                ],
+                "specIndex": 1,
+                "members": [
+                  {
+                    "id": "ModuleX680TagsDecision.AdditionGroup@1/#0",
+                    "identifier": "...",
+                    "line": 43,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "A1TC_EXTENSIBLE",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.AdditionGroup@1/#0{0}",
+                        "line": 84,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_OCTET_STRING"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleX680TagsDecision.AdditionGroup@1/#1",
+                    "line": 44,
+                    "extensionGroup": 1,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "marker": {
+                      "optional": true,
+                      "indirect": true,
+                      "omitable": true
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.AdditionGroup@1/#1{0}",
+                        "line": 84,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_OCTET_STRING"
+                      }
+                    ],
+                    "members": [
+                      {
+                        "id": "ModuleX680TagsDecision.AdditionGroup@1/#1/a",
+                        "identifier": "a",
+                        "line": 84,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_OCTET_STRING",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "tagMode": "TM_EXPLICIT",
+                          "value": "0"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleX680TagsDecision.AdditionGroup/#0",
+              "identifier": "...",
+              "line": 43,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleX680TagsDecision.AdditionGroup/#1",
+              "line": 44,
+              "extensionGroup": 1,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              },
+              "members": [
+                {
+                  "id": "ModuleX680TagsDecision.AdditionGroup/#1/a",
+                  "identifier": "a",
+                  "line": 44,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Type"
+                      }
+                    ],
+                    "line": 44,
+                    "module": "ModuleX680TagsDecision",
+                    "resolvedId": "ModuleX680TagsDecision.AdditionGroup%0"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsDecision.Additions",
+          "identifier": "Additions",
+          "line": 48,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleX680TagsDecision.Additions%0",
+              "argument": "Type"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleX680TagsDecision.Additions^0{0}",
+                  "line": 53,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ],
+              "clone": {
+                "id": "ModuleX680TagsDecision.Additions@0",
+                "identifier": "Additions",
+                "line": 48,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleX680TagsDecision.Additions@0%0",
+                    "argument": "Type"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleX680TagsDecision.Additions@0{0}",
+                    "line": 53,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleX680TagsDecision.Additions@0/#0",
+                    "identifier": "...",
+                    "line": 48,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "A1TC_EXTENSIBLE",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.Additions@0/#0{0}",
+                        "line": 53,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleX680TagsDecision.Additions@0/b",
+                    "identifier": "b",
+                    "line": 53,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_EXPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.Additions@0/b{0}",
+                        "line": 53,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleX680TagsDecision.Additions^1{0}",
+                  "line": 85,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_STRING_IA5String"
+                }
+              ],
+              "clone": {
+                "id": "ModuleX680TagsDecision.Additions@1",
+                "identifier": "Additions",
+                "line": 48,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleX680TagsDecision.Additions@1%0",
+                    "argument": "Type"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleX680TagsDecision.Additions@1{0}",
+                    "line": 85,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_STRING_IA5String"
+                  }
+                ],
+                "specIndex": 1,
+                "members": [
+                  {
+                    "id": "ModuleX680TagsDecision.Additions@1/#0",
+                    "identifier": "...",
+                    "line": 48,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "A1TC_EXTENSIBLE",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.Additions@1/#0{0}",
+                        "line": 85,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_STRING_IA5String"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleX680TagsDecision.Additions@1/b",
+                    "identifier": "b",
+                    "line": 85,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_STRING_IA5String",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_EXPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.Additions@1/b{0}",
+                        "line": 85,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_STRING_IA5String"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleX680TagsDecision.Additions/#0",
+              "identifier": "...",
+              "line": 48,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleX680TagsDecision.Additions/b",
+              "identifier": "b",
+              "line": 50,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Type"
+                  }
+                ],
+                "line": 50,
+                "module": "ModuleX680TagsDecision",
+                "resolvedId": "ModuleX680TagsDecision.Additions%0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsDecision.GroupInstance",
+          "identifier": "GroupInstance",
+          "line": 52,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "AdditionGroup"
+              }
+            ],
+            "line": 52,
+            "module": "ModuleX680TagsDecision",
+            "resolvedId": "ModuleX680TagsDecision.AdditionGroup@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleX680TagsDecision.GroupInstance{0}",
+              "line": 52,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsDecision.AdditionsInstance",
+          "identifier": "AdditionsInstance",
+          "line": 53,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Additions"
+              }
+            ],
+            "line": 53,
+            "module": "ModuleX680TagsDecision",
+            "resolvedId": "ModuleX680TagsDecision.Additions@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleX680TagsDecision.AdditionsInstance{0}",
+              "line": 53,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsDecision.Base",
+          "identifier": "Base",
+          "line": 56,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleX680TagsDecision.Base/x",
+              "identifier": "x",
+              "line": 56,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "0"
+              }
+            },
+            {
+              "id": "ModuleX680TagsDecision.Base/y",
+              "identifier": "y",
+              "line": 57,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN",
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsDecision.WithBase",
+          "identifier": "WithBase",
+          "line": 61,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleX680TagsDecision.WithBase%0",
+              "argument": "Type"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleX680TagsDecision.WithBase^0{0}",
+                  "line": 86,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_STRING_IA5String"
+                }
+              ],
+              "clone": {
+                "id": "ModuleX680TagsDecision.WithBase@0",
+                "identifier": "WithBase",
+                "line": 61,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleX680TagsDecision.WithBase@0%0",
+                    "argument": "Type"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleX680TagsDecision.WithBase@0{0}",
+                    "line": 86,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_STRING_IA5String"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleX680TagsDecision.WithBase@0/x",
+                    "identifier": "x",
+                    "line": 56,
+                    "origin": {
+                      "componentsOf": "ModuleX680TagsDecision.WithBase@0/#0",
+                      "sourceId": "ModuleX680TagsDecision.Base/x"
+                    },
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    }
+                  },
+                  {
+                    "id": "ModuleX680TagsDecision.WithBase@0/y",
+                    "identifier": "y",
+                    "line": 57,
+                    "origin": {
+                      "componentsOf": "ModuleX680TagsDecision.WithBase@0/#0",
+                      "sourceId": "ModuleX680TagsDecision.Base/y"
+                    },
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "1"
+                    }
+                  },
+                  {
+                    "id": "ModuleX680TagsDecision.WithBase@0/t",
+                    "identifier": "t",
+                    "line": 86,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_STRING_IA5String",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_EXPLICIT",
+                      "value": "2"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.WithBase@0/t{0}",
+                        "line": 86,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_STRING_IA5String"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleX680TagsDecision.WithBase/#0",
+              "line": 61,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_COMPONENTS_OF",
+              "members": [
+                {
+                  "id": "ModuleX680TagsDecision.WithBase/#0/#0",
+                  "line": 61,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Base"
+                      }
+                    ],
+                    "line": 61,
+                    "module": "ModuleX680TagsDecision",
+                    "resolvedId": "ModuleX680TagsDecision.Base"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ModuleX680TagsDecision.WithBase/t",
+              "identifier": "t",
+              "line": 63,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Type"
+                  }
+                ],
+                "line": 63,
+                "module": "ModuleX680TagsDecision",
+                "resolvedId": "ModuleX680TagsDecision.WithBase%0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsDecision.TwoMarkers",
+          "identifier": "TwoMarkers",
+          "line": 66,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_CHOICE",
+          "lhsParams": [
+            {
+              "id": "ModuleX680TagsDecision.TwoMarkers%0",
+              "argument": "Type"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleX680TagsDecision.TwoMarkers^0{0}",
+                  "line": 87,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ],
+              "clone": {
+                "id": "ModuleX680TagsDecision.TwoMarkers@0",
+                "identifier": "TwoMarkers",
+                "line": 66,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_CHOICE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleX680TagsDecision.TwoMarkers@0%0",
+                    "argument": "Type"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleX680TagsDecision.TwoMarkers@0{0}",
+                    "line": 87,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleX680TagsDecision.TwoMarkers@0/a",
+                    "identifier": "a",
+                    "line": 87,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_EXPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.TwoMarkers@0/a{0}",
+                        "line": 87,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleX680TagsDecision.TwoMarkers@0/#1",
+                    "identifier": "...",
+                    "line": 67,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "A1TC_EXTENSIBLE",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.TwoMarkers@0/#1{0}",
+                        "line": 87,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleX680TagsDecision.TwoMarkers@0/b",
+                    "identifier": "b",
+                    "line": 68,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "1"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleX680TagsDecision.TwoMarkers@0/b{0}",
+                        "line": 87,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleX680TagsDecision.TwoMarkers/a",
+              "identifier": "a",
+              "line": 66,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Type"
+                  }
+                ],
+                "line": 66,
+                "module": "ModuleX680TagsDecision",
+                "resolvedId": "ModuleX680TagsDecision.TwoMarkers%0"
+              }
+            },
+            {
+              "id": "ModuleX680TagsDecision.TwoMarkers/#1",
+              "identifier": "...",
+              "line": 67,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            },
+            {
+              "id": "ModuleX680TagsDecision.TwoMarkers/b",
+              "identifier": "b",
+              "line": 68,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            },
+            {
+              "id": "ModuleX680TagsDecision.TwoMarkers/#3",
+              "identifier": "...",
+              "line": 70,
+              "metaType": "AMT_TYPE",
+              "exprType": "A1TC_EXTENSIBLE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ModuleX680TagsLater",
+      "sourceFile": "188-x680-tags-decision-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "188"
+          },
+          {
+            "number": "2"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "imports": [
+        {
+          "fromModule": "ModuleX680TagsDecision",
+          "symbols": [
+            {
+              "name": "AdditionGroup",
+              "line": 80
+            },
+            {
+              "name": "Additions",
+              "line": 80
+            },
+            {
+              "name": "WithBase",
+              "line": 80
+            },
+            {
+              "name": "TwoMarkers",
+              "line": 81
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "ModuleX680TagsLater.LaterGroupInstance",
+          "identifier": "LaterGroupInstance",
+          "line": 84,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "AdditionGroup"
+              }
+            ],
+            "line": 84,
+            "module": "ModuleX680TagsLater",
+            "resolvedId": "ModuleX680TagsDecision.AdditionGroup@1"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleX680TagsLater.LaterGroupInstance{0}",
+              "line": 84,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_OCTET_STRING"
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsLater.LaterAdditionsInstance",
+          "identifier": "LaterAdditionsInstance",
+          "line": 85,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Additions"
+              }
+            ],
+            "line": 85,
+            "module": "ModuleX680TagsLater",
+            "resolvedId": "ModuleX680TagsDecision.Additions@1"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleX680TagsLater.LaterAdditionsInstance{0}",
+              "line": 85,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_STRING_IA5String"
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsLater.LaterWithBase",
+          "identifier": "LaterWithBase",
+          "line": 86,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "WithBase"
+              }
+            ],
+            "line": 86,
+            "module": "ModuleX680TagsLater",
+            "resolvedId": "ModuleX680TagsDecision.WithBase@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleX680TagsLater.LaterWithBase{0}",
+              "line": 86,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_STRING_IA5String"
+            }
+          ]
+        },
+        {
+          "id": "ModuleX680TagsLater.LaterTwoMarkers",
+          "identifier": "LaterTwoMarkers",
+          "line": 87,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "TwoMarkers"
+              }
+            ],
+            "line": 87,
+            "module": "ModuleX680TagsLater",
+            "resolvedId": "ModuleX680TagsDecision.TwoMarkers@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleX680TagsLater.LaterTwoMarkers{0}",
+              "line": 87,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+-- Invalid: X.680 (02/2021) 52.7.1 b) and 52.7.3: the element that is
+-- conceptually added at the end of S has the tag of an open type, and the
+-- OPTIONAL open type "o" comes before it.
+
+TagsOpenTypeInsertion DEFINITIONS IMPLICIT TAGS ::= BEGIN
+	S ::= SEQUENCE { a INTEGER, ..., o TYPE-IDENTIFIER.&Type OPTIONAL }
+END

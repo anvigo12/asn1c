@@ -1,0 +1,5 @@
+-- Invalid: X.680 (02/2021) 25.6.3 across two extension addition groups.
+
+TagsEllipsisTwoGroups DEFINITIONS IMPLICIT TAGS ::= BEGIN
+	S ::= SEQUENCE { a INTEGER, ..., [[ b [1] BOOLEAN OPTIONAL ]], [[ c [1] INTEGER ]] }
+END

@@ -1,0 +1,6 @@
+-- Invalid: X.680 (02/2021) 25.9: automatic tagging, the root components
+-- have no tags, and a component in an extension addition group has a tag.
+
+TagsGroupRootUntagged DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+	S ::= SEQUENCE { a INTEGER, ..., [[ b [3] BOOLEAN ]] }
+END

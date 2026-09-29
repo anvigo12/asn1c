@@ -1,0 +1,121 @@
+-- OK: Everything is fine
+
+-- iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+-- .spelio.software.asn1c.test (9363.1.5.1)
+-- .189
+
+-- The tagging environment (asn1c -fx680-auto-tags).
+-- X.683 (02/2021) 9.8: the tag default for the tags in an actual parameter
+-- is the one of the module where the actual parameter is written, not the
+-- one of the parameterized definition. The first three modules are the
+-- example of 9.8. X.680 (02/2021) 25.10 NOTE 3: COMPONENTS OF does not change
+-- the tags inside the components of the referenced type.
+
+ModuleEnvSet
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 189 1 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	EXPORTS SetOfTwo;
+
+	SetOfTwo ::= SET {
+		f1	INTEGER,
+		f2	BOOLEAN
+	}
+
+END
+
+ModuleEnvExplicit
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 189 2 }
+	DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+	EXPORTS ExplicitPair, Nested;
+	IMPORTS SetOfTwo FROM ModuleEnvSet;
+
+	ExplicitInstance ::= ExplicitPair {SetOfTwo}
+
+	ExplicitPair {X} ::= SEQUENCE {
+		a	INTEGER,
+		b	X
+	}
+
+	Nested ::= SEQUENCE {
+		n1	INTEGER,
+		n2	SEQUENCE {
+			m1	INTEGER,
+			m2	BOOLEAN
+		}
+	}
+
+END
+
+ModuleEnvAutomatic
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 189 3 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	EXPORTS AutomaticPair;
+	IMPORTS SetOfTwo FROM ModuleEnvSet;
+
+	AutomaticInstance ::= AutomaticPair {SetOfTwo}
+
+	AutomaticPair {Y} ::= SEQUENCE {
+		a	INTEGER,
+		b	Y
+	}
+
+END
+
+ModuleEnvUseAutomatic
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 189 4 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	IMPORTS ExplicitPair, Nested FROM ModuleEnvExplicit;
+
+	-- g and h get automatic tags: the actual parameter is written here.
+	InlineAutomatic ::= ExplicitPair { SEQUENCE { g INTEGER, h BOOLEAN } }
+
+	-- m1 and m2 keep the tags of Nested (none): 25.10 NOTE 3.
+	WithNested ::= SEQUENCE {
+		x	INTEGER,
+		COMPONENTS OF Nested,
+		y	NULL
+	}
+
+END
+
+ModuleEnvUseExplicit
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 189 5 }
+	DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+	IMPORTS AutomaticPair FROM ModuleEnvAutomatic;
+
+	-- g and h get no automatic tags.
+	InlineExplicit ::= AutomaticPair { SEQUENCE { g INTEGER, h BOOLEAN } }
+
+	-- The tag of g is explicit.
+	InlineTagged ::= AutomaticPair { SEQUENCE { g [0] INTEGER, h BOOLEAN } }
+
+END
+
+ModuleEnvUseImplicit
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 189 6 }
+	DEFINITIONS IMPLICIT TAGS ::=
+BEGIN
+
+	IMPORTS ExplicitPair FROM ModuleEnvExplicit;
+
+	-- The tag of g is implicit. The tag of h is explicit (X.680 31.2.7 c)).
+	InlineImplicit ::= ExplicitPair {
+		SEQUENCE { g [0] INTEGER, h [1] CHOICE { p INTEGER, q BOOLEAN } } }
+
+END

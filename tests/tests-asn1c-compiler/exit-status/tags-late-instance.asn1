@@ -1,0 +1,11 @@
+-- Valid. With -fx680-auto-tags: the fixer creates the instance
+-- Inner {INTEGER} after it processed the other instances of Inner. Its
+-- tags are [0] and [1] (X.680 (02/2021) 25.3, 25.10 c)); the distinct
+-- tags check shall not run before the tagging decision. Without the
+-- option, asn1c rejects this module (the instance gets no automatic tags).
+
+TagsLateInstance DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+	Inner {Type} ::= SEQUENCE { a Type OPTIONAL, b Type }
+	Outer {Type} ::= SEQUENCE { x Inner {Type} }
+	OuterInstance ::= Outer {INTEGER}
+END

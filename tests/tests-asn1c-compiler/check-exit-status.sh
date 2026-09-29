@@ -121,6 +121,33 @@ expect_status refs-unknown-component 65 --fatal-with "component in WITH COMPONEN
 expect_status refs-unknown-relation 65 --fatal-with "component relation \"@.nosuch\"" -E -F -print-json "$REFS_COMPONENT"
 # The EXPORTS check inside a lookup of the reference pass (it crashed before).
 expect_status refs-not-exported   65 --fatal-with "does not mention Y" -E -F -fcompound-names -print-json "$UNRETURNED"
+# RW-1 (REV-QA-2026-09-29)
+# -fx680-auto-tags: one tagging decision for each ComponentTypeLists and
+# for each instance (X.680 (02/2021) 25.3, 25.4); distinct tags without
+# version brackets and ellipsis (25.6.3), with the conceptually added
+# element at the end (52.7.1 b)). The last four checks keep errors that
+# the fixer found before this change.
+TAGS_DECISION="$T/188-x680-tags-decision-OK.asn1"
+TAGS_LATE_INSTANCE="$T/exit-status/tags-late-instance.asn1"
+TAGS_ELLIPSIS_GROUP="$T/exit-status/tags-ellipsis-group.asn1"
+TAGS_ELLIPSIS_PLAIN="$T/exit-status/tags-ellipsis-plain.asn1"
+TAGS_INSERTION="$T/exit-status/tags-insertion-point.asn1"
+TAGS_OPEN_TYPE="$T/exit-status/tags-open-type-insertion.asn1"
+TAGS_TWO_GROUPS="$T/exit-status/tags-ellipsis-two-groups.asn1"
+TAGS_SET_GROUP="$T/exit-status/tags-set-group.asn1"
+TAGS_ROOT_UNTAGGED="$T/exit-status/tags-group-root-untagged.asn1"
+TAGS_DUMMY_IMPLICIT="$T/exit-status/tags-dummy-implicit.asn1"
+expect_status tags-decision       0  --no-fatal -E -F -fcompound-names -fx680-auto-tags "$TAGS_DECISION"
+expect_status tags-decision-json  0  --no-fatal -E -F -fcompound-names -fprefer-import-source -fx680-auto-tags -print-json "$TAGS_DECISION"
+expect_status tags-late-instance  0  --no-fatal -E -F -fcompound-names -fx680-auto-tags "$TAGS_LATE_INSTANCE"
+expect_status tags-ellipsis-group 65 --fatal-with "component \"a\" .*same tag as component \"b\"" -E -F -fcompound-names -fx680-auto-tags "$TAGS_ELLIPSIS_GROUP"
+expect_status tags-ellipsis-plain 65 --fatal-with "component \"a\" .*same tag as component \"b\"" -E -F -fcompound-names -fx680-auto-tags "$TAGS_ELLIPSIS_PLAIN"
+expect_status tags-insertion-point 65 --fatal-with "potentially has the same tag" -E -F -fcompound-names -fx680-auto-tags "$TAGS_INSERTION"
+expect_status tags-open-type-insertion 65 --fatal-with "component \"o\" .*same tag as component \"...\"" -E -F -fcompound-names -fx680-auto-tags "$TAGS_OPEN_TYPE"
+expect_status tags-ellipsis-two-groups 65 --fatal-with "component \"b\" .*same tag as component \"c\"" -E -F -fcompound-names -fx680-auto-tags "$TAGS_TWO_GROUPS"
+expect_status tags-set-group      65 --fatal-with "component \"a\" .*same tag as component \"b\"" -E -F -fcompound-names -fx680-auto-tags "$TAGS_SET_GROUP"
+expect_status tags-group-root-untagged 65 --fatal-with "extensions are tagged but root components are not" -E -F -fcompound-names -fx680-auto-tags "$TAGS_ROOT_UNTAGGED"
+expect_status tags-dummy-implicit 65 --fatal-with "must be EXPLICIT" -E -F -fcompound-names -fx680-auto-tags "$TAGS_DUMMY_IMPLICIT"
 
 if [ "$failures" -ne 0 ]; then
     echo "$failures exit status check(s) failed"

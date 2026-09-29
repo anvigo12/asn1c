@@ -1,0 +1,6 @@
+-- Invalid: X.680 (02/2021) 25.6.3 ignores the version brackets and the
+-- ellipsis. "a" is OPTIONAL, so "a" and "b" need distinct tags.
+
+TagsEllipsisGroup DEFINITIONS IMPLICIT TAGS ::= BEGIN
+	S ::= SEQUENCE { a [0] INTEGER OPTIONAL, ..., [[ b [0] BOOLEAN ]] }
+END

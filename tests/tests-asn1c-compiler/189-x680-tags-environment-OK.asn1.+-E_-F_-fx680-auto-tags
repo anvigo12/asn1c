@@ -1,0 +1,101 @@
+ModuleEnvSet { iso org(3) dod(6) internet(1) private(4) enterprise(1)
+	spelio(9363) software(1) asn1c(5) test(1) 189 1 }
+DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+SetOfTwo ::= SET {
+    f1	 [0] IMPLICIT INTEGER,
+    f2	 [1] IMPLICIT BOOLEAN
+}
+
+END
+
+ModuleEnvExplicit { iso org(3) dod(6) internet(1) private(4) enterprise(1)
+	spelio(9363) software(1) asn1c(5) test(1) 189 2 }
+DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+ExplicitInstance ::= ExplicitPair{ SetOfTwo}
+
+ExplicitPair{X} ::= SEQUENCE {
+    a	 INTEGER,
+    b	 X
+}
+
+Nested ::= SEQUENCE {
+    n1	 INTEGER,
+    n2	 SEQUENCE {
+        m1	 INTEGER,    
+        m2	 BOOLEAN
+    }
+}
+
+END
+
+ModuleEnvAutomatic { iso org(3) dod(6) internet(1) private(4) enterprise(1)
+	spelio(9363) software(1) asn1c(5) test(1) 189 3 }
+DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+AutomaticInstance ::= AutomaticPair{ SetOfTwo}
+
+AutomaticPair{Y} ::= SEQUENCE {
+    a	 INTEGER,
+    b	 Y
+}
+
+END
+
+ModuleEnvUseAutomatic { iso org(3) dod(6) internet(1) private(4) enterprise(1)
+	spelio(9363) software(1) asn1c(5) test(1) 189 4 }
+DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+InlineAutomatic ::= ExplicitPair{ SEQUENCE {
+        g	 INTEGER,    
+        h	 BOOLEAN
+    }}
+
+WithNested ::= SEQUENCE {
+    x	 [0] IMPLICIT INTEGER,
+    n1	 [1] IMPLICIT INTEGER,
+    n2	 [2] IMPLICIT SEQUENCE {
+        m1	 INTEGER,    
+        m2	 BOOLEAN
+    },
+    y	 [3] IMPLICIT NULL
+}
+
+END
+
+ModuleEnvUseExplicit { iso org(3) dod(6) internet(1) private(4) enterprise(1)
+	spelio(9363) software(1) asn1c(5) test(1) 189 5 }
+DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+InlineExplicit ::= AutomaticPair{ SEQUENCE {
+        g	 INTEGER,    
+        h	 BOOLEAN
+    }}
+
+InlineTagged ::= AutomaticPair{ SEQUENCE {
+        g	 [0] INTEGER,    
+        h	 BOOLEAN
+    }}
+
+END
+
+ModuleEnvUseImplicit { iso org(3) dod(6) internet(1) private(4) enterprise(1)
+	spelio(9363) software(1) asn1c(5) test(1) 189 6 }
+DEFINITIONS IMPLICIT TAGS ::=
+BEGIN
+
+InlineImplicit ::= ExplicitPair{ SEQUENCE {
+        g	 [0] INTEGER,    
+        h	 [1] CHOICE {
+            p	 INTEGER,        
+            q	 BOOLEAN
+        }
+    }}
+
+END

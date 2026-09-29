@@ -1,0 +1,6 @@
+-- Invalid: X.680 (02/2021) 27.3: the components of a SET, extension
+-- additions included, have distinct tags.
+
+TagsSetGroup DEFINITIONS IMPLICIT TAGS ::= BEGIN
+	S ::= SET { a [0] INTEGER, ..., [[ b [0] BOOLEAN ]] }
+END

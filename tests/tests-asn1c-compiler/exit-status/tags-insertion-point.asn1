@@ -1,0 +1,7 @@
+-- Invalid: X.680 (02/2021) 52.7.1 b): the element that is conceptually added
+-- at the end of S follows the OPTIONAL component "c". Its tag matches the
+-- element that is conceptually added in the extensible CHOICE of "c".
+
+TagsInsertionPoint DEFINITIONS IMPLICIT TAGS ::= BEGIN
+	S ::= SEQUENCE { a INTEGER, ..., c CHOICE { x INTEGER, ... } OPTIONAL }
+END

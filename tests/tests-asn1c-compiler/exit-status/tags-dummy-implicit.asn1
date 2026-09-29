@@ -1,0 +1,6 @@
+-- Invalid: X.680 (02/2021) 31.2.9: IMPLICIT on an untagged DummyReference.
+
+TagsDummyImplicit DEFINITIONS IMPLICIT TAGS ::= BEGIN
+	Z {T} ::= SEQUENCE { a [1] IMPLICIT T }
+	Zi ::= Z {INTEGER}
+END
