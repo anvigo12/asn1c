@@ -270,6 +270,11 @@ ASN.1 text.
 With \f[B]\-E \-F\f[R], print the tree after semantic processing.
 The document mirrors the libasn1parser structures, including IMPORTS and
 EXPORTS, source line numbers, and stable expression identifiers.
+With \f[B]\-E \-F\f[R], each reference names its target
+(\f[CR]resolvedId\f[R]), and a reference that cannot be resolved is a
+FATAL error.
+Components copied by COMPONENTS OF show their origin, and extension
+addition groups show their group number.
 .SH TRANSFER SYNTAXES
 The ASN.1 family of standards define a number of ways to encode data,
 including byte\-oriented (e.g., BER), bit\-oriented (e.g., PER), and

@@ -28,6 +28,7 @@ libasn1fix_la_SOURCES =                         \
     asn1fix_tags.c asn1fix_tags.h               \
     asn1fix_enum.c asn1fix_enum.h               \
     asn1fix_cws.c asn1fix_cws.h                 \
+    asn1fix_xref.c asn1fix_xref.h               \
     asn1fix_constraint_compat.c
 
 check_fixer_CPPFLAGS = -DTOP_SRCDIR=${top_srcdir} $(AM_CPPFLAGS)

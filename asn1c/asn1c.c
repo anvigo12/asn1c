@@ -392,6 +392,9 @@ main(int ac, char **av) {
     if(print_arg__print_out) {
         if(print_arg__fix_n_print)
             asn1_printer_flags |= APF_FIXED_TREE;
+        /* The JSON tree after the fixer names the target of every reference */
+        if(print_arg__fix_n_print && (asn1_printer_flags & APF_PRINT_JSON))
+            asn1_fixer_flags |= A1F_RESOLVE_ALL_REFS;
         if((asn1_printer_flags & APF_PRINT_CONSTRAINTS)
            && !print_arg__fix_n_print) {
             fprintf(stderr,
@@ -792,7 +795,9 @@ usage(const char *av0) {
 "  -print-class-matrix   Print out the collected object class matrix (debug)\n"
 "  -print-constraints    Explain subtype constraints (debug)\n"
 "  -print-lines          Generate \"-- #line\" comments in -E output\n"
-"  -print-json           Print the -E (or -E -F) tree as a JSON document\n"
+"  -print-json           Print the -E (or -E -F) tree as a JSON document. With -F,\n"
+"                        every reference names its target; a reference that\n"
+"                        cannot be resolved is a FATAL error\n"
 "\n"
 "Exit status: 0 success; 64 usage error; 65 ASN.1 input error;\n"
 "  66 input file cannot be opened; 70 printing or code generation failed\n"

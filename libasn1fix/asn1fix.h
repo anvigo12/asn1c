@@ -17,9 +17,11 @@ enum asn1f_flags {
 	A1F_COMPOUND_NAMES		= 0x04,	/* A1C_COMPOUND_NAMES  */
 	A1F_PREFER_IMPORT_SOURCE	= 0x08,	/* IMPORTS resolution: require explicit name in xp_members,
 					   skip whole-module fallback */
-	A1F_X680_AUTO_TAGS		= 0x10	/* Automatic tags as X.680 25.10 and 29.5 specify:
+	A1F_X680_AUTO_TAGS		= 0x10,	/* Automatic tags as X.680 25.10 and 29.5 specify:
 					   components of extension addition groups, and
 					   instances of parameterized types */
+	A1F_RESOLVE_ALL_REFS		= 0x20	/* Set the target of every reference, for tree
+					   printers (asn1c -E -F -print-json) */
 };
 
 /*

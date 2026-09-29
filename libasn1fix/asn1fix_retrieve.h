@@ -34,6 +34,14 @@ asn1p_module_t *asn1f_lookup_module(arg_t *arg,
 		const asn1p_oid_t *module_oid, int oid_option);
 
 /*
+ * With generic != 0, asn1f_lookup_symbol() returns a parameterized type
+ * that is named without actual parameters (its generic form) instead of
+ * failing with EPERM. For tree printers (asn1f_resolve_all_references()).
+ * Returns the previous setting.
+ */
+int asn1f_generic_lookups(int generic);
+
+/*
  * Return the reference to a destination of the given reference,
  * symbol lookup. Not a recursive function.
  */

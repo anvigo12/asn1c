@@ -86,6 +86,11 @@ asn1f_process(asn1p_t *asn, enum asn1f_flags flags,
 		}
 	}
 
+	if(flags & A1F_RESOLVE_ALL_REFS) {
+		arg.flags |= A1F_RESOLVE_ALL_REFS;
+		flags &= ~A1F_RESOLVE_ALL_REFS;
+	}
+
 	if(flags & A1F_X680_AUTO_TAGS) {
 		arg.flags |= A1F_X680_AUTO_TAGS;
 		flags &= ~A1F_X680_AUTO_TAGS;
@@ -144,6 +149,20 @@ asn1f_process(asn1p_t *asn, enum asn1f_flags flags,
         if(ret == 1) warnings++;
         asn1_namespace_free(arg.ns);
         arg.ns = 0;
+    }
+
+    /*
+     * Resolve every reference for a tree printer (after all fixes).
+     */
+    if(arg.flags & A1F_RESOLVE_ALL_REFS) {
+        TQ_FOR(arg.mod, &(asn->modules), mod_next) {
+            if(arg.mod->_tags & MT_STANDARD_MODULE) continue;
+            arg.ns = asn1_namespace_new_from_module(arg.mod, 0);
+            ret = asn1f_resolve_all_references(&arg);
+            if(ret == -1) fatals++;
+            asn1_namespace_free(arg.ns);
+            arg.ns = 0;
+        }
     }
 
 	a1f_replace_me_with_proper_interface_arg = (arg_t){

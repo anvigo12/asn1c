@@ -80,6 +80,7 @@ extern arg_t a1f_replace_me_with_proper_interface_arg;
 #include "asn1fix_constraint.h"		/* Constraint manipulation */
 #include "asn1fix_crange.h"		/* Constraint groking, exportable */
 #include "asn1fix_export.h"		/* Exported functions */
+#include "asn1fix_xref.h"		/* References for tree printers */
 
 
 /*
