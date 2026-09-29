@@ -86,11 +86,14 @@ asn1f_process(asn1p_t *asn, enum asn1f_flags flags,
 		}
 	}
 
+	/*
+	 * Specializations for a tree printer substitute everywhere. The
+	 * setting is process-wide: set it for each call.
+	 */
+	asn1p_expr_substitute_in_values((flags & A1F_RESOLVE_ALL_REFS) ? 1 : 0);
 	if(flags & A1F_RESOLVE_ALL_REFS) {
 		arg.flags |= A1F_RESOLVE_ALL_REFS;
 		flags &= ~A1F_RESOLVE_ALL_REFS;
-		/* Specializations for a tree printer: substitute everywhere */
-		asn1p_expr_substitute_in_values(1);
 	}
 
 	if(flags & A1F_X680_AUTO_TAGS) {

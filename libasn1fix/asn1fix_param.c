@@ -55,11 +55,15 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 	rarg.rhs_pspecs = rhs_pspecs;
 	rarg.resolved_name = NULL;
 	exc = asn1p_expr_clone_with_resolver(expr, resolve_expr, &rarg);
-	if(!exc) return NULL;
+	if(!exc) {
+		free(rarg.resolved_name);
+		return NULL;
+	}
 	if(rarg.resolved_name) {
 		free(exc->Identifier);
 		exc->Identifier = rarg.resolved_name;
 		exc->_lineno = 0;
+		rarg.resolved_name = NULL;	/* Owned by the clone */
 	}
 	rpc = asn1p_expr_clone(rhs_pspecs, 0);
 	assert(rpc);
@@ -91,6 +95,9 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 						resolve_expr, &rarg);
 		target = TQ_NEXT(target, next);
 	}
+
+	/* The clones above can set a name again: it is not used */
+	free(rarg.resolved_name);
 
 	DEBUG("Forked new parameterization for %s", expr->Identifier);
 
@@ -147,12 +154,14 @@ resolve_expr(asn1p_expr_t *expr_to_resolve, void *resolver_arg) {
 			? strdup(expr_to_resolve->Identifier) : 0;
 		if(expr->meta_type == AMT_TYPEREF) {
 			asn1p_ref_t *ref = expr->reference;
+			free(rarg->resolved_name);	/* The last name is used */
 			rarg->resolved_name = calloc(1, strlen(rarg->original_expr->Identifier) + strlen(ref->components[ref->comp_count - 1].name) + 2);
 			sprintf(rarg->resolved_name, "%s_%s", rarg->original_expr->Identifier, ref->components[ref->comp_count - 1].name);
 		} else if(expr->meta_type == AMT_VALUESET) {
 			asn1p_constraint_t *ct = expr->constraints;
 			if(ct->type == ACT_EL_TYPE) {
 				asn1p_ref_t *ref = ct->containedSubtype->value.v_type->reference;
+				free(rarg->resolved_name);	/* The last name is used */
 				rarg->resolved_name = strdup(ref->components[ref->comp_count - 1].name);
 			}
 		}
