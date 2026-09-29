@@ -27,6 +27,8 @@ asn1f_pull_components_of(arg_t *arg) {
 	while((memb = TQ_REMOVE(&(expr->members), next))) {
 		asn1p_expr_t *coft;	/* COMPONENTS OF thing itself */
 		asn1p_expr_t *terminal;	/* Terminal of the referenced type */
+		asn1p_expr_t *copy;
+		int coft_index;	/* Declared position of COMPONENTS OF */
 
 		if(memb->expr_type != A1TC_COMPONENTS_OF) {
 			TQ_ADD(&list, memb, next);
@@ -59,6 +61,18 @@ asn1f_pull_components_of(arg_t *arg) {
 
 		coft = asn1p_expr_clone(terminal, 1 /* Skip extensions */);
 		if(!coft) return -1;	/* ENOMEM */
+		coft_index = memb->decl_index;
+
+		/*
+		 * Record the origin of each copy (for tree printers): the
+		 * COMPONENTS OF node and the component of the referenced type.
+		 */
+		TQ_FOR(copy, &(coft->members), next) {
+			copy->copied_from = copy->Identifier
+				? asn1p_lookup_child(terminal, copy->Identifier) : NULL;
+			copy->components_of_index = coft_index;
+			copy->decl_index = -1;	/* Not a declared member here */
+		}
 
 		if(1) {
 			asn1p_expr_free(memb);	/* Don't need it anymore*/
@@ -168,6 +182,7 @@ asn1f_fix_constr_ext(arg_t *arg) {
 				r_value = -1;
 			} else {
 				asn1p_expr_add(expr, v);
+				v->decl_index = -1;	/* Added by the fixer */
 			}
 		} else {
 			r_value = -1;
