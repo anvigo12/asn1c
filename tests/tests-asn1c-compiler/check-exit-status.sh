@@ -119,6 +119,8 @@ expect_status refs-undefined      65 --fatal-with "Cannot resolve reference \"Un
 expect_status refs-unlisted       65 --fatal-with "Cannot resolve reference \"Y\"" -E -F -fprefer-import-source -print-json "$REFS_UNLISTED"
 expect_status refs-unknown-component 65 --fatal-with "component in WITH COMPONENTS \"c\"" -E -F -print-json "$REFS_COMPONENT"
 expect_status refs-unknown-relation 65 --fatal-with "component relation \"@.nosuch\"" -E -F -print-json "$REFS_COMPONENT"
+# The EXPORTS check inside a lookup of the reference pass (it crashed before).
+expect_status refs-not-exported   65 --fatal-with "does not mention Y" -E -F -fcompound-names -print-json "$UNRETURNED"
 
 if [ "$failures" -ne 0 ]; then
     echo "$failures exit status check(s) failed"

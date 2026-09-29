@@ -72,11 +72,15 @@ xr_unresolved(xref_t *x, const asn1p_ref_t *ref, const char *what) {
 static asn1p_expr_t *
 xr_lookup(xref_t *x, asn1p_ref_t *ref, asn1p_expr_t *rhs_pspecs) {
     asn1p_expr_t *target;
+    asn1p_expr_t scratch; /* The lookup marks and reports arg->expr */
     int saved_errno = errno;
     int saved_generic = asn1f_generic_lookups(1);
+    memset(&scratch, 0, sizeof(scratch));
+    scratch._lineno = ref->_lineno;
+    scratch.module = ref->module ? ref->module : x->arg->mod;
     x->look.mod = x->arg->mod;
     x->look.ns = x->arg->ns;
-    x->look.expr = NULL;
+    x->look.expr = &scratch;
     target = asn1f_lookup_symbol(&x->look, NULL, ref);
     asn1f_generic_lookups(saved_generic);
     errno = saved_errno;
