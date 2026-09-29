@@ -58,6 +58,13 @@ typedef struct asn1p_constraint_s {
 	asn1p_value_t *range_stop;
 
 	/*
+	 * The contained subtype that the fixer replaced with the constraints
+	 * of the referenced type (kept for tree printers, not for code
+	 * generation).
+	 */
+	asn1p_value_t *inlined_subtype;
+
+	/*
 	 * A collection of constraint elements.
 	 */
 	struct asn1p_constraint_s **elements;

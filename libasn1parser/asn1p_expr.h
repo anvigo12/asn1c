@@ -171,6 +171,19 @@ typedef struct asn1p_expr_s {
 	int spec_index;	/* -1, or 0-based specialization index in the parent */
 
 	/*
+	 * Provenance for tree printers (asn1c -print-json).
+	 * Code generation does not use these fields.
+	 */
+	int decl_index;	/* -1, or 0-based position in the parent's member list after parsing */
+	int ext_group;	/* 0, or 1-based number of the extension addition group:
+			 * on the group node in SEQUENCE and SET,
+			 * on each alternative of the group in CHOICE */
+	struct asn1p_expr_s *copied_from;	/* COMPONENTS OF: the component of the referenced type */
+	int components_of_index;	/* COMPONENTS OF: decl_index of the COMPONENTS OF node, or -1 */
+	int substituted;	/* 1: a specialization put this expression in the place
+				 * of a DummyReference (X.683 (02/2021) 9.7) */
+
+	/*
 	 * The actual value (DefinedValue or inlined value).
 	 */
 	asn1p_value_t *value;

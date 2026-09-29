@@ -106,6 +106,8 @@ asn1p_expr_new(int _lineno, asn1p_module_t *mod) {
 	if(expr) {
 		TQ_INIT(&(expr->members));
 		expr->spec_index = -1;
+		expr->decl_index = -1;
+		expr->components_of_index = -1;
 		expr->module = mod;
 		expr->_lineno = _lineno;
 		expr->ref_cnt = 0;
@@ -179,6 +181,12 @@ asn1p_expr_clone_impl(asn1p_expr_t *expr, int skip_extensions, asn1p_expr_t *(*r
 				asn1p_expr_free(clone);
 				return NULL;
 			}
+			/* Keep the provenance of the replaced expression */
+			clone->substituted = 1;
+			CLCOPY(decl_index);
+			CLCOPY(ext_group);
+			CLCOPY(copied_from);
+			CLCOPY(components_of_index);
 			return clone;
 		} else if(errno != ESRCH) {
 			return NULL;	/* Hard error */
@@ -198,6 +206,11 @@ asn1p_expr_clone_impl(asn1p_expr_t *expr, int skip_extensions, asn1p_expr_t *(*r
 	CLCOPY(_mark);
 	CLCOPY(parent_expr);
 	CLCOPY(_type_unique_index);
+	CLCOPY(decl_index);
+	CLCOPY(ext_group);
+	CLCOPY(copied_from);
+	CLCOPY(components_of_index);
+	CLCOPY(substituted);
 
 	clone->data = 0;	/* Do not clone this */
 	clone->data_free = 0;	/* Do not clone this */
@@ -320,8 +333,25 @@ value_resolver(asn1p_value_t *value, void *rarg) {
 /*
  * Add expression as a member of another.
  */
+/*
+ * Number of members of an expression.
+ */
+static int
+asn1p_expr_member_count(asn1p_expr_t *expr) {
+	asn1p_expr_t *m;
+	int n = 0;
+	TQ_FOR(m, &(expr->members), next) n++;
+	return n;
+}
+
+/*
+ * The first placement of a member records its declared position
+ * (decl_index). A clone keeps the position of its original.
+ */
 void
 asn1p_expr_add(asn1p_expr_t *to, asn1p_expr_t *what) {
+	if(what->decl_index < 0)
+		what->decl_index = asn1p_expr_member_count(to);
 	TQ_ADD(&(to->members), what, next);
 	what->parent_expr = to;
 }
@@ -332,8 +362,10 @@ asn1p_expr_add(asn1p_expr_t *to, asn1p_expr_t *what) {
 void
 asn1p_expr_add_many(asn1p_expr_t *to, asn1p_expr_t *from_what) {
 	asn1p_expr_t *expr;
+	int n = asn1p_expr_member_count(to);
 	TQ_FOR(expr, &(from_what->members), next) {
 		expr->parent_expr = to;
+		expr->decl_index = n++;
 	}
 	TQ_CONCAT(&(to->members), &(from_what->members), next);
 }
