@@ -466,28 +466,50 @@ asn1f_check_constr_tags_distinct(arg_t *arg) {
 }
 
 /*
- * A1F_X680_AUTO_TAGS: the same check on the series of components in
- * textual order, "ignoring all version brackets" (X.680 25.6.3): the
- * components of an extension addition group take the place of the group.
+ * A1F_X680_AUTO_TAGS: the same check on the complete series of components
+ * in textual order, "ignoring all version brackets and ellipsis notation"
+ * (X.680 (02/2021) 25.6.3). The components of an extension addition group
+ * take the place of the group. An extension marker is not a component of
+ * the series. X.680 52.7.1 b): the check adds one conceptual element at
+ * the end of the type. The first extension marker stands for it: its tag
+ * matches only such elements and the tag of an open type (52.7.3).
  */
 static int
 _asn1f_check_flat_tags_distinct(arg_t *arg, asn1p_expr_t *expr) {
 	asn1p_expr_t **flat = NULL;
-	size_t count = 0, size = 0;
-	asn1p_expr_t *v;
+	asn1p_expr_t *added = NULL;	/* X.680 52.7: conceptually added */
+	size_t count = 0;
+	asn1p_expr_t *v, *gm;
 	int r_value = 0;
 
-	TQ_FOR(v, &(expr->members), next) {
-		asn1p_expr_t *gm;
-		int group = _asn1f_is_ext_group(expr, v);
-		for(gm = group ? TQ_FIRST(&(v->members)) : v; gm;
-		    gm = group ? TQ_NEXT(gm, next) : NULL) {
-			if(count == size) {
-				size = size ? 2 * size : 16;
-				flat = realloc(flat, size * sizeof(flat[0]));
-				assert(flat);
+	/* Pass 0 counts the components, pass 1 stores them */
+	for(int pass = 0; pass < 2; pass++) {
+		size_t n = 0;
+		TQ_FOR(v, &(expr->members), next) {
+			int group = _asn1f_is_ext_group(expr, v);
+			for(gm = group ? TQ_FIRST(&(v->members)) : v; gm;
+			    gm = group ? TQ_NEXT(gm, next) : NULL) {
+				if(gm->expr_type == A1TC_EXTENSIBLE) {
+					if(!added) added = gm;
+					continue;
+				}
+				if(pass) flat[n] = gm;
+				n++;
 			}
-			flat[count++] = gm;
+		}
+		if(pass) {
+			if(added) flat[n++] = added;
+			assert(n == count);
+		} else {
+			count = n + (added ? 1 : 0);
+			if(count == 0) return 0;
+			flat = calloc(count, sizeof(flat[0]));
+			if(!flat) {
+				FATAL("Out of memory while checking the tags of %s "
+					"at line %d", expr->Identifier
+					? expr->Identifier : "a type", expr->_lineno);
+				return -1;
+			}
 		}
 	}
 
