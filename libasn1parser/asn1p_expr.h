@@ -323,6 +323,16 @@ void asn1p_expr_add_many(asn1p_expr_t *to, asn1p_expr_t *from_what);
 asn1p_expr_t *asn1p_lookup_child(asn1p_expr_t *tc, const char *name);
 int asn1p_lookup_child_count_by_name(asn1p_expr_t *tc, const char *name);
 int asn1p_expr_compare(const asn1p_expr_t *, const asn1p_expr_t *);
+
+/*
+ * With enable != 0, a specialization also substitutes DummyReferences
+ * inside values and constraints (types in values, value sets, CHOICE
+ * values; X.683 (02/2021) 8.4, 9.7). The default is off: the C code
+ * generator gives the substituted types of two specializations the same
+ * name. Tree printers (asn1c -E -F -print-json) enable it.
+ * With enable < 0, the setting does not change. Returns the previous setting.
+ */
+int asn1p_expr_substitute_in_values(int enable);
 void asn1p_expr_free(asn1p_expr_t *expr);
 void asn1p_expr_set_source(asn1p_expr_t *, asn1p_module_t *, int lineno);
 

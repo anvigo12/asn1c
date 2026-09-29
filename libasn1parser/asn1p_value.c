@@ -283,7 +283,7 @@ asn1p_value_clone_with_resolver(asn1p_value_t *v,
 				if(clone) return clone;
 				else if(errno != ESRCH) return NULL;
 			}
-			if(resolver) {
+			if(resolver && asn1p_expr_substitute_in_values(-1) > 0) {
 				/* Substitute DummyReferences inside the value set */
 				asn1p_constraint_t *ct = asn1p_constraint_clone_with_resolver(
 					v->value.constraint, resolver, rarg);
@@ -302,7 +302,8 @@ asn1p_value_clone_with_resolver(asn1p_value_t *v,
 			if(!id) { asn1p_value_free(clone); return NULL; }
 			clone->value.choice_identifier.identifier = id;
 			v = asn1p_value_clone_with_resolver(
-				v->value.choice_identifier.value, resolver, rarg);
+				v->value.choice_identifier.value,
+				asn1p_expr_substitute_in_values(-1) > 0 ? resolver : 0, rarg);
 			if(!v) { asn1p_value_free(clone); return NULL; }
 			clone->value.choice_identifier.value = v;
 			return clone;

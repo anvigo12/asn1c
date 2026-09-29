@@ -6,6 +6,15 @@
 
 #include "asn1parser.h"
 
+static int substitute_in_values;	/* See asn1p_expr_substitute_in_values() */
+
+int
+asn1p_expr_substitute_in_values(int enable) {
+	int previous = substitute_in_values;
+	if(enable >= 0) substitute_in_values = enable;
+	return previous;
+}
+
 static asn1p_expr_t *asn1p_expr_clone_impl(asn1p_expr_t *expr, int skip_extensions, asn1p_expr_t *(*)(asn1p_expr_t *, void *), void *);
 static asn1p_value_t *value_resolver(asn1p_value_t *, void *arg);
 
@@ -266,7 +275,8 @@ value_resolver(asn1p_value_t *value, void *rarg) {
 		asn1p_expr_t *(*expr_resolve)(asn1p_expr_t *, void *arg);
 	} *varg = rarg;
 
-	if(value && value->type == ATV_TYPE && value->value.v_type) {
+	if(value && value->type == ATV_TYPE && value->value.v_type
+	   && substitute_in_values) {
 		/*
 		 * A type inside a value or constraint (for example
 		 * "CONTAINING Dummy"): the actual parameter takes the place
