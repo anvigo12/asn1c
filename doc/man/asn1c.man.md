@@ -118,12 +118,16 @@ CBOR and other encoding rules.
     Enable this option to disable that fallback.
 
 -fx680-auto-tags
-:   Apply automatic tagging as X.680 25.10 and 31.2.7 specify, where the
-    default of asn1c differs: the components of an extension addition group
-    (`[[ ... ]]`) get the next tag numbers of the enclosing type and the group
-    gets no tag; instances of parameterized types get automatic tags, and a
-    component whose type is a DummyReference is tagged EXPLICIT. The option
-    changes the tags in the generated code.
+:   Apply automatic tagging as X.680 25.3, 25.10 and 31.2.7 specify, where
+    the default of asn1c differs: one tagging decision covers all components
+    of a type, extension addition groups included; the components of an
+    extension addition group (`[[ ... ]]`) get the next tag numbers of the
+    enclosing type and the group gets no tag; each instance of a
+    parameterized type is tagged once; a type takes the tag default of the
+    module where it is written, also in an actual parameter (X.683 9.8); a
+    component whose type is a DummyReference is tagged EXPLICIT; the check
+    of distinct tags ignores version brackets and the ellipsis (X.680
+    25.6.3). The option changes the tags in the generated code.
 
 -fprefix=*prefix*
 :	Add the specified prefix to all generated type names and filenames.
