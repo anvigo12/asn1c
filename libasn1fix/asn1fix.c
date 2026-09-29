@@ -10,8 +10,8 @@ static void _default_error_logger(int _severity, const char *fmt, ...);
 static int asn1f_fix_module__phase_1(arg_t *arg);
 static int oid_is_numeric(const asn1p_oid_t *oid);
 static int asn1f_fix_module__phase_2(arg_t *arg);
-static int asn1f_fix_instance_tags(arg_t *arg);
-static int asn1f_decide_constr_tags(arg_t *arg);
+static int asn1f_fix_instance_tags(arg_t *arg, int *processed);
+static int asn1f_recurse_tagged(arg_t *arg, int (*callback)(arg_t *arg));
 static int asn1f_fix_simple(arg_t *arg);	/* For INTEGER/ENUMERATED */
 static int asn1f_fix_constructed(arg_t *arg);	/* For SEQUENCE/SET/CHOICE */
 static int asn1f_resolve_constraints(arg_t *arg); /* For subtype constraints */
@@ -129,19 +129,25 @@ asn1f_process(asn1p_t *asn, enum asn1f_flags flags,
         arg.ns = 0;
     }
     /*
-     * Instances of parameterized types can be created after their module
-     * was processed (a reference in a later module creates them). Apply
-     * the tagging decision and automatic tagging to all of them.
+     * Instances of parameterized types can be created after phase I of
+     * their module (a reference in a later module creates them). Phase I
+     * did not process them. Give each of them the constructed-type fixes,
+     * the tagging decision, and automatic tagging, once. Processing an
+     * instance can create more instances, so repeat until no new one.
      */
     if(arg.flags & A1F_X680_AUTO_TAGS) {
-        TQ_FOR(arg.mod, &(asn->modules), mod_next) {
-            arg.ns = asn1_namespace_new_from_module(arg.mod, 0);
-            ret = asn1f_fix_instance_tags(&arg);
-            if(ret == -1) fatals++;
-            if(ret == 1) warnings++;
-            asn1_namespace_free(arg.ns);
-            arg.ns = 0;
-        }
+        int processed;
+        do {
+            processed = 0;
+            TQ_FOR(arg.mod, &(asn->modules), mod_next) {
+                arg.ns = asn1_namespace_new_from_module(arg.mod, 0);
+                ret = asn1f_fix_instance_tags(&arg, &processed);
+                if(ret == -1) fatals++;
+                if(ret == 1) warnings++;
+                asn1_namespace_free(arg.ns);
+                arg.ns = 0;
+            }
+        } while(processed);
     }
     /* PHASE II. */
     TQ_FOR(arg.mod, &(asn->modules), mod_next) {
@@ -332,7 +338,7 @@ asn1f_fix_module__phase_1(arg_t *arg) {
 
 		arg->expr = expr;
 
-		ret = asn1f_recurse_expr(arg, asn1f_fix_constr_autotag);
+		ret = asn1f_recurse_tagged(arg, asn1f_fix_constr_autotag);
 		RET2RVAL(ret, rvalue);
 
 		assert(arg->expr == expr);
@@ -366,11 +372,39 @@ asn1f_fix_module__phase_1(arg_t *arg) {
 		
 		arg->expr = expr;
 
-		ret = asn1f_recurse_expr(arg, asn1f_check_constr_tags_distinct);
+		ret = asn1f_recurse_tagged(arg, asn1f_check_constr_tags_distinct);
 		RET2RVAL(ret, rvalue);
 
 		assert(arg->expr == expr);
 	}
+
+	return rvalue;
+}
+
+/*
+ * asn1f_recurse_expr() for the tagging steps of phase I.
+ * A1F_X680_AUTO_TAGS: skip each instance that phase I did not process
+ * (an instance created after the loop over the instances of its
+ * parameterized type). It has no tagging decision yet, so its tags are
+ * not complete. asn1f_fix_instance_tags() tags and checks it later.
+ */
+static int
+asn1f_recurse_tagged(arg_t *arg, int (*callback)(arg_t *arg)) {
+	asn1p_expr_t *expr = arg->expr;
+	int rvalue = 0;
+	int ret;
+
+	if(!(arg->flags & A1F_X680_AUTO_TAGS)
+	|| !expr->lhs_params || expr->spec_index != -1)
+		return asn1f_recurse_expr(arg, callback);
+
+	for(int i = 0; i < expr->specializations.pspecs_count; i++) {
+		if(!expr->specializations.pspec[i].fixed) continue;
+		arg->expr = expr->specializations.pspec[i].my_clone;
+		ret = asn1f_recurse_expr(arg, callback);
+		RET2RVAL(ret, rvalue);
+	}
+	arg->expr = expr;	/* revert */
 
 	return rvalue;
 }
@@ -438,18 +472,17 @@ asn1f_fix_module__phase_2(arg_t *arg) {
 	return rvalue;
 }
 
-static int
-asn1f_decide_constr_tags(arg_t *arg) {
-	return asn1f_fix_constr_tag(arg, 0);
-}
-
 /*
- * A1F_X680_AUTO_TAGS: the tagging decision (X.680 25.3, 29.2) and the
- * automatic tags of each instance of the parameterized types of a module.
- * The steps are idempotent, so instances that phase I processed are safe.
+ * A1F_X680_AUTO_TAGS: process each instance of the parameterized types of
+ * a module that phase I did not process: the tag of the type itself, the
+ * constructed-type fixes with the tagging decision (X.680 25.3, 25.4, 29.2),
+ * automatic tagging, and the distinct tags check. Each instance is
+ * processed once: a second tagging decision would take the automatic tags
+ * of the first one for textual tags. Adds the number of processed
+ * instances to *processed.
  */
 static int
-asn1f_fix_instance_tags(arg_t *arg) {
+asn1f_fix_instance_tags(arg_t *arg, int *processed) {
 	asn1p_expr_t *expr;
 	int rvalue = 0;
 	int ret;
@@ -457,14 +490,21 @@ asn1f_fix_instance_tags(arg_t *arg) {
 	TQ_FOR(expr, &(arg->mod->members), next) {
 		if(expr->_mark & TM_ENCODING_INSTRUCTION) continue;
 		if(!expr->lhs_params || expr->spec_index != -1) continue;
-		/* asn1f_recurse_expr() visits the instances of expr */
-		arg->expr = expr;
-		ret = asn1f_recurse_expr(arg, asn1f_decide_constr_tags);
-		RET2RVAL(ret, rvalue);
-		ret = asn1f_recurse_expr(arg, asn1f_fix_constr_autotag);
-		RET2RVAL(ret, rvalue);
-		ret = asn1f_recurse_expr(arg, asn1f_check_constr_tags_distinct);
-		RET2RVAL(ret, rvalue);
+		/* The count can grow while the loop runs */
+		for(int i = 0; i < expr->specializations.pspecs_count; i++) {
+			if(expr->specializations.pspec[i].fixed) continue;
+			expr->specializations.pspec[i].fixed = 1;
+			(*processed)++;
+			arg->expr = expr->specializations.pspec[i].my_clone;
+			ret = asn1f_fix_constr_tag(arg, 1);
+			RET2RVAL(ret, rvalue);
+			ret = asn1f_recurse_expr(arg, asn1f_fix_constructed);
+			RET2RVAL(ret, rvalue);
+			ret = asn1f_recurse_expr(arg, asn1f_fix_constr_autotag);
+			RET2RVAL(ret, rvalue);
+			ret = asn1f_recurse_expr(arg, asn1f_check_constr_tags_distinct);
+			RET2RVAL(ret, rvalue);
+		}
 		arg->expr = expr;
 	}
 
@@ -483,6 +523,11 @@ phase_1_1(arg_t *arg, int prm2) {
 			/* Do not process the parameterized type just yet */
 			return 0;
 		for(i = 0; i < expr->specializations.pspecs_count; i++) {
+			/*
+			 * The automatic tagging and the checks of phase I
+			 * (asn1f_fix_module__phase_1) also cover this instance.
+			 */
+			expr->specializations.pspec[i].fixed = 1;
 			arg->expr = expr->specializations.pspec[i].my_clone;
 			ret = phase_1_1(arg, 0);
 			RET2RVAL(ret, rvalue);

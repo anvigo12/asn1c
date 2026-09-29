@@ -165,6 +165,7 @@ typedef struct asn1p_expr_s {
 		struct asn1p_pspec_s {
 			struct asn1p_expr_s *rhs_pspecs;
 			struct asn1p_expr_s *my_clone;
+			int fixed;	/* 1: the fixer processed my_clone */
 		} *pspec;
 		int pspecs_count;	/* Number of specializations */
 	} specializations;
