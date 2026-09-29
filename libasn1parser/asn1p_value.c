@@ -241,6 +241,11 @@ asn1p_value_clone_with_resolver(asn1p_value_t *v,
 		case ATV_REAL:
 			return asn1p_value_fromdouble(v->value.v_double);
 		case ATV_TYPE:
+			if(resolver) {
+				clone = resolver(v, rarg);
+				if(clone) return clone;
+				else if(errno != ESRCH) return NULL;
+			}
 			return asn1p_value_fromtype(v->value.v_type);
 		case ATV_INTEGER:
 		case ATV_MIN:
@@ -278,6 +283,15 @@ asn1p_value_clone_with_resolver(asn1p_value_t *v,
 				if(clone) return clone;
 				else if(errno != ESRCH) return NULL;
 			}
+			if(resolver) {
+				/* Substitute DummyReferences inside the value set */
+				asn1p_constraint_t *ct = asn1p_constraint_clone_with_resolver(
+					v->value.constraint, resolver, rarg);
+				if(!ct) return NULL;
+				clone = asn1p_value_fromconstr(ct, 0);
+				if(!clone) asn1p_constraint_free(ct);
+				return clone;
+			}
 			return asn1p_value_fromconstr(v->value.constraint, 1);
 		case ATV_CHOICE_IDENTIFIER: {
 			char *id = v->value.choice_identifier.identifier;
@@ -287,7 +301,8 @@ asn1p_value_clone_with_resolver(asn1p_value_t *v,
 			id = strdup(id);
 			if(!id) { asn1p_value_free(clone); return NULL; }
 			clone->value.choice_identifier.identifier = id;
-			v = asn1p_value_clone(v->value.choice_identifier.value);
+			v = asn1p_value_clone_with_resolver(
+				v->value.choice_identifier.value, resolver, rarg);
 			if(!v) { asn1p_value_free(clone); return NULL; }
 			clone->value.choice_identifier.value = v;
 			return clone;

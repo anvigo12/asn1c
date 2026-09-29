@@ -253,6 +253,24 @@ value_resolver(asn1p_value_t *value, void *rarg) {
 		asn1p_expr_t *(*expr_resolve)(asn1p_expr_t *, void *arg);
 	} *varg = rarg;
 
+	if(value && value->type == ATV_TYPE && value->value.v_type) {
+		/*
+		 * A type inside a value or constraint (for example
+		 * "CONTAINING Dummy"): the actual parameter takes the place
+		 * of each DummyReference in it (X.683 (02/2021) 8.4, 9.7).
+		 */
+		asn1p_expr_t *type = asn1p_expr_clone_with_resolver(
+			value->value.v_type, varg->expr_resolve, rarg);
+		if(!type) return NULL;
+		cval = asn1p_value_fromtype(type);
+		if(!cval) {
+			asn1p_expr_free(type);
+			return NULL;
+		}
+		type->ref_cnt--;	/* The value is the only owner */
+		return cval;
+	}
+
 	if(!value || value->type != ATV_REFERENCED) {
 		errno = ESRCH;
 		return NULL;
