@@ -1,5 +1,7 @@
 #include "asn1fix_internal.h"
 
+static int generic_lookups;	/* See asn1f_generic_lookups() */
+
 enum ftt_what {
 	FTT_TYPE,	/* Find the type of the given expression */
 	FTT_VALUE,	/* Find the value of the given expression */
@@ -370,7 +372,7 @@ asn1f_lookup_symbol_impl(arg_t *arg, asn1p_expr_t *rhs_pspecs, const asn1p_ref_t
                         ref_tc->Identifier, asn1f_printable_reference(ref),
                         ref->_lineno);
                 }
-                if(!rhs_pspecs && ref_tc->lhs_params) {
+                if(!rhs_pspecs && ref_tc->lhs_params && !generic_lookups) {
                     FATAL(
                         "Type %s expects specialization "
                         "from %s at line %d",
@@ -473,6 +475,13 @@ asn1f_lookup_symbol_impl(arg_t *arg, asn1p_expr_t *rhs_pspecs, const asn1p_ref_t
 	return NULL;
 }
 
+
+int
+asn1f_generic_lookups(int generic) {
+    int previous = generic_lookups;
+    generic_lookups = generic;
+    return previous;
+}
 
 asn1p_expr_t *
 asn1f_lookup_symbol(arg_t *arg, asn1p_expr_t *rhs_pspecs,

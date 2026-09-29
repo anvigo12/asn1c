@@ -1,0 +1,24 @@
+-- Semantic error for check-exit-status.sh (not scanned by check_fixer).
+-- ModuleRefsUnlistedB uses Y inside a parameterized type. No IMPORTS clause
+-- of ModuleRefsUnlistedB lists Y, and ModuleRefsUnlistedA does not export it
+-- (X.680 (02/2021) 13.19). With -fprefer-import-source and -print-json the
+-- reference pass shall report it.
+
+ModuleRefsUnlistedA
+	{ iso org(3) dod(6) internet (1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 187 2 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+	EXPORTS X;
+	X ::= INTEGER
+	Y ::= BOOLEAN
+END
+
+ModuleRefsUnlistedB
+	{ iso org(3) dod(6) internet (1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 187 3 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+	IMPORTS X FROM ModuleRefsUnlistedA;
+	Wrapper {P} ::= SEQUENCE { p P, x X, y Y }
+END

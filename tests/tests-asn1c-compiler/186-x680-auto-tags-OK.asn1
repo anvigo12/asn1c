@@ -1,0 +1,44 @@
+
+-- OK: Everything is fine
+
+-- iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+-- .spelio.software.asn1c.test (9363.1.5.1)
+-- .186
+
+-- Extension addition groups and automatic tags (asn1c -fx680-auto-tags).
+-- X.680 (02/2021) 25.10 c) and d): the components of an extension addition
+-- group take the next tag numbers of the enclosing type; the group has no
+-- tag. 31.2.7 c): a component whose type is a DummyReference is explicitly
+-- tagged, also in each specialization.
+
+ModuleX680AutoTags
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 186 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	Situation ::= SEQUENCE {
+		a	INTEGER,
+		b	BOOLEAN OPTIONAL,
+		...,
+		[[ c	INTEGER OPTIONAL,
+		   d	BOOLEAN OPTIONAL ]],
+		[[ e	OCTET STRING OPTIONAL ]],
+		f	NULL OPTIONAL
+	}
+
+	Choice ::= CHOICE {
+		x	INTEGER,
+		...,
+		[[ y	BOOLEAN,
+		   z	NULL ]]
+	}
+
+	Pair {Type} ::= SEQUENCE {
+		first	Type,
+		second	BOOLEAN OPTIONAL
+	}
+
+	IntPair ::= Pair {INTEGER}
+
+END

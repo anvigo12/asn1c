@@ -41,6 +41,12 @@ typedef struct asn1p_ref_s {
 	size_t comp_size;	/* Number of allocated structures */
 
 	struct asn1p_expr_s *ref_expr;  /* De-referenced expression */
+	/*
+	 * A DummyReference: the parameterized assignment and the 0-based
+	 * index of its formal parameter (set for tree printers).
+	 */
+	struct asn1p_expr_s *ref_param_owner;
+	int ref_param_index;
 	struct asn1p_module_s *module;	/* Defined in module */
 	int _lineno;	/* Number of line in the file */
 } asn1p_ref_t;

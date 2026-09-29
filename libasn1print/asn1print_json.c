@@ -12,16 +12,28 @@
  *   Module.Name                 top-level assignment
  *   <parent>/member             named member
  *   <parent>/#<n>               unnamed member or extension marker
- *                               (0-based position among the members)
+ *                               (0-based position among the members as
+ *                               declared; the fixer does not change it)
+ *   <parent>/+<n>               unnamed member that the fixer added
+ *                               (0-based position after the fixer)
  *   <parent>{<n>}               actual parameter <n> of a parameterized
  *                               type reference
  *   <parent>@<n>                specialization <n> of a parameterized type
  *   <parent>^<n>{<k>}           actual parameter <k> recorded for
  *                               specialization <n>
- *   <parent>$<n>                expression inside a value or constraint
- *                               (<n> counts in print order)
+ *   <parent>$<path>             expression inside a value or constraint.
+ *                               <path> names the place from the parent:
+ *                               c (constraints), cc (combinedConstraints),
+ *                               v (value), d (DEFAULT value), then per
+ *                               level: <i> (constraint element i),
+ *                               s (contained subtype), v (value),
+ *                               lo, hi (range ends), vs (value set),
+ *                               cv (CHOICE value); for example "$c.0.s"
  *   <parent>!<row>.<column>     value of an information object table cell
- * With -F, references have a "resolvedId" when the fixer resolved them.
+ * Formal parameters of a parameterized assignment have the id
+ * "<assignment>%<k>" (lhsParams). With -F, references have a
+ * "resolvedId" (an expression id or a formal parameter id) when the
+ * fixer resolved them.
  */
 #include <stdio.h>
 #include <stdarg.h>
@@ -37,7 +49,7 @@
 #include "asn1print.h"
 
 #define JSON_FORMAT_NAME "asn1c.ast.json"
-#define JSON_FORMAT_VERSION 1
+#define JSON_FORMAT_VERSION 2
 #define JSON_MAX_DEPTH 512
 #define JSON_MAX_DEPTH_TEXT "512"
 
@@ -52,6 +64,7 @@ static struct {
     int failed;                /* Output error or depth overflow */
     const char *ctx_id;        /* Expression being printed, for messages */
     int ctx_line;
+    int resolved;              /* The tree was processed by the fixer */
 } jw;
 
 /* Report the first failure as a FATAL diagnostic. asn1c then exits 70. */
@@ -588,6 +601,18 @@ clones_free(void) {
     memset(&clones, 0, sizeof(clones));
 }
 
+/*
+ * Path component of an unnamed member at position pos (0-based) in its
+ * parent: the declared position, or "+<pos>" for a member that the fixer
+ * added (resolved view only).
+ */
+static char *
+positional_key(const char *parent, const asn1p_expr_t *m, int pos) {
+    if(!jw.resolved) return str_printf("%s/#%d", parent, pos);
+    if(m->decl_index >= 0) return str_printf("%s/#%d", parent, m->decl_index);
+    return str_printf("%s/+%d", parent, pos);
+}
+
 /* Path of an expression, from its parent chain. NULL if unknown. */
 static char *
 expr_path(const asn1p_expr_t *e, int depth) {
@@ -611,7 +636,7 @@ expr_path(const asn1p_expr_t *e, int depth) {
                 if(m == e) break;
                 n++;
             }
-            path = str_printf("%s/#%d", parent, n);
+            path = positional_key(parent, e, n);
         } else {
             path = str_printf("%s/%s", parent, e->Identifier);
         }
@@ -626,9 +651,45 @@ expr_path(const asn1p_expr_t *e, int depth) {
 static struct {
     const asn1p_expr_t *expr[JSON_MAX_DEPTH];
     const char *id[JSON_MAX_DEPTH];
-    int embedded[JSON_MAX_DEPTH]; /* "$<n>" counter of each expression */
+    size_t vbase[JSON_MAX_DEPTH]; /* Start of the "$<path>" of each expression */
     int depth;
 } stack;
+
+/*
+ * Path from the current expression to the value or constraint being
+ * printed (the "<path>" of "$<path>" ids). Tokens are separated by ".".
+ */
+static struct {
+    char buf[4096];
+    size_t len;
+} vpath;
+
+static size_t
+vpath_push(const char *fmt, ...) {
+    size_t saved = vpath.len;
+    size_t base = stack.depth ? stack.vbase[stack.depth - 1] : 0;
+    va_list ap;
+    int n;
+    if(vpath.len > base && vpath.len < sizeof(vpath.buf) - 1)
+        vpath.buf[vpath.len++] = '.';
+    va_start(ap, fmt);
+    n = vsnprintf(vpath.buf + vpath.len, sizeof(vpath.buf) - vpath.len, fmt, ap);
+    va_end(ap);
+    if(n < 0 || (size_t)n >= sizeof(vpath.buf) - vpath.len) {
+        j_fail("value path too long");
+        vpath.len = saved;
+        vpath.buf[vpath.len] = '\0';
+        return saved;
+    }
+    vpath.len += n;
+    return saved;
+}
+
+static void
+vpath_pop(size_t saved) {
+    vpath.len = saved;
+    vpath.buf[vpath.len] = '\0';
+}
 
 static void j_expr(const asn1p_expr_t *e, const char *id);
 static void j_value(const asn1p_value_t *v);
@@ -637,9 +698,9 @@ static void j_constraint(const asn1p_constraint_t *ct);
 /* Identifier for an expression inside a value or constraint. */
 static char *
 embedded_id(void) {
-    if(stack.depth == 0) return strdup("$");
-    return str_printf("%s$%d", stack.id[stack.depth - 1],
-                      stack.embedded[stack.depth - 1]++);
+    if(stack.depth == 0) return str_printf("$%s", vpath.buf);
+    return str_printf("%s$%s", stack.id[stack.depth - 1],
+                      vpath.buf + stack.vbase[stack.depth - 1]);
 }
 
 static void
@@ -677,6 +738,14 @@ j_ref(const asn1p_ref_t *ref) {
         char *rid = expr_path(ref->ref_expr, 0);
         jk_str("resolvedId", rid);
         free(rid);
+    } else if(ref->ref_param_owner) {
+        char *owner = expr_path(ref->ref_param_owner, 0);
+        if(owner) {
+            char *rid = str_printf("%s%%%d", owner, ref->ref_param_index);
+            jk_str("resolvedId", rid);
+            free(rid);
+            free(owner);
+        }
     }
     j_obj_end();
 }
@@ -753,8 +822,10 @@ j_value(const asn1p_value_t *v) {
     }
     case ATV_VALUESET:
         if(v->value.constraint) {
+            size_t saved = vpath_push("vs");
             j_key("constraint");
             j_constraint(v->value.constraint);
+            vpath_pop(saved);
         }
         break;
     case ATV_REFERENCED:
@@ -766,8 +837,10 @@ j_value(const asn1p_value_t *v) {
     case ATV_CHOICE_IDENTIFIER:
         jk_str("choiceIdentifier", v->value.choice_identifier.identifier);
         if(v->value.choice_identifier.value) {
+            size_t saved = vpath_push("cv");
             j_key("choiceValue");
             j_value(v->value.choice_identifier.value);
+            vpath_pop(saved);
         }
         break;
     }
@@ -785,26 +858,44 @@ j_constraint(const asn1p_constraint_t *ct) {
     }
     jk_int("line", ct->_lineno);
     if(ct->containedSubtype) {
+        size_t saved = vpath_push("s");
         j_key("containedSubtype");
         j_value(ct->containedSubtype);
+        vpath_pop(saved);
+    }
+    if(ct->inlined_subtype) {
+        /* Same path as the declared contained subtype */
+        size_t saved = vpath_push("s");
+        j_key("inlinedSubtype");
+        j_value(ct->inlined_subtype);
+        vpath_pop(saved);
     }
     if(ct->value) {
+        size_t saved = vpath_push("v");
         j_key("value");
         j_value(ct->value);
+        vpath_pop(saved);
     }
     if(ct->range_start) {
+        size_t saved = vpath_push("lo");
         j_key("rangeStart");
         j_value(ct->range_start);
+        vpath_pop(saved);
     }
     if(ct->range_stop) {
+        size_t saved = vpath_push("hi");
         j_key("rangeStop");
         j_value(ct->range_stop);
+        vpath_pop(saved);
     }
     if(ct->el_count) {
         j_key("elements");
         j_arr_begin();
-        for(unsigned int i = 0; i < ct->el_count; i++)
+        for(unsigned int i = 0; i < ct->el_count; i++) {
+            size_t saved = vpath_push("%u", i);
             j_constraint(ct->elements[i]);
+            vpath_pop(saved);
+        }
         j_arr_end();
     }
     j_obj_end();
@@ -874,8 +965,10 @@ j_marker(const struct asn1p_expr_marker_s *m) {
     jk_bool("omitable", (m->flags & EM_OMITABLE) != 0);
     jk_bool("unrecurse", (m->flags & EM_UNRECURSE) != 0);
     if(m->default_value) {
+        size_t saved = vpath_push("d");
         j_key("defaultValue");
         j_value(m->default_value);
+        vpath_pop(saved);
     }
     j_obj_end();
 }
@@ -892,7 +985,7 @@ j_members_array(const char *key, const asn1p_expr_t *container,
         if(actual_params)
             id = str_printf("%s{%d}", parent_id, n);
         else if(is_positional(m))
-            id = str_printf("%s/#%d", parent_id, n);
+            id = positional_key(parent_id, m, n);
         else
             id = str_printf("%s/%s", parent_id, m->Identifier);
         j_expr(m, id);
@@ -923,13 +1016,27 @@ j_expr(const asn1p_expr_t *e, const char *id) {
     }
     stack.expr[stack.depth] = e;
     stack.id[stack.depth] = id;
-    stack.embedded[stack.depth] = 0;
+    stack.vbase[stack.depth] = vpath.len;
     stack.depth++;
     jw.ctx_id = id;
     jw.ctx_line = e->_lineno;
 
     jk_str("identifier", e->Identifier);
     jk_int("line", e->_lineno);
+    jk_int("extensionGroup", e->ext_group);
+    if(e->components_of_index >= 0 && stack.depth >= 2) {
+        /* A component that the fixer copied from COMPONENTS OF */
+        char *src = e->copied_from ? expr_path(e->copied_from, 0) : NULL;
+        char *cof = str_printf("%s/#%d", stack.id[stack.depth - 2],
+                               e->components_of_index);
+        j_key("origin");
+        j_obj_begin();
+        jk_str("componentsOf", cof);
+        jk_str("sourceId", src);
+        j_obj_end();
+        free(cof);
+        free(src);
+    }
     j_key("metaType");
     j_str(meta_type_name(e->meta_type));
     j_key("exprType");
@@ -956,19 +1063,26 @@ j_expr(const asn1p_expr_t *e, const char *id) {
     }
     jk_bool("unique", e->unique);
     if(e->constraints) {
+        size_t saved = vpath_push("c");
         j_key("constraints");
         j_constraint(e->constraints);
+        vpath_pop(saved);
     }
     if(e->combined_constraints) {
+        size_t saved = vpath_push("cc");
         j_key("combinedConstraints");
         j_constraint(e->combined_constraints);
+        vpath_pop(saved);
     }
     if(e->lhs_params && e->lhs_params->params_count) {
         j_key("lhsParams");
         j_arr_begin();
         for(int i = 0; i < e->lhs_params->params_count; i++) {
             const struct asn1p_param_s *p = &e->lhs_params->params[i];
+            char *pid = str_printf("%s%%%d", id, i);
             j_obj_begin();
+            jk_str("id", pid);
+            free(pid);
             if(p->governor) {
                 j_key("governor");
                 j_ref(p->governor);
@@ -1004,8 +1118,10 @@ j_expr(const asn1p_expr_t *e, const char *id) {
         j_int(e->spec_index);
     }
     if(e->value) {
+        size_t saved = vpath_push("v");
         j_key("value");
         j_value(e->value);
+        vpath_pop(saved);
     }
     if(e->with_syntax) {
         j_key("withSyntax");
@@ -1030,6 +1146,7 @@ j_expr(const asn1p_expr_t *e, const char *id) {
     if(TQ_FIRST(&(e->members))) j_members_array("members", e, id, 0);
 
     stack.depth--;
+    vpath_pop(stack.vbase[stack.depth]);
     jw.ctx_id = stack.depth ? stack.id[stack.depth - 1] : NULL;
     jw.ctx_line = stack.depth ? stack.expr[stack.depth - 1]->_lineno : 0;
     j_obj_end();
@@ -1147,7 +1264,9 @@ asn1print_json(asn1p_t *asn, enum asn1print_flags flags) {
 
     memset(&jw, 0, sizeof(jw));
     memset(&stack, 0, sizeof(stack));
+    memset(&vpath, 0, sizeof(vpath));
     jw.pretty = !(flags & APF_NOINDENT);
+    jw.resolved = (flags & APF_FIXED_TREE) != 0;
     clones_collect(asn);
 
     j_obj_begin();

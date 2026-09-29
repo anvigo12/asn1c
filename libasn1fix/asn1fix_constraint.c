@@ -241,6 +241,12 @@ _remove_extensions(arg_t *arg, asn1p_constraint_t *ct, int forgive_last) {
 	/* Keep extensible SizeConstraint */
 	if(ct->type == ACT_CT_SIZE && forgive_last) return;
 
+	/*
+	 * In WITH COMPONENTS, "..." introduces a PartialSpecification
+	 * (X.680 51.8.5). It is not an extension marker: keep the list.
+	 */
+	if(ct->type == ACT_CT_WCOMPS) return;
+
 	for(i = 0; i < ct->el_count; i++) {
 		if(ct->elements[i]->type == ACT_EL_EXT)
 			break;
@@ -259,6 +265,19 @@ _remove_extensions(arg_t *arg, asn1p_constraint_t *ct, int forgive_last) {
 
 	if(i < ct->el_size)
 		ct->elements[i] = 0;
+}
+
+/*
+ * The contained subtype was replaced by the constraints of the referenced
+ * type. Keep it as inlined_subtype for tree printers (provenance); code
+ * generation does not read it.
+ */
+static void
+constraint_keep_inlined_subtype(asn1p_constraint_t *ct) {
+    if(!ct->containedSubtype) return;
+    asn1p_value_free(ct->inlined_subtype);
+    ct->inlined_subtype = ct->containedSubtype;
+    ct->containedSubtype = NULL;
 }
 
 static asn1p_ref_t *
@@ -317,8 +336,7 @@ constraint_type_resolve(arg_t *arg, asn1p_constraint_t *ct) {
             if(!arg->expr->ioc_table)
                 arg->expr->ioc_table = asn1p_ioc_table_new();
             asn1p_ioc_table_append(arg->expr->ioc_table, rtype->ioc_table);
-            asn1p_value_free(ct->containedSubtype);
-            ct->containedSubtype = NULL;
+            constraint_keep_inlined_subtype(ct);
         }
 
         ct_expr = rtype->combined_constraints;
@@ -360,8 +378,7 @@ constraint_type_resolve(arg_t *arg, asn1p_constraint_t *ct) {
         (!rtype->ioc_table))
         return 0;
 
-    asn1p_value_free(ct->containedSubtype);
-    ct->containedSubtype = NULL;
+    constraint_keep_inlined_subtype(ct);
 
     return 0;
 }

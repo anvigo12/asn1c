@@ -117,6 +117,14 @@ CBOR and other encoding rules.
     does not allow.
     Enable this option to disable that fallback.
 
+-fx680-auto-tags
+:   Apply automatic tagging as X.680 25.10 and 31.2.7 specify, where the
+    default of asn1c differs: the components of an extension addition group
+    (`[[ ... ]]`) get the next tag numbers of the enclosing type and the group
+    gets no tag; instances of parameterized types get automatic tags, and a
+    component whose type is a DummyReference is tagged EXPLICIT. The option
+    changes the tags in the generated code.
+
 -fprefix=*prefix*
 :	Add the specified prefix to all generated type names and filenames.
 	This helps avoid naming conflicts in several scenarios:
@@ -235,6 +243,10 @@ CBOR and other encoding rules.
     ASN.1 text. With **-E -F**, print the tree after semantic processing.
     The document mirrors the libasn1parser structures, including IMPORTS
     and EXPORTS, source line numbers, and stable expression identifiers.
+    With **-E -F**, each reference names its target (`resolvedId`), and a
+    reference that cannot be resolved is a FATAL error. Components copied
+    by COMPONENTS OF show their origin, and extension addition groups show
+    their group number.
 
 # TRANSFER SYNTAXES
 

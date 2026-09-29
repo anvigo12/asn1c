@@ -63,6 +63,8 @@ static struct AssignedIdentifier *saved_aid;
 
 static asn1p_value_t *_convert_bitstring2binary(char *str, int base);
 static void _fixup_anonymous_identifier(asn1p_expr_t *expr);
+static int _next_ext_group(asn1p_expr_t *list);
+static void _set_ext_group(asn1p_expr_t *list, int group);
 static char *_encoding_control_join(char *a, char *b);
 static char *_encoding_control_cstring(char *buf, int len);
 
@@ -1367,6 +1369,7 @@ ComponentTypeLists:
 		$4->meta_type = AMT_TYPE;
 		$4->expr_type = ASN_CONSTR_SEQUENCE;
 		$4->marker.flags |= EM_OPTIONAL;
+		$4->ext_group = _next_ext_group($$);
 		asn1p_expr_add($$, $4);
 	}
 	| ComponentTypeLists TOK_VBracketLeft ComponentTypeLists TOK_VBracketRight {
@@ -1374,6 +1377,7 @@ ComponentTypeLists:
 		$3->meta_type = AMT_TYPE;
 		$3->expr_type = ASN_CONSTR_SEQUENCE;
 		$3->marker.flags |= EM_OPTIONAL;
+		$3->ext_group = _next_ext_group($$);
 		asn1p_expr_add($$, $3);
 	}
 	;
@@ -1416,11 +1420,13 @@ AlternativeTypeLists:
 	}
 	| AlternativeTypeLists ',' TOK_VBracketLeft AlternativeTypeLists TOK_VBracketRight {
 		$$ = $1;
+		_set_ext_group($4, _next_ext_group($$));
 		asn1p_expr_add_many($$, $4);
 		asn1p_expr_free($4);
 	}
 	| AlternativeTypeLists TOK_VBracketLeft AlternativeTypeLists TOK_VBracketRight {
 		$$ = $1;
+		_set_ext_group($3, _next_ext_group($$));
 		asn1p_expr_add_many($$, $3);
 		asn1p_expr_free($3);
 	}
@@ -3101,4 +3107,26 @@ yyerror(void **param, const char *msg) {
 		"near %s:%d (token \"%s\"): %s\n",
 		ASN_FILENAME, yylineno, asn1p_text, msg);
 	return -1;
+}
+
+/*
+ * Extension addition groups ("[[ ... ]]") are numbered 1, 2, ... in the
+ * order of their occurrence in the type.
+ */
+static int
+_next_ext_group(asn1p_expr_t *list) {
+	asn1p_expr_t *m;
+	int last = 0;
+	TQ_FOR(m, &(list->members), next) {
+		if(m->ext_group > last) last = m->ext_group;
+	}
+	return last + 1;
+}
+
+static void
+_set_ext_group(asn1p_expr_t *list, int group) {
+	asn1p_expr_t *m;
+	TQ_FOR(m, &(list->members), next) {
+		m->ext_group = group;
+	}
 }

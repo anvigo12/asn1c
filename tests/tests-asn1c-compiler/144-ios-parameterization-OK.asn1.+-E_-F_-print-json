@@ -1,6 +1,6 @@
 {
   "format": "asn1c.ast.json",
-  "formatVersion": 1,
+  "formatVersion": 2,
   "producer": "asn1c",
   "producerVersion": "",
   "view": "RESOLVED",
@@ -182,7 +182,7 @@
               "exprType": "A1TC_CLASSFIELD_TFS",
               "members": [
                 {
-                  "id": "ModuleInformationObjectParameterization.MYID/&Type/#0",
+                  "id": "ModuleInformationObjectParameterization.MYID/&Type/+0",
                   "line": 17,
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_TYPE_ANY"
@@ -370,7 +370,7 @@
                     "containedSubtype": {
                       "kind": "ATV_TYPE",
                       "type": {
-                        "id": "ModuleInformationObjectParameterization.Message/content{0}$0",
+                        "id": "ModuleInformationObjectParameterization.Message/content{0}$c.s",
                         "line": 26,
                         "metaType": "AMT_TYPEREF",
                         "exprType": "A1TC_REFERENCE",
@@ -382,7 +382,8 @@
                             }
                           ],
                           "line": 26,
-                          "module": "ModuleInformationObjectParameterization"
+                          "module": "ModuleInformationObjectParameterization",
+                          "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                         }
                       }
                     }
@@ -400,6 +401,7 @@
           "exprType": "ASN_CONSTR_SEQUENCE",
           "lhsParams": [
             {
+              "id": "ModuleInformationObjectParameterization.SpecializedContent%0",
               "governor": {
                 "components": [
                   {
@@ -408,7 +410,8 @@
                   }
                 ],
                 "line": 29,
-                "module": "ModuleInformationObjectParameterization"
+                "module": "ModuleInformationObjectParameterization",
+                "resolvedId": "ModuleInformationObjectParameterization.MYID"
               },
               "argument": "Set"
             }
@@ -427,7 +430,7 @@
                     "containedSubtype": {
                       "kind": "ATV_TYPE",
                       "type": {
-                        "id": "ModuleInformationObjectParameterization.SpecializedContent^0{0}$0",
+                        "id": "ModuleInformationObjectParameterization.SpecializedContent^0{0}$c.s",
                         "line": 26,
                         "metaType": "AMT_TYPEREF",
                         "exprType": "A1TC_REFERENCE",
@@ -439,7 +442,8 @@
                             }
                           ],
                           "line": 26,
-                          "module": "ModuleInformationObjectParameterization"
+                          "module": "ModuleInformationObjectParameterization",
+                          "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                         }
                       }
                     }
@@ -453,6 +457,7 @@
                 "exprType": "ASN_CONSTR_SEQUENCE",
                 "lhsParams": [
                   {
+                    "id": "ModuleInformationObjectParameterization.SpecializedContent@0%0",
                     "governor": {
                       "components": [
                         {
@@ -461,7 +466,8 @@
                         }
                       ],
                       "line": 29,
-                      "module": "ModuleInformationObjectParameterization"
+                      "module": "ModuleInformationObjectParameterization",
+                      "resolvedId": "ModuleInformationObjectParameterization.MYID"
                     },
                     "argument": "Set"
                   }
@@ -478,7 +484,7 @@
                       "containedSubtype": {
                         "kind": "ATV_TYPE",
                         "type": {
-                          "id": "ModuleInformationObjectParameterization.SpecializedContent@0{0}$0",
+                          "id": "ModuleInformationObjectParameterization.SpecializedContent@0{0}$c.s",
                           "line": 26,
                           "metaType": "AMT_TYPEREF",
                           "exprType": "A1TC_REFERENCE",
@@ -490,7 +496,8 @@
                               }
                             ],
                             "line": 26,
-                            "module": "ModuleInformationObjectParameterization"
+                            "module": "ModuleInformationObjectParameterization",
+                            "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                           }
                         }
                       }
@@ -539,7 +546,7 @@
                                   "containedSubtype": {
                                     "kind": "ATV_TYPE",
                                     "type": {
-                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id$0",
+                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id$c.0.0.v.vs.s",
                                       "line": 26,
                                       "metaType": "AMT_TYPEREF",
                                       "exprType": "A1TC_REFERENCE",
@@ -551,7 +558,8 @@
                                           }
                                         ],
                                         "line": 26,
-                                        "module": "ModuleInformationObjectParameterization"
+                                        "module": "ModuleInformationObjectParameterization",
+                                        "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                                       }
                                     }
                                   }
@@ -581,7 +589,7 @@
                                   "containedSubtype": {
                                     "kind": "ATV_TYPE",
                                     "type": {
-                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id$1",
+                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id$cc.0.0.v.vs.s",
                                       "line": 26,
                                       "metaType": "AMT_TYPEREF",
                                       "exprType": "A1TC_REFERENCE",
@@ -593,7 +601,8 @@
                                           }
                                         ],
                                         "line": 26,
-                                        "module": "ModuleInformationObjectParameterization"
+                                        "module": "ModuleInformationObjectParameterization",
+                                        "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                                       }
                                     }
                                   }
@@ -616,7 +625,7 @@
                           "containedSubtype": {
                             "kind": "ATV_TYPE",
                             "type": {
-                              "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id{0}$0",
+                              "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id{0}$c.s",
                               "line": 26,
                               "metaType": "AMT_TYPEREF",
                               "exprType": "A1TC_REFERENCE",
@@ -628,7 +637,8 @@
                                   }
                                 ],
                                 "line": 26,
-                                "module": "ModuleInformationObjectParameterization"
+                                "module": "ModuleInformationObjectParameterization",
+                                "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                               }
                             }
                           }
@@ -655,7 +665,7 @@
                       ],
                       "line": 31,
                       "module": "ModuleInformationObjectParameterization",
-                      "resolvedId": "ModuleInformationObjectParameterization.MYID/&Type/#0"
+                      "resolvedId": "ModuleInformationObjectParameterization.MYID/&Type/+0"
                     },
                     "constraints": {
                       "kind": "ACT_CA_SET",
@@ -676,7 +686,7 @@
                                   "containedSubtype": {
                                     "kind": "ATV_TYPE",
                                     "type": {
-                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value$0",
+                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value$c.0.0.v.vs.s",
                                       "line": 26,
                                       "metaType": "AMT_TYPEREF",
                                       "exprType": "A1TC_REFERENCE",
@@ -688,7 +698,8 @@
                                           }
                                         ],
                                         "line": 26,
-                                        "module": "ModuleInformationObjectParameterization"
+                                        "module": "ModuleInformationObjectParameterization",
+                                        "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                                       }
                                     }
                                   }
@@ -708,7 +719,8 @@
                                     }
                                   ],
                                   "line": 31,
-                                  "module": "ModuleInformationObjectParameterization"
+                                  "module": "ModuleInformationObjectParameterization",
+                                  "resolvedId": "ModuleInformationObjectParameterization.SpecializedContent@0/id"
                                 }
                               }
                             }
@@ -735,7 +747,7 @@
                                   "containedSubtype": {
                                     "kind": "ATV_TYPE",
                                     "type": {
-                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value$1",
+                                      "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value$cc.0.0.v.vs.s",
                                       "line": 26,
                                       "metaType": "AMT_TYPEREF",
                                       "exprType": "A1TC_REFERENCE",
@@ -747,7 +759,8 @@
                                           }
                                         ],
                                         "line": 26,
-                                        "module": "ModuleInformationObjectParameterization"
+                                        "module": "ModuleInformationObjectParameterization",
+                                        "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                                       }
                                     }
                                   }
@@ -767,7 +780,8 @@
                                     }
                                   ],
                                   "line": 31,
-                                  "module": "ModuleInformationObjectParameterization"
+                                  "module": "ModuleInformationObjectParameterization",
+                                  "resolvedId": "ModuleInformationObjectParameterization.SpecializedContent@0/id"
                                 }
                               }
                             }
@@ -787,7 +801,7 @@
                           "containedSubtype": {
                             "kind": "ATV_TYPE",
                             "type": {
-                              "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value{0}$0",
+                              "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value{0}$c.s",
                               "line": 26,
                               "metaType": "AMT_TYPEREF",
                               "exprType": "A1TC_REFERENCE",
@@ -799,7 +813,8 @@
                                   }
                                 ],
                                 "line": 26,
-                                "module": "ModuleInformationObjectParameterization"
+                                "module": "ModuleInformationObjectParameterization",
+                                "resolvedId": "ModuleInformationObjectParameterization.RegionalExtension"
                               }
                             }
                           }
@@ -830,7 +845,8 @@
                   }
                 ],
                 "line": 30,
-                "module": "ModuleInformationObjectParameterization"
+                "module": "ModuleInformationObjectParameterization",
+                "resolvedId": "ModuleInformationObjectParameterization.MYID/&id/#0"
               },
               "constraints": {
                 "kind": "ACT_CA_SET",
@@ -853,7 +869,8 @@
                               }
                             ],
                             "line": 30,
-                            "module": "ModuleInformationObjectParameterization"
+                            "module": "ModuleInformationObjectParameterization",
+                            "resolvedId": "ModuleInformationObjectParameterization.SpecializedContent%0"
                           }
                         }
                       }
@@ -880,7 +897,8 @@
                   }
                 ],
                 "line": 31,
-                "module": "ModuleInformationObjectParameterization"
+                "module": "ModuleInformationObjectParameterization",
+                "resolvedId": "ModuleInformationObjectParameterization.MYID/&Type/+0"
               },
               "constraints": {
                 "kind": "ACT_CA_SET",
@@ -903,7 +921,8 @@
                               }
                             ],
                             "line": 31,
-                            "module": "ModuleInformationObjectParameterization"
+                            "module": "ModuleInformationObjectParameterization",
+                            "resolvedId": "ModuleInformationObjectParameterization.SpecializedContent%0"
                           }
                         }
                       },
@@ -920,7 +939,8 @@
                               }
                             ],
                             "line": 31,
-                            "module": "ModuleInformationObjectParameterization"
+                            "module": "ModuleInformationObjectParameterization",
+                            "resolvedId": "ModuleInformationObjectParameterization.SpecializedContent/id"
                           }
                         }
                       }

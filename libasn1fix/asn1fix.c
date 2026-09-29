@@ -10,6 +10,8 @@ static void _default_error_logger(int _severity, const char *fmt, ...);
 static int asn1f_fix_module__phase_1(arg_t *arg);
 static int oid_is_numeric(const asn1p_oid_t *oid);
 static int asn1f_fix_module__phase_2(arg_t *arg);
+static int asn1f_fix_instance_tags(arg_t *arg);
+static int asn1f_decide_constr_tags(arg_t *arg);
 static int asn1f_fix_simple(arg_t *arg);	/* For INTEGER/ENUMERATED */
 static int asn1f_fix_constructed(arg_t *arg);	/* For SEQUENCE/SET/CHOICE */
 static int asn1f_resolve_constraints(arg_t *arg); /* For subtype constraints */
@@ -84,6 +86,22 @@ asn1f_process(asn1p_t *asn, enum asn1f_flags flags,
 		}
 	}
 
+	if(flags & A1F_RESOLVE_ALL_REFS) {
+		arg.flags |= A1F_RESOLVE_ALL_REFS;
+		flags &= ~A1F_RESOLVE_ALL_REFS;
+		/* Specializations for a tree printer: substitute everywhere */
+		asn1p_expr_substitute_in_values(1);
+	}
+
+	if(flags & A1F_X680_AUTO_TAGS) {
+		arg.flags |= A1F_X680_AUTO_TAGS;
+		flags &= ~A1F_X680_AUTO_TAGS;
+		if(arg.debug) {
+			arg.debug(-1,
+				"Automatic tagging: X.680 25.10 for extension addition groups and instances");
+		}
+	}
+
 	a1f_replace_me_with_proper_interface_arg = arg;
 
 	/*
@@ -110,6 +128,21 @@ asn1f_process(asn1p_t *asn, enum asn1f_flags flags,
         asn1_namespace_free(arg.ns);
         arg.ns = 0;
     }
+    /*
+     * Instances of parameterized types can be created after their module
+     * was processed (a reference in a later module creates them). Apply
+     * the tagging decision and automatic tagging to all of them.
+     */
+    if(arg.flags & A1F_X680_AUTO_TAGS) {
+        TQ_FOR(arg.mod, &(asn->modules), mod_next) {
+            arg.ns = asn1_namespace_new_from_module(arg.mod, 0);
+            ret = asn1f_fix_instance_tags(&arg);
+            if(ret == -1) fatals++;
+            if(ret == 1) warnings++;
+            asn1_namespace_free(arg.ns);
+            arg.ns = 0;
+        }
+    }
     /* PHASE II. */
     TQ_FOR(arg.mod, &(asn->modules), mod_next) {
         arg.ns = asn1_namespace_new_from_module(arg.mod, 0);
@@ -118,6 +151,20 @@ asn1f_process(asn1p_t *asn, enum asn1f_flags flags,
         if(ret == 1) warnings++;
         asn1_namespace_free(arg.ns);
         arg.ns = 0;
+    }
+
+    /*
+     * Resolve every reference for a tree printer (after all fixes).
+     */
+    if(arg.flags & A1F_RESOLVE_ALL_REFS) {
+        TQ_FOR(arg.mod, &(asn->modules), mod_next) {
+            if(arg.mod->_tags & MT_STANDARD_MODULE) continue;
+            arg.ns = asn1_namespace_new_from_module(arg.mod, 0);
+            ret = asn1f_resolve_all_references(&arg);
+            if(ret == -1) fatals++;
+            asn1_namespace_free(arg.ns);
+            arg.ns = 0;
+        }
     }
 
 	a1f_replace_me_with_proper_interface_arg = (arg_t){
@@ -386,6 +433,39 @@ asn1f_fix_module__phase_2(arg_t *arg) {
 		RET2RVAL(ret, rvalue);
 
 		assert(arg->expr == expr);
+	}
+
+	return rvalue;
+}
+
+static int
+asn1f_decide_constr_tags(arg_t *arg) {
+	return asn1f_fix_constr_tag(arg, 0);
+}
+
+/*
+ * A1F_X680_AUTO_TAGS: the tagging decision (X.680 25.3, 29.2) and the
+ * automatic tags of each instance of the parameterized types of a module.
+ * The steps are idempotent, so instances that phase I processed are safe.
+ */
+static int
+asn1f_fix_instance_tags(arg_t *arg) {
+	asn1p_expr_t *expr;
+	int rvalue = 0;
+	int ret;
+
+	TQ_FOR(expr, &(arg->mod->members), next) {
+		if(expr->_mark & TM_ENCODING_INSTRUCTION) continue;
+		if(!expr->lhs_params || expr->spec_index != -1) continue;
+		/* asn1f_recurse_expr() visits the instances of expr */
+		arg->expr = expr;
+		ret = asn1f_recurse_expr(arg, asn1f_decide_constr_tags);
+		RET2RVAL(ret, rvalue);
+		ret = asn1f_recurse_expr(arg, asn1f_fix_constr_autotag);
+		RET2RVAL(ret, rvalue);
+		ret = asn1f_recurse_expr(arg, asn1f_check_constr_tags_distinct);
+		RET2RVAL(ret, rvalue);
+		arg->expr = expr;
 	}
 
 	return rvalue;

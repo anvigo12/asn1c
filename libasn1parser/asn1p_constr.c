@@ -92,6 +92,7 @@ asn1p_constraint_free(asn1p_constraint_t *ct) {
 		asn1p_value_free(ct->value);
 		asn1p_value_free(ct->range_start);
 		asn1p_value_free(ct->range_stop);
+		asn1p_value_free(ct->inlined_subtype);
 
 		if(ct->elements) {
 			while(ct->el_count--) {
@@ -133,6 +134,7 @@ asn1p_constraint_clone_with_resolver(asn1p_constraint_t *src,
 		CLONE(value,		asn1p_value_clone_with_resolver);
 		CLONE(range_start,	asn1p_value_clone_with_resolver);
 		CLONE(range_stop,	asn1p_value_clone_with_resolver);
+		CLONE(inlined_subtype,	asn1p_value_clone_with_resolver);
 
 		for(i = 0; i < src->el_count; i++) {
 			asn1p_constraint_t *t;

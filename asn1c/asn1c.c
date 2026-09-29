@@ -180,6 +180,8 @@ main(int ac, char **av) {
                 assert(ret == 0 || errno == EEXIST);
             } else if(strcmp(optarg, "prefer-import-source") == 0) {
                 asn1_fixer_flags |= A1F_PREFER_IMPORT_SOURCE;
+            } else if(strcmp(optarg, "x680-auto-tags") == 0) {
+                asn1_fixer_flags |= A1F_X680_AUTO_TAGS;
             } else if(strcmp(optarg, "native-types") == 0) {
                 fprintf(stderr, "-f%s: Deprecated option\n", optarg);
                 asn1_compiler_flags &= ~A1C_USE_WIDE_TYPES;
@@ -390,6 +392,9 @@ main(int ac, char **av) {
     if(print_arg__print_out) {
         if(print_arg__fix_n_print)
             asn1_printer_flags |= APF_FIXED_TREE;
+        /* The JSON tree after the fixer names the target of every reference */
+        if(print_arg__fix_n_print && (asn1_printer_flags & APF_PRINT_JSON))
+            asn1_fixer_flags |= A1F_RESOLVE_ALL_REFS;
         if((asn1_printer_flags & APF_PRINT_CONSTRAINTS)
            && !print_arg__fix_n_print) {
             fprintf(stderr,
@@ -758,6 +763,8 @@ usage(const char *av0) {
 "  -fno-constraints      Do not generate the constraint checking code\n"
 "  -fno-include-deps     Do not generate the courtesy #includes for dependencies\n"
 "  -fprefer-import-source  Resolve only names listed in IMPORTS (no whole-module fallback)\n"
+"  -fx680-auto-tags      Automatic tags as X.680 25.10 specifies: components of\n"
+"                        extension addition groups, instances of parameterized types\n"
 "  -funnamed-unions      Enable unnamed unions in structures\n"
 "  -fwide-types          Use INTEGER_t instead of \"long\" by default, etc.\n"
 "  -flong-size=<bits>    Target C long size for native INTEGER storage.\n"
@@ -788,7 +795,9 @@ usage(const char *av0) {
 "  -print-class-matrix   Print out the collected object class matrix (debug)\n"
 "  -print-constraints    Explain subtype constraints (debug)\n"
 "  -print-lines          Generate \"-- #line\" comments in -E output\n"
-"  -print-json           Print the -E (or -E -F) tree as a JSON document\n"
+"  -print-json           Print the -E (or -E -F) tree as a JSON document. With -F,\n"
+"                        every reference names its target; a reference that\n"
+"                        cannot be resolved is a FATAL error\n"
 "\n"
 "Exit status: 0 success; 64 usage error; 65 ASN.1 input error;\n"
 "  66 input file cannot be opened; 70 printing or code generation failed\n"
