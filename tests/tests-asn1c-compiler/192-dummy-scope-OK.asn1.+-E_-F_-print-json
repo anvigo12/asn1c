@@ -1,0 +1,956 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "RESOLVED",
+  "modules": [
+    {
+      "name": "ModuleDummyScope",
+      "sourceFile": "192-dummy-scope-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "192"
+          },
+          {
+            "number": "1"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "exports": {
+        "symbols": [
+          {
+            "name": "Pair",
+            "line": 18
+          }
+        ]
+      },
+      "assignments": [
+        {
+          "id": "ModuleDummyScope.Color",
+          "identifier": "Color",
+          "line": 20,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_ENUMERATED",
+          "members": [
+            {
+              "id": "ModuleDummyScope.Color/red",
+              "identifier": "red",
+              "line": 20,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "0"
+              }
+            },
+            {
+              "id": "ModuleDummyScope.Color/green",
+              "identifier": "green",
+              "line": 20,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleDummyScope.Level",
+          "identifier": "Level",
+          "line": 21,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_INTEGER",
+          "members": [
+            {
+              "id": "ModuleDummyScope.Level/low",
+              "identifier": "low",
+              "line": 21,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "1"
+              }
+            },
+            {
+              "id": "ModuleDummyScope.Level/high",
+              "identifier": "high",
+              "line": 21,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_UNIVERVAL",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "9"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleDummyScope.Int",
+          "identifier": "Int",
+          "line": 22,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_INTEGER",
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 22,
+            "elements": [
+              {
+                "kind": "ACT_EL_RANGE",
+                "line": 22,
+                "rangeStart": {
+                  "kind": "ATV_INTEGER",
+                  "integer": "0"
+                },
+                "rangeStop": {
+                  "kind": "ATV_MAX"
+                }
+              }
+            ]
+          },
+          "combinedConstraints": {
+            "kind": "ACT_CA_SET",
+            "line": 22,
+            "elements": [
+              {
+                "kind": "ACT_EL_RANGE",
+                "line": 22,
+                "rangeStart": {
+                  "kind": "ATV_INTEGER",
+                  "integer": "0"
+                },
+                "rangeStop": {
+                  "kind": "ATV_MAX"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleDummyScope.Paint",
+          "identifier": "Paint",
+          "line": 25,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleDummyScope.Paint%0",
+              "governor": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Int"
+                  }
+                ],
+                "line": 24,
+                "module": "ModuleDummyScope",
+                "resolvedId": "ModuleDummyScope.Int"
+              },
+              "argument": "red"
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleDummyScope.Paint/c",
+              "identifier": "c",
+              "line": 25,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Color"
+                  }
+                ],
+                "line": 25,
+                "module": "ModuleDummyScope",
+                "resolvedId": "ModuleDummyScope.Color"
+              },
+              "marker": {
+                "optional": true,
+                "hasDefault": true,
+                "indirect": true,
+                "omitable": true,
+                "defaultValue": {
+                  "kind": "ATV_REFERENCED",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_lowercase",
+                        "name": "red"
+                      }
+                    ],
+                    "line": 25,
+                    "module": "ModuleDummyScope",
+                    "resolvedId": "ModuleDummyScope.Color/red"
+                  }
+                }
+              }
+            },
+            {
+              "id": "ModuleDummyScope.Paint/n",
+              "identifier": "n",
+              "line": 26,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 26,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_RANGE",
+                    "line": 26,
+                    "rangeStart": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "0"
+                    },
+                    "rangeStop": {
+                      "kind": "ATV_REFERENCED",
+                      "reference": {
+                        "components": [
+                          {
+                            "lexType": "RLT_lowercase",
+                            "name": "red"
+                          }
+                        ],
+                        "line": 26,
+                        "module": "ModuleDummyScope",
+                        "resolvedId": "ModuleDummyScope.Paint%0"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleDummyScope.Scale",
+          "identifier": "Scale",
+          "line": 30,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleDummyScope.Scale%0",
+              "governor": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Int"
+                  }
+                ],
+                "line": 29,
+                "module": "ModuleDummyScope",
+                "resolvedId": "ModuleDummyScope.Int"
+              },
+              "argument": "high"
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleDummyScope.Scale/l",
+              "identifier": "l",
+              "line": 30,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Level"
+                  }
+                ],
+                "line": 30,
+                "module": "ModuleDummyScope",
+                "resolvedId": "ModuleDummyScope.Level"
+              },
+              "marker": {
+                "optional": true,
+                "hasDefault": true,
+                "indirect": true,
+                "omitable": true,
+                "defaultValue": {
+                  "kind": "ATV_REFERENCED",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_lowercase",
+                        "name": "high"
+                      }
+                    ],
+                    "line": 30,
+                    "module": "ModuleDummyScope",
+                    "resolvedId": "ModuleDummyScope.Level/high"
+                  }
+                }
+              }
+            },
+            {
+              "id": "ModuleDummyScope.Scale/m",
+              "identifier": "m",
+              "line": 31,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 31,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_RANGE",
+                    "line": 31,
+                    "rangeStart": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "0"
+                    },
+                    "rangeStop": {
+                      "kind": "ATV_REFERENCED",
+                      "reference": {
+                        "components": [
+                          {
+                            "lexType": "RLT_lowercase",
+                            "name": "high"
+                          }
+                        ],
+                        "line": 31,
+                        "module": "ModuleDummyScope",
+                        "resolvedId": "ModuleDummyScope.Scale%0"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleDummyScope.Pair",
+          "identifier": "Pair",
+          "line": 35,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleDummyScope.Pair%0",
+              "argument": "T"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleDummyScope.Pair^0{0}",
+                  "line": 44,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ],
+              "clone": {
+                "id": "ModuleDummyScope.Pair@0",
+                "identifier": "Pair",
+                "line": 35,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleDummyScope.Pair@0%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleDummyScope.Pair@0{0}",
+                    "line": 44,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleDummyScope.Pair@0/first",
+                    "identifier": "first",
+                    "line": 44,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleDummyScope.Pair@0/first{0}",
+                        "line": 44,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleDummyScope.Pair@0/second",
+                    "identifier": "second",
+                    "line": 36,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleDummyScope.Pair@0/second{0}",
+                        "line": 44,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleDummyScope.Pair^1{0}",
+                  "line": 57,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ],
+              "clone": {
+                "id": "ModuleDummyScope.Pair@1",
+                "identifier": "Pair",
+                "line": 35,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleDummyScope.Pair@1%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleDummyScope.Pair@1{0}",
+                    "line": 57,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN"
+                  }
+                ],
+                "specIndex": 1,
+                "members": [
+                  {
+                    "id": "ModuleDummyScope.Pair@1/first",
+                    "identifier": "first",
+                    "line": 57,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleDummyScope.Pair@1/first{0}",
+                        "line": 57,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleDummyScope.Pair@1/second",
+                    "identifier": "second",
+                    "line": 36,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleDummyScope.Pair@1/second{0}",
+                        "line": 57,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleDummyScope.Pair/first",
+              "identifier": "first",
+              "line": 35,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "T"
+                  }
+                ],
+                "line": 35,
+                "module": "ModuleDummyScope",
+                "resolvedId": "ModuleDummyScope.Pair%0"
+              }
+            },
+            {
+              "id": "ModuleDummyScope.Pair/second",
+              "identifier": "second",
+              "line": 36,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            }
+          ]
+        },
+        {
+          "id": "ModuleDummyScope.Holder",
+          "identifier": "Holder",
+          "line": 38,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_OCTET_STRING",
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 38,
+            "elements": [
+              {
+                "kind": "ACT_CT_CTNG",
+                "line": 38,
+                "value": {
+                  "kind": "ATV_TYPE",
+                  "type": {
+                    "id": "ModuleDummyScope.Holder$c.0.v",
+                    "line": 38,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Pair"
+                        }
+                      ],
+                      "line": 38,
+                      "module": "ModuleDummyScope",
+                      "resolvedId": "ModuleDummyScope.Pair@0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleDummyScope.Holder$c.0.v{0}",
+                        "line": 38,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "combinedConstraints": {
+            "kind": "ACT_CA_SET",
+            "line": 38,
+            "elements": [
+              {
+                "kind": "ACT_CT_CTNG",
+                "line": 38,
+                "value": {
+                  "kind": "ATV_TYPE",
+                  "type": {
+                    "id": "ModuleDummyScope.Holder$cc.0.v",
+                    "line": 38,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Pair"
+                        }
+                      ],
+                      "line": 38,
+                      "module": "ModuleDummyScope",
+                      "resolvedId": "ModuleDummyScope.Pair@0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleDummyScope.Holder$cc.0.v{0}",
+                        "line": 38,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleDummyScope.Outer",
+          "identifier": "Outer",
+          "line": 41,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleDummyScope.Outer%0",
+              "argument": "U"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleDummyScope.Outer^0{0}",
+                  "line": 44,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ],
+              "clone": {
+                "id": "ModuleDummyScope.Outer@0",
+                "identifier": "Outer",
+                "line": 41,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleDummyScope.Outer@0%0",
+                    "argument": "U"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleDummyScope.Outer@0{0}",
+                    "line": 44,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleDummyScope.Outer@0/p",
+                    "identifier": "p",
+                    "line": 41,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Pair"
+                        }
+                      ],
+                      "line": 41,
+                      "module": "ModuleDummyScope",
+                      "resolvedId": "ModuleDummyScope.Pair@0"
+                    },
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleDummyScope.Outer@0/p{0}",
+                        "line": 44,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleDummyScope.Outer@0/u",
+                    "identifier": "u",
+                    "line": 44,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "1"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleDummyScope.Outer@0/u{0}",
+                        "line": 44,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleDummyScope.Outer/p",
+              "identifier": "p",
+              "line": 41,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Pair"
+                  }
+                ],
+                "line": 41,
+                "module": "ModuleDummyScope",
+                "resolvedId": "ModuleDummyScope.Pair"
+              },
+              "rhsPspecs": [
+                {
+                  "id": "ModuleDummyScope.Outer/p{0}",
+                  "line": 41,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_CAPITALS",
+                        "name": "U"
+                      }
+                    ],
+                    "line": 41,
+                    "module": "ModuleDummyScope",
+                    "resolvedId": "ModuleDummyScope.Outer%0"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ModuleDummyScope.Outer/u",
+              "identifier": "u",
+              "line": 43,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "U"
+                  }
+                ],
+                "line": 43,
+                "module": "ModuleDummyScope",
+                "resolvedId": "ModuleDummyScope.Outer%0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleDummyScope.OuterInt",
+          "identifier": "OuterInt",
+          "line": 44,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Outer"
+              }
+            ],
+            "line": 44,
+            "module": "ModuleDummyScope",
+            "resolvedId": "ModuleDummyScope.Outer@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleDummyScope.OuterInt{0}",
+              "line": 44,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ModuleDummyScopeImports",
+      "sourceFile": "192-dummy-scope-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "192"
+          },
+          {
+            "number": "2"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "imports": [
+        {
+          "fromModule": "ModuleDummyScope",
+          "oid": {
+            "arcs": [
+              {
+                "name": "iso"
+              },
+              {
+                "name": "org",
+                "number": "3"
+              },
+              {
+                "name": "dod",
+                "number": "6"
+              },
+              {
+                "name": "internet",
+                "number": "1"
+              },
+              {
+                "name": "private",
+                "number": "4"
+              },
+              {
+                "name": "enterprise",
+                "number": "1"
+              },
+              {
+                "name": "spelio",
+                "number": "9363"
+              },
+              {
+                "name": "software",
+                "number": "1"
+              },
+              {
+                "name": "asn1c",
+                "number": "5"
+              },
+              {
+                "name": "test",
+                "number": "1"
+              },
+              {
+                "number": "192"
+              },
+              {
+                "number": "1"
+              }
+            ]
+          },
+          "symbols": [
+            {
+              "name": "Pair",
+              "line": 53
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "ModuleDummyScopeImports.PairBool",
+          "identifier": "PairBool",
+          "line": 57,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Pair"
+              }
+            ],
+            "line": 57,
+            "module": "ModuleDummyScopeImports",
+            "resolvedId": "ModuleDummyScope.Pair@1"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleDummyScopeImports.PairBool{0}",
+              "line": 57,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

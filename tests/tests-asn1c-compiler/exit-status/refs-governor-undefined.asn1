@@ -1,0 +1,10 @@
+-- Semantic error for check-exit-status.sh (not scanned by check_fixer).
+-- The parameter governor is not a built-in type and is not defined.
+
+ModuleRefsGovernorUndefined
+	{ iso org(3) dod(6) internet (1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 190 2 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+	W {Nosuch:v} ::= SEQUENCE { a INTEGER DEFAULT v }
+END

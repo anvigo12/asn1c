@@ -1,0 +1,13 @@
+-- Semantic error for check-exit-status.sh (not scanned by check_fixer).
+-- A component of a parameterized type references a parameterized
+-- assignment without an ActualParameterList (X.683 (02/2021) 9.2).
+
+ModuleRefsParamNoArgsGeneric
+	{ iso org(3) dod(6) internet (1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 192 4 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+	W {T} ::= SEQUENCE { a T, b BOOLEAN }
+	V {T} ::= SEQUENCE { w W, t T }
+	Z ::= V {INTEGER}
+END

@@ -121,6 +121,35 @@ expect_status refs-unknown-component 65 --fatal-with "component in WITH COMPONEN
 expect_status refs-unknown-relation 65 --fatal-with "component relation \"@.nosuch\"" -E -F -print-json "$REFS_COMPONENT"
 # The EXPORTS check inside a lookup of the reference pass (it crashed before).
 expect_status refs-not-exported   65 --fatal-with "does not mention Y" -E -F -fcompound-names -print-json "$UNRETURNED"
+# Reference pass: parameter governors (X.683 (02/2021) 8.3), components
+# that an unexpanded COMPONENTS OF gives (X.680 (02/2021) 25.5, 51.8.6),
+# and references to a parameterized assignment without actual parameters
+# (X.683 9.2). The governor-undefined and components-of checks keep errors
+# that the pass found before this change. Each FATAL text is printed once.
+REFS_GOVERNORS="$T/190-param-governors-OK.asn1"
+REFS_NO_ARGS="$T/exit-status/refs-param-no-args.asn1"
+REFS_NO_ARGS_GENERIC="$T/exit-status/refs-param-no-args-generic.asn1"
+REFS_GOVERNED_DUMMY="$T/exit-status/refs-dummy-governor-governed.asn1"
+REFS_GOVERNOR_UNDEFINED="$T/exit-status/refs-governor-undefined.asn1"
+REFS_COF_ADDITION="$T/exit-status/refs-components-of-addition.asn1"
+REFS_COF_UNDEFINED="$T/exit-status/refs-components-of-undefined.asn1"
+expect_status refs-governors      0  --no-fatal -E -F -fcompound-names -print-json "$REFS_GOVERNORS"
+expect_status refs-param-no-args  65 --fatal-with "without actual parameters (X.683 9.2) (in ModuleRefsParamNoArgs.Y)" -E -F -fcompound-names -print-json "$REFS_NO_ARGS"
+expect_status refs-param-no-args-generic 65 --fatal-with "without actual parameters (X.683 9.2) (in ModuleRefsParamNoArgsGeneric.V)" -E -F -fcompound-names -print-json "$REFS_NO_ARGS_GENERIC"
+expect_status refs-dummy-governor-governed 65 --fatal-with "names a DummyReference that has a governor" -E -F -fcompound-names -print-json "$REFS_GOVERNED_DUMMY"
+expect_status refs-governor-undefined 65 --fatal-with "parameter governor \"Nosuch\"" -E -F -fcompound-names -print-json "$REFS_GOVERNOR_UNDEFINED"
+expect_status refs-components-of-addition 65 --fatal-with "component in WITH COMPONENTS \"c\"" -E -F -fcompound-names -print-json "$REFS_COF_ADDITION"
+expect_status refs-components-of-undefined 65 --fatal-with "\"Nosuch\"" -E -F -fcompound-names -print-json "$REFS_COF_UNDEFINED"
+expect_status refs-fatal-once     65 --fatal-with "component in WITH COMPONENTS \"c\"" -E -F -fcompound-names -print-json "$REFS_COMPONENT"
+if [ -f "$TMPDIR_TEST/refs-fatal-once.err" ]; then
+    n=$(grep -c "^FATAL: .*component in WITH COMPONENTS \"c\"" "$TMPDIR_TEST/refs-fatal-once.err" || true)
+    if [ "$n" -eq 1 ]; then
+        echo "PASS: refs-fatal-once-count (1 FATAL line)"
+    else
+        echo "FAIL: refs-fatal-once-count: $n FATAL lines, expected 1"
+        failures=$((failures + 1))
+    fi
+fi
 
 if [ "$failures" -ne 0 ]; then
     echo "$failures exit status check(s) failed"

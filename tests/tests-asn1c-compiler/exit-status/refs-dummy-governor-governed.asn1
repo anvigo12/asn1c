@@ -1,0 +1,11 @@
+-- Semantic error for check-exit-status.sh (not scanned by check_fixer).
+-- A DummyGovernor shall be a DummyReference that has no Governor
+-- (X.683 (02/2021) 8.3; also 8.9). T has the governor INTEGER.
+
+ModuleRefsDummyGovernorGoverned
+	{ iso org(3) dod(6) internet (1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 190 1 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+	W {INTEGER:T, T:v} ::= SEQUENCE { a INTEGER (T), b INTEGER DEFAULT v }
+END

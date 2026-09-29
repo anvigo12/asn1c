@@ -1,0 +1,49 @@
+
+-- OK: Everything is fine
+
+-- iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+-- .spelio.software.asn1c.test (9363.1.5.1)
+-- .190
+
+-- Parameter governors (X.683 (02/2021) 8.3): ParamGovernor ::= Governor |
+-- DummyGovernor, and Governor ::= Type | DefinedObjectClass.
+-- A built-in type is a governor: it is not a reference and has no
+-- resolvedId. A type reference is a governor. A DummyGovernor names the
+-- formal parameter in the generic form. In a specialization it names what
+-- the actual parameter denotes (X.683 8.4, 9.7): the referenced type, or
+-- else the actual parameter. A DummyReference hides an assignment with
+-- the same name (X.683 8.4). Every value of each governor is valid where
+-- the dummy parameter is used (X.683 8.13).
+
+ModuleParameterGovernors
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 190 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	Counter {INTEGER:start} ::= SEQUENCE {
+		value	INTEGER DEFAULT start
+	}
+	Counter5 ::= Counter {5}
+
+	Labelled {IA5String:text} ::= SEQUENCE {
+		label	IA5String DEFAULT text
+	}
+	LabelledX ::= Labelled {"x"}
+
+	Int ::= INTEGER (0..255)
+
+	Typed {T, T:v} ::= SEQUENCE {
+		a	T DEFAULT v
+	}
+	TypedInt ::= Typed {Int, 5}
+	TypedBool ::= Typed {BOOLEAN, TRUE}
+
+	Tp ::= BOOLEAN
+
+	Hidden {Tp, Tp:v} ::= SEQUENCE {
+		b	Tp DEFAULT v
+	}
+	HiddenInt ::= Hidden {Int, 7}
+
+END

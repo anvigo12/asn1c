@@ -1,0 +1,12 @@
+-- Semantic error for check-exit-status.sh (not scanned by check_fixer).
+-- Other than in EXPORTS and IMPORTS, a parameterized assignment is
+-- referenced with an ActualParameterList (X.683 (02/2021) 9.2).
+
+ModuleRefsParamNoArgs
+	{ iso org(3) dod(6) internet (1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 192 3 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+	W {T} ::= SEQUENCE { a T, b BOOLEAN }
+	Y ::= OCTET STRING (CONTAINING W)
+END

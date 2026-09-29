@@ -1,0 +1,58 @@
+
+-- OK: Everything is fine
+
+-- iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+-- .spelio.software.asn1c.test (9363.1.5.1)
+-- .191
+
+-- The fixer does not expand COMPONENTS OF in a generic form. Identifiers
+-- in WITH COMPONENTS (X.680 (02/2021) 51.8.6) and component relations
+-- (X.682 (02/2021) 10.10) name the components that COMPONENTS OF gives:
+-- the root components of the referenced type (X.680 25.5). For
+-- COMPONENTS OF a DummyReference, the components are known only for each
+-- specialization: the identifier refers to the formal parameter.
+
+ModuleComponentsOfInGeneric
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 191 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	Base ::= SEQUENCE {
+		a	INTEGER,
+		b	BOOLEAN OPTIONAL,
+		...,
+		c	NULL OPTIONAL
+	}
+
+	Wrapper {T} ::= SEQUENCE {
+		COMPONENTS OF Base,
+		t	T
+	} (WITH COMPONENTS {..., b PRESENT})
+	WrapperInt ::= Wrapper {INTEGER}
+
+	Extend {T} ::= SEQUENCE {
+		COMPONENTS OF T,
+		z	NULL
+	} (WITH COMPONENTS {..., b ABSENT})
+	ExtendBase ::= Extend {Base}
+
+	KIND ::= CLASS {
+		&id	INTEGER UNIQUE,
+		&Type
+	} WITH SYNTAX { &Type IDENTIFIED BY &id }
+
+	Kinds KIND ::= { {BOOLEAN IDENTIFIED BY 1} | {NULL IDENTIFIED BY 2} }
+
+	Header ::= SEQUENCE {
+		id	KIND.&id ({Kinds})
+	}
+
+	Message {T} ::= SEQUENCE {
+		COMPONENTS OF Header,
+		body	KIND.&Type ({Kinds}{@id}),
+		extra	T
+	}
+	MessageInt ::= Message {INTEGER}
+
+END

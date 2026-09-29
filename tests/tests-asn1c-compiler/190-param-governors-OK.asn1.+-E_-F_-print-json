@@ -1,0 +1,1188 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "RESOLVED",
+  "modules": [
+    {
+      "name": "ModuleParameterGovernors",
+      "sourceFile": "190-param-governors-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "190"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "assignments": [
+        {
+          "id": "ModuleParameterGovernors.Counter",
+          "identifier": "Counter",
+          "line": 25,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleParameterGovernors.Counter%0",
+              "governor": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "INTEGER"
+                  }
+                ],
+                "line": 24,
+                "module": "ModuleParameterGovernors"
+              },
+              "argument": "start"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleParameterGovernors.Counter^0{0}",
+                  "identifier": "?",
+                  "line": 27,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_INTEGER",
+                    "integer": "5"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleParameterGovernors.Counter@0",
+                "identifier": "Counter",
+                "line": 25,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleParameterGovernors.Counter@0%0",
+                    "governor": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "INTEGER"
+                        }
+                      ],
+                      "line": 24,
+                      "module": "ModuleParameterGovernors"
+                    },
+                    "argument": "start"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleParameterGovernors.Counter@0{0}",
+                    "identifier": "?",
+                    "line": 27,
+                    "metaType": "AMT_VALUE",
+                    "exprType": "A1TC_REFERENCE",
+                    "value": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "5"
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleParameterGovernors.Counter@0/value",
+                    "identifier": "value",
+                    "line": 25,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "marker": {
+                      "optional": true,
+                      "hasDefault": true,
+                      "indirect": true,
+                      "omitable": true,
+                      "defaultValue": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "5"
+                      }
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleParameterGovernors.Counter@0/value{0}",
+                        "identifier": "?",
+                        "line": 27,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_INTEGER",
+                          "integer": "5"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleParameterGovernors.Counter/value",
+              "identifier": "value",
+              "line": 25,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "marker": {
+                "optional": true,
+                "hasDefault": true,
+                "indirect": true,
+                "omitable": true,
+                "defaultValue": {
+                  "kind": "ATV_REFERENCED",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_lowercase",
+                        "name": "start"
+                      }
+                    ],
+                    "line": 25,
+                    "module": "ModuleParameterGovernors",
+                    "resolvedId": "ModuleParameterGovernors.Counter%0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleParameterGovernors.Counter5",
+          "identifier": "Counter5",
+          "line": 27,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Counter"
+              }
+            ],
+            "line": 27,
+            "module": "ModuleParameterGovernors",
+            "resolvedId": "ModuleParameterGovernors.Counter@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleParameterGovernors.Counter5{0}",
+              "identifier": "?",
+              "line": 27,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_REFERENCE",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "5"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleParameterGovernors.Labelled",
+          "identifier": "Labelled",
+          "line": 30,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleParameterGovernors.Labelled%0",
+              "governor": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "IA5String"
+                  }
+                ],
+                "line": 29,
+                "module": "ModuleParameterGovernors"
+              },
+              "argument": "text"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleParameterGovernors.Labelled^0{0}",
+                  "identifier": "?",
+                  "line": 32,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_STRING",
+                    "string": "x"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleParameterGovernors.Labelled@0",
+                "identifier": "Labelled",
+                "line": 30,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleParameterGovernors.Labelled@0%0",
+                    "governor": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "IA5String"
+                        }
+                      ],
+                      "line": 29,
+                      "module": "ModuleParameterGovernors"
+                    },
+                    "argument": "text"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleParameterGovernors.Labelled@0{0}",
+                    "identifier": "?",
+                    "line": 32,
+                    "metaType": "AMT_VALUE",
+                    "exprType": "A1TC_REFERENCE",
+                    "value": {
+                      "kind": "ATV_STRING",
+                      "string": "x"
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleParameterGovernors.Labelled@0/label",
+                    "identifier": "label",
+                    "line": 30,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_STRING_IA5String",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "marker": {
+                      "optional": true,
+                      "hasDefault": true,
+                      "indirect": true,
+                      "omitable": true,
+                      "defaultValue": {
+                        "kind": "ATV_STRING",
+                        "string": "x"
+                      }
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleParameterGovernors.Labelled@0/label{0}",
+                        "identifier": "?",
+                        "line": 32,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_STRING",
+                          "string": "x"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleParameterGovernors.Labelled/label",
+              "identifier": "label",
+              "line": 30,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_STRING_IA5String",
+              "marker": {
+                "optional": true,
+                "hasDefault": true,
+                "indirect": true,
+                "omitable": true,
+                "defaultValue": {
+                  "kind": "ATV_REFERENCED",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_lowercase",
+                        "name": "text"
+                      }
+                    ],
+                    "line": 30,
+                    "module": "ModuleParameterGovernors",
+                    "resolvedId": "ModuleParameterGovernors.Labelled%0"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleParameterGovernors.LabelledX",
+          "identifier": "LabelledX",
+          "line": 32,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Labelled"
+              }
+            ],
+            "line": 32,
+            "module": "ModuleParameterGovernors",
+            "resolvedId": "ModuleParameterGovernors.Labelled@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleParameterGovernors.LabelledX{0}",
+              "identifier": "?",
+              "line": 32,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_REFERENCE",
+              "value": {
+                "kind": "ATV_STRING",
+                "string": "x"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleParameterGovernors.Int",
+          "identifier": "Int",
+          "line": 34,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_INTEGER",
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 34,
+            "elements": [
+              {
+                "kind": "ACT_EL_RANGE",
+                "line": 34,
+                "rangeStart": {
+                  "kind": "ATV_INTEGER",
+                  "integer": "0"
+                },
+                "rangeStop": {
+                  "kind": "ATV_INTEGER",
+                  "integer": "255"
+                }
+              }
+            ]
+          },
+          "combinedConstraints": {
+            "kind": "ACT_CA_SET",
+            "line": 34,
+            "elements": [
+              {
+                "kind": "ACT_EL_RANGE",
+                "line": 34,
+                "rangeStart": {
+                  "kind": "ATV_INTEGER",
+                  "integer": "0"
+                },
+                "rangeStop": {
+                  "kind": "ATV_INTEGER",
+                  "integer": "255"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleParameterGovernors.Typed",
+          "identifier": "Typed",
+          "line": 37,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleParameterGovernors.Typed%0",
+              "argument": "T"
+            },
+            {
+              "id": "ModuleParameterGovernors.Typed%1",
+              "governor": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "T"
+                  }
+                ],
+                "line": 36,
+                "module": "ModuleParameterGovernors",
+                "resolvedId": "ModuleParameterGovernors.Typed%0"
+              },
+              "argument": "v"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleParameterGovernors.Typed^0{0}",
+                  "line": 39,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Int"
+                      }
+                    ],
+                    "line": 39,
+                    "module": "ModuleParameterGovernors",
+                    "resolvedId": "ModuleParameterGovernors.Int"
+                  }
+                },
+                {
+                  "id": "ModuleParameterGovernors.Typed^0{1}",
+                  "identifier": "?",
+                  "line": 39,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_INTEGER",
+                    "integer": "5"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleParameterGovernors.Typed@0",
+                "identifier": "Typed_Int",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleParameterGovernors.Typed@0%0",
+                    "argument": "T"
+                  },
+                  {
+                    "id": "ModuleParameterGovernors.Typed@0%1",
+                    "governor": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "T"
+                        }
+                      ],
+                      "line": 36,
+                      "module": "ModuleParameterGovernors",
+                      "resolvedId": "ModuleParameterGovernors.Int"
+                    },
+                    "argument": "v"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleParameterGovernors.Typed@0{0}",
+                    "line": 39,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Int"
+                        }
+                      ],
+                      "line": 39,
+                      "module": "ModuleParameterGovernors",
+                      "resolvedId": "ModuleParameterGovernors.Int"
+                    }
+                  },
+                  {
+                    "id": "ModuleParameterGovernors.Typed@0{1}",
+                    "identifier": "?",
+                    "line": 39,
+                    "metaType": "AMT_VALUE",
+                    "exprType": "A1TC_REFERENCE",
+                    "value": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "5"
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleParameterGovernors.Typed@0/a",
+                    "identifier": "a",
+                    "line": 39,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Int"
+                        }
+                      ],
+                      "line": 39,
+                      "module": "ModuleParameterGovernors",
+                      "resolvedId": "ModuleParameterGovernors.Int"
+                    },
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "marker": {
+                      "optional": true,
+                      "hasDefault": true,
+                      "indirect": true,
+                      "omitable": true,
+                      "defaultValue": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "5"
+                      }
+                    },
+                    "combinedConstraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 34,
+                      "elements": [
+                        {
+                          "kind": "ACT_EL_RANGE",
+                          "line": 34,
+                          "rangeStart": {
+                            "kind": "ATV_INTEGER",
+                            "integer": "0"
+                          },
+                          "rangeStop": {
+                            "kind": "ATV_INTEGER",
+                            "integer": "255"
+                          }
+                        }
+                      ]
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleParameterGovernors.Typed@0/a{0}",
+                        "line": 39,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "Int"
+                            }
+                          ],
+                          "line": 39,
+                          "module": "ModuleParameterGovernors",
+                          "resolvedId": "ModuleParameterGovernors.Int"
+                        }
+                      },
+                      {
+                        "id": "ModuleParameterGovernors.Typed@0/a{1}",
+                        "identifier": "?",
+                        "line": 39,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_INTEGER",
+                          "integer": "5"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleParameterGovernors.Typed^1{0}",
+                  "line": 40,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                },
+                {
+                  "id": "ModuleParameterGovernors.Typed^1{1}",
+                  "identifier": "?",
+                  "line": 40,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_TRUE"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleParameterGovernors.Typed@1",
+                "identifier": "Typed",
+                "line": 37,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleParameterGovernors.Typed@1%0",
+                    "argument": "T"
+                  },
+                  {
+                    "id": "ModuleParameterGovernors.Typed@1%1",
+                    "governor": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "T"
+                        }
+                      ],
+                      "line": 36,
+                      "module": "ModuleParameterGovernors",
+                      "resolvedId": "ModuleParameterGovernors.Typed^1{0}"
+                    },
+                    "argument": "v"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleParameterGovernors.Typed@1{0}",
+                    "line": 40,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN"
+                  },
+                  {
+                    "id": "ModuleParameterGovernors.Typed@1{1}",
+                    "identifier": "?",
+                    "line": 40,
+                    "metaType": "AMT_VALUE",
+                    "exprType": "A1TC_REFERENCE",
+                    "value": {
+                      "kind": "ATV_TRUE"
+                    }
+                  }
+                ],
+                "specIndex": 1,
+                "members": [
+                  {
+                    "id": "ModuleParameterGovernors.Typed@1/a",
+                    "identifier": "a",
+                    "line": 40,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "marker": {
+                      "optional": true,
+                      "hasDefault": true,
+                      "indirect": true,
+                      "omitable": true,
+                      "defaultValue": {
+                        "kind": "ATV_TRUE"
+                      }
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleParameterGovernors.Typed@1/a{0}",
+                        "line": 40,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      },
+                      {
+                        "id": "ModuleParameterGovernors.Typed@1/a{1}",
+                        "identifier": "?",
+                        "line": 40,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_TRUE"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleParameterGovernors.Typed/a",
+              "identifier": "a",
+              "line": 37,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "T"
+                  }
+                ],
+                "line": 37,
+                "module": "ModuleParameterGovernors",
+                "resolvedId": "ModuleParameterGovernors.Typed%0"
+              },
+              "marker": {
+                "optional": true,
+                "hasDefault": true,
+                "indirect": true,
+                "omitable": true,
+                "defaultValue": {
+                  "kind": "ATV_REFERENCED",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_lowercase",
+                        "name": "v"
+                      }
+                    ],
+                    "line": 37,
+                    "module": "ModuleParameterGovernors",
+                    "resolvedId": "ModuleParameterGovernors.Typed%1"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleParameterGovernors.TypedInt",
+          "identifier": "TypedInt",
+          "line": 39,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Typed"
+              }
+            ],
+            "line": 39,
+            "module": "ModuleParameterGovernors",
+            "resolvedId": "ModuleParameterGovernors.Typed@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleParameterGovernors.TypedInt{0}",
+              "line": 39,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Int"
+                  }
+                ],
+                "line": 39,
+                "module": "ModuleParameterGovernors",
+                "resolvedId": "ModuleParameterGovernors.Int"
+              }
+            },
+            {
+              "id": "ModuleParameterGovernors.TypedInt{1}",
+              "identifier": "?",
+              "line": 39,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_REFERENCE",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "5"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleParameterGovernors.TypedBool",
+          "identifier": "TypedBool",
+          "line": 40,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Typed"
+              }
+            ],
+            "line": 40,
+            "module": "ModuleParameterGovernors",
+            "resolvedId": "ModuleParameterGovernors.Typed@1"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleParameterGovernors.TypedBool{0}",
+              "line": 40,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            },
+            {
+              "id": "ModuleParameterGovernors.TypedBool{1}",
+              "identifier": "?",
+              "line": 40,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_REFERENCE",
+              "value": {
+                "kind": "ATV_TRUE"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleParameterGovernors.Tp",
+          "identifier": "Tp",
+          "line": 42,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_BOOLEAN"
+        },
+        {
+          "id": "ModuleParameterGovernors.Hidden",
+          "identifier": "Hidden",
+          "line": 45,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleParameterGovernors.Hidden%0",
+              "argument": "Tp"
+            },
+            {
+              "id": "ModuleParameterGovernors.Hidden%1",
+              "governor": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Tp"
+                  }
+                ],
+                "line": 44,
+                "module": "ModuleParameterGovernors",
+                "resolvedId": "ModuleParameterGovernors.Hidden%0"
+              },
+              "argument": "v"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleParameterGovernors.Hidden^0{0}",
+                  "line": 47,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Int"
+                      }
+                    ],
+                    "line": 47,
+                    "module": "ModuleParameterGovernors",
+                    "resolvedId": "ModuleParameterGovernors.Int"
+                  }
+                },
+                {
+                  "id": "ModuleParameterGovernors.Hidden^0{1}",
+                  "identifier": "?",
+                  "line": 47,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_INTEGER",
+                    "integer": "7"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleParameterGovernors.Hidden@0",
+                "identifier": "Hidden_Int",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleParameterGovernors.Hidden@0%0",
+                    "argument": "Tp"
+                  },
+                  {
+                    "id": "ModuleParameterGovernors.Hidden@0%1",
+                    "governor": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Tp"
+                        }
+                      ],
+                      "line": 44,
+                      "module": "ModuleParameterGovernors",
+                      "resolvedId": "ModuleParameterGovernors.Int"
+                    },
+                    "argument": "v"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleParameterGovernors.Hidden@0{0}",
+                    "line": 47,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Int"
+                        }
+                      ],
+                      "line": 47,
+                      "module": "ModuleParameterGovernors",
+                      "resolvedId": "ModuleParameterGovernors.Int"
+                    }
+                  },
+                  {
+                    "id": "ModuleParameterGovernors.Hidden@0{1}",
+                    "identifier": "?",
+                    "line": 47,
+                    "metaType": "AMT_VALUE",
+                    "exprType": "A1TC_REFERENCE",
+                    "value": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "7"
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleParameterGovernors.Hidden@0/b",
+                    "identifier": "b",
+                    "line": 47,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Int"
+                        }
+                      ],
+                      "line": 47,
+                      "module": "ModuleParameterGovernors",
+                      "resolvedId": "ModuleParameterGovernors.Int"
+                    },
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "marker": {
+                      "optional": true,
+                      "hasDefault": true,
+                      "indirect": true,
+                      "omitable": true,
+                      "defaultValue": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "7"
+                      }
+                    },
+                    "combinedConstraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 34,
+                      "elements": [
+                        {
+                          "kind": "ACT_EL_RANGE",
+                          "line": 34,
+                          "rangeStart": {
+                            "kind": "ATV_INTEGER",
+                            "integer": "0"
+                          },
+                          "rangeStop": {
+                            "kind": "ATV_INTEGER",
+                            "integer": "255"
+                          }
+                        }
+                      ]
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleParameterGovernors.Hidden@0/b{0}",
+                        "line": 47,
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "Int"
+                            }
+                          ],
+                          "line": 47,
+                          "module": "ModuleParameterGovernors",
+                          "resolvedId": "ModuleParameterGovernors.Int"
+                        }
+                      },
+                      {
+                        "id": "ModuleParameterGovernors.Hidden@0/b{1}",
+                        "identifier": "?",
+                        "line": 47,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_INTEGER",
+                          "integer": "7"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleParameterGovernors.Hidden/b",
+              "identifier": "b",
+              "line": 45,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Tp"
+                  }
+                ],
+                "line": 45,
+                "module": "ModuleParameterGovernors",
+                "resolvedId": "ModuleParameterGovernors.Hidden%0"
+              },
+              "marker": {
+                "optional": true,
+                "hasDefault": true,
+                "indirect": true,
+                "omitable": true,
+                "defaultValue": {
+                  "kind": "ATV_REFERENCED",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_lowercase",
+                        "name": "v"
+                      }
+                    ],
+                    "line": 45,
+                    "module": "ModuleParameterGovernors",
+                    "resolvedId": "ModuleParameterGovernors.Hidden%1"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleParameterGovernors.HiddenInt",
+          "identifier": "HiddenInt",
+          "line": 47,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Hidden"
+              }
+            ],
+            "line": 47,
+            "module": "ModuleParameterGovernors",
+            "resolvedId": "ModuleParameterGovernors.Hidden@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleParameterGovernors.HiddenInt{0}",
+              "line": 47,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Int"
+                  }
+                ],
+                "line": 47,
+                "module": "ModuleParameterGovernors",
+                "resolvedId": "ModuleParameterGovernors.Int"
+              }
+            },
+            {
+              "id": "ModuleParameterGovernors.HiddenInt{1}",
+              "identifier": "?",
+              "line": 47,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_REFERENCE",
+              "value": {
+                "kind": "ATV_INTEGER",
+                "integer": "7"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
