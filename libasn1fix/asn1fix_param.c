@@ -87,6 +87,20 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 
 	target = TQ_FIRST(&expr->members);
 	TQ_FOR(m, &exc->members, next) {
+		if(!target->rhs_pspecs && m->rhs_pspecs
+		&& asn1p_expr_substitute_in_values(-1) > 0) {
+			/*
+			 * The member was a bare DummyReference. It is now a
+			 * clone of the actual parameter, with the actual
+			 * parameters of that actual parameter ("Inner {X}" in
+			 * "Wrap {Inner {X}}"). Keep them: the actual parameter
+			 * list of this specialization is not the list of the
+			 * member. Only for tree printers: see
+			 * asn1p_expr_substitute_in_values().
+			 */
+			target = TQ_NEXT(target, next);
+			continue;
+		}
 		asn1p_expr_free(m->rhs_pspecs);	/* the clone copied it */
 		m->rhs_pspecs = asn1p_expr_clone_with_resolver(target->rhs_pspecs ?
 						target->rhs_pspecs : exc->rhs_pspecs,
