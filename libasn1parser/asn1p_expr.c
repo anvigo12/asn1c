@@ -91,6 +91,20 @@ asn1p_expr_compare(const asn1p_expr_t *a, const asn1p_expr_t *b) {
         return -1;
     }
 
+    /*
+     * "B {X}" and "B {Y}" are different actual parameters (X.683 9).
+     * Only for tree printers: see asn1p_expr_substitute_in_values().
+     */
+    if(substitute_in_values) {
+        if((!a->rhs_pspecs && b->rhs_pspecs)
+           || (a->rhs_pspecs && !b->rhs_pspecs)) {
+            return -1;
+        } else if(a->rhs_pspecs
+                  && asn1p_expr_compare(a->rhs_pspecs, b->rhs_pspecs) != 0) {
+            return -1;
+        }
+    }
+
     const asn1p_expr_t *am = TQ_FIRST(&a->members);
     const asn1p_expr_t *bm = TQ_FIRST(&b->members);
     for(; am || bm; am = TQ_NEXT(am, next), bm = TQ_NEXT(bm, next)) {
@@ -239,6 +253,21 @@ asn1p_expr_clone_impl(asn1p_expr_t *expr, int skip_extensions, asn1p_expr_t *(*r
 	CLVRCLONE(value, asn1p_value_clone_with_resolver);
 	CLVRCLONE(marker.default_value, asn1p_value_clone_with_resolver);
 	CLCLONE(with_syntax, asn1p_wsyntx_clone);
+	/*
+	 * Actual parameters of a parameterized reference, such as {X} in
+	 * "Signed {X}" (X.683 9). Without them, a clone of "A {B {X}}"
+	 * becomes "A {B}". The resolver also replaces the DummyReferences
+	 * inside them. Only for tree printers: see
+	 * asn1p_expr_substitute_in_values().
+	 */
+	if(expr->rhs_pspecs && substitute_in_values) {
+		clone->rhs_pspecs = asn1p_expr_clone_impl(expr->rhs_pspecs, 0,
+		                                          r, rarg);
+		if(clone->rhs_pspecs == NULL) {
+			asn1p_expr_free(clone);
+			return NULL;
+		}
+	}
 
 	/*
 	 * Copy all the children of this expr.
