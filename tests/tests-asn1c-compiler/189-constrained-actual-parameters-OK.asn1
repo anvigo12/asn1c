@@ -1,0 +1,31 @@
+
+-- OK: Everything is fine
+
+-- iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+-- .spelio.software.asn1c.test (9363.1.5.1)
+-- .189
+
+-- Actual parameters that differ only in a constraint (X.683 (02/2021) 9.6,
+-- 9.7): with -E -F -print-json, each use gets its own specialization.
+
+ModuleConstrainedActualParameters
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 189 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	Content ::= CHOICE {
+		request		INTEGER,
+		response	BOOLEAN
+	}
+
+	Wrap {T} ::= SEQUENCE {
+		v	T
+	}
+
+	Request ::= Wrap {Content (WITH COMPONENTS {request PRESENT})}
+	Response ::= Wrap {Content (WITH COMPONENTS {response PRESENT})}
+	Small ::= Wrap {INTEGER (0..7)}
+	Large ::= Wrap {INTEGER (0..255)}
+
+END
