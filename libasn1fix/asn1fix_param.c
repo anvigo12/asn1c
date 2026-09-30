@@ -120,6 +120,66 @@ compare_specializations(const asn1p_expr_t *a, const asn1p_expr_t *b) {
     return asn1p_expr_compare(a, b);
 }
 
+static int specialize_in_type(arg_t *arg, asn1p_expr_t *type, int depth);
+
+static int
+specialize_in_value(arg_t *arg, asn1p_value_t *value, int depth) {
+	if(value && value->type == ATV_TYPE && value->value.v_type)
+		return specialize_in_type(arg, value->value.v_type, depth);
+	return 0;
+}
+
+static int
+specialize_in_constraint(arg_t *arg, asn1p_constraint_t *ct, int depth) {
+	int rvalue = 0;
+	unsigned int el;
+
+	if(!ct) return 0;
+	RET2RVAL(specialize_in_value(arg, ct->containedSubtype, depth), rvalue);
+	RET2RVAL(specialize_in_value(arg, ct->value, depth), rvalue);
+	for(el = 0; el < ct->el_count; el++)
+		RET2RVAL(specialize_in_constraint(arg, ct->elements[el], depth),
+			rvalue);
+	return rvalue;
+}
+
+/*
+ * A type inside a constraint ("CONTAINING G {X}", also inside WITH
+ * COMPONENTS): a reference with actual parameters names its
+ * specialization (X.683 (02/2021) 9.7). The lookup creates it. The
+ * inner constraints and components of the type are visited too.
+ */
+static int
+specialize_in_type(arg_t *arg, asn1p_expr_t *type, int depth) {
+	asn1p_expr_t *m;
+	int rvalue = 0;
+
+	if(depth > 32) {
+		FATAL("%s at line %d: types in constraints nest too deep",
+			arg->expr->Identifier, type->_lineno);
+		return -1;
+	}
+	if(type->expr_type == A1TC_REFERENCE && type->reference
+	&& type->rhs_pspecs) {
+		/*
+		 * A failed lookup is not reported here: the reference pass
+		 * reports each reference that it cannot resolve.
+		 */
+		(void)asn1f_lookup_symbol(arg, type->rhs_pspecs,
+			type->reference);
+	}
+	RET2RVAL(specialize_in_constraint(arg, type->constraints, depth + 1),
+		rvalue);
+	TQ_FOR(m, &(type->members), next)
+		RET2RVAL(specialize_in_type(arg, m, depth + 1), rvalue);
+	return rvalue;
+}
+
+int
+asn1f_specialize_in_constraints(arg_t *arg) {
+	return specialize_in_constraint(arg, arg->expr->constraints, 0);
+}
+
 static asn1p_expr_t *
 resolve_expr(asn1p_expr_t *expr_to_resolve, void *resolver_arg) {
 	resolver_arg_t *rarg = resolver_arg;
