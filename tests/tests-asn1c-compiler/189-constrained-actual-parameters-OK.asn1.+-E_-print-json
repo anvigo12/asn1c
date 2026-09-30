@@ -1,0 +1,335 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "DECLARED",
+  "modules": [
+    {
+      "name": "ModuleConstrainedActualParameters",
+      "sourceFile": "189-constrained-actual-parameters-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "189"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "assignments": [
+        {
+          "id": "ModuleConstrainedActualParameters.Content",
+          "identifier": "Content",
+          "line": 18,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_CHOICE",
+          "members": [
+            {
+              "id": "ModuleConstrainedActualParameters.Content/request",
+              "identifier": "request",
+              "line": 18,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleConstrainedActualParameters.Content/response",
+              "identifier": "response",
+              "line": 19,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            }
+          ]
+        },
+        {
+          "id": "ModuleConstrainedActualParameters.Wrap",
+          "identifier": "Wrap",
+          "line": 24,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleConstrainedActualParameters.Wrap%0",
+              "argument": "T"
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleConstrainedActualParameters.Wrap/v",
+              "identifier": "v",
+              "line": 24,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "T"
+                  }
+                ],
+                "line": 24,
+                "module": "ModuleConstrainedActualParameters"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleConstrainedActualParameters.Request",
+          "identifier": "Request",
+          "line": 26,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Wrap"
+              }
+            ],
+            "line": 26,
+            "module": "ModuleConstrainedActualParameters"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleConstrainedActualParameters.Request{0}",
+              "line": 26,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Content"
+                  }
+                ],
+                "line": 26,
+                "module": "ModuleConstrainedActualParameters"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 26,
+                "elements": [
+                  {
+                    "kind": "ACT_CT_WCOMPS",
+                    "line": 26,
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "presence": "ACPRES_PRESENT",
+                        "line": 26,
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_lowercase",
+                                "name": "request"
+                              }
+                            ],
+                            "line": 26,
+                            "module": "ModuleConstrainedActualParameters"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleConstrainedActualParameters.Response",
+          "identifier": "Response",
+          "line": 27,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Wrap"
+              }
+            ],
+            "line": 27,
+            "module": "ModuleConstrainedActualParameters"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleConstrainedActualParameters.Response{0}",
+              "line": 27,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Content"
+                  }
+                ],
+                "line": 27,
+                "module": "ModuleConstrainedActualParameters"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 27,
+                "elements": [
+                  {
+                    "kind": "ACT_CT_WCOMPS",
+                    "line": 27,
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "presence": "ACPRES_PRESENT",
+                        "line": 27,
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_lowercase",
+                                "name": "response"
+                              }
+                            ],
+                            "line": 27,
+                            "module": "ModuleConstrainedActualParameters"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleConstrainedActualParameters.Small",
+          "identifier": "Small",
+          "line": 28,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Wrap"
+              }
+            ],
+            "line": 28,
+            "module": "ModuleConstrainedActualParameters"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleConstrainedActualParameters.Small{0}",
+              "line": 28,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 28,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_RANGE",
+                    "line": 28,
+                    "rangeStart": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "0"
+                    },
+                    "rangeStop": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "7"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleConstrainedActualParameters.Large",
+          "identifier": "Large",
+          "line": 29,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Wrap"
+              }
+            ],
+            "line": 29,
+            "module": "ModuleConstrainedActualParameters"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleConstrainedActualParameters.Large{0}",
+              "line": 29,
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 29,
+                "elements": [
+                  {
+                    "kind": "ACT_EL_RANGE",
+                    "line": 29,
+                    "rangeStart": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "0"
+                    },
+                    "rangeStop": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "255"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
