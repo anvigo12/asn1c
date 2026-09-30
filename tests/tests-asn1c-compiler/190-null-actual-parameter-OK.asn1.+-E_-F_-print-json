@@ -1,0 +1,336 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "RESOLVED",
+  "modules": [
+    {
+      "name": "ModuleNullActualParameter",
+      "sourceFile": "190-null-actual-parameter-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "190"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "assignments": [
+        {
+          "id": "ModuleNullActualParameter.Inner",
+          "identifier": "Inner",
+          "line": 20,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleNullActualParameter.Inner%0",
+              "argument": "Y"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleNullActualParameter.Inner^0{0}",
+                  "identifier": "?",
+                  "line": 26,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_NULL"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleNullActualParameter.Inner@0",
+                "identifier": "Inner",
+                "line": 20,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleNullActualParameter.Inner@0%0",
+                    "argument": "Y"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleNullActualParameter.Inner@0{0}",
+                    "identifier": "?",
+                    "line": 26,
+                    "metaType": "AMT_VALUE",
+                    "exprType": "A1TC_REFERENCE",
+                    "value": {
+                      "kind": "ATV_NULL"
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleNullActualParameter.Inner@0/y",
+                    "identifier": "y",
+                    "line": 26,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_NULL",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleNullActualParameter.Inner@0/y{0}",
+                        "identifier": "?",
+                        "line": 26,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_NULL"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleNullActualParameter.Inner/y",
+              "identifier": "y",
+              "line": 20,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "Y"
+                  }
+                ],
+                "line": 20,
+                "module": "ModuleNullActualParameter",
+                "resolvedId": "ModuleNullActualParameter.Inner%0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleNullActualParameter.Opt",
+          "identifier": "Opt",
+          "line": 23,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleNullActualParameter.Opt%0",
+              "argument": "Y"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleNullActualParameter.Opt^0{0}",
+                  "identifier": "?",
+                  "line": 27,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_NULL"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleNullActualParameter.Opt@0",
+                "identifier": "Opt",
+                "line": 23,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleNullActualParameter.Opt@0%0",
+                    "argument": "Y"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleNullActualParameter.Opt@0{0}",
+                    "identifier": "?",
+                    "line": 27,
+                    "metaType": "AMT_VALUE",
+                    "exprType": "A1TC_REFERENCE",
+                    "value": {
+                      "kind": "ATV_NULL"
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleNullActualParameter.Opt@0/y",
+                    "identifier": "y",
+                    "line": 27,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_NULL",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "marker": {
+                      "optional": true,
+                      "indirect": true,
+                      "omitable": true
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleNullActualParameter.Opt@0/y{0}",
+                        "identifier": "?",
+                        "line": 27,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_NULL"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleNullActualParameter.Opt/y",
+              "identifier": "y",
+              "line": 23,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "Y"
+                  }
+                ],
+                "line": 23,
+                "module": "ModuleNullActualParameter",
+                "resolvedId": "ModuleNullActualParameter.Opt%0"
+              },
+              "marker": {
+                "optional": true,
+                "indirect": true,
+                "omitable": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleNullActualParameter.WithNull",
+          "identifier": "WithNull",
+          "line": 26,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Inner"
+              }
+            ],
+            "line": 26,
+            "module": "ModuleNullActualParameter",
+            "resolvedId": "ModuleNullActualParameter.Inner@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleNullActualParameter.WithNull{0}",
+              "identifier": "?",
+              "line": 26,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_REFERENCE",
+              "value": {
+                "kind": "ATV_NULL"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleNullActualParameter.WithOptionalNull",
+          "identifier": "WithOptionalNull",
+          "line": 27,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Opt"
+              }
+            ],
+            "line": 27,
+            "module": "ModuleNullActualParameter",
+            "resolvedId": "ModuleNullActualParameter.Opt@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleNullActualParameter.WithOptionalNull{0}",
+              "identifier": "?",
+              "line": 27,
+              "metaType": "AMT_VALUE",
+              "exprType": "A1TC_REFERENCE",
+              "value": {
+                "kind": "ATV_NULL"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

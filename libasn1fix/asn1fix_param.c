@@ -137,6 +137,22 @@ resolve_expr(asn1p_expr_t *expr_to_resolve, void *resolver_arg) {
 
 	DEBUG("Found target %s (%d/%x)",
 		expr->Identifier, expr->meta_type, expr->expr_type);
+	if(expr_to_resolve->meta_type == AMT_TYPEREF
+	&& expr->meta_type == AMT_VALUE
+	&& expr->value && expr->value->type == ATV_NULL) {
+		/*
+		 * "{NULL}": the parser reads the word NULL in an actual
+		 * parameter list as a value. In a type position it is
+		 * the NULL type.
+		 */
+		nex = asn1p_expr_new(expr->_lineno, expr->module);
+		if(!nex) return NULL;
+		nex->Identifier = expr_to_resolve->Identifier
+			? strdup(expr_to_resolve->Identifier) : 0;
+		nex->meta_type = AMT_TYPE;
+		nex->expr_type = ASN_BASIC_NULL;
+		return nex;
+	}
 	if(expr->meta_type == AMT_TYPE
 	|| expr->meta_type == AMT_VALUE
 	|| expr->meta_type == AMT_TYPEREF
