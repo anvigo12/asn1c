@@ -328,10 +328,13 @@ int asn1p_expr_compare(const asn1p_expr_t *, const asn1p_expr_t *);
  * With enable != 0, a specialization also substitutes DummyReferences
  * inside values and constraints (types in values, value sets, CHOICE
  * values; X.683 (02/2021) 8.4, 9.7), a clone keeps the actual parameters
- * of a parameterized reference ("B {X}" in "A {B {X}}", X.683 9), and
- * asn1p_expr_compare() compares them. The default is off: the C code
- * generator gives the substituted types of two specializations the same
- * name. Tree printers (asn1c -E -F -print-json) enable it.
+ * of a parameterized reference ("B {X}" in "A {B {X}}", X.683 9),
+ * asn1p_expr_compare() compares them, asn1p_constraint_compare()
+ * compares all parts of two constraints, and two references compare
+ * equal only when they occur in the same module. The default is off:
+ * the C code generator gives the substituted types of two
+ * specializations the same name. Tree printers (asn1c -E -F -print-json)
+ * enable it.
  * With enable < 0, the setting does not change. Returns the previous setting.
  */
 int asn1p_expr_substitute_in_values(int enable);

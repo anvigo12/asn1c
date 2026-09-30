@@ -39,12 +39,51 @@ constraint_ref(const asn1p_constraint_t *ct) {
     return 0;
 }
 
+static int
+value_compare_or_absent(const asn1p_value_t *a, const asn1p_value_t *b) {
+    if(!a || !b) return (a == b) ? 0 : -1;
+    return asn1p_value_compare(a, b);
+}
+
+/*
+ * All parts of two constraint trees: kind, presence, values, ranges,
+ * contained subtypes, and elements. Used for tree printers only (see
+ * asn1p_expr_substitute_in_values()): there, two actual parameters that
+ * differ only in a constraint, such as WITH COMPONENTS {a PRESENT} and
+ * WITH COMPONENTS {b PRESENT}, need two specializations.
+ */
+static int
+constraint_compare_deep(const asn1p_constraint_t *a,
+                        const asn1p_constraint_t *b) {
+    unsigned int i;
+
+    if(a->type != b->type || a->presence != b->presence
+       || a->el_count != b->el_count)
+        return -1;
+    if(value_compare_or_absent(a->containedSubtype, b->containedSubtype)
+       || value_compare_or_absent(a->value, b->value)
+       || value_compare_or_absent(a->range_start, b->range_start)
+       || value_compare_or_absent(a->range_stop, b->range_stop))
+        return -1;
+    for(i = 0; i < a->el_count; i++) {
+        if(!a->elements[i] || !b->elements[i]) {
+            if(a->elements[i] != b->elements[i]) return -1;
+        } else if(constraint_compare_deep(a->elements[i], b->elements[i])) {
+            return -1;
+        }
+    }
+    return 0;
+}
+
 int asn1p_constraint_compare(const asn1p_constraint_t *a,
                              const asn1p_constraint_t *b) {
     assert((a && b));
 
     if(a->type != b->type)
         return -1;
+
+    if(asn1p_expr_substitute_in_values(-1) > 0)
+        return constraint_compare_deep(a, b);
 
     /*
      * Currently we only distinguish VALUESET constraints expressed as

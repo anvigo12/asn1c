@@ -71,6 +71,9 @@ asn1p_value_compare(const asn1p_value_t *a, const asn1p_value_t *b) {
         return asn1p_constraint_compare(a->value.constraint,
                                         b->value.constraint);
     case ATV_REFERENCED:
+        if(asn1p_expr_substitute_in_values(-1) > 0
+           && a->value.reference->module != b->value.reference->module)
+            return -1;	/* equal names in two modules (tree printers) */
         return asn1p_ref_compare(a->value.reference, b->value.reference);
     case ATV_CHOICE_IDENTIFIER:
         if(strcmp(a->value.choice_identifier.identifier,
