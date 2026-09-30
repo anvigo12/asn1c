@@ -87,6 +87,20 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 
 	target = TQ_FIRST(&expr->members);
 	TQ_FOR(m, &exc->members, next) {
+		if(!target->rhs_pspecs && m->rhs_pspecs
+		&& asn1p_expr_substitute_in_values(-1) > 0) {
+			/*
+			 * The member was a bare DummyReference. It is now a
+			 * clone of the actual parameter, with the actual
+			 * parameters of that actual parameter ("Inner {X}" in
+			 * "Wrap {Inner {X}}"). Keep them: the actual parameter
+			 * list of this specialization is not the list of the
+			 * member. Only for tree printers: see
+			 * asn1p_expr_substitute_in_values().
+			 */
+			target = TQ_NEXT(target, next);
+			continue;
+		}
 		asn1p_expr_free(m->rhs_pspecs);	/* the clone copied it */
 		m->rhs_pspecs = asn1p_expr_clone_with_resolver(target->rhs_pspecs ?
 						target->rhs_pspecs : exc->rhs_pspecs,
@@ -137,6 +151,22 @@ resolve_expr(asn1p_expr_t *expr_to_resolve, void *resolver_arg) {
 
 	DEBUG("Found target %s (%d/%x)",
 		expr->Identifier, expr->meta_type, expr->expr_type);
+	if(expr_to_resolve->meta_type == AMT_TYPEREF
+	&& expr->meta_type == AMT_VALUE
+	&& expr->value && expr->value->type == ATV_NULL) {
+		/*
+		 * "{NULL}": the parser reads the word NULL in an actual
+		 * parameter list as a value. In a type position it is
+		 * the NULL type.
+		 */
+		nex = asn1p_expr_new(expr->_lineno, expr->module);
+		if(!nex) return NULL;
+		nex->Identifier = expr_to_resolve->Identifier
+			? strdup(expr_to_resolve->Identifier) : 0;
+		nex->meta_type = AMT_TYPE;
+		nex->expr_type = ASN_BASIC_NULL;
+		return nex;
+	}
 	if(expr->meta_type == AMT_TYPE
 	|| expr->meta_type == AMT_VALUE
 	|| expr->meta_type == AMT_TYPEREF

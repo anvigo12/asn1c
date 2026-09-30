@@ -87,7 +87,7 @@
                     ],
                     "line": 27,
                     "module": "ModuleNestedActualParameters",
-                    "resolvedId": "ModuleNestedActualParameters.Inner"
+                    "resolvedId": "ModuleNestedActualParameters.Inner@0"
                   },
                   "rhsPspecs": [
                     {
@@ -125,7 +125,7 @@
                       ],
                       "line": 27,
                       "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner"
+                      "resolvedId": "ModuleNestedActualParameters.Inner@0"
                     },
                     "rhsPspecs": [
                       {
@@ -164,28 +164,9 @@
                     "rhsPspecs": [
                       {
                         "id": "ModuleNestedActualParameters.Wrap@0/v{0}",
-                        "line": 27,
-                        "metaType": "AMT_TYPEREF",
-                        "exprType": "A1TC_REFERENCE",
-                        "reference": {
-                          "components": [
-                            {
-                              "lexType": "RLT_Uppercase",
-                              "name": "Inner"
-                            }
-                          ],
-                          "line": 27,
-                          "module": "ModuleNestedActualParameters",
-                          "resolvedId": "ModuleNestedActualParameters.Inner"
-                        },
-                        "rhsPspecs": [
-                          {
-                            "id": "ModuleNestedActualParameters.Wrap@0/v{0}{0}",
-                            "line": 29,
-                            "metaType": "AMT_TYPE",
-                            "exprType": "ASN_BASIC_INTEGER"
-                          }
-                        ]
+                        "line": 29,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
                       }
                     ]
                   }
@@ -208,7 +189,7 @@
                     ],
                     "line": 27,
                     "module": "ModuleNestedActualParameters",
-                    "resolvedId": "ModuleNestedActualParameters.Inner"
+                    "resolvedId": "ModuleNestedActualParameters.Inner@1"
                   },
                   "rhsPspecs": [
                     {
@@ -246,7 +227,7 @@
                       ],
                       "line": 27,
                       "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner"
+                      "resolvedId": "ModuleNestedActualParameters.Inner@1"
                     },
                     "rhsPspecs": [
                       {
@@ -285,28 +266,9 @@
                     "rhsPspecs": [
                       {
                         "id": "ModuleNestedActualParameters.Wrap@1/v{0}",
-                        "line": 27,
-                        "metaType": "AMT_TYPEREF",
-                        "exprType": "A1TC_REFERENCE",
-                        "reference": {
-                          "components": [
-                            {
-                              "lexType": "RLT_Uppercase",
-                              "name": "Inner"
-                            }
-                          ],
-                          "line": 27,
-                          "module": "ModuleNestedActualParameters",
-                          "resolvedId": "ModuleNestedActualParameters.Inner"
-                        },
-                        "rhsPspecs": [
-                          {
-                            "id": "ModuleNestedActualParameters.Wrap@1/v{0}{0}",
-                            "line": 30,
-                            "metaType": "AMT_TYPE",
-                            "exprType": "ASN_BASIC_BOOLEAN"
-                          }
-                        ]
+                        "line": 30,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
                       }
                     ]
                   }
@@ -329,7 +291,7 @@
                     ],
                     "line": 31,
                     "module": "ModuleNestedActualParameters",
-                    "resolvedId": "ModuleNestedActualParameters.Inner"
+                    "resolvedId": "ModuleNestedActualParameters.Inner@2"
                   },
                   "rhsPspecs": [
                     {
@@ -371,7 +333,7 @@
                       ],
                       "line": 31,
                       "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner"
+                      "resolvedId": "ModuleNestedActualParameters.Inner@2"
                     },
                     "rhsPspecs": [
                       {
@@ -414,32 +376,13 @@
                     "rhsPspecs": [
                       {
                         "id": "ModuleNestedActualParameters.Wrap@2/v{0}",
+                        "identifier": "?",
                         "line": 31,
-                        "metaType": "AMT_TYPEREF",
+                        "metaType": "AMT_VALUE",
                         "exprType": "A1TC_REFERENCE",
-                        "reference": {
-                          "components": [
-                            {
-                              "lexType": "RLT_Uppercase",
-                              "name": "Inner"
-                            }
-                          ],
-                          "line": 31,
-                          "module": "ModuleNestedActualParameters",
-                          "resolvedId": "ModuleNestedActualParameters.Inner"
-                        },
-                        "rhsPspecs": [
-                          {
-                            "id": "ModuleNestedActualParameters.Wrap@2/v{0}{0}",
-                            "identifier": "?",
-                            "line": 31,
-                            "metaType": "AMT_VALUE",
-                            "exprType": "A1TC_REFERENCE",
-                            "value": {
-                              "kind": "ATV_NULL"
-                            }
-                          }
-                        ]
+                        "value": {
+                          "kind": "ATV_NULL"
+                        }
                       }
                     ]
                   }
@@ -485,33 +428,15 @@
               "rhsPspecs": [
                 {
                   "id": "ModuleNestedActualParameters.Inner^0{0}",
-                  "line": 27,
-                  "metaType": "AMT_TYPEREF",
-                  "exprType": "A1TC_REFERENCE",
-                  "reference": {
-                    "components": [
-                      {
-                        "lexType": "RLT_Uppercase",
-                        "name": "Inner"
-                      }
-                    ],
-                    "line": 27,
-                    "module": "ModuleNestedActualParameters",
-                    "resolvedId": "ModuleNestedActualParameters.Inner"
-                  },
-                  "rhsPspecs": [
-                    {
-                      "id": "ModuleNestedActualParameters.Inner^0{0}{0}",
-                      "line": 29,
-                      "metaType": "AMT_TYPE",
-                      "exprType": "ASN_BASIC_INTEGER"
-                    }
-                  ]
+                  "line": 29,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
                 }
               ],
               "clone": {
                 "id": "ModuleNestedActualParameters.Inner@0",
-                "identifier": "Inner_Inner",
+                "identifier": "Inner",
+                "line": 25,
                 "metaType": "AMT_TYPE",
                 "exprType": "ASN_CONSTR_SEQUENCE",
                 "lhsParams": [
@@ -523,28 +448,9 @@
                 "rhsPspecs": [
                   {
                     "id": "ModuleNestedActualParameters.Inner@0{0}",
-                    "line": 27,
-                    "metaType": "AMT_TYPEREF",
-                    "exprType": "A1TC_REFERENCE",
-                    "reference": {
-                      "components": [
-                        {
-                          "lexType": "RLT_Uppercase",
-                          "name": "Inner"
-                        }
-                      ],
-                      "line": 27,
-                      "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner"
-                    },
-                    "rhsPspecs": [
-                      {
-                        "id": "ModuleNestedActualParameters.Inner@0{0}{0}",
-                        "line": 29,
-                        "metaType": "AMT_TYPE",
-                        "exprType": "ASN_BASIC_INTEGER"
-                      }
-                    ]
+                    "line": 29,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER"
                   }
                 ],
                 "specIndex": 0,
@@ -552,20 +458,9 @@
                   {
                     "id": "ModuleNestedActualParameters.Inner@0/y",
                     "identifier": "y",
-                    "line": 27,
-                    "metaType": "AMT_TYPEREF",
-                    "exprType": "A1TC_REFERENCE",
-                    "reference": {
-                      "components": [
-                        {
-                          "lexType": "RLT_Uppercase",
-                          "name": "Inner"
-                        }
-                      ],
-                      "line": 27,
-                      "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner@0"
-                    },
+                    "line": 29,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
                     "tag": {
                       "tagClass": "TC_CONTEXT_SPECIFIC",
                       "tagMode": "TM_IMPLICIT",
@@ -574,28 +469,9 @@
                     "rhsPspecs": [
                       {
                         "id": "ModuleNestedActualParameters.Inner@0/y{0}",
-                        "line": 27,
-                        "metaType": "AMT_TYPEREF",
-                        "exprType": "A1TC_REFERENCE",
-                        "reference": {
-                          "components": [
-                            {
-                              "lexType": "RLT_Uppercase",
-                              "name": "Inner"
-                            }
-                          ],
-                          "line": 27,
-                          "module": "ModuleNestedActualParameters",
-                          "resolvedId": "ModuleNestedActualParameters.Inner"
-                        },
-                        "rhsPspecs": [
-                          {
-                            "id": "ModuleNestedActualParameters.Inner@0/y{0}{0}",
-                            "line": 29,
-                            "metaType": "AMT_TYPE",
-                            "exprType": "ASN_BASIC_INTEGER"
-                          }
-                        ]
+                        "line": 29,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
                       }
                     ]
                   }
@@ -606,33 +482,15 @@
               "rhsPspecs": [
                 {
                   "id": "ModuleNestedActualParameters.Inner^1{0}",
-                  "line": 27,
-                  "metaType": "AMT_TYPEREF",
-                  "exprType": "A1TC_REFERENCE",
-                  "reference": {
-                    "components": [
-                      {
-                        "lexType": "RLT_Uppercase",
-                        "name": "Inner"
-                      }
-                    ],
-                    "line": 27,
-                    "module": "ModuleNestedActualParameters",
-                    "resolvedId": "ModuleNestedActualParameters.Inner"
-                  },
-                  "rhsPspecs": [
-                    {
-                      "id": "ModuleNestedActualParameters.Inner^1{0}{0}",
-                      "line": 30,
-                      "metaType": "AMT_TYPE",
-                      "exprType": "ASN_BASIC_BOOLEAN"
-                    }
-                  ]
+                  "line": 30,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
                 }
               ],
               "clone": {
                 "id": "ModuleNestedActualParameters.Inner@1",
-                "identifier": "Inner_Inner",
+                "identifier": "Inner",
+                "line": 25,
                 "metaType": "AMT_TYPE",
                 "exprType": "ASN_CONSTR_SEQUENCE",
                 "lhsParams": [
@@ -644,28 +502,9 @@
                 "rhsPspecs": [
                   {
                     "id": "ModuleNestedActualParameters.Inner@1{0}",
-                    "line": 27,
-                    "metaType": "AMT_TYPEREF",
-                    "exprType": "A1TC_REFERENCE",
-                    "reference": {
-                      "components": [
-                        {
-                          "lexType": "RLT_Uppercase",
-                          "name": "Inner"
-                        }
-                      ],
-                      "line": 27,
-                      "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner"
-                    },
-                    "rhsPspecs": [
-                      {
-                        "id": "ModuleNestedActualParameters.Inner@1{0}{0}",
-                        "line": 30,
-                        "metaType": "AMT_TYPE",
-                        "exprType": "ASN_BASIC_BOOLEAN"
-                      }
-                    ]
+                    "line": 30,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN"
                   }
                 ],
                 "specIndex": 1,
@@ -673,20 +512,9 @@
                   {
                     "id": "ModuleNestedActualParameters.Inner@1/y",
                     "identifier": "y",
-                    "line": 27,
-                    "metaType": "AMT_TYPEREF",
-                    "exprType": "A1TC_REFERENCE",
-                    "reference": {
-                      "components": [
-                        {
-                          "lexType": "RLT_Uppercase",
-                          "name": "Inner"
-                        }
-                      ],
-                      "line": 27,
-                      "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner@1"
-                    },
+                    "line": 30,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
                     "tag": {
                       "tagClass": "TC_CONTEXT_SPECIFIC",
                       "tagMode": "TM_IMPLICIT",
@@ -695,28 +523,9 @@
                     "rhsPspecs": [
                       {
                         "id": "ModuleNestedActualParameters.Inner@1/y{0}",
-                        "line": 27,
-                        "metaType": "AMT_TYPEREF",
-                        "exprType": "A1TC_REFERENCE",
-                        "reference": {
-                          "components": [
-                            {
-                              "lexType": "RLT_Uppercase",
-                              "name": "Inner"
-                            }
-                          ],
-                          "line": 27,
-                          "module": "ModuleNestedActualParameters",
-                          "resolvedId": "ModuleNestedActualParameters.Inner"
-                        },
-                        "rhsPspecs": [
-                          {
-                            "id": "ModuleNestedActualParameters.Inner@1/y{0}{0}",
-                            "line": 30,
-                            "metaType": "AMT_TYPE",
-                            "exprType": "ASN_BASIC_BOOLEAN"
-                          }
-                        ]
+                        "line": 30,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
                       }
                     ]
                   }
@@ -727,37 +536,19 @@
               "rhsPspecs": [
                 {
                   "id": "ModuleNestedActualParameters.Inner^2{0}",
+                  "identifier": "?",
                   "line": 31,
-                  "metaType": "AMT_TYPEREF",
+                  "metaType": "AMT_VALUE",
                   "exprType": "A1TC_REFERENCE",
-                  "reference": {
-                    "components": [
-                      {
-                        "lexType": "RLT_Uppercase",
-                        "name": "Inner"
-                      }
-                    ],
-                    "line": 31,
-                    "module": "ModuleNestedActualParameters",
-                    "resolvedId": "ModuleNestedActualParameters.Inner"
-                  },
-                  "rhsPspecs": [
-                    {
-                      "id": "ModuleNestedActualParameters.Inner^2{0}{0}",
-                      "identifier": "?",
-                      "line": 31,
-                      "metaType": "AMT_VALUE",
-                      "exprType": "A1TC_REFERENCE",
-                      "value": {
-                        "kind": "ATV_NULL"
-                      }
-                    }
-                  ]
+                  "value": {
+                    "kind": "ATV_NULL"
+                  }
                 }
               ],
               "clone": {
                 "id": "ModuleNestedActualParameters.Inner@2",
-                "identifier": "Inner_Inner",
+                "identifier": "Inner",
+                "line": 25,
                 "metaType": "AMT_TYPE",
                 "exprType": "ASN_CONSTR_SEQUENCE",
                 "lhsParams": [
@@ -769,32 +560,13 @@
                 "rhsPspecs": [
                   {
                     "id": "ModuleNestedActualParameters.Inner@2{0}",
+                    "identifier": "?",
                     "line": 31,
-                    "metaType": "AMT_TYPEREF",
+                    "metaType": "AMT_VALUE",
                     "exprType": "A1TC_REFERENCE",
-                    "reference": {
-                      "components": [
-                        {
-                          "lexType": "RLT_Uppercase",
-                          "name": "Inner"
-                        }
-                      ],
-                      "line": 31,
-                      "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner"
-                    },
-                    "rhsPspecs": [
-                      {
-                        "id": "ModuleNestedActualParameters.Inner@2{0}{0}",
-                        "identifier": "?",
-                        "line": 31,
-                        "metaType": "AMT_VALUE",
-                        "exprType": "A1TC_REFERENCE",
-                        "value": {
-                          "kind": "ATV_NULL"
-                        }
-                      }
-                    ]
+                    "value": {
+                      "kind": "ATV_NULL"
+                    }
                   }
                 ],
                 "specIndex": 2,
@@ -803,19 +575,8 @@
                     "id": "ModuleNestedActualParameters.Inner@2/y",
                     "identifier": "y",
                     "line": 31,
-                    "metaType": "AMT_TYPEREF",
-                    "exprType": "A1TC_REFERENCE",
-                    "reference": {
-                      "components": [
-                        {
-                          "lexType": "RLT_Uppercase",
-                          "name": "Inner"
-                        }
-                      ],
-                      "line": 31,
-                      "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner@2"
-                    },
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_NULL",
                     "tag": {
                       "tagClass": "TC_CONTEXT_SPECIFIC",
                       "tagMode": "TM_IMPLICIT",
@@ -824,32 +585,13 @@
                     "rhsPspecs": [
                       {
                         "id": "ModuleNestedActualParameters.Inner@2/y{0}",
+                        "identifier": "?",
                         "line": 31,
-                        "metaType": "AMT_TYPEREF",
+                        "metaType": "AMT_VALUE",
                         "exprType": "A1TC_REFERENCE",
-                        "reference": {
-                          "components": [
-                            {
-                              "lexType": "RLT_Uppercase",
-                              "name": "Inner"
-                            }
-                          ],
-                          "line": 31,
-                          "module": "ModuleNestedActualParameters",
-                          "resolvedId": "ModuleNestedActualParameters.Inner"
-                        },
-                        "rhsPspecs": [
-                          {
-                            "id": "ModuleNestedActualParameters.Inner@2/y{0}{0}",
-                            "identifier": "?",
-                            "line": 31,
-                            "metaType": "AMT_VALUE",
-                            "exprType": "A1TC_REFERENCE",
-                            "value": {
-                              "kind": "ATV_NULL"
-                            }
-                          }
-                        ]
+                        "value": {
+                          "kind": "ATV_NULL"
+                        }
                       }
                     ]
                   }
@@ -987,7 +729,7 @@
                       ],
                       "line": 27,
                       "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner"
+                      "resolvedId": "ModuleNestedActualParameters.Inner@0"
                     },
                     "rhsPspecs": [
                       {
@@ -1049,7 +791,7 @@
                       ],
                       "line": 27,
                       "module": "ModuleNestedActualParameters",
-                      "resolvedId": "ModuleNestedActualParameters.Inner"
+                      "resolvedId": "ModuleNestedActualParameters.Inner@1"
                     },
                     "rhsPspecs": [
                       {
@@ -1150,7 +892,7 @@
                 ],
                 "line": 31,
                 "module": "ModuleNestedActualParameters",
-                "resolvedId": "ModuleNestedActualParameters.Inner"
+                "resolvedId": "ModuleNestedActualParameters.Inner@2"
               },
               "rhsPspecs": [
                 {
