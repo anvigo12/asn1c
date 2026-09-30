@@ -78,6 +78,7 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 	pspec->rhs_pspecs = rpc;
 	pspec->my_clone = exc;
 	exc->spec_index = npspecs;
+	asn1p_expr_free(exc->rhs_pspecs);	/* the clone copied it */
 	exc->rhs_pspecs = asn1p_expr_clone_with_resolver(expr->rhs_pspecs ?
 					expr->rhs_pspecs : rhs_pspecs,
 					resolve_expr, &rarg);
@@ -86,6 +87,7 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 
 	target = TQ_FIRST(&expr->members);
 	TQ_FOR(m, &exc->members, next) {
+		asn1p_expr_free(m->rhs_pspecs);	/* the clone copied it */
 		m->rhs_pspecs = asn1p_expr_clone_with_resolver(target->rhs_pspecs ?
 						target->rhs_pspecs : exc->rhs_pspecs,
 						resolve_expr, &rarg);
