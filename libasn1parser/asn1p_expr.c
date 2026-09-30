@@ -58,6 +58,10 @@ asn1p_expr_compare(const asn1p_expr_t *a, const asn1p_expr_t *b) {
     } else if(a->reference
               && asn1p_ref_compare(a->reference, b->reference) != 0) {
         return -1;
+    } else if(a->reference && substitute_in_values
+              && a->reference->module != b->reference->module) {
+        /* Equal names in two modules can name two types (tree printers) */
+        return -1;
     }
 
     if((!a->value && b->value) || (a->value && !b->value)) {
