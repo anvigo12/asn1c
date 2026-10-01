@@ -653,11 +653,12 @@ phase_1_1(arg_t *arg, int prm2) {
 
 	/*
 	 * Tree printers: a type reference with actual parameters inside a
-	 * constraint (for example "CONTAINING G {X}" in WITH COMPONENTS)
-	 * names its specialization. Create it (X.683 (02/2021) 9.7).
+	 * constraint (for example "CONTAINING G {X}" in WITH COMPONENTS) or
+	 * in an actual parameter names its specialization. Create it
+	 * (X.683 (02/2021) 9.7).
 	 */
 	if(arg->flags & A1F_RESOLVE_ALL_REFS) {
-		ret = asn1f_recurse_expr(arg, asn1f_specialize_in_constraints);
+		ret = asn1f_recurse_expr(arg, asn1f_specialize_nested);
 		RET2RVAL(ret, rvalue);
 	}
 
