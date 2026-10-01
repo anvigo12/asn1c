@@ -11,6 +11,8 @@ static int asn1f_fix_module__phase_1(arg_t *arg);
 static int oid_is_numeric(const asn1p_oid_t *oid);
 static int asn1f_fix_module__phase_2(arg_t *arg);
 static int asn1f_fix_instance_tags(arg_t *arg);
+static int asn1f_fix_late_instances(arg_t *arg);
+static int recurse_processed(arg_t *arg, int (*callback)(arg_t *arg));
 static int asn1f_decide_constr_tags(arg_t *arg);
 static int asn1f_fix_simple(arg_t *arg);	/* For INTEGER/ENUMERATED */
 static int asn1f_fix_constructed(arg_t *arg);	/* For SEQUENCE/SET/CHOICE */
@@ -127,6 +129,11 @@ asn1f_process(asn1p_t *asn, enum asn1f_flags flags,
         if(ret == 1) warnings++;
         asn1_namespace_free(arg.ns);
         arg.ns = 0;
+    }
+    if(arg.flags & A1F_RESOLVE_ALL_REFS) {
+        ret = asn1f_fix_late_instances(&arg);
+        if(ret == -1) fatals++;
+        if(ret == 1) warnings++;
     }
     /*
      * Instances of parameterized types can be created after their module
@@ -332,7 +339,7 @@ asn1f_fix_module__phase_1(arg_t *arg) {
 
 		arg->expr = expr;
 
-		ret = asn1f_recurse_expr(arg, asn1f_fix_constr_autotag);
+		ret = recurse_processed(arg, asn1f_fix_constr_autotag);
 		RET2RVAL(ret, rvalue);
 
 		assert(arg->expr == expr);
@@ -348,10 +355,10 @@ asn1f_fix_module__phase_1(arg_t *arg) {
 		
 		arg->expr = expr;
 
-		ret = asn1f_recurse_expr(arg, asn1f_fix_bit_string);
+		ret = recurse_processed(arg, asn1f_fix_bit_string);
 		RET2RVAL(ret, rvalue);
 
-		ret = asn1f_recurse_expr(arg, asn1f_fix_cstring);
+		ret = recurse_processed(arg, asn1f_fix_cstring);
 		RET2RVAL(ret, rvalue);
 
 		assert(arg->expr == expr);
@@ -366,7 +373,7 @@ asn1f_fix_module__phase_1(arg_t *arg) {
 		
 		arg->expr = expr;
 
-		ret = asn1f_recurse_expr(arg, asn1f_check_constr_tags_distinct);
+		ret = recurse_processed(arg, asn1f_check_constr_tags_distinct);
 		RET2RVAL(ret, rvalue);
 
 		assert(arg->expr == expr);
@@ -471,6 +478,106 @@ asn1f_fix_instance_tags(arg_t *arg) {
 	return rvalue;
 }
 
+/*
+ * asn1f_recurse_expr() for the steps that follow the phase I loops. For
+ * tree printers, a specialization that phase I did not process yet waits
+ * for asn1f_fix_late_instances(), which applies the same steps to it.
+ */
+static int
+recurse_processed(arg_t *arg, int (*callback)(arg_t *arg)) {
+	asn1p_expr_t *expr = arg->expr;
+	int rvalue = 0;
+	int ret;
+	int i;
+
+	if(!(arg->flags & A1F_RESOLVE_ALL_REFS)
+	|| !expr->lhs_params || expr->spec_index != -1)
+		return asn1f_recurse_expr(arg, callback);
+	for(i = 0; i < expr->specializations.pspecs_count; i++) {
+		arg->expr = expr->specializations.pspec[i].my_clone;
+		if(arg->expr->_mark & TM_PHASE1_DONE) {
+			ret = asn1f_recurse_expr(arg, callback);
+			RET2RVAL(ret, rvalue);
+		}
+	}
+	arg->expr = expr;	/* revert */
+	return rvalue;
+}
+
+/*
+ * A1F_RESOLVE_ALL_REFS: phase I for the specializations that were created
+ * after the loop over their parameterized type (by a reference in a later
+ * module, or in a constraint of another specialization), then the steps
+ * that follow the phase I loops. Repeat until no new specialization
+ * appears.
+ */
+static int
+asn1f_fix_late_instances(arg_t *arg) {
+	static int (*const steps[])(arg_t *) = {
+		asn1f_fix_constr_autotag,		/* 5 */
+		asn1f_fix_bit_string,			/* 8 */
+		asn1f_fix_cstring,			/* 9 */
+		asn1f_check_constr_tags_distinct,
+	};
+	struct late_s {
+		asn1p_module_t *mod;
+		asn1p_expr_t *expr;
+	} *late = NULL;
+	size_t nlate, size = 0, k, st;
+	asn1p_expr_t *expr;
+	int rvalue = 0;
+	int ret;
+	int round;
+	int i;
+
+	for(round = 0;; round++) {
+		nlate = 0;
+		TQ_FOR(arg->mod, &(arg->asn->modules), mod_next) {
+			TQ_FOR(expr, &(arg->mod->members), next) {
+				if(expr->_mark & TM_ENCODING_INSTRUCTION) continue;
+				if(!expr->lhs_params || expr->spec_index != -1) continue;
+				for(i = 0; i < expr->specializations.pspecs_count; i++) {
+					asn1p_expr_t *spec = expr->specializations.pspec[i].my_clone;
+					if(spec->_mark & TM_PHASE1_DONE) continue;
+					if(nlate == size) {
+						void *p = realloc(late, (size = size ? 2 * size : 16)
+							* sizeof(late[0]));
+						assert(p);
+						late = p;
+					}
+					late[nlate].mod = arg->mod;
+					late[nlate++].expr = spec;
+				}
+			}
+		}
+		if(!nlate) break;
+		if(round == 32) {
+			arg->mod = late[0].mod;
+			FATAL("Specializations of parameterized types "
+				"do not terminate after %d rounds", round);
+			free(late);
+			return -1;
+		}
+		for(st = 0; st <= sizeof(steps) / sizeof(steps[0]); st++) {
+			for(k = 0; k < nlate; k++) {
+				arg->mod = late[k].mod;
+				arg->ns = asn1_namespace_new_from_module(arg->mod, 0);
+				arg->expr = late[k].expr;
+				if(st == 0)
+					ret = phase_1_1(arg, 0);
+				else
+					ret = asn1f_recurse_expr(arg, steps[st - 1]);
+				RET2RVAL(ret, rvalue);
+				asn1_namespace_free(arg->ns);
+				arg->ns = 0;
+			}
+		}
+	}
+
+	free(late);
+	return rvalue;
+}
+
 static int
 phase_1_1(arg_t *arg, int prm2) {
 	asn1p_expr_t *expr = arg->expr;
@@ -484,6 +591,8 @@ phase_1_1(arg_t *arg, int prm2) {
 			return 0;
 		for(i = 0; i < expr->specializations.pspecs_count; i++) {
 			arg->expr = expr->specializations.pspec[i].my_clone;
+			if(arg->expr->_mark & TM_PHASE1_DONE)
+				continue;	/* asn1f_fix_late_instances() */
 			ret = phase_1_1(arg, 0);
 			RET2RVAL(ret, rvalue);
 		}
@@ -492,6 +601,8 @@ phase_1_1(arg_t *arg, int prm2) {
 	} else if(prm2) {
 		return 0;	/* Already done! */
 	}
+	if(expr->spec_index != -1)
+		expr->_mark |= TM_PHASE1_DONE;
 
 	/* Check whether this type is a duplicate */
 	if(!expr->lhs_params) {
@@ -539,6 +650,17 @@ phase_1_1(arg_t *arg, int prm2) {
 	 */
 	ret = asn1f_recurse_expr(arg, asn1f_resolve_constraints);
 	RET2RVAL(ret, rvalue);
+
+	/*
+	 * Tree printers: a type reference with actual parameters inside a
+	 * constraint (for example "CONTAINING G {X}" in WITH COMPONENTS) or
+	 * in an actual parameter names its specialization. Create it
+	 * (X.683 (02/2021) 9.7).
+	 */
+	if(arg->flags & A1F_RESOLVE_ALL_REFS) {
+		ret = asn1f_recurse_expr(arg, asn1f_specialize_nested);
+		RET2RVAL(ret, rvalue);
+	}
 
 	/*
 	 * Parse class information object sets.

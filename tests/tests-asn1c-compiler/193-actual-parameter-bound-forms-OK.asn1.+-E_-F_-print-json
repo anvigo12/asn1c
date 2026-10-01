@@ -1,0 +1,946 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "RESOLVED",
+  "modules": [
+    {
+      "name": "ModuleActualParameterBoundForms",
+      "sourceFile": "193-actual-parameter-bound-forms-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "193"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "assignments": [
+        {
+          "id": "ModuleActualParameterBoundForms.Inner",
+          "identifier": "Inner",
+          "line": 21,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleActualParameterBoundForms.Inner%0",
+              "argument": "P"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Inner^0{0}",
+                  "line": 29,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ],
+              "clone": {
+                "id": "ModuleActualParameterBoundForms.Inner@0",
+                "identifier": "Inner",
+                "line": 21,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@0%0",
+                    "argument": "P"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@0{0}",
+                    "line": 29,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@0/p",
+                    "identifier": "p",
+                    "line": 29,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleActualParameterBoundForms.Inner@0/p{0}",
+                        "line": 29,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Inner^1{0}",
+                  "line": 32,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ],
+              "clone": {
+                "id": "ModuleActualParameterBoundForms.Inner@1",
+                "identifier": "Inner",
+                "line": 21,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@1%0",
+                    "argument": "P"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@1{0}",
+                    "line": 32,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN"
+                  }
+                ],
+                "specIndex": 1,
+                "members": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@1/p",
+                    "identifier": "p",
+                    "line": 32,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleActualParameterBoundForms.Inner@1/p{0}",
+                        "line": 32,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Inner^2{0}",
+                  "identifier": "?",
+                  "line": 35,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_NULL"
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleActualParameterBoundForms.Inner@2",
+                "identifier": "Inner",
+                "line": 21,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@2%0",
+                    "argument": "P"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@2{0}",
+                    "identifier": "?",
+                    "line": 35,
+                    "metaType": "AMT_VALUE",
+                    "exprType": "A1TC_REFERENCE",
+                    "value": {
+                      "kind": "ATV_NULL"
+                    }
+                  }
+                ],
+                "specIndex": 2,
+                "members": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Inner@2/p",
+                    "identifier": "p",
+                    "line": 35,
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_NULL",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleActualParameterBoundForms.Inner@2/p{0}",
+                        "identifier": "?",
+                        "line": 35,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_NULL"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleActualParameterBoundForms.Inner/p",
+              "identifier": "p",
+              "line": 21,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "P"
+                  }
+                ],
+                "line": 21,
+                "module": "ModuleActualParameterBoundForms",
+                "resolvedId": "ModuleActualParameterBoundForms.Inner%0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Opaque",
+          "identifier": "Opaque",
+          "line": 23,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_OCTET_STRING",
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 25,
+            "elements": [
+              {
+                "kind": "ACT_CT_CTDBY",
+                "line": 25,
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                }
+              }
+            ]
+          },
+          "lhsParams": [
+            {
+              "id": "ModuleActualParameterBoundForms.Opaque%0",
+              "argument": "T"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Opaque^0{0}",
+                  "line": 29,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Inner"
+                      }
+                    ],
+                    "line": 29,
+                    "module": "ModuleActualParameterBoundForms",
+                    "resolvedId": "ModuleActualParameterBoundForms.Inner@0"
+                  },
+                  "rhsPspecs": [
+                    {
+                      "id": "ModuleActualParameterBoundForms.Opaque^0{0}{0}",
+                      "line": 29,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleActualParameterBoundForms.Opaque@0",
+                "identifier": "Opaque",
+                "line": 23,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_BASIC_OCTET_STRING",
+                "constraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 25,
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTDBY",
+                      "line": 25,
+                      "value": {
+                        "kind": "ATV_UNPARSED",
+                        "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                      }
+                    }
+                  ]
+                },
+                "combinedConstraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 25,
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTDBY",
+                      "line": 25,
+                      "value": {
+                        "kind": "ATV_UNPARSED",
+                        "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                      }
+                    }
+                  ]
+                },
+                "lhsParams": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Opaque@0%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Opaque@0{0}",
+                    "line": 29,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Inner"
+                        }
+                      ],
+                      "line": 29,
+                      "module": "ModuleActualParameterBoundForms",
+                      "resolvedId": "ModuleActualParameterBoundForms.Inner@0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleActualParameterBoundForms.Opaque@0{0}{0}",
+                        "line": 29,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER"
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 0
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Opaque^1{0}",
+                  "line": 32,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Inner"
+                      }
+                    ],
+                    "line": 32,
+                    "module": "ModuleActualParameterBoundForms",
+                    "resolvedId": "ModuleActualParameterBoundForms.Inner@1"
+                  },
+                  "rhsPspecs": [
+                    {
+                      "id": "ModuleActualParameterBoundForms.Opaque^1{0}{0}",
+                      "line": 32,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleActualParameterBoundForms.Opaque@1",
+                "identifier": "Opaque",
+                "line": 23,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_BASIC_OCTET_STRING",
+                "constraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 25,
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTDBY",
+                      "line": 25,
+                      "value": {
+                        "kind": "ATV_UNPARSED",
+                        "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                      }
+                    }
+                  ]
+                },
+                "combinedConstraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 25,
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTDBY",
+                      "line": 25,
+                      "value": {
+                        "kind": "ATV_UNPARSED",
+                        "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                      }
+                    }
+                  ]
+                },
+                "lhsParams": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Opaque@1%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Opaque@1{0}",
+                    "line": 32,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Inner"
+                        }
+                      ],
+                      "line": 32,
+                      "module": "ModuleActualParameterBoundForms",
+                      "resolvedId": "ModuleActualParameterBoundForms.Inner@1"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleActualParameterBoundForms.Opaque@1{0}{0}",
+                        "line": 32,
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 1
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Opaque^2{0}",
+                  "line": 35,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Inner"
+                      }
+                    ],
+                    "line": 35,
+                    "module": "ModuleActualParameterBoundForms",
+                    "resolvedId": "ModuleActualParameterBoundForms.Inner@2"
+                  },
+                  "rhsPspecs": [
+                    {
+                      "id": "ModuleActualParameterBoundForms.Opaque^2{0}{0}",
+                      "identifier": "?",
+                      "line": 35,
+                      "metaType": "AMT_VALUE",
+                      "exprType": "A1TC_REFERENCE",
+                      "value": {
+                        "kind": "ATV_NULL"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleActualParameterBoundForms.Opaque@2",
+                "identifier": "Opaque",
+                "line": 23,
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_BASIC_OCTET_STRING",
+                "constraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 25,
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTDBY",
+                      "line": 25,
+                      "value": {
+                        "kind": "ATV_UNPARSED",
+                        "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                      }
+                    }
+                  ]
+                },
+                "combinedConstraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 25,
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTDBY",
+                      "line": 25,
+                      "value": {
+                        "kind": "ATV_UNPARSED",
+                        "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                      }
+                    }
+                  ]
+                },
+                "lhsParams": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Opaque@2%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Opaque@2{0}",
+                    "line": 35,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Inner"
+                        }
+                      ],
+                      "line": 35,
+                      "module": "ModuleActualParameterBoundForms",
+                      "resolvedId": "ModuleActualParameterBoundForms.Inner@2"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleActualParameterBoundForms.Opaque@2{0}{0}",
+                        "identifier": "?",
+                        "line": 35,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_NULL"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Twice",
+          "identifier": "Twice",
+          "line": 27,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Opaque"
+              }
+            ],
+            "line": 27,
+            "module": "ModuleActualParameterBoundForms",
+            "resolvedId": "ModuleActualParameterBoundForms.Opaque"
+          },
+          "lhsParams": [
+            {
+              "id": "ModuleActualParameterBoundForms.Twice%0",
+              "argument": "T"
+            }
+          ],
+          "rhsPspecs": [
+            {
+              "id": "ModuleActualParameterBoundForms.Twice{0}",
+              "line": 27,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "T"
+                  }
+                ],
+                "line": 27,
+                "module": "ModuleActualParameterBoundForms",
+                "resolvedId": "ModuleActualParameterBoundForms.Twice%0"
+              }
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Twice^0{0}",
+                  "line": 35,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Inner"
+                      }
+                    ],
+                    "line": 35,
+                    "module": "ModuleActualParameterBoundForms",
+                    "resolvedId": "ModuleActualParameterBoundForms.Inner@2"
+                  },
+                  "rhsPspecs": [
+                    {
+                      "id": "ModuleActualParameterBoundForms.Twice^0{0}{0}",
+                      "identifier": "?",
+                      "line": 35,
+                      "metaType": "AMT_VALUE",
+                      "exprType": "A1TC_REFERENCE",
+                      "value": {
+                        "kind": "ATV_NULL"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleActualParameterBoundForms.Twice@0",
+                "identifier": "Twice_Inner",
+                "metaType": "AMT_TYPEREF",
+                "exprType": "A1TC_REFERENCE",
+                "reference": {
+                  "components": [
+                    {
+                      "lexType": "RLT_Uppercase",
+                      "name": "Opaque"
+                    }
+                  ],
+                  "line": 27,
+                  "module": "ModuleActualParameterBoundForms",
+                  "resolvedId": "ModuleActualParameterBoundForms.Opaque@2"
+                },
+                "combinedConstraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 25,
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTDBY",
+                      "line": 25,
+                      "value": {
+                        "kind": "ATV_UNPARSED",
+                        "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                      }
+                    }
+                  ]
+                },
+                "lhsParams": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Twice@0%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleActualParameterBoundForms.Twice@0{0}",
+                    "line": 35,
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Inner"
+                        }
+                      ],
+                      "line": 35,
+                      "module": "ModuleActualParameterBoundForms",
+                      "resolvedId": "ModuleActualParameterBoundForms.Inner@2"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleActualParameterBoundForms.Twice@0{0}{0}",
+                        "identifier": "?",
+                        "line": 35,
+                        "metaType": "AMT_VALUE",
+                        "exprType": "A1TC_REFERENCE",
+                        "value": {
+                          "kind": "ATV_NULL"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Use",
+          "identifier": "Use",
+          "line": 29,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Opaque"
+              }
+            ],
+            "line": 29,
+            "module": "ModuleActualParameterBoundForms",
+            "resolvedId": "ModuleActualParameterBoundForms.Opaque@0"
+          },
+          "combinedConstraints": {
+            "kind": "ACT_CA_SET",
+            "line": 25,
+            "elements": [
+              {
+                "kind": "ACT_CT_CTDBY",
+                "line": 25,
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                }
+              }
+            ]
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleActualParameterBoundForms.Use{0}",
+              "line": 29,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Inner"
+                  }
+                ],
+                "line": 29,
+                "module": "ModuleActualParameterBoundForms",
+                "resolvedId": "ModuleActualParameterBoundForms.Inner@0"
+              },
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Use{0}{0}",
+                  "line": 29,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Holder",
+          "identifier": "Holder",
+          "line": 33,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleActualParameterBoundForms.Holder/v",
+              "identifier": "v",
+              "line": 32,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Opaque"
+                  }
+                ],
+                "line": 32,
+                "module": "ModuleActualParameterBoundForms",
+                "resolvedId": "ModuleActualParameterBoundForms.Opaque@1"
+              },
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "0"
+              },
+              "combinedConstraints": {
+                "kind": "ACT_CA_SET",
+                "line": 25,
+                "elements": [
+                  {
+                    "kind": "ACT_CT_CTDBY",
+                    "line": 25,
+                    "value": {
+                      "kind": "ATV_UNPARSED",
+                      "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                    }
+                  }
+                ]
+              },
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Holder/v{0}",
+                  "line": 32,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Inner"
+                      }
+                    ],
+                    "line": 32,
+                    "module": "ModuleActualParameterBoundForms",
+                    "resolvedId": "ModuleActualParameterBoundForms.Inner@1"
+                  },
+                  "rhsPspecs": [
+                    {
+                      "id": "ModuleActualParameterBoundForms.Holder/v{0}{0}",
+                      "line": 32,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Nested",
+          "identifier": "Nested",
+          "line": 35,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Twice"
+              }
+            ],
+            "line": 35,
+            "module": "ModuleActualParameterBoundForms",
+            "resolvedId": "ModuleActualParameterBoundForms.Twice@0"
+          },
+          "combinedConstraints": {
+            "kind": "ACT_CA_SET",
+            "line": 25,
+            "elements": [
+              {
+                "kind": "ACT_CT_CTDBY",
+                "line": 25,
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                }
+              }
+            ]
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleActualParameterBoundForms.Nested{0}",
+              "line": 35,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Inner"
+                  }
+                ],
+                "line": 35,
+                "module": "ModuleActualParameterBoundForms",
+                "resolvedId": "ModuleActualParameterBoundForms.Inner@2"
+              },
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Nested{0}{0}",
+                  "identifier": "?",
+                  "line": 35,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_NULL"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -291,7 +291,8 @@ typedef struct asn1p_expr_s {
 	  TM_NAMECLASH	= (1<<3), /* Name clash found, need to add module name to resolve */
 	  TM_NAMEGIVEN  = (1<<4), /* The expression has already yielded a name */
 	  TM_PDU_DEPENDENCY = (1<<5), /* Part of PDU dependency chain */
-	  TM_ENCODING_INSTRUCTION = (1<<6) /* ENCODING-CONTROL instruction, not a regular type */
+	  TM_ENCODING_INSTRUCTION = (1<<6), /* ENCODING-CONTROL instruction, not a regular type */
+	  TM_PHASE1_DONE = (1<<7) /* Fixer phase I processed this specialization */
 	} _mark;
 
 	/*

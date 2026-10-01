@@ -1,0 +1,306 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "DECLARED",
+  "modules": [
+    {
+      "name": "ModuleActualParameterBoundForms",
+      "sourceFile": "193-actual-parameter-bound-forms-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "193"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "assignments": [
+        {
+          "id": "ModuleActualParameterBoundForms.Inner",
+          "identifier": "Inner",
+          "line": 21,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleActualParameterBoundForms.Inner%0",
+              "argument": "P"
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleActualParameterBoundForms.Inner/p",
+              "identifier": "p",
+              "line": 21,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "P"
+                  }
+                ],
+                "line": 21,
+                "module": "ModuleActualParameterBoundForms"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Opaque",
+          "identifier": "Opaque",
+          "line": 23,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_OCTET_STRING",
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 25,
+            "elements": [
+              {
+                "kind": "ACT_CT_CTDBY",
+                "line": 25,
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{\n\t\t-- the encoding of -- T\n\t}"
+                }
+              }
+            ]
+          },
+          "lhsParams": [
+            {
+              "id": "ModuleActualParameterBoundForms.Opaque%0",
+              "argument": "T"
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Twice",
+          "identifier": "Twice",
+          "line": 27,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Opaque"
+              }
+            ],
+            "line": 27,
+            "module": "ModuleActualParameterBoundForms"
+          },
+          "lhsParams": [
+            {
+              "id": "ModuleActualParameterBoundForms.Twice%0",
+              "argument": "T"
+            }
+          ],
+          "rhsPspecs": [
+            {
+              "id": "ModuleActualParameterBoundForms.Twice{0}",
+              "line": 27,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "T"
+                  }
+                ],
+                "line": 27,
+                "module": "ModuleActualParameterBoundForms"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Use",
+          "identifier": "Use",
+          "line": 29,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Opaque"
+              }
+            ],
+            "line": 29,
+            "module": "ModuleActualParameterBoundForms"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleActualParameterBoundForms.Use{0}",
+              "line": 29,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Inner"
+                  }
+                ],
+                "line": 29,
+                "module": "ModuleActualParameterBoundForms"
+              },
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Use{0}{0}",
+                  "line": 29,
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Holder",
+          "identifier": "Holder",
+          "line": 33,
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleActualParameterBoundForms.Holder/v",
+              "identifier": "v",
+              "line": 32,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Opaque"
+                  }
+                ],
+                "line": 32,
+                "module": "ModuleActualParameterBoundForms"
+              },
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Holder/v{0}",
+                  "line": 32,
+                  "metaType": "AMT_TYPEREF",
+                  "exprType": "A1TC_REFERENCE",
+                  "reference": {
+                    "components": [
+                      {
+                        "lexType": "RLT_Uppercase",
+                        "name": "Inner"
+                      }
+                    ],
+                    "line": 32,
+                    "module": "ModuleActualParameterBoundForms"
+                  },
+                  "rhsPspecs": [
+                    {
+                      "id": "ModuleActualParameterBoundForms.Holder/v{0}{0}",
+                      "line": 32,
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleActualParameterBoundForms.Nested",
+          "identifier": "Nested",
+          "line": 35,
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Twice"
+              }
+            ],
+            "line": 35,
+            "module": "ModuleActualParameterBoundForms"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleActualParameterBoundForms.Nested{0}",
+              "line": 35,
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_Uppercase",
+                    "name": "Inner"
+                  }
+                ],
+                "line": 35,
+                "module": "ModuleActualParameterBoundForms"
+              },
+              "rhsPspecs": [
+                {
+                  "id": "ModuleActualParameterBoundForms.Nested{0}{0}",
+                  "identifier": "?",
+                  "line": 35,
+                  "metaType": "AMT_VALUE",
+                  "exprType": "A1TC_REFERENCE",
+                  "value": {
+                    "kind": "ATV_NULL"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
