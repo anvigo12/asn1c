@@ -62,6 +62,7 @@
           "id": "ModuleLateSpecialization.Base",
           "identifier": "Base",
           "line": 21,
+          "module": "ModuleLateSpecialization",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "members": [
@@ -69,6 +70,7 @@
               "id": "ModuleLateSpecialization.Base/id",
               "identifier": "id",
               "line": 21,
+              "module": "ModuleLateSpecialization",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER",
               "tag": {
@@ -83,6 +85,7 @@
           "id": "ModuleLateSpecialization.Scoped",
           "identifier": "Scoped",
           "line": 24,
+          "module": "ModuleLateSpecialization",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "lhsParams": [
@@ -97,6 +100,7 @@
                 {
                   "id": "ModuleLateSpecialization.Scoped^0{0}",
                   "line": 29,
+                  "module": "ModuleLateSpecialization",
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_BASIC_BOOLEAN"
                 }
@@ -105,6 +109,7 @@
                 "id": "ModuleLateSpecialization.Scoped@0",
                 "identifier": "Scoped",
                 "line": 24,
+                "module": "ModuleLateSpecialization",
                 "metaType": "AMT_TYPE",
                 "exprType": "ASN_CONSTR_SEQUENCE",
                 "lhsParams": [
@@ -117,6 +122,7 @@
                   {
                     "id": "ModuleLateSpecialization.Scoped@0{0}",
                     "line": 29,
+                    "module": "ModuleLateSpecialization",
                     "metaType": "AMT_TYPE",
                     "exprType": "ASN_BASIC_BOOLEAN"
                   }
@@ -127,6 +133,7 @@
                     "id": "ModuleLateSpecialization.Scoped@0/id",
                     "identifier": "id",
                     "line": 21,
+                    "module": "ModuleLateSpecialization",
                     "origin": {
                       "componentsOf": "ModuleLateSpecialization.Scoped@0/#0",
                       "sourceId": "ModuleLateSpecialization.Base/id"
@@ -143,6 +150,7 @@
                     "id": "ModuleLateSpecialization.Scoped@0/kind",
                     "identifier": "kind",
                     "line": 25,
+                    "module": "ModuleLateSpecialization",
                     "metaType": "AMT_TYPE",
                     "exprType": "ASN_BASIC_ENUMERATED",
                     "tag": {
@@ -154,6 +162,7 @@
                       {
                         "id": "ModuleLateSpecialization.Scoped@0/kind{0}",
                         "line": 29,
+                        "module": "ModuleLateSpecialization",
                         "metaType": "AMT_TYPE",
                         "exprType": "ASN_BASIC_BOOLEAN"
                       }
@@ -163,6 +172,7 @@
                         "id": "ModuleLateSpecialization.Scoped@0/kind/a",
                         "identifier": "a",
                         "line": 25,
+                        "module": "ModuleLateSpecialization",
                         "metaType": "AMT_VALUE",
                         "exprType": "A1TC_UNIVERVAL",
                         "value": {
@@ -174,6 +184,7 @@
                         "id": "ModuleLateSpecialization.Scoped@0/kind/b",
                         "identifier": "b",
                         "line": 25,
+                        "module": "ModuleLateSpecialization",
                         "metaType": "AMT_VALUE",
                         "exprType": "A1TC_UNIVERVAL",
                         "value": {
@@ -185,6 +196,7 @@
                         "id": "ModuleLateSpecialization.Scoped@0/kind/#2",
                         "identifier": "...",
                         "line": 25,
+                        "module": "ModuleLateSpecialization",
                         "metaType": "AMT_VALUE",
                         "exprType": "A1TC_EXTENSIBLE"
                       }
@@ -194,6 +206,7 @@
                     "id": "ModuleLateSpecialization.Scoped@0/p",
                     "identifier": "p",
                     "line": 29,
+                    "module": "ModuleLateSpecialization",
                     "metaType": "AMT_TYPE",
                     "exprType": "ASN_BASIC_BOOLEAN",
                     "tag": {
@@ -205,6 +218,7 @@
                       {
                         "id": "ModuleLateSpecialization.Scoped@0/p{0}",
                         "line": 29,
+                        "module": "ModuleLateSpecialization",
                         "metaType": "AMT_TYPE",
                         "exprType": "ASN_BASIC_BOOLEAN"
                       }
@@ -218,6 +232,7 @@
                 {
                   "id": "ModuleLateSpecialization.Scoped^1{0}",
                   "line": 41,
+                  "module": "ModuleLateSpecializationUse",
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_BASIC_INTEGER"
                 }
@@ -226,6 +241,7 @@
                 "id": "ModuleLateSpecialization.Scoped@1",
                 "identifier": "Scoped",
                 "line": 24,
+                "module": "ModuleLateSpecialization",
                 "metaType": "AMT_TYPE",
                 "exprType": "ASN_CONSTR_SEQUENCE",
                 "lhsParams": [
@@ -238,6 +254,7 @@
                   {
                     "id": "ModuleLateSpecialization.Scoped@1{0}",
                     "line": 41,
+                    "module": "ModuleLateSpecializationUse",
                     "metaType": "AMT_TYPE",
                     "exprType": "ASN_BASIC_INTEGER"
                   }
@@ -248,6 +265,7 @@
                     "id": "ModuleLateSpecialization.Scoped@1/id",
                     "identifier": "id",
                     "line": 21,
+                    "module": "ModuleLateSpecialization",
                     "origin": {
                       "componentsOf": "ModuleLateSpecialization.Scoped@1/#0",
                       "sourceId": "ModuleLateSpecialization.Base/id"
@@ -264,6 +282,7 @@
                     "id": "ModuleLateSpecialization.Scoped@1/kind",
                     "identifier": "kind",
                     "line": 25,
+                    "module": "ModuleLateSpecialization",
                     "metaType": "AMT_TYPE",
                     "exprType": "ASN_BASIC_ENUMERATED",
                     "tag": {
@@ -275,6 +294,7 @@
                       {
                         "id": "ModuleLateSpecialization.Scoped@1/kind{0}",
                         "line": 41,
+                        "module": "ModuleLateSpecializationUse",
                         "metaType": "AMT_TYPE",
                         "exprType": "ASN_BASIC_INTEGER"
                       }
@@ -284,6 +304,7 @@
                         "id": "ModuleLateSpecialization.Scoped@1/kind/a",
                         "identifier": "a",
                         "line": 25,
+                        "module": "ModuleLateSpecialization",
                         "metaType": "AMT_VALUE",
                         "exprType": "A1TC_UNIVERVAL",
                         "value": {
@@ -295,6 +316,7 @@
                         "id": "ModuleLateSpecialization.Scoped@1/kind/b",
                         "identifier": "b",
                         "line": 25,
+                        "module": "ModuleLateSpecialization",
                         "metaType": "AMT_VALUE",
                         "exprType": "A1TC_UNIVERVAL",
                         "value": {
@@ -306,6 +328,7 @@
                         "id": "ModuleLateSpecialization.Scoped@1/kind/#2",
                         "identifier": "...",
                         "line": 25,
+                        "module": "ModuleLateSpecialization",
                         "metaType": "AMT_VALUE",
                         "exprType": "A1TC_EXTENSIBLE"
                       }
@@ -315,6 +338,7 @@
                     "id": "ModuleLateSpecialization.Scoped@1/p",
                     "identifier": "p",
                     "line": 41,
+                    "module": "ModuleLateSpecializationUse",
                     "metaType": "AMT_TYPE",
                     "exprType": "ASN_BASIC_INTEGER",
                     "tag": {
@@ -326,6 +350,7 @@
                       {
                         "id": "ModuleLateSpecialization.Scoped@1/p{0}",
                         "line": 41,
+                        "module": "ModuleLateSpecializationUse",
                         "metaType": "AMT_TYPE",
                         "exprType": "ASN_BASIC_INTEGER"
                       }
@@ -339,12 +364,14 @@
             {
               "id": "ModuleLateSpecialization.Scoped/#0",
               "line": 24,
+              "module": "ModuleLateSpecialization",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_COMPONENTS_OF",
               "members": [
                 {
                   "id": "ModuleLateSpecialization.Scoped/#0/#0",
                   "line": 24,
+                  "module": "ModuleLateSpecialization",
                   "metaType": "AMT_TYPEREF",
                   "exprType": "A1TC_REFERENCE",
                   "reference": {
@@ -365,6 +392,7 @@
               "id": "ModuleLateSpecialization.Scoped/kind",
               "identifier": "kind",
               "line": 25,
+              "module": "ModuleLateSpecialization",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_ENUMERATED",
               "members": [
@@ -372,6 +400,7 @@
                   "id": "ModuleLateSpecialization.Scoped/kind/a",
                   "identifier": "a",
                   "line": 25,
+                  "module": "ModuleLateSpecialization",
                   "metaType": "AMT_VALUE",
                   "exprType": "A1TC_UNIVERVAL"
                 },
@@ -379,6 +408,7 @@
                   "id": "ModuleLateSpecialization.Scoped/kind/b",
                   "identifier": "b",
                   "line": 25,
+                  "module": "ModuleLateSpecialization",
                   "metaType": "AMT_VALUE",
                   "exprType": "A1TC_UNIVERVAL"
                 },
@@ -386,6 +416,7 @@
                   "id": "ModuleLateSpecialization.Scoped/kind/#2",
                   "identifier": "...",
                   "line": 25,
+                  "module": "ModuleLateSpecialization",
                   "metaType": "AMT_VALUE",
                   "exprType": "A1TC_EXTENSIBLE"
                 }
@@ -395,6 +426,7 @@
               "id": "ModuleLateSpecialization.Scoped/p",
               "identifier": "p",
               "line": 27,
+              "module": "ModuleLateSpecialization",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -415,6 +447,7 @@
           "id": "ModuleLateSpecialization.Early",
           "identifier": "Early",
           "line": 29,
+          "module": "ModuleLateSpecialization",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -432,6 +465,7 @@
             {
               "id": "ModuleLateSpecialization.Early{0}",
               "line": 29,
+              "module": "ModuleLateSpecialization",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_BOOLEAN"
             }
@@ -510,6 +544,7 @@
           "id": "ModuleLateSpecializationUse.Late",
           "identifier": "Late",
           "line": 41,
+          "module": "ModuleLateSpecializationUse",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -527,6 +562,7 @@
             {
               "id": "ModuleLateSpecializationUse.Late{0}",
               "line": 41,
+              "module": "ModuleLateSpecializationUse",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER"
             }

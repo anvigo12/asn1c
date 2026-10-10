@@ -62,6 +62,7 @@
           "id": "ModuleConstrainedActualParameters.Content",
           "identifier": "Content",
           "line": 18,
+          "module": "ModuleConstrainedActualParameters",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_CHOICE",
           "members": [
@@ -69,6 +70,7 @@
               "id": "ModuleConstrainedActualParameters.Content/request",
               "identifier": "request",
               "line": 18,
+              "module": "ModuleConstrainedActualParameters",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER"
             },
@@ -76,6 +78,7 @@
               "id": "ModuleConstrainedActualParameters.Content/response",
               "identifier": "response",
               "line": 19,
+              "module": "ModuleConstrainedActualParameters",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_BOOLEAN"
             }
@@ -85,6 +88,7 @@
           "id": "ModuleConstrainedActualParameters.Wrap",
           "identifier": "Wrap",
           "line": 24,
+          "module": "ModuleConstrainedActualParameters",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "lhsParams": [
@@ -98,6 +102,7 @@
               "id": "ModuleConstrainedActualParameters.Wrap/v",
               "identifier": "v",
               "line": 24,
+              "module": "ModuleConstrainedActualParameters",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -117,6 +122,7 @@
           "id": "ModuleConstrainedActualParameters.Request",
           "identifier": "Request",
           "line": 26,
+          "module": "ModuleConstrainedActualParameters",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -133,6 +139,7 @@
             {
               "id": "ModuleConstrainedActualParameters.Request{0}",
               "line": 26,
+              "module": "ModuleConstrainedActualParameters",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -148,15 +155,18 @@
               "constraints": {
                 "kind": "ACT_CA_SET",
                 "line": 26,
+                "module": "ModuleConstrainedActualParameters",
                 "elements": [
                   {
                     "kind": "ACT_CT_WCOMPS",
                     "line": 26,
+                    "module": "ModuleConstrainedActualParameters",
                     "elements": [
                       {
                         "kind": "ACT_EL_VALUE",
                         "presence": "ACPRES_PRESENT",
                         "line": 26,
+                        "module": "ModuleConstrainedActualParameters",
                         "value": {
                           "kind": "ATV_REFERENCED",
                           "reference": {
@@ -182,6 +192,7 @@
           "id": "ModuleConstrainedActualParameters.Response",
           "identifier": "Response",
           "line": 27,
+          "module": "ModuleConstrainedActualParameters",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -198,6 +209,7 @@
             {
               "id": "ModuleConstrainedActualParameters.Response{0}",
               "line": 27,
+              "module": "ModuleConstrainedActualParameters",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -213,15 +225,18 @@
               "constraints": {
                 "kind": "ACT_CA_SET",
                 "line": 27,
+                "module": "ModuleConstrainedActualParameters",
                 "elements": [
                   {
                     "kind": "ACT_CT_WCOMPS",
                     "line": 27,
+                    "module": "ModuleConstrainedActualParameters",
                     "elements": [
                       {
                         "kind": "ACT_EL_VALUE",
                         "presence": "ACPRES_PRESENT",
                         "line": 27,
+                        "module": "ModuleConstrainedActualParameters",
                         "value": {
                           "kind": "ATV_REFERENCED",
                           "reference": {
@@ -247,6 +262,7 @@
           "id": "ModuleConstrainedActualParameters.Small",
           "identifier": "Small",
           "line": 28,
+          "module": "ModuleConstrainedActualParameters",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -263,15 +279,18 @@
             {
               "id": "ModuleConstrainedActualParameters.Small{0}",
               "line": 28,
+              "module": "ModuleConstrainedActualParameters",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER",
               "constraints": {
                 "kind": "ACT_CA_SET",
                 "line": 28,
+                "module": "ModuleConstrainedActualParameters",
                 "elements": [
                   {
                     "kind": "ACT_EL_RANGE",
                     "line": 28,
+                    "module": "ModuleConstrainedActualParameters",
                     "rangeStart": {
                       "kind": "ATV_INTEGER",
                       "integer": "0"
@@ -290,6 +309,7 @@
           "id": "ModuleConstrainedActualParameters.Large",
           "identifier": "Large",
           "line": 29,
+          "module": "ModuleConstrainedActualParameters",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -306,15 +326,18 @@
             {
               "id": "ModuleConstrainedActualParameters.Large{0}",
               "line": 29,
+              "module": "ModuleConstrainedActualParameters",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER",
               "constraints": {
                 "kind": "ACT_CA_SET",
                 "line": 29,
+                "module": "ModuleConstrainedActualParameters",
                 "elements": [
                   {
                     "kind": "ACT_EL_RANGE",
                     "line": 29,
+                    "module": "ModuleConstrainedActualParameters",
                     "rangeStart": {
                       "kind": "ATV_INTEGER",
                       "integer": "0"

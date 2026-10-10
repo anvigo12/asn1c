@@ -59,6 +59,7 @@
           "id": "ModuleInformationObjectParameterization.MYID",
           "identifier": "MYID",
           "line": 15,
+          "module": "ModuleInformationObjectParameterization",
           "metaType": "AMT_OBJECTCLASS",
           "exprType": "A1TC_CLASSDEF",
           "withSyntax": {
@@ -103,6 +104,7 @@
                       "id": "ModuleInformationObjectParameterization.MYID!0.0",
                       "identifier": "1",
                       "line": 19,
+                      "module": "ModuleInformationObjectParameterization",
                       "metaType": "AMT_VALUE",
                       "exprType": "ASN_BASIC_INTEGER",
                       "value": {
@@ -118,6 +120,7 @@
                       "id": "ModuleInformationObjectParameterization.MYID!0.1",
                       "identifier": "INTEGER",
                       "line": 19,
+                      "module": "ModuleInformationObjectParameterization",
                       "metaType": "AMT_TYPE",
                       "exprType": "ASN_BASIC_INTEGER"
                     },
@@ -133,6 +136,7 @@
                       "id": "ModuleInformationObjectParameterization.MYID!1.0",
                       "identifier": "2",
                       "line": 19,
+                      "module": "ModuleInformationObjectParameterization",
                       "metaType": "AMT_VALUE",
                       "exprType": "ASN_BASIC_INTEGER",
                       "value": {
@@ -148,6 +152,7 @@
                       "id": "ModuleInformationObjectParameterization.MYID!1.1",
                       "identifier": "BOOLEAN",
                       "line": 19,
+                      "module": "ModuleInformationObjectParameterization",
                       "metaType": "AMT_TYPE",
                       "exprType": "ASN_BASIC_BOOLEAN"
                     },
@@ -162,6 +167,7 @@
               "id": "ModuleInformationObjectParameterization.MYID/&id",
               "identifier": "&id",
               "line": 15,
+              "module": "ModuleInformationObjectParameterization",
               "metaType": "AMT_OBJECTFIELD",
               "exprType": "A1TC_CLASSFIELD_FTVFS",
               "unique": true,
@@ -169,6 +175,7 @@
                 {
                   "id": "ModuleInformationObjectParameterization.MYID/&id/#0",
                   "line": 15,
+                  "module": "ModuleInformationObjectParameterization",
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_BASIC_INTEGER"
                 }
@@ -178,12 +185,14 @@
               "id": "ModuleInformationObjectParameterization.MYID/&Type",
               "identifier": "&Type",
               "line": 17,
+              "module": "ModuleInformationObjectParameterization",
               "metaType": "AMT_OBJECTFIELD",
               "exprType": "A1TC_CLASSFIELD_TFS",
               "members": [
                 {
                   "id": "ModuleInformationObjectParameterization.MYID/&Type/+0",
                   "line": 17,
+                  "module": "ModuleInformationObjectParameterization",
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_TYPE_ANY"
                 }
@@ -195,6 +204,7 @@
           "id": "ModuleInformationObjectParameterization.RegionalExtension",
           "identifier": "RegionalExtension",
           "line": 19,
+          "module": "ModuleInformationObjectParameterization",
           "metaType": "AMT_VALUESET",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -211,14 +221,17 @@
           "constraints": {
             "kind": "ACT_CA_CSV",
             "line": 23,
+            "module": "ModuleInformationObjectParameterization",
             "elements": [
               {
                 "kind": "ACT_CA_UNI",
                 "line": 21,
+                "module": "ModuleInformationObjectParameterization",
                 "elements": [
                   {
                     "kind": "ACT_EL_VALUE",
                     "line": 20,
+                    "module": "ModuleInformationObjectParameterization",
                     "value": {
                       "kind": "ATV_UNPARSED",
                       "string": "{INTEGER IDENTIFIED BY 1}"
@@ -227,6 +240,7 @@
                   {
                     "kind": "ACT_EL_VALUE",
                     "line": 21,
+                    "module": "ModuleInformationObjectParameterization",
                     "value": {
                       "kind": "ATV_UNPARSED",
                       "string": "{BOOLEAN IDENTIFIED BY 2}"
@@ -236,21 +250,25 @@
               },
               {
                 "kind": "ACT_EL_EXT",
-                "line": 23
+                "line": 23,
+                "module": "ModuleInformationObjectParameterization"
               }
             ]
           },
           "combinedConstraints": {
             "kind": "ACT_CA_CSV",
             "line": 23,
+            "module": "ModuleInformationObjectParameterization",
             "elements": [
               {
                 "kind": "ACT_CA_UNI",
                 "line": 21,
+                "module": "ModuleInformationObjectParameterization",
                 "elements": [
                   {
                     "kind": "ACT_EL_VALUE",
                     "line": 20,
+                    "module": "ModuleInformationObjectParameterization",
                     "value": {
                       "kind": "ATV_UNPARSED",
                       "string": "{INTEGER IDENTIFIED BY 1}"
@@ -259,6 +277,7 @@
                   {
                     "kind": "ACT_EL_VALUE",
                     "line": 21,
+                    "module": "ModuleInformationObjectParameterization",
                     "value": {
                       "kind": "ATV_UNPARSED",
                       "string": "{BOOLEAN IDENTIFIED BY 2}"
@@ -279,6 +298,7 @@
                       "id": "ModuleInformationObjectParameterization.RegionalExtension!0.0",
                       "identifier": "1",
                       "line": 19,
+                      "module": "ModuleInformationObjectParameterization",
                       "metaType": "AMT_VALUE",
                       "exprType": "ASN_BASIC_INTEGER",
                       "value": {
@@ -294,6 +314,7 @@
                       "id": "ModuleInformationObjectParameterization.RegionalExtension!0.1",
                       "identifier": "INTEGER",
                       "line": 19,
+                      "module": "ModuleInformationObjectParameterization",
                       "metaType": "AMT_TYPE",
                       "exprType": "ASN_BASIC_INTEGER"
                     },
@@ -309,6 +330,7 @@
                       "id": "ModuleInformationObjectParameterization.RegionalExtension!1.0",
                       "identifier": "2",
                       "line": 19,
+                      "module": "ModuleInformationObjectParameterization",
                       "metaType": "AMT_VALUE",
                       "exprType": "ASN_BASIC_INTEGER",
                       "value": {
@@ -324,6 +346,7 @@
                       "id": "ModuleInformationObjectParameterization.RegionalExtension!1.1",
                       "identifier": "BOOLEAN",
                       "line": 19,
+                      "module": "ModuleInformationObjectParameterization",
                       "metaType": "AMT_TYPE",
                       "exprType": "ASN_BASIC_BOOLEAN"
                     },
@@ -338,6 +361,7 @@
           "id": "ModuleInformationObjectParameterization.Message",
           "identifier": "Message",
           "line": 27,
+          "module": "ModuleInformationObjectParameterization",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "members": [
@@ -345,6 +369,7 @@
               "id": "ModuleInformationObjectParameterization.Message/content",
               "identifier": "content",
               "line": 26,
+              "module": "ModuleInformationObjectParameterization",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -362,16 +387,19 @@
                 {
                   "id": "ModuleInformationObjectParameterization.Message/content{0}",
                   "line": 26,
+                  "module": "ModuleInformationObjectParameterization",
                   "metaType": "AMT_VALUESET",
                   "exprType": "A1TC_VALUESET",
                   "constraints": {
                     "kind": "ACT_EL_TYPE",
                     "line": 26,
+                    "module": "ModuleInformationObjectParameterization",
                     "containedSubtype": {
                       "kind": "ATV_TYPE",
                       "type": {
                         "id": "ModuleInformationObjectParameterization.Message/content{0}$c.s",
                         "line": 26,
+                        "module": "ModuleInformationObjectParameterization",
                         "metaType": "AMT_TYPEREF",
                         "exprType": "A1TC_REFERENCE",
                         "reference": {
@@ -397,6 +425,7 @@
           "id": "ModuleInformationObjectParameterization.SpecializedContent",
           "identifier": "SpecializedContent",
           "line": 30,
+          "module": "ModuleInformationObjectParameterization",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "lhsParams": [
@@ -422,16 +451,19 @@
                 {
                   "id": "ModuleInformationObjectParameterization.SpecializedContent^0{0}",
                   "line": 26,
+                  "module": "ModuleInformationObjectParameterization",
                   "metaType": "AMT_VALUESET",
                   "exprType": "A1TC_VALUESET",
                   "constraints": {
                     "kind": "ACT_EL_TYPE",
                     "line": 26,
+                    "module": "ModuleInformationObjectParameterization",
                     "containedSubtype": {
                       "kind": "ATV_TYPE",
                       "type": {
                         "id": "ModuleInformationObjectParameterization.SpecializedContent^0{0}$c.s",
                         "line": 26,
+                        "module": "ModuleInformationObjectParameterization",
                         "metaType": "AMT_TYPEREF",
                         "exprType": "A1TC_REFERENCE",
                         "reference": {
@@ -476,16 +508,19 @@
                   {
                     "id": "ModuleInformationObjectParameterization.SpecializedContent@0{0}",
                     "line": 26,
+                    "module": "ModuleInformationObjectParameterization",
                     "metaType": "AMT_VALUESET",
                     "exprType": "A1TC_VALUESET",
                     "constraints": {
                       "kind": "ACT_EL_TYPE",
                       "line": 26,
+                      "module": "ModuleInformationObjectParameterization",
                       "containedSubtype": {
                         "kind": "ATV_TYPE",
                         "type": {
                           "id": "ModuleInformationObjectParameterization.SpecializedContent@0{0}$c.s",
                           "line": 26,
+                          "module": "ModuleInformationObjectParameterization",
                           "metaType": "AMT_TYPEREF",
                           "exprType": "A1TC_REFERENCE",
                           "reference": {
@@ -510,6 +545,7 @@
                     "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id",
                     "identifier": "id",
                     "line": 30,
+                    "module": "ModuleInformationObjectParameterization",
                     "metaType": "AMT_TYPEREF",
                     "exprType": "A1TC_REFERENCE",
                     "reference": {
@@ -530,24 +566,29 @@
                     "constraints": {
                       "kind": "ACT_CA_SET",
                       "line": 30,
+                      "module": "ModuleInformationObjectParameterization",
                       "elements": [
                         {
                           "kind": "ACT_CA_CRC",
                           "line": 30,
+                          "module": "ModuleInformationObjectParameterization",
                           "elements": [
                             {
                               "kind": "ACT_EL_VALUE",
                               "line": 30,
+                              "module": "ModuleInformationObjectParameterization",
                               "value": {
                                 "kind": "ATV_VALUESET",
                                 "constraint": {
                                   "kind": "ACT_EL_TYPE",
                                   "line": 26,
+                                  "module": "ModuleInformationObjectParameterization",
                                   "containedSubtype": {
                                     "kind": "ATV_TYPE",
                                     "type": {
                                       "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id$c.0.0.v.vs.s",
                                       "line": 26,
+                                      "module": "ModuleInformationObjectParameterization",
                                       "metaType": "AMT_TYPEREF",
                                       "exprType": "A1TC_REFERENCE",
                                       "reference": {
@@ -573,24 +614,29 @@
                     "combinedConstraints": {
                       "kind": "ACT_CA_SET",
                       "line": 30,
+                      "module": "ModuleInformationObjectParameterization",
                       "elements": [
                         {
                           "kind": "ACT_CA_CRC",
                           "line": 30,
+                          "module": "ModuleInformationObjectParameterization",
                           "elements": [
                             {
                               "kind": "ACT_EL_VALUE",
                               "line": 30,
+                              "module": "ModuleInformationObjectParameterization",
                               "value": {
                                 "kind": "ATV_VALUESET",
                                 "constraint": {
                                   "kind": "ACT_EL_TYPE",
                                   "line": 26,
+                                  "module": "ModuleInformationObjectParameterization",
                                   "containedSubtype": {
                                     "kind": "ATV_TYPE",
                                     "type": {
                                       "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id$cc.0.0.v.vs.s",
                                       "line": 26,
+                                      "module": "ModuleInformationObjectParameterization",
                                       "metaType": "AMT_TYPEREF",
                                       "exprType": "A1TC_REFERENCE",
                                       "reference": {
@@ -617,16 +663,19 @@
                       {
                         "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id{0}",
                         "line": 26,
+                        "module": "ModuleInformationObjectParameterization",
                         "metaType": "AMT_VALUESET",
                         "exprType": "A1TC_VALUESET",
                         "constraints": {
                           "kind": "ACT_EL_TYPE",
                           "line": 26,
+                          "module": "ModuleInformationObjectParameterization",
                           "containedSubtype": {
                             "kind": "ATV_TYPE",
                             "type": {
                               "id": "ModuleInformationObjectParameterization.SpecializedContent@0/id{0}$c.s",
                               "line": 26,
+                              "module": "ModuleInformationObjectParameterization",
                               "metaType": "AMT_TYPEREF",
                               "exprType": "A1TC_REFERENCE",
                               "reference": {
@@ -650,6 +699,7 @@
                     "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value",
                     "identifier": "value",
                     "line": 31,
+                    "module": "ModuleInformationObjectParameterization",
                     "metaType": "AMT_TYPEREF",
                     "exprType": "A1TC_REFERENCE",
                     "reference": {
@@ -670,24 +720,29 @@
                     "constraints": {
                       "kind": "ACT_CA_SET",
                       "line": 31,
+                      "module": "ModuleInformationObjectParameterization",
                       "elements": [
                         {
                           "kind": "ACT_CA_CRC",
                           "line": 31,
+                          "module": "ModuleInformationObjectParameterization",
                           "elements": [
                             {
                               "kind": "ACT_EL_VALUE",
                               "line": 31,
+                              "module": "ModuleInformationObjectParameterization",
                               "value": {
                                 "kind": "ATV_VALUESET",
                                 "constraint": {
                                   "kind": "ACT_EL_TYPE",
                                   "line": 26,
+                                  "module": "ModuleInformationObjectParameterization",
                                   "containedSubtype": {
                                     "kind": "ATV_TYPE",
                                     "type": {
                                       "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value$c.0.0.v.vs.s",
                                       "line": 26,
+                                      "module": "ModuleInformationObjectParameterization",
                                       "metaType": "AMT_TYPEREF",
                                       "exprType": "A1TC_REFERENCE",
                                       "reference": {
@@ -709,6 +764,7 @@
                             {
                               "kind": "ACT_EL_VALUE",
                               "line": 31,
+                              "module": "ModuleInformationObjectParameterization",
                               "value": {
                                 "kind": "ATV_REFERENCED",
                                 "reference": {
@@ -731,24 +787,29 @@
                     "combinedConstraints": {
                       "kind": "ACT_CA_SET",
                       "line": 31,
+                      "module": "ModuleInformationObjectParameterization",
                       "elements": [
                         {
                           "kind": "ACT_CA_CRC",
                           "line": 31,
+                          "module": "ModuleInformationObjectParameterization",
                           "elements": [
                             {
                               "kind": "ACT_EL_VALUE",
                               "line": 31,
+                              "module": "ModuleInformationObjectParameterization",
                               "value": {
                                 "kind": "ATV_VALUESET",
                                 "constraint": {
                                   "kind": "ACT_EL_TYPE",
                                   "line": 26,
+                                  "module": "ModuleInformationObjectParameterization",
                                   "containedSubtype": {
                                     "kind": "ATV_TYPE",
                                     "type": {
                                       "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value$cc.0.0.v.vs.s",
                                       "line": 26,
+                                      "module": "ModuleInformationObjectParameterization",
                                       "metaType": "AMT_TYPEREF",
                                       "exprType": "A1TC_REFERENCE",
                                       "reference": {
@@ -770,6 +831,7 @@
                             {
                               "kind": "ACT_EL_VALUE",
                               "line": 31,
+                              "module": "ModuleInformationObjectParameterization",
                               "value": {
                                 "kind": "ATV_REFERENCED",
                                 "reference": {
@@ -793,16 +855,19 @@
                       {
                         "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value{0}",
                         "line": 26,
+                        "module": "ModuleInformationObjectParameterization",
                         "metaType": "AMT_VALUESET",
                         "exprType": "A1TC_VALUESET",
                         "constraints": {
                           "kind": "ACT_EL_TYPE",
                           "line": 26,
+                          "module": "ModuleInformationObjectParameterization",
                           "containedSubtype": {
                             "kind": "ATV_TYPE",
                             "type": {
                               "id": "ModuleInformationObjectParameterization.SpecializedContent@0/value{0}$c.s",
                               "line": 26,
+                              "module": "ModuleInformationObjectParameterization",
                               "metaType": "AMT_TYPEREF",
                               "exprType": "A1TC_REFERENCE",
                               "reference": {
@@ -831,6 +896,7 @@
               "id": "ModuleInformationObjectParameterization.SpecializedContent/id",
               "identifier": "id",
               "line": 30,
+              "module": "ModuleInformationObjectParameterization",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -851,14 +917,17 @@
               "constraints": {
                 "kind": "ACT_CA_SET",
                 "line": 30,
+                "module": "ModuleInformationObjectParameterization",
                 "elements": [
                   {
                     "kind": "ACT_CA_CRC",
                     "line": 30,
+                    "module": "ModuleInformationObjectParameterization",
                     "elements": [
                       {
                         "kind": "ACT_EL_VALUE",
                         "line": 30,
+                        "module": "ModuleInformationObjectParameterization",
                         "value": {
                           "kind": "ATV_REFERENCED",
                           "reference": {
@@ -883,6 +952,7 @@
               "id": "ModuleInformationObjectParameterization.SpecializedContent/value",
               "identifier": "value",
               "line": 31,
+              "module": "ModuleInformationObjectParameterization",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -903,14 +973,17 @@
               "constraints": {
                 "kind": "ACT_CA_SET",
                 "line": 31,
+                "module": "ModuleInformationObjectParameterization",
                 "elements": [
                   {
                     "kind": "ACT_CA_CRC",
                     "line": 31,
+                    "module": "ModuleInformationObjectParameterization",
                     "elements": [
                       {
                         "kind": "ACT_EL_VALUE",
                         "line": 31,
+                        "module": "ModuleInformationObjectParameterization",
                         "value": {
                           "kind": "ATV_REFERENCED",
                           "reference": {
@@ -929,6 +1002,7 @@
                       {
                         "kind": "ACT_EL_VALUE",
                         "line": 31,
+                        "module": "ModuleInformationObjectParameterization",
                         "value": {
                           "kind": "ATV_REFERENCED",
                           "reference": {

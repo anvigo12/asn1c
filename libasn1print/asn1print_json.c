@@ -34,6 +34,14 @@
  * "<assignment>%<k>" (lhsParams). With -F, references have a
  * "resolvedId" (an expression id or a formal parameter id) when the
  * fixer resolved them.
+ *
+ * An expression or a constraint with a source "line" also has a
+ * "module": the module where it is written, the module of that line.
+ * It can differ from the module in the id: a specialization puts a copy
+ * of each actual parameter in the place of its DummyReference
+ * (X.683 (02/2021) 9.7), COMPONENTS OF copies the components of another
+ * type (X.680 (02/2021) 25.5), and the fixer copies constraints and
+ * objects of other modules.
  */
 #include <stdio.h>
 #include <stdarg.h>
@@ -857,6 +865,7 @@ j_constraint(const asn1p_constraint_t *ct) {
         j_str(presence_name(ct->presence));
     }
     jk_int("line", ct->_lineno);
+    if(ct->_lineno && ct->module) jk_str("module", ct->module->ModuleName);
     if(ct->containedSubtype) {
         size_t saved = vpath_push("s");
         j_key("containedSubtype");
@@ -1023,6 +1032,7 @@ j_expr(const asn1p_expr_t *e, const char *id) {
 
     jk_str("identifier", e->Identifier);
     jk_int("line", e->_lineno);
+    if(e->_lineno && e->module) jk_str("module", e->module->ModuleName);
     jk_int("extensionGroup", e->ext_group);
     if(e->components_of_index >= 0 && stack.depth >= 2) {
         /* A component that the fixer copied from COMPONENTS OF */

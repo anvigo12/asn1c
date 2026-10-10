@@ -59,6 +59,7 @@
           "id": "ModuleTestEnum1.Enum1",
           "identifier": "Enum1",
           "line": 15,
+          "module": "ModuleTestEnum1",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_BASIC_ENUMERATED",
           "members": [
@@ -66,6 +67,7 @@
               "id": "ModuleTestEnum1.Enum1/red",
               "identifier": "red",
               "line": 15,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -73,6 +75,7 @@
               "id": "ModuleTestEnum1.Enum1/green",
               "identifier": "green",
               "line": 16,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -80,6 +83,7 @@
               "id": "ModuleTestEnum1.Enum1/blue",
               "identifier": "blue",
               "line": 17,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -91,6 +95,7 @@
               "id": "ModuleTestEnum1.Enum1/alpha",
               "identifier": "alpha",
               "line": 18,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -98,6 +103,7 @@
               "id": "ModuleTestEnum1.Enum1/#4",
               "identifier": "...",
               "line": 19,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_EXTENSIBLE"
             }
@@ -107,6 +113,7 @@
           "id": "ModuleTestEnum1.Enum2",
           "identifier": "Enum2",
           "line": 23,
+          "module": "ModuleTestEnum1",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_BASIC_ENUMERATED",
           "members": [
@@ -114,6 +121,7 @@
               "id": "ModuleTestEnum1.Enum2/red",
               "identifier": "red",
               "line": 23,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -121,6 +129,7 @@
               "id": "ModuleTestEnum1.Enum2/green",
               "identifier": "green",
               "line": 24,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -128,6 +137,7 @@
               "id": "ModuleTestEnum1.Enum2/blue",
               "identifier": "blue",
               "line": 25,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -139,6 +149,7 @@
               "id": "ModuleTestEnum1.Enum2/orange",
               "identifier": "orange",
               "line": 26,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -150,6 +161,7 @@
               "id": "ModuleTestEnum1.Enum2/alpha",
               "identifier": "alpha",
               "line": 27,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -157,6 +169,7 @@
               "id": "ModuleTestEnum1.Enum2/#5",
               "identifier": "...",
               "line": 28,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_EXTENSIBLE"
             },
@@ -164,6 +177,7 @@
               "id": "ModuleTestEnum1.Enum2/beta",
               "identifier": "beta",
               "line": 29,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -175,6 +189,7 @@
               "id": "ModuleTestEnum1.Enum2/gamma",
               "identifier": "gamma",
               "line": 30,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -188,6 +203,7 @@
           "id": "ModuleTestEnum1.Enum3",
           "identifier": "Enum3",
           "line": 33,
+          "module": "ModuleTestEnum1",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_BASIC_ENUMERATED",
           "members": [
@@ -195,6 +211,7 @@
               "id": "ModuleTestEnum1.Enum3/a",
               "identifier": "a",
               "line": 33,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -202,6 +219,7 @@
               "id": "ModuleTestEnum1.Enum3/b",
               "identifier": "b",
               "line": 33,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -213,6 +231,7 @@
               "id": "ModuleTestEnum1.Enum3/#2",
               "identifier": "...",
               "line": 33,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_EXTENSIBLE"
             },
@@ -220,6 +239,7 @@
               "id": "ModuleTestEnum1.Enum3/c",
               "identifier": "c",
               "line": 33,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -233,6 +253,7 @@
           "id": "ModuleTestEnum1.Enum4",
           "identifier": "Enum4",
           "line": 34,
+          "module": "ModuleTestEnum1",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_BASIC_ENUMERATED",
           "members": [
@@ -240,6 +261,7 @@
               "id": "ModuleTestEnum1.Enum4/a",
               "identifier": "a",
               "line": 34,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -247,6 +269,7 @@
               "id": "ModuleTestEnum1.Enum4/b",
               "identifier": "b",
               "line": 34,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -254,6 +277,7 @@
               "id": "ModuleTestEnum1.Enum4/#2",
               "identifier": "...",
               "line": 34,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_EXTENSIBLE"
             },
@@ -261,6 +285,7 @@
               "id": "ModuleTestEnum1.Enum4/c",
               "identifier": "c",
               "line": 34,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -272,6 +297,7 @@
               "id": "ModuleTestEnum1.Enum4/d",
               "identifier": "d",
               "line": 34,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             }
@@ -281,6 +307,7 @@
           "id": "ModuleTestEnum1.Enum5",
           "identifier": "Enum5",
           "line": 35,
+          "module": "ModuleTestEnum1",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_BASIC_ENUMERATED",
           "members": [
@@ -288,6 +315,7 @@
               "id": "ModuleTestEnum1.Enum5/a",
               "identifier": "a",
               "line": 35,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             },
@@ -295,6 +323,7 @@
               "id": "ModuleTestEnum1.Enum5/z",
               "identifier": "z",
               "line": 35,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL",
               "value": {
@@ -306,6 +335,7 @@
               "id": "ModuleTestEnum1.Enum5/#2",
               "identifier": "...",
               "line": 35,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_EXTENSIBLE"
             },
@@ -313,6 +343,7 @@
               "id": "ModuleTestEnum1.Enum5/d",
               "identifier": "d",
               "line": 35,
+              "module": "ModuleTestEnum1",
               "metaType": "AMT_VALUE",
               "exprType": "A1TC_UNIVERVAL"
             }

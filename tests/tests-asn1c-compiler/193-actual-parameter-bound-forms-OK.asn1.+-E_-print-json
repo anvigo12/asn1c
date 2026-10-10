@@ -62,6 +62,7 @@
           "id": "ModuleActualParameterBoundForms.Inner",
           "identifier": "Inner",
           "line": 21,
+          "module": "ModuleActualParameterBoundForms",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "lhsParams": [
@@ -75,6 +76,7 @@
               "id": "ModuleActualParameterBoundForms.Inner/p",
               "identifier": "p",
               "line": 21,
+              "module": "ModuleActualParameterBoundForms",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -94,15 +96,18 @@
           "id": "ModuleActualParameterBoundForms.Opaque",
           "identifier": "Opaque",
           "line": 23,
+          "module": "ModuleActualParameterBoundForms",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_BASIC_OCTET_STRING",
           "constraints": {
             "kind": "ACT_CA_SET",
             "line": 25,
+            "module": "ModuleActualParameterBoundForms",
             "elements": [
               {
                 "kind": "ACT_CT_CTDBY",
                 "line": 25,
+                "module": "ModuleActualParameterBoundForms",
                 "value": {
                   "kind": "ATV_UNPARSED",
                   "string": "{\n\t\t-- the encoding of -- T\n\t}"
@@ -121,6 +126,7 @@
           "id": "ModuleActualParameterBoundForms.Twice",
           "identifier": "Twice",
           "line": 27,
+          "module": "ModuleActualParameterBoundForms",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -143,6 +149,7 @@
             {
               "id": "ModuleActualParameterBoundForms.Twice{0}",
               "line": 27,
+              "module": "ModuleActualParameterBoundForms",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -162,6 +169,7 @@
           "id": "ModuleActualParameterBoundForms.Use",
           "identifier": "Use",
           "line": 29,
+          "module": "ModuleActualParameterBoundForms",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -178,6 +186,7 @@
             {
               "id": "ModuleActualParameterBoundForms.Use{0}",
               "line": 29,
+              "module": "ModuleActualParameterBoundForms",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -194,6 +203,7 @@
                 {
                   "id": "ModuleActualParameterBoundForms.Use{0}{0}",
                   "line": 29,
+                  "module": "ModuleActualParameterBoundForms",
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_BASIC_INTEGER"
                 }
@@ -205,6 +215,7 @@
           "id": "ModuleActualParameterBoundForms.Holder",
           "identifier": "Holder",
           "line": 33,
+          "module": "ModuleActualParameterBoundForms",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "members": [
@@ -212,6 +223,7 @@
               "id": "ModuleActualParameterBoundForms.Holder/v",
               "identifier": "v",
               "line": 32,
+              "module": "ModuleActualParameterBoundForms",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -228,6 +240,7 @@
                 {
                   "id": "ModuleActualParameterBoundForms.Holder/v{0}",
                   "line": 32,
+                  "module": "ModuleActualParameterBoundForms",
                   "metaType": "AMT_TYPEREF",
                   "exprType": "A1TC_REFERENCE",
                   "reference": {
@@ -244,6 +257,7 @@
                     {
                       "id": "ModuleActualParameterBoundForms.Holder/v{0}{0}",
                       "line": 32,
+                      "module": "ModuleActualParameterBoundForms",
                       "metaType": "AMT_TYPE",
                       "exprType": "ASN_BASIC_BOOLEAN"
                     }
@@ -257,6 +271,7 @@
           "id": "ModuleActualParameterBoundForms.Nested",
           "identifier": "Nested",
           "line": 35,
+          "module": "ModuleActualParameterBoundForms",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -273,6 +288,7 @@
             {
               "id": "ModuleActualParameterBoundForms.Nested{0}",
               "line": 35,
+              "module": "ModuleActualParameterBoundForms",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -290,6 +306,7 @@
                   "id": "ModuleActualParameterBoundForms.Nested{0}{0}",
                   "identifier": "?",
                   "line": 35,
+                  "module": "ModuleActualParameterBoundForms",
                   "metaType": "AMT_VALUE",
                   "exprType": "A1TC_REFERENCE",
                   "value": {

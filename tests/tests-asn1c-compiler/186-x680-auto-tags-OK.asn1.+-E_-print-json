@@ -62,6 +62,7 @@
           "id": "ModuleX680AutoTags.Situation",
           "identifier": "Situation",
           "line": 21,
+          "module": "ModuleX680AutoTags",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "members": [
@@ -69,6 +70,7 @@
               "id": "ModuleX680AutoTags.Situation/a",
               "identifier": "a",
               "line": 21,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER"
             },
@@ -76,6 +78,7 @@
               "id": "ModuleX680AutoTags.Situation/b",
               "identifier": "b",
               "line": 22,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_BOOLEAN",
               "marker": {
@@ -88,12 +91,14 @@
               "id": "ModuleX680AutoTags.Situation/#2",
               "identifier": "...",
               "line": 23,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPE",
               "exprType": "A1TC_EXTENSIBLE"
             },
             {
               "id": "ModuleX680AutoTags.Situation/#3",
               "line": 24,
+              "module": "ModuleX680AutoTags",
               "extensionGroup": 1,
               "metaType": "AMT_TYPE",
               "exprType": "ASN_CONSTR_SEQUENCE",
@@ -107,6 +112,7 @@
                   "id": "ModuleX680AutoTags.Situation/#3/c",
                   "identifier": "c",
                   "line": 24,
+                  "module": "ModuleX680AutoTags",
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_BASIC_INTEGER",
                   "marker": {
@@ -119,6 +125,7 @@
                   "id": "ModuleX680AutoTags.Situation/#3/d",
                   "identifier": "d",
                   "line": 25,
+                  "module": "ModuleX680AutoTags",
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_BASIC_BOOLEAN",
                   "marker": {
@@ -132,6 +139,7 @@
             {
               "id": "ModuleX680AutoTags.Situation/#4",
               "line": 26,
+              "module": "ModuleX680AutoTags",
               "extensionGroup": 2,
               "metaType": "AMT_TYPE",
               "exprType": "ASN_CONSTR_SEQUENCE",
@@ -145,6 +153,7 @@
                   "id": "ModuleX680AutoTags.Situation/#4/e",
                   "identifier": "e",
                   "line": 26,
+                  "module": "ModuleX680AutoTags",
                   "metaType": "AMT_TYPE",
                   "exprType": "ASN_BASIC_OCTET_STRING",
                   "marker": {
@@ -159,6 +168,7 @@
               "id": "ModuleX680AutoTags.Situation/f",
               "identifier": "f",
               "line": 27,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_NULL",
               "marker": {
@@ -173,6 +183,7 @@
           "id": "ModuleX680AutoTags.Choice",
           "identifier": "Choice",
           "line": 31,
+          "module": "ModuleX680AutoTags",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_CHOICE",
           "members": [
@@ -180,6 +191,7 @@
               "id": "ModuleX680AutoTags.Choice/x",
               "identifier": "x",
               "line": 31,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER"
             },
@@ -187,6 +199,7 @@
               "id": "ModuleX680AutoTags.Choice/#1",
               "identifier": "...",
               "line": 32,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPE",
               "exprType": "A1TC_EXTENSIBLE"
             },
@@ -194,6 +207,7 @@
               "id": "ModuleX680AutoTags.Choice/y",
               "identifier": "y",
               "line": 33,
+              "module": "ModuleX680AutoTags",
               "extensionGroup": 1,
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_BOOLEAN"
@@ -202,6 +216,7 @@
               "id": "ModuleX680AutoTags.Choice/z",
               "identifier": "z",
               "line": 34,
+              "module": "ModuleX680AutoTags",
               "extensionGroup": 1,
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_NULL"
@@ -212,6 +227,7 @@
           "id": "ModuleX680AutoTags.Pair",
           "identifier": "Pair",
           "line": 38,
+          "module": "ModuleX680AutoTags",
           "metaType": "AMT_TYPE",
           "exprType": "ASN_CONSTR_SEQUENCE",
           "lhsParams": [
@@ -225,6 +241,7 @@
               "id": "ModuleX680AutoTags.Pair/first",
               "identifier": "first",
               "line": 38,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPEREF",
               "exprType": "A1TC_REFERENCE",
               "reference": {
@@ -242,6 +259,7 @@
               "id": "ModuleX680AutoTags.Pair/second",
               "identifier": "second",
               "line": 39,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_BOOLEAN",
               "marker": {
@@ -256,6 +274,7 @@
           "id": "ModuleX680AutoTags.IntPair",
           "identifier": "IntPair",
           "line": 42,
+          "module": "ModuleX680AutoTags",
           "metaType": "AMT_TYPEREF",
           "exprType": "A1TC_REFERENCE",
           "reference": {
@@ -272,6 +291,7 @@
             {
               "id": "ModuleX680AutoTags.IntPair{0}",
               "line": 42,
+              "module": "ModuleX680AutoTags",
               "metaType": "AMT_TYPE",
               "exprType": "ASN_BASIC_INTEGER"
             }
