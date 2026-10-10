@@ -1,0 +1,2533 @@
+{
+  "format": "asn1c.ast.json",
+  "formatVersion": 2,
+  "producer": "asn1c",
+  "producerVersion": "",
+  "view": "RESOLVED",
+  "modules": [
+    {
+      "name": "ModuleExpressionModule",
+      "sourceFile": "194-expression-module-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "194"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "assignments": [
+        {
+          "id": "ModuleExpressionModule.Wrap",
+          "identifier": "Wrap",
+          "line": 23,
+          "module": "ModuleExpressionModule",
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleExpressionModule.Wrap%0",
+              "argument": "T"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleExpressionModule.Wrap^0{0}",
+                  "line": 48,
+                  "module": "ModuleExpressionModule",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_BOOLEAN"
+                }
+              ],
+              "clone": {
+                "id": "ModuleExpressionModule.Wrap@0",
+                "identifier": "Wrap",
+                "line": 23,
+                "module": "ModuleExpressionModule",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleExpressionModule.Wrap@0%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleExpressionModule.Wrap@0{0}",
+                    "line": 48,
+                    "module": "ModuleExpressionModule",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleExpressionModule.Wrap@0/id",
+                    "identifier": "id",
+                    "line": 23,
+                    "module": "ModuleExpressionModule",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleExpressionModule.Wrap@0/id{0}",
+                        "line": 48,
+                        "module": "ModuleExpressionModule",
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleExpressionModule.Wrap@0/v",
+                    "identifier": "v",
+                    "line": 48,
+                    "module": "ModuleExpressionModule",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_BOOLEAN",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "1"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleExpressionModule.Wrap@0/v{0}",
+                        "line": 48,
+                        "module": "ModuleExpressionModule",
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_BOOLEAN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleExpressionModule.Wrap^1{0}",
+                  "line": 61,
+                  "module": "ModuleExpressionModuleUse",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_CONSTR_SEQUENCE",
+                  "members": [
+                    {
+                      "id": "ModuleExpressionModule.Wrap^1{0}/a",
+                      "identifier": "a",
+                      "line": 61,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "constraints": {
+                        "kind": "ACT_CA_SET",
+                        "line": 61,
+                        "module": "ModuleExpressionModuleUse",
+                        "elements": [
+                          {
+                            "kind": "ACT_EL_RANGE",
+                            "line": 61,
+                            "module": "ModuleExpressionModuleUse",
+                            "rangeStart": {
+                              "kind": "ATV_INTEGER",
+                              "integer": "0"
+                            },
+                            "rangeStop": {
+                              "kind": "ATV_INTEGER",
+                              "integer": "7"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "clone": {
+                "id": "ModuleExpressionModule.Wrap@1",
+                "identifier": "Wrap",
+                "line": 23,
+                "module": "ModuleExpressionModule",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleExpressionModule.Wrap@1%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleExpressionModule.Wrap@1{0}",
+                    "line": 61,
+                    "module": "ModuleExpressionModuleUse",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "members": [
+                      {
+                        "id": "ModuleExpressionModule.Wrap@1{0}/a",
+                        "identifier": "a",
+                        "line": 61,
+                        "module": "ModuleExpressionModuleUse",
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER",
+                        "constraints": {
+                          "kind": "ACT_CA_SET",
+                          "line": 61,
+                          "module": "ModuleExpressionModuleUse",
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_RANGE",
+                              "line": 61,
+                              "module": "ModuleExpressionModuleUse",
+                              "rangeStart": {
+                                "kind": "ATV_INTEGER",
+                                "integer": "0"
+                              },
+                              "rangeStop": {
+                                "kind": "ATV_INTEGER",
+                                "integer": "7"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "specIndex": 1,
+                "members": [
+                  {
+                    "id": "ModuleExpressionModule.Wrap@1/id",
+                    "identifier": "id",
+                    "line": 23,
+                    "module": "ModuleExpressionModule",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleExpressionModule.Wrap@1/id{0}",
+                        "line": 61,
+                        "module": "ModuleExpressionModuleUse",
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleExpressionModule.Wrap@1/id{0}/a",
+                            "identifier": "a",
+                            "line": 61,
+                            "module": "ModuleExpressionModuleUse",
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER",
+                            "constraints": {
+                              "kind": "ACT_CA_SET",
+                              "line": 61,
+                              "module": "ModuleExpressionModuleUse",
+                              "elements": [
+                                {
+                                  "kind": "ACT_EL_RANGE",
+                                  "line": 61,
+                                  "module": "ModuleExpressionModuleUse",
+                                  "rangeStart": {
+                                    "kind": "ATV_INTEGER",
+                                    "integer": "0"
+                                  },
+                                  "rangeStop": {
+                                    "kind": "ATV_INTEGER",
+                                    "integer": "7"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleExpressionModule.Wrap@1/v",
+                    "identifier": "v",
+                    "line": 61,
+                    "module": "ModuleExpressionModuleUse",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_CONSTR_SEQUENCE",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "1"
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleExpressionModule.Wrap@1/v{0}",
+                        "line": 61,
+                        "module": "ModuleExpressionModuleUse",
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_CONSTR_SEQUENCE",
+                        "members": [
+                          {
+                            "id": "ModuleExpressionModule.Wrap@1/v{0}/a",
+                            "identifier": "a",
+                            "line": 61,
+                            "module": "ModuleExpressionModuleUse",
+                            "metaType": "AMT_TYPE",
+                            "exprType": "ASN_BASIC_INTEGER",
+                            "constraints": {
+                              "kind": "ACT_CA_SET",
+                              "line": 61,
+                              "module": "ModuleExpressionModuleUse",
+                              "elements": [
+                                {
+                                  "kind": "ACT_EL_RANGE",
+                                  "line": 61,
+                                  "module": "ModuleExpressionModuleUse",
+                                  "rangeStart": {
+                                    "kind": "ATV_INTEGER",
+                                    "integer": "0"
+                                  },
+                                  "rangeStop": {
+                                    "kind": "ATV_INTEGER",
+                                    "integer": "7"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "members": [
+                      {
+                        "id": "ModuleExpressionModule.Wrap@1/v/a",
+                        "identifier": "a",
+                        "line": 61,
+                        "module": "ModuleExpressionModuleUse",
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_INTEGER",
+                        "tag": {
+                          "tagClass": "TC_CONTEXT_SPECIFIC",
+                          "tagMode": "TM_IMPLICIT",
+                          "value": "0"
+                        },
+                        "constraints": {
+                          "kind": "ACT_CA_SET",
+                          "line": 61,
+                          "module": "ModuleExpressionModuleUse",
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_RANGE",
+                              "line": 61,
+                              "module": "ModuleExpressionModuleUse",
+                              "rangeStart": {
+                                "kind": "ATV_INTEGER",
+                                "integer": "0"
+                              },
+                              "rangeStop": {
+                                "kind": "ATV_INTEGER",
+                                "integer": "7"
+                              }
+                            }
+                          ]
+                        },
+                        "combinedConstraints": {
+                          "kind": "ACT_CA_SET",
+                          "line": 61,
+                          "module": "ModuleExpressionModuleUse",
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_RANGE",
+                              "line": 61,
+                              "module": "ModuleExpressionModuleUse",
+                              "rangeStart": {
+                                "kind": "ATV_INTEGER",
+                                "integer": "0"
+                              },
+                              "rangeStop": {
+                                "kind": "ATV_INTEGER",
+                                "integer": "7"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleExpressionModule.Wrap/id",
+              "identifier": "id",
+              "line": 23,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER"
+            },
+            {
+              "id": "ModuleExpressionModule.Wrap/v",
+              "identifier": "v",
+              "line": 25,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "T"
+                  }
+                ],
+                "line": 25,
+                "module": "ModuleExpressionModule",
+                "resolvedId": "ModuleExpressionModule.Wrap%0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModule.Sized",
+          "identifier": "Sized",
+          "line": 29,
+          "module": "ModuleExpressionModule",
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleExpressionModule.Sized%0",
+              "argument": "T"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleExpressionModule.Sized^0{0}",
+                  "line": 63,
+                  "module": "ModuleExpressionModuleUse",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_OCTET_STRING"
+                }
+              ],
+              "clone": {
+                "id": "ModuleExpressionModule.Sized@0",
+                "identifier": "Sized",
+                "line": 29,
+                "module": "ModuleExpressionModule",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleExpressionModule.Sized@0%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleExpressionModule.Sized@0{0}",
+                    "line": 63,
+                    "module": "ModuleExpressionModuleUse",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_OCTET_STRING"
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleExpressionModule.Sized@0/v",
+                    "identifier": "v",
+                    "line": 63,
+                    "module": "ModuleExpressionModuleUse",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_OCTET_STRING",
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "constraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 28,
+                      "module": "ModuleExpressionModule",
+                      "elements": [
+                        {
+                          "kind": "ACT_CT_SIZE",
+                          "line": 28,
+                          "module": "ModuleExpressionModule",
+                          "elements": [
+                            {
+                              "kind": "ACT_CA_SET",
+                              "line": 28,
+                              "module": "ModuleExpressionModule",
+                              "elements": [
+                                {
+                                  "kind": "ACT_EL_RANGE",
+                                  "line": 28,
+                                  "module": "ModuleExpressionModule",
+                                  "rangeStart": {
+                                    "kind": "ATV_INTEGER",
+                                    "integer": "1"
+                                  },
+                                  "rangeStop": {
+                                    "kind": "ATV_INTEGER",
+                                    "integer": "4"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "combinedConstraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 28,
+                      "module": "ModuleExpressionModule",
+                      "elements": [
+                        {
+                          "kind": "ACT_CT_SIZE",
+                          "line": 28,
+                          "module": "ModuleExpressionModule",
+                          "elements": [
+                            {
+                              "kind": "ACT_CA_SET",
+                              "line": 28,
+                              "module": "ModuleExpressionModule",
+                              "elements": [
+                                {
+                                  "kind": "ACT_EL_RANGE",
+                                  "line": 28,
+                                  "module": "ModuleExpressionModule",
+                                  "rangeStart": {
+                                    "kind": "ATV_INTEGER",
+                                    "integer": "1"
+                                  },
+                                  "rangeStop": {
+                                    "kind": "ATV_INTEGER",
+                                    "integer": "4"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleExpressionModule.Sized@0/v{0}",
+                        "line": 63,
+                        "module": "ModuleExpressionModuleUse",
+                        "metaType": "AMT_TYPE",
+                        "exprType": "ASN_BASIC_OCTET_STRING"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleExpressionModule.Sized/v",
+              "identifier": "v",
+              "line": 28,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "T"
+                  }
+                ],
+                "line": 28,
+                "module": "ModuleExpressionModule",
+                "resolvedId": "ModuleExpressionModule.Sized%0"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 28,
+                "module": "ModuleExpressionModule",
+                "elements": [
+                  {
+                    "kind": "ACT_CT_SIZE",
+                    "line": 28,
+                    "module": "ModuleExpressionModule",
+                    "elements": [
+                      {
+                        "kind": "ACT_CA_SET",
+                        "line": 28,
+                        "module": "ModuleExpressionModule",
+                        "elements": [
+                          {
+                            "kind": "ACT_EL_RANGE",
+                            "line": 28,
+                            "module": "ModuleExpressionModule",
+                            "rangeStart": {
+                              "kind": "ATV_INTEGER",
+                              "integer": "1"
+                            },
+                            "rangeStop": {
+                              "kind": "ATV_INTEGER",
+                              "integer": "4"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModule.Holder",
+          "identifier": "Holder",
+          "line": 31,
+          "module": "ModuleExpressionModule",
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_BASIC_OCTET_STRING",
+          "constraints": {
+            "kind": "ACT_CA_SET",
+            "line": 31,
+            "module": "ModuleExpressionModule",
+            "elements": [
+              {
+                "kind": "ACT_CT_CTNG",
+                "line": 31,
+                "module": "ModuleExpressionModule",
+                "value": {
+                  "kind": "ATV_TYPE",
+                  "type": {
+                    "id": "ModuleExpressionModule.Holder$c.0.v",
+                    "line": 31,
+                    "module": "ModuleExpressionModule",
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "T"
+                        }
+                      ],
+                      "line": 31,
+                      "module": "ModuleExpressionModule",
+                      "resolvedId": "ModuleExpressionModule.Holder%0"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "lhsParams": [
+            {
+              "id": "ModuleExpressionModule.Holder%0",
+              "argument": "T"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleExpressionModule.Holder^0{0}",
+                  "line": 65,
+                  "module": "ModuleExpressionModuleUse",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER",
+                  "constraints": {
+                    "kind": "ACT_CA_SET",
+                    "line": 65,
+                    "module": "ModuleExpressionModuleUse",
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_RANGE",
+                        "line": 65,
+                        "module": "ModuleExpressionModuleUse",
+                        "rangeStart": {
+                          "kind": "ATV_INTEGER",
+                          "integer": "0"
+                        },
+                        "rangeStop": {
+                          "kind": "ATV_INTEGER",
+                          "integer": "9"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleExpressionModule.Holder@0",
+                "identifier": "Holder",
+                "line": 31,
+                "module": "ModuleExpressionModule",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_BASIC_OCTET_STRING",
+                "constraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 31,
+                  "module": "ModuleExpressionModule",
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTNG",
+                      "line": 31,
+                      "module": "ModuleExpressionModule",
+                      "value": {
+                        "kind": "ATV_TYPE",
+                        "type": {
+                          "id": "ModuleExpressionModule.Holder@0$c.0.v",
+                          "line": 65,
+                          "module": "ModuleExpressionModuleUse",
+                          "metaType": "AMT_TYPE",
+                          "exprType": "ASN_BASIC_INTEGER",
+                          "constraints": {
+                            "kind": "ACT_CA_SET",
+                            "line": 65,
+                            "module": "ModuleExpressionModuleUse",
+                            "elements": [
+                              {
+                                "kind": "ACT_EL_RANGE",
+                                "line": 65,
+                                "module": "ModuleExpressionModuleUse",
+                                "rangeStart": {
+                                  "kind": "ATV_INTEGER",
+                                  "integer": "0"
+                                },
+                                "rangeStop": {
+                                  "kind": "ATV_INTEGER",
+                                  "integer": "9"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "combinedConstraints": {
+                  "kind": "ACT_CA_SET",
+                  "line": 31,
+                  "module": "ModuleExpressionModule",
+                  "elements": [
+                    {
+                      "kind": "ACT_CT_CTNG",
+                      "line": 31,
+                      "module": "ModuleExpressionModule",
+                      "value": {
+                        "kind": "ATV_TYPE",
+                        "type": {
+                          "id": "ModuleExpressionModule.Holder@0$cc.0.v",
+                          "line": 65,
+                          "module": "ModuleExpressionModuleUse",
+                          "metaType": "AMT_TYPE",
+                          "exprType": "ASN_BASIC_INTEGER",
+                          "constraints": {
+                            "kind": "ACT_CA_SET",
+                            "line": 65,
+                            "module": "ModuleExpressionModuleUse",
+                            "elements": [
+                              {
+                                "kind": "ACT_EL_RANGE",
+                                "line": 65,
+                                "module": "ModuleExpressionModuleUse",
+                                "rangeStart": {
+                                  "kind": "ATV_INTEGER",
+                                  "integer": "0"
+                                },
+                                "rangeStop": {
+                                  "kind": "ATV_INTEGER",
+                                  "integer": "9"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "lhsParams": [
+                  {
+                    "id": "ModuleExpressionModule.Holder@0%0",
+                    "argument": "T"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleExpressionModule.Holder@0{0}",
+                    "line": 65,
+                    "module": "ModuleExpressionModuleUse",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "constraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 65,
+                      "module": "ModuleExpressionModuleUse",
+                      "elements": [
+                        {
+                          "kind": "ACT_EL_RANGE",
+                          "line": 65,
+                          "module": "ModuleExpressionModuleUse",
+                          "rangeStart": {
+                            "kind": "ATV_INTEGER",
+                            "integer": "0"
+                          },
+                          "rangeStop": {
+                            "kind": "ATV_INTEGER",
+                            "integer": "9"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "specIndex": 0
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModule.KIND",
+          "identifier": "KIND",
+          "line": 34,
+          "module": "ModuleExpressionModule",
+          "metaType": "AMT_OBJECTCLASS",
+          "exprType": "A1TC_CLASSDEF",
+          "withSyntax": {
+            "chunks": [
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_LITERAL",
+                "token": "ID"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_FIELD",
+                "token": "&id"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_LITERAL",
+                "token": "TYPE"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_FIELD",
+                "token": "&Type"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              }
+            ]
+          },
+          "iocTable": {
+            "rows": [
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleExpressionModule.KIND!0.0",
+                      "identifier": "1",
+                      "line": 67,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "1"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Type",
+                    "value": {
+                      "id": "ModuleExpressionModule.KIND!0.1",
+                      "identifier": "INTEGER",
+                      "line": 67,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    "newRef": true
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleExpressionModule.KIND!1.0",
+                      "identifier": "2",
+                      "line": 67,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "2"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Type",
+                    "value": {
+                      "id": "ModuleExpressionModule.KIND!1.1",
+                      "identifier": "BOOLEAN",
+                      "line": 67,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    },
+                    "newRef": true
+                  }
+                ]
+              }
+            ]
+          },
+          "members": [
+            {
+              "id": "ModuleExpressionModule.KIND/&id",
+              "identifier": "&id",
+              "line": 34,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_OBJECTFIELD",
+              "exprType": "A1TC_CLASSFIELD_FTVFS",
+              "unique": true,
+              "members": [
+                {
+                  "id": "ModuleExpressionModule.KIND/&id/#0",
+                  "line": 34,
+                  "module": "ModuleExpressionModule",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ]
+            },
+            {
+              "id": "ModuleExpressionModule.KIND/&Type",
+              "identifier": "&Type",
+              "line": 36,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_OBJECTFIELD",
+              "exprType": "A1TC_CLASSFIELD_TFS",
+              "members": [
+                {
+                  "id": "ModuleExpressionModule.KIND/&Type/+0",
+                  "line": 36,
+                  "module": "ModuleExpressionModule",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_TYPE_ANY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModule.Pair",
+          "identifier": "Pair",
+          "line": 39,
+          "module": "ModuleExpressionModule",
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "lhsParams": [
+            {
+              "id": "ModuleExpressionModule.Pair%0",
+              "governor": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "KIND"
+                  }
+                ],
+                "line": 38,
+                "module": "ModuleExpressionModule",
+                "resolvedId": "ModuleExpressionModule.KIND"
+              },
+              "argument": "Set"
+            }
+          ],
+          "specializations": [
+            {
+              "rhsPspecs": [
+                {
+                  "id": "ModuleExpressionModule.Pair^0{0}",
+                  "line": 69,
+                  "module": "ModuleExpressionModuleUse",
+                  "metaType": "AMT_VALUESET",
+                  "exprType": "A1TC_VALUESET",
+                  "constraints": {
+                    "kind": "ACT_EL_TYPE",
+                    "line": 69,
+                    "module": "ModuleExpressionModuleUse",
+                    "containedSubtype": {
+                      "kind": "ATV_TYPE",
+                      "type": {
+                        "id": "ModuleExpressionModule.Pair^0{0}$c.s",
+                        "line": 69,
+                        "module": "ModuleExpressionModuleUse",
+                        "metaType": "AMT_TYPEREF",
+                        "exprType": "A1TC_REFERENCE",
+                        "reference": {
+                          "components": [
+                            {
+                              "lexType": "RLT_Uppercase",
+                              "name": "Kinds"
+                            }
+                          ],
+                          "line": 69,
+                          "module": "ModuleExpressionModuleUse",
+                          "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "clone": {
+                "id": "ModuleExpressionModule.Pair@0",
+                "identifier": "Kinds",
+                "metaType": "AMT_TYPE",
+                "exprType": "ASN_CONSTR_SEQUENCE",
+                "lhsParams": [
+                  {
+                    "id": "ModuleExpressionModule.Pair@0%0",
+                    "governor": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "KIND"
+                        }
+                      ],
+                      "line": 38,
+                      "module": "ModuleExpressionModule",
+                      "resolvedId": "ModuleExpressionModule.KIND"
+                    },
+                    "argument": "Set"
+                  }
+                ],
+                "rhsPspecs": [
+                  {
+                    "id": "ModuleExpressionModule.Pair@0{0}",
+                    "line": 69,
+                    "module": "ModuleExpressionModuleUse",
+                    "metaType": "AMT_VALUESET",
+                    "exprType": "A1TC_VALUESET",
+                    "constraints": {
+                      "kind": "ACT_EL_TYPE",
+                      "line": 69,
+                      "module": "ModuleExpressionModuleUse",
+                      "containedSubtype": {
+                        "kind": "ATV_TYPE",
+                        "type": {
+                          "id": "ModuleExpressionModule.Pair@0{0}$c.s",
+                          "line": 69,
+                          "module": "ModuleExpressionModuleUse",
+                          "metaType": "AMT_TYPEREF",
+                          "exprType": "A1TC_REFERENCE",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Kinds"
+                              }
+                            ],
+                            "line": 69,
+                            "module": "ModuleExpressionModuleUse",
+                            "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "specIndex": 0,
+                "members": [
+                  {
+                    "id": "ModuleExpressionModule.Pair@0/id",
+                    "identifier": "id",
+                    "line": 39,
+                    "module": "ModuleExpressionModule",
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "KIND"
+                        },
+                        {
+                          "lexType": "RLT_Amplowercase",
+                          "name": "&id"
+                        }
+                      ],
+                      "line": 39,
+                      "module": "ModuleExpressionModule",
+                      "resolvedId": "ModuleExpressionModule.KIND/&id/#0"
+                    },
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_IMPLICIT",
+                      "value": "0"
+                    },
+                    "constraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 39,
+                      "module": "ModuleExpressionModule",
+                      "elements": [
+                        {
+                          "kind": "ACT_CA_CRC",
+                          "line": 39,
+                          "module": "ModuleExpressionModule",
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 39,
+                              "module": "ModuleExpressionModule",
+                              "value": {
+                                "kind": "ATV_VALUESET",
+                                "constraint": {
+                                  "kind": "ACT_EL_TYPE",
+                                  "line": 69,
+                                  "module": "ModuleExpressionModuleUse",
+                                  "containedSubtype": {
+                                    "kind": "ATV_TYPE",
+                                    "type": {
+                                      "id": "ModuleExpressionModule.Pair@0/id$c.0.0.v.vs.s",
+                                      "line": 69,
+                                      "module": "ModuleExpressionModuleUse",
+                                      "metaType": "AMT_TYPEREF",
+                                      "exprType": "A1TC_REFERENCE",
+                                      "reference": {
+                                        "components": [
+                                          {
+                                            "lexType": "RLT_Uppercase",
+                                            "name": "Kinds"
+                                          }
+                                        ],
+                                        "line": 69,
+                                        "module": "ModuleExpressionModuleUse",
+                                        "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "combinedConstraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 39,
+                      "module": "ModuleExpressionModule",
+                      "elements": [
+                        {
+                          "kind": "ACT_CA_CRC",
+                          "line": 39,
+                          "module": "ModuleExpressionModule",
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 39,
+                              "module": "ModuleExpressionModule",
+                              "value": {
+                                "kind": "ATV_VALUESET",
+                                "constraint": {
+                                  "kind": "ACT_EL_TYPE",
+                                  "line": 69,
+                                  "module": "ModuleExpressionModuleUse",
+                                  "containedSubtype": {
+                                    "kind": "ATV_TYPE",
+                                    "type": {
+                                      "id": "ModuleExpressionModule.Pair@0/id$cc.0.0.v.vs.s",
+                                      "line": 69,
+                                      "module": "ModuleExpressionModuleUse",
+                                      "metaType": "AMT_TYPEREF",
+                                      "exprType": "A1TC_REFERENCE",
+                                      "reference": {
+                                        "components": [
+                                          {
+                                            "lexType": "RLT_Uppercase",
+                                            "name": "Kinds"
+                                          }
+                                        ],
+                                        "line": 69,
+                                        "module": "ModuleExpressionModuleUse",
+                                        "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleExpressionModule.Pair@0/id{0}",
+                        "line": 69,
+                        "module": "ModuleExpressionModuleUse",
+                        "metaType": "AMT_VALUESET",
+                        "exprType": "A1TC_VALUESET",
+                        "constraints": {
+                          "kind": "ACT_EL_TYPE",
+                          "line": 69,
+                          "module": "ModuleExpressionModuleUse",
+                          "containedSubtype": {
+                            "kind": "ATV_TYPE",
+                            "type": {
+                              "id": "ModuleExpressionModule.Pair@0/id{0}$c.s",
+                              "line": 69,
+                              "module": "ModuleExpressionModuleUse",
+                              "metaType": "AMT_TYPEREF",
+                              "exprType": "A1TC_REFERENCE",
+                              "reference": {
+                                "components": [
+                                  {
+                                    "lexType": "RLT_Uppercase",
+                                    "name": "Kinds"
+                                  }
+                                ],
+                                "line": 69,
+                                "module": "ModuleExpressionModuleUse",
+                                "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ModuleExpressionModule.Pair@0/value",
+                    "identifier": "value",
+                    "line": 40,
+                    "module": "ModuleExpressionModule",
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_CAPITALS",
+                          "name": "KIND"
+                        },
+                        {
+                          "lexType": "RLT_AmpUppercase",
+                          "name": "&Type"
+                        }
+                      ],
+                      "line": 40,
+                      "module": "ModuleExpressionModule",
+                      "resolvedId": "ModuleExpressionModule.KIND/&Type/+0"
+                    },
+                    "tag": {
+                      "tagClass": "TC_CONTEXT_SPECIFIC",
+                      "tagMode": "TM_EXPLICIT",
+                      "value": "1"
+                    },
+                    "constraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 40,
+                      "module": "ModuleExpressionModule",
+                      "elements": [
+                        {
+                          "kind": "ACT_CA_CRC",
+                          "line": 40,
+                          "module": "ModuleExpressionModule",
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 40,
+                              "module": "ModuleExpressionModule",
+                              "value": {
+                                "kind": "ATV_VALUESET",
+                                "constraint": {
+                                  "kind": "ACT_EL_TYPE",
+                                  "line": 69,
+                                  "module": "ModuleExpressionModuleUse",
+                                  "containedSubtype": {
+                                    "kind": "ATV_TYPE",
+                                    "type": {
+                                      "id": "ModuleExpressionModule.Pair@0/value$c.0.0.v.vs.s",
+                                      "line": 69,
+                                      "module": "ModuleExpressionModuleUse",
+                                      "metaType": "AMT_TYPEREF",
+                                      "exprType": "A1TC_REFERENCE",
+                                      "reference": {
+                                        "components": [
+                                          {
+                                            "lexType": "RLT_Uppercase",
+                                            "name": "Kinds"
+                                          }
+                                        ],
+                                        "line": 69,
+                                        "module": "ModuleExpressionModuleUse",
+                                        "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 40,
+                              "module": "ModuleExpressionModule",
+                              "value": {
+                                "kind": "ATV_REFERENCED",
+                                "reference": {
+                                  "components": [
+                                    {
+                                      "lexType": "RLT_Atlowercase",
+                                      "name": "@id"
+                                    }
+                                  ],
+                                  "line": 40,
+                                  "module": "ModuleExpressionModule",
+                                  "resolvedId": "ModuleExpressionModule.Pair@0/id"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "combinedConstraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 40,
+                      "module": "ModuleExpressionModule",
+                      "elements": [
+                        {
+                          "kind": "ACT_CA_CRC",
+                          "line": 40,
+                          "module": "ModuleExpressionModule",
+                          "elements": [
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 40,
+                              "module": "ModuleExpressionModule",
+                              "value": {
+                                "kind": "ATV_VALUESET",
+                                "constraint": {
+                                  "kind": "ACT_EL_TYPE",
+                                  "line": 69,
+                                  "module": "ModuleExpressionModuleUse",
+                                  "containedSubtype": {
+                                    "kind": "ATV_TYPE",
+                                    "type": {
+                                      "id": "ModuleExpressionModule.Pair@0/value$cc.0.0.v.vs.s",
+                                      "line": 69,
+                                      "module": "ModuleExpressionModuleUse",
+                                      "metaType": "AMT_TYPEREF",
+                                      "exprType": "A1TC_REFERENCE",
+                                      "reference": {
+                                        "components": [
+                                          {
+                                            "lexType": "RLT_Uppercase",
+                                            "name": "Kinds"
+                                          }
+                                        ],
+                                        "line": 69,
+                                        "module": "ModuleExpressionModuleUse",
+                                        "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "kind": "ACT_EL_VALUE",
+                              "line": 40,
+                              "module": "ModuleExpressionModule",
+                              "value": {
+                                "kind": "ATV_REFERENCED",
+                                "reference": {
+                                  "components": [
+                                    {
+                                      "lexType": "RLT_Atlowercase",
+                                      "name": "@id"
+                                    }
+                                  ],
+                                  "line": 40,
+                                  "module": "ModuleExpressionModule",
+                                  "resolvedId": "ModuleExpressionModule.Pair@0/id"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "rhsPspecs": [
+                      {
+                        "id": "ModuleExpressionModule.Pair@0/value{0}",
+                        "line": 69,
+                        "module": "ModuleExpressionModuleUse",
+                        "metaType": "AMT_VALUESET",
+                        "exprType": "A1TC_VALUESET",
+                        "constraints": {
+                          "kind": "ACT_EL_TYPE",
+                          "line": 69,
+                          "module": "ModuleExpressionModuleUse",
+                          "containedSubtype": {
+                            "kind": "ATV_TYPE",
+                            "type": {
+                              "id": "ModuleExpressionModule.Pair@0/value{0}$c.s",
+                              "line": 69,
+                              "module": "ModuleExpressionModuleUse",
+                              "metaType": "AMT_TYPEREF",
+                              "exprType": "A1TC_REFERENCE",
+                              "reference": {
+                                "components": [
+                                  {
+                                    "lexType": "RLT_Uppercase",
+                                    "name": "Kinds"
+                                  }
+                                ],
+                                "line": 69,
+                                "module": "ModuleExpressionModuleUse",
+                                "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": [
+            {
+              "id": "ModuleExpressionModule.Pair/id",
+              "identifier": "id",
+              "line": 39,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "KIND"
+                  },
+                  {
+                    "lexType": "RLT_Amplowercase",
+                    "name": "&id"
+                  }
+                ],
+                "line": 39,
+                "module": "ModuleExpressionModule",
+                "resolvedId": "ModuleExpressionModule.KIND/&id/#0"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 39,
+                "module": "ModuleExpressionModule",
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 39,
+                    "module": "ModuleExpressionModule",
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 39,
+                        "module": "ModuleExpressionModule",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Set"
+                              }
+                            ],
+                            "line": 39,
+                            "module": "ModuleExpressionModule",
+                            "resolvedId": "ModuleExpressionModule.Pair%0"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ModuleExpressionModule.Pair/value",
+              "identifier": "value",
+              "line": 40,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "KIND"
+                  },
+                  {
+                    "lexType": "RLT_AmpUppercase",
+                    "name": "&Type"
+                  }
+                ],
+                "line": 40,
+                "module": "ModuleExpressionModule",
+                "resolvedId": "ModuleExpressionModule.KIND/&Type/+0"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 40,
+                "module": "ModuleExpressionModule",
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 40,
+                    "module": "ModuleExpressionModule",
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 40,
+                        "module": "ModuleExpressionModule",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Set"
+                              }
+                            ],
+                            "line": 40,
+                            "module": "ModuleExpressionModule",
+                            "resolvedId": "ModuleExpressionModule.Pair%0"
+                          }
+                        }
+                      },
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 40,
+                        "module": "ModuleExpressionModule",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Atlowercase",
+                                "name": "@id"
+                              }
+                            ],
+                            "line": 40,
+                            "module": "ModuleExpressionModule",
+                            "resolvedId": "ModuleExpressionModule.Pair/id"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModule.EXT",
+          "identifier": "EXT",
+          "line": 44,
+          "module": "ModuleExpressionModule",
+          "metaType": "AMT_OBJECTCLASS",
+          "exprType": "A1TC_CLASSDEF",
+          "withSyntax": {
+            "chunks": [
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_LITERAL",
+                "token": "ID"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_FIELD",
+                "token": "&id"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_LITERAL",
+                "token": "CONTENT"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              },
+              {
+                "kind": "WC_FIELD",
+                "token": "&Content"
+              },
+              {
+                "kind": "WC_WHITESPACE",
+                "token": " "
+              }
+            ]
+          },
+          "iocTable": {
+            "rows": [
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleExpressionModule.EXT!0.0",
+                      "identifier": "1",
+                      "line": 71,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "1"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Content",
+                    "value": {
+                      "id": "ModuleExpressionModule.EXT!0.1",
+                      "identifier": "INTEGER",
+                      "line": 71,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    "newRef": true
+                  }
+                ]
+              }
+            ]
+          },
+          "members": [
+            {
+              "id": "ModuleExpressionModule.EXT/&id",
+              "identifier": "&id",
+              "line": 44,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_OBJECTFIELD",
+              "exprType": "A1TC_CLASSFIELD_FTVFS",
+              "unique": true,
+              "members": [
+                {
+                  "id": "ModuleExpressionModule.EXT/&id/#0",
+                  "line": 44,
+                  "module": "ModuleExpressionModule",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER"
+                }
+              ]
+            },
+            {
+              "id": "ModuleExpressionModule.EXT/&Content",
+              "identifier": "&Content",
+              "line": 46,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_OBJECTFIELD",
+              "exprType": "A1TC_CLASSFIELD_TFS",
+              "members": [
+                {
+                  "id": "ModuleExpressionModule.EXT/&Content/+0",
+                  "line": 46,
+                  "module": "ModuleExpressionModule",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_TYPE_ANY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModule.Local",
+          "identifier": "Local",
+          "line": 48,
+          "module": "ModuleExpressionModule",
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Wrap"
+              }
+            ],
+            "line": 48,
+            "module": "ModuleExpressionModule",
+            "resolvedId": "ModuleExpressionModule.Wrap@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleExpressionModule.Local{0}",
+              "line": 48,
+              "module": "ModuleExpressionModule",
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_BOOLEAN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ModuleExpressionModuleUse",
+      "sourceFile": "194-expression-module-OK.asn1",
+      "oid": {
+        "arcs": [
+          {
+            "name": "iso"
+          },
+          {
+            "name": "org",
+            "number": "3"
+          },
+          {
+            "name": "dod",
+            "number": "6"
+          },
+          {
+            "name": "internet",
+            "number": "1"
+          },
+          {
+            "name": "private",
+            "number": "4"
+          },
+          {
+            "name": "enterprise",
+            "number": "1"
+          },
+          {
+            "name": "spelio",
+            "number": "9363"
+          },
+          {
+            "name": "software",
+            "number": "1"
+          },
+          {
+            "name": "asn1c",
+            "number": "5"
+          },
+          {
+            "name": "test",
+            "number": "1"
+          },
+          {
+            "number": "194"
+          },
+          {
+            "number": "1"
+          }
+        ]
+      },
+      "flags": [
+        "MSF_AUTOMATIC_TAGS"
+      ],
+      "imports": [
+        {
+          "fromModule": "ModuleExpressionModule",
+          "symbols": [
+            {
+              "name": "Wrap",
+              "line": 58
+            },
+            {
+              "name": "Sized",
+              "line": 58
+            },
+            {
+              "name": "Holder",
+              "line": 58
+            },
+            {
+              "name": "KIND",
+              "line": 58
+            },
+            {
+              "name": "Pair",
+              "line": 58
+            },
+            {
+              "name": "EXT",
+              "line": 59
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "ModuleExpressionModuleUse.Inline",
+          "identifier": "Inline",
+          "line": 61,
+          "module": "ModuleExpressionModuleUse",
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Wrap"
+              }
+            ],
+            "line": 61,
+            "module": "ModuleExpressionModuleUse",
+            "resolvedId": "ModuleExpressionModule.Wrap@1"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleExpressionModuleUse.Inline{0}",
+              "line": 61,
+              "module": "ModuleExpressionModuleUse",
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_CONSTR_SEQUENCE",
+              "members": [
+                {
+                  "id": "ModuleExpressionModuleUse.Inline{0}/a",
+                  "identifier": "a",
+                  "line": 61,
+                  "module": "ModuleExpressionModuleUse",
+                  "metaType": "AMT_TYPE",
+                  "exprType": "ASN_BASIC_INTEGER",
+                  "constraints": {
+                    "kind": "ACT_CA_SET",
+                    "line": 61,
+                    "module": "ModuleExpressionModuleUse",
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_RANGE",
+                        "line": 61,
+                        "module": "ModuleExpressionModuleUse",
+                        "rangeStart": {
+                          "kind": "ATV_INTEGER",
+                          "integer": "0"
+                        },
+                        "rangeStop": {
+                          "kind": "ATV_INTEGER",
+                          "integer": "7"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModuleUse.Bytes",
+          "identifier": "Bytes",
+          "line": 63,
+          "module": "ModuleExpressionModuleUse",
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Sized"
+              }
+            ],
+            "line": 63,
+            "module": "ModuleExpressionModuleUse",
+            "resolvedId": "ModuleExpressionModule.Sized@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleExpressionModuleUse.Bytes{0}",
+              "line": 63,
+              "module": "ModuleExpressionModuleUse",
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_OCTET_STRING"
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModuleUse.Contained",
+          "identifier": "Contained",
+          "line": 65,
+          "module": "ModuleExpressionModuleUse",
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Holder"
+              }
+            ],
+            "line": 65,
+            "module": "ModuleExpressionModuleUse",
+            "resolvedId": "ModuleExpressionModule.Holder@0"
+          },
+          "combinedConstraints": {
+            "kind": "ACT_CA_SET",
+            "line": 31,
+            "module": "ModuleExpressionModule",
+            "elements": [
+              {
+                "kind": "ACT_CT_CTNG",
+                "line": 31,
+                "module": "ModuleExpressionModule",
+                "value": {
+                  "kind": "ATV_TYPE",
+                  "type": {
+                    "id": "ModuleExpressionModuleUse.Contained$cc.0.v",
+                    "line": 65,
+                    "module": "ModuleExpressionModuleUse",
+                    "metaType": "AMT_TYPE",
+                    "exprType": "ASN_BASIC_INTEGER",
+                    "constraints": {
+                      "kind": "ACT_CA_SET",
+                      "line": 65,
+                      "module": "ModuleExpressionModuleUse",
+                      "elements": [
+                        {
+                          "kind": "ACT_EL_RANGE",
+                          "line": 65,
+                          "module": "ModuleExpressionModuleUse",
+                          "rangeStart": {
+                            "kind": "ATV_INTEGER",
+                            "integer": "0"
+                          },
+                          "rangeStop": {
+                            "kind": "ATV_INTEGER",
+                            "integer": "9"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleExpressionModuleUse.Contained{0}",
+              "line": 65,
+              "module": "ModuleExpressionModuleUse",
+              "metaType": "AMT_TYPE",
+              "exprType": "ASN_BASIC_INTEGER",
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 65,
+                "module": "ModuleExpressionModuleUse",
+                "elements": [
+                  {
+                    "kind": "ACT_EL_RANGE",
+                    "line": 65,
+                    "module": "ModuleExpressionModuleUse",
+                    "rangeStart": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "0"
+                    },
+                    "rangeStop": {
+                      "kind": "ATV_INTEGER",
+                      "integer": "9"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModuleUse.Kinds",
+          "identifier": "Kinds",
+          "line": 67,
+          "module": "ModuleExpressionModuleUse",
+          "metaType": "AMT_VALUESET",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_CAPITALS",
+                "name": "KIND"
+              }
+            ],
+            "line": 67,
+            "module": "ModuleExpressionModuleUse",
+            "resolvedId": "ModuleExpressionModule.KIND"
+          },
+          "constraints": {
+            "kind": "ACT_CA_UNI",
+            "line": 67,
+            "module": "ModuleExpressionModuleUse",
+            "elements": [
+              {
+                "kind": "ACT_EL_VALUE",
+                "line": 67,
+                "module": "ModuleExpressionModuleUse",
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{ID 1 TYPE INTEGER}"
+                }
+              },
+              {
+                "kind": "ACT_EL_VALUE",
+                "line": 67,
+                "module": "ModuleExpressionModuleUse",
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{ID 2 TYPE BOOLEAN}"
+                }
+              }
+            ]
+          },
+          "combinedConstraints": {
+            "kind": "ACT_CA_UNI",
+            "line": 67,
+            "module": "ModuleExpressionModuleUse",
+            "elements": [
+              {
+                "kind": "ACT_EL_VALUE",
+                "line": 67,
+                "module": "ModuleExpressionModuleUse",
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{ID 1 TYPE INTEGER}"
+                }
+              },
+              {
+                "kind": "ACT_EL_VALUE",
+                "line": 67,
+                "module": "ModuleExpressionModuleUse",
+                "value": {
+                  "kind": "ATV_UNPARSED",
+                  "string": "{ID 2 TYPE BOOLEAN}"
+                }
+              }
+            ]
+          },
+          "iocTable": {
+            "rows": [
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleExpressionModuleUse.Kinds!0.0",
+                      "identifier": "1",
+                      "line": 67,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "1"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Type",
+                    "value": {
+                      "id": "ModuleExpressionModuleUse.Kinds!0.1",
+                      "identifier": "INTEGER",
+                      "line": 67,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    "newRef": true
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleExpressionModuleUse.Kinds!1.0",
+                      "identifier": "2",
+                      "line": 67,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "2"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Type",
+                    "value": {
+                      "id": "ModuleExpressionModuleUse.Kinds!1.1",
+                      "identifier": "BOOLEAN",
+                      "line": 67,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_BOOLEAN"
+                    },
+                    "newRef": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleExpressionModuleUse.Message",
+          "identifier": "Message",
+          "line": 69,
+          "module": "ModuleExpressionModuleUse",
+          "metaType": "AMT_TYPEREF",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_Uppercase",
+                "name": "Pair"
+              }
+            ],
+            "line": 69,
+            "module": "ModuleExpressionModuleUse",
+            "resolvedId": "ModuleExpressionModule.Pair@0"
+          },
+          "rhsPspecs": [
+            {
+              "id": "ModuleExpressionModuleUse.Message{0}",
+              "line": 69,
+              "module": "ModuleExpressionModuleUse",
+              "metaType": "AMT_VALUESET",
+              "exprType": "A1TC_VALUESET",
+              "constraints": {
+                "kind": "ACT_EL_TYPE",
+                "line": 69,
+                "module": "ModuleExpressionModuleUse",
+                "containedSubtype": {
+                  "kind": "ATV_TYPE",
+                  "type": {
+                    "id": "ModuleExpressionModuleUse.Message{0}$c.s",
+                    "line": 69,
+                    "module": "ModuleExpressionModuleUse",
+                    "metaType": "AMT_TYPEREF",
+                    "exprType": "A1TC_REFERENCE",
+                    "reference": {
+                      "components": [
+                        {
+                          "lexType": "RLT_Uppercase",
+                          "name": "Kinds"
+                        }
+                      ],
+                      "line": 69,
+                      "module": "ModuleExpressionModuleUse",
+                      "resolvedId": "ModuleExpressionModuleUse.Kinds"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ModuleExpressionModuleUse.Exts",
+          "identifier": "Exts",
+          "line": 71,
+          "module": "ModuleExpressionModuleUse",
+          "metaType": "AMT_VALUESET",
+          "exprType": "A1TC_REFERENCE",
+          "reference": {
+            "components": [
+              {
+                "lexType": "RLT_CAPITALS",
+                "name": "EXT"
+              }
+            ],
+            "line": 71,
+            "module": "ModuleExpressionModuleUse",
+            "resolvedId": "ModuleExpressionModule.EXT"
+          },
+          "constraints": {
+            "kind": "ACT_EL_VALUE",
+            "line": 71,
+            "module": "ModuleExpressionModuleUse",
+            "value": {
+              "kind": "ATV_UNPARSED",
+              "string": "{ID 1 CONTENT INTEGER}"
+            }
+          },
+          "combinedConstraints": {
+            "kind": "ACT_EL_VALUE",
+            "line": 71,
+            "module": "ModuleExpressionModuleUse",
+            "value": {
+              "kind": "ATV_UNPARSED",
+              "string": "{ID 1 CONTENT INTEGER}"
+            }
+          },
+          "iocTable": {
+            "rows": [
+              {
+                "cells": [
+                  {
+                    "field": "&id",
+                    "value": {
+                      "id": "ModuleExpressionModuleUse.Exts!0.0",
+                      "identifier": "1",
+                      "line": 71,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_VALUE",
+                      "exprType": "ASN_BASIC_INTEGER",
+                      "value": {
+                        "kind": "ATV_INTEGER",
+                        "integer": "1"
+                      }
+                    },
+                    "newRef": true
+                  },
+                  {
+                    "field": "&Content",
+                    "value": {
+                      "id": "ModuleExpressionModuleUse.Exts!0.1",
+                      "identifier": "INTEGER",
+                      "line": 71,
+                      "module": "ModuleExpressionModuleUse",
+                      "metaType": "AMT_TYPE",
+                      "exprType": "ASN_BASIC_INTEGER"
+                    },
+                    "newRef": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "ModuleExpressionModuleUse.Extension",
+          "identifier": "Extension",
+          "line": 74,
+          "module": "ModuleExpressionModuleUse",
+          "metaType": "AMT_TYPE",
+          "exprType": "ASN_CONSTR_SEQUENCE",
+          "members": [
+            {
+              "id": "ModuleExpressionModuleUse.Extension/id",
+              "identifier": "id",
+              "line": 74,
+              "module": "ModuleExpressionModuleUse",
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "EXT"
+                  },
+                  {
+                    "lexType": "RLT_Amplowercase",
+                    "name": "&id"
+                  }
+                ],
+                "line": 74,
+                "module": "ModuleExpressionModuleUse",
+                "resolvedId": "ModuleExpressionModule.EXT/&id/#0"
+              },
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_IMPLICIT",
+                "value": "0"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 74,
+                "module": "ModuleExpressionModuleUse",
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 74,
+                    "module": "ModuleExpressionModuleUse",
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 74,
+                        "module": "ModuleExpressionModuleUse",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Exts"
+                              }
+                            ],
+                            "line": 74,
+                            "module": "ModuleExpressionModuleUse",
+                            "resolvedId": "ModuleExpressionModuleUse.Exts"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "combinedConstraints": {
+                "kind": "ACT_CA_SET",
+                "line": 74,
+                "module": "ModuleExpressionModuleUse",
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 74,
+                    "module": "ModuleExpressionModuleUse",
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 74,
+                        "module": "ModuleExpressionModuleUse",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Exts"
+                              }
+                            ],
+                            "line": 74,
+                            "module": "ModuleExpressionModuleUse",
+                            "resolvedId": "ModuleExpressionModuleUse.Exts"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ModuleExpressionModuleUse.Extension/content",
+              "identifier": "content",
+              "line": 75,
+              "module": "ModuleExpressionModuleUse",
+              "metaType": "AMT_TYPEREF",
+              "exprType": "A1TC_REFERENCE",
+              "reference": {
+                "components": [
+                  {
+                    "lexType": "RLT_CAPITALS",
+                    "name": "EXT"
+                  },
+                  {
+                    "lexType": "RLT_AmpUppercase",
+                    "name": "&Content"
+                  }
+                ],
+                "line": 75,
+                "module": "ModuleExpressionModuleUse",
+                "resolvedId": "ModuleExpressionModule.EXT/&Content/+0"
+              },
+              "tag": {
+                "tagClass": "TC_CONTEXT_SPECIFIC",
+                "tagMode": "TM_EXPLICIT",
+                "value": "1"
+              },
+              "constraints": {
+                "kind": "ACT_CA_SET",
+                "line": 75,
+                "module": "ModuleExpressionModuleUse",
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 75,
+                    "module": "ModuleExpressionModuleUse",
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 75,
+                        "module": "ModuleExpressionModuleUse",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Exts"
+                              }
+                            ],
+                            "line": 75,
+                            "module": "ModuleExpressionModuleUse",
+                            "resolvedId": "ModuleExpressionModuleUse.Exts"
+                          }
+                        }
+                      },
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 75,
+                        "module": "ModuleExpressionModuleUse",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Atlowercase",
+                                "name": "@id"
+                              }
+                            ],
+                            "line": 75,
+                            "module": "ModuleExpressionModuleUse",
+                            "resolvedId": "ModuleExpressionModuleUse.Extension/id"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "combinedConstraints": {
+                "kind": "ACT_CA_SET",
+                "line": 75,
+                "module": "ModuleExpressionModuleUse",
+                "elements": [
+                  {
+                    "kind": "ACT_CA_CRC",
+                    "line": 75,
+                    "module": "ModuleExpressionModuleUse",
+                    "elements": [
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 75,
+                        "module": "ModuleExpressionModuleUse",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Uppercase",
+                                "name": "Exts"
+                              }
+                            ],
+                            "line": 75,
+                            "module": "ModuleExpressionModuleUse",
+                            "resolvedId": "ModuleExpressionModuleUse.Exts"
+                          }
+                        }
+                      },
+                      {
+                        "kind": "ACT_EL_VALUE",
+                        "line": 75,
+                        "module": "ModuleExpressionModuleUse",
+                        "value": {
+                          "kind": "ATV_REFERENCED",
+                          "reference": {
+                            "components": [
+                              {
+                                "lexType": "RLT_Atlowercase",
+                                "name": "@id"
+                              }
+                            ],
+                            "line": 75,
+                            "module": "ModuleExpressionModuleUse",
+                            "resolvedId": "ModuleExpressionModuleUse.Extension/id"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

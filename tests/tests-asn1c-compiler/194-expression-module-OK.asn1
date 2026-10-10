@@ -1,0 +1,78 @@
+-- OK: Everything is fine
+
+-- iso.org.dod.internet.private.enterprise (1.3.6.1.4.1)
+-- .spelio.software.asn1c.test (9363.1.5.1)
+-- .194
+
+-- The module of each node in -print-json ("module"). The second module
+-- makes specializations of the types of the first module. Each copy of
+-- an actual parameter is written in the second module (X.683 (02/2021)
+-- 9.7): an inline type with a component and a constraint, a type with
+-- the constraint of its DummyReference, a type in CONTAINING, and an
+-- object set. The open type that the fixer adds to the class field
+-- EXT.&Content gets the module of the class, also when the first lookup
+-- of the field comes from the second module.
+
+ModuleExpressionModule
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 194 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	Wrap {T} ::= SEQUENCE {
+		id	INTEGER,
+		v	T
+	}
+
+	Sized {T} ::= SEQUENCE {
+		v	T (SIZE(1..4))
+	}
+
+	Holder {T} ::= OCTET STRING (CONTAINING T)
+
+	KIND ::= CLASS {
+		&id	INTEGER UNIQUE,
+		&Type
+	} WITH SYNTAX { ID &id TYPE &Type }
+
+	Pair {KIND: Set} ::= SEQUENCE {
+		id	KIND.&id({Set}),
+		value	KIND.&Type({Set}{@id})
+	}
+
+	EXT ::= CLASS {
+		&id	INTEGER UNIQUE,
+		&Content
+	} WITH SYNTAX { ID &id CONTENT &Content }
+
+	Local ::= Wrap {BOOLEAN}
+
+END
+
+ModuleExpressionModuleUse
+	{ iso org(3) dod(6) internet(1) private(4) enterprise(1)
+		spelio(9363) software(1) asn1c(5) test(1) 194 1 }
+	DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+	IMPORTS Wrap, Sized, Holder, KIND, Pair, EXT
+		FROM ModuleExpressionModule;
+
+	Inline ::= Wrap {SEQUENCE { a INTEGER (0..7) }}
+
+	Bytes ::= Sized {OCTET STRING}
+
+	Contained ::= Holder {INTEGER (0..9)}
+
+	Kinds KIND ::= { {ID 1 TYPE INTEGER} | {ID 2 TYPE BOOLEAN} }
+
+	Message ::= Pair {{Kinds}}
+
+	Exts EXT ::= { {ID 1 CONTENT INTEGER} }
+
+	Extension ::= SEQUENCE {
+		id	EXT.&id({Exts}),
+		content	EXT.&Content({Exts}{@id})
+	}
+
+END
