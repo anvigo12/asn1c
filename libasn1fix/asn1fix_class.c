@@ -68,7 +68,13 @@ asn1f_class_access(arg_t *arg, asn1p_expr_t *rhs_pspecs, const asn1p_ref_t *ref)
 		if(TQ_FIRST(&classfield->members)) {
 			/* Already have something */
 		} else {
-			expr = asn1p_expr_new(classfield->_lineno, arg->mod);
+			/*
+			 * The open type of the field: it has the line of the
+			 * field, so it gets the module of the field. The
+			 * module of the lookup (arg->mod) can be another one.
+			 */
+			expr = asn1p_expr_new(classfield->_lineno,
+				classfield->module);
 			expr->expr_type = ASN_TYPE_ANY;
 			expr->meta_type = AMT_TYPE;
 			asn1p_expr_add(classfield, expr);
